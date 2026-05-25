@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 · 6/1 KIX 09:00 起飛 回台灣</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:root{--a:#D97706;--al:#FFFBEB;--am:#FDE68A}
+
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+
+.hero{background:linear-gradient(135deg,#B45309 0%,#92400E 100%);color:#fff;padding:32px 20px 28px}
+.hero-inner{max-width:520px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+
+/* TIME CRITICAL CARD */
+.critical{background:linear-gradient(135deg,#FEF3C7,#FFFBEB);border:2px solid var(--am);border-radius:18px;padding:18px 20px;margin-bottom:16px}
+.critical-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.critical-label{font-size:12px;font-weight:600;color:#92400E;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.critical-time{font-size:36px;font-weight:700;color:#78350F;line-height:1}
+.critical-note{font-size:13px;color:#92400E;margin-top:4px}
+.critical-arrow{font-size:24px;color:#FCD34D;flex-shrink:0}
+
+.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+
+.timeline{position:relative;padding-left:72px}
+.timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-time{position:absolute;left:-72px;width:46px;text-align:right;font-size:12px;font-weight:600;color:var(--a);padding-top:14px;line-height:1}
+.tl-dot{position:absolute;left:-18px;top:15px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--a);transform:translateX(-50%)}
+.tl-dot-fill{background:var(--a)}
+.tl-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 15px}
+.tl-card h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.tl-card p{font-size:13px;color:#64748B;line-height:1.5}
+.tl-card .sub{font-size:12px;color:#94A3B8;margin-top:4px}
+
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:var(--al);border:1px solid var(--am)}
+.alert-s{background:#F0FDF4;border:1px solid #BBF7D0}
+.alert svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.5}
+
+.card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;padding:16px;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#0F172A}
+
+/* TRANSPORT BACKUP TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.05em;padding:6px 10px;text-align:left;border-bottom:1px solid #E2E8F0;background:#F8FAFC}
+.tbl td{padding:11px 10px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:#334155}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .top{background:#F0FDF4}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:500}
+.badge-green{background:#DCFCE7;color:#166534}
+.badge-amber{background:#FEF3C7;color:#92400E}
+
+/* TERMINAL CARD */
+.terminal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.term{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:14px}
+.term-label{font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.term-name{font-size:16px;font-weight:700;color:#0F172A;margin-bottom:2px}
+.term-airlines{font-size:12px;color:#64748B;line-height:1.5}
+
+/* SHOPPING LIST */
+.shop-list{display:flex;flex-direction:column;gap:0}
+.shop-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F1F5F9}
+.shop-item:last-child{border-bottom:none}
+.shop-name{font-size:14px;font-weight:500;flex:1}
+.shop-note{font-size:12px;color:#94A3B8}
+
+/* CHECKLIST */
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:14px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:1px;transition:all 150ms}
+.check-list input:checked+label{color:#94A3B8;text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+
+/* FAREWELL */
+.farewell{background:linear-gradient(135deg,#1E293B,#0F172A);color:#fff;border-radius:18px;padding:20px;margin-bottom:16px;text-align:center}
+.farewell h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.farewell p{font-size:14px;color:#94A3B8;line-height:1.5}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🗾 大阪</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="day1-0528.html" class="nav-pill">5/28</a>
+    <a href="day2-0529.html" class="nav-pill">5/29</a>
+    <a href="day3-0530.html" class="nav-pill">5/30</a>
+    <a href="day4-0531.html" class="nav-pill">5/31</a>
+    <a href="day5-0601.html" class="nav-pill active">6/1</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">DAY 5 · 6/1（一）</div>
+    <div class="hero-title">✈ 09:00 起飛<br>KIX → 桃園</div>
+    <div class="hero-sub">住機場旁，6:30 出飯店就夠了，不用緊張</div>
+    <div class="hero-tags">
+      <span class="htag">06:30 出飯店</span>
+      <span class="htag">免稅店採購</span>
+      <span class="htag">機場退稅</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="critical">
+    <div class="critical-label">關鍵時間點</div>
+    <div class="critical-row">
+      <div>
+        <div class="critical-time">06:30</div>
+        <div class="critical-note">出飯店 → 搭接駁巴士</div>
+      </div>
+      <div class="critical-arrow">→</div>
+      <div>
+        <div class="critical-time">06:45</div>
+        <div class="critical-note">抵達 KIX 完成 check-in</div>
+      </div>
+      <div class="critical-arrow">→</div>
+      <div>
+        <div class="critical-time">09:00</div>
+        <div class="critical-note">起飛！</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">今日時間軸</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">06:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>起床 + 最後整理行李</h3>
+        <p>昨晚已打包 80%，今早快速收尾。鬧鐘設 05:55 備用。</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">06:20</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>退房 + 到飯店大廳</h3>
+        <p>行李拖到大廳，確認沒遺漏護照、退稅單、ICOCA</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">06:30</div>
+      <div class="tl-dot tl-dot-fill" style="background:#EF4444;border-color:#EF4444"></div>
+      <div class="tl-card" style="border-color:#FECACA;background:#FEF2F2">
+        <h3 style="color:#991B1B">出飯店 → 前往 KIX</h3>
+        <p style="color:#7F1D1D">搭接駁巴士（首選）或 JR 一站，見下方備案</p>
+        <div class="sub">接駁巴士 5 分 · JR 6 分 / ¥380</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">06:45</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>KIX 航廈 Check-in + 託運</h3>
+        <p>確認航廈（第 1 或第 2），辦理 check-in、行李託運</p>
+        <div class="sub">需確認：部分航空可提早 48h 線上 check-in</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>退稅（若 OUTLET 有未退稅）+ 安檢 + 出境</h3>
+        <p>Tax Refund Counter 在出境大廳入口附近，帶護照 + 收據 + 密封袋</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>免稅店最後採購</h3>
+        <p>ROYCE'、抹茶 KitKat、限定伴手禮（見下方清單）</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:40</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>前往登機口</h3>
+        <p>確認登機口號碼，提早到位</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card" style="background:linear-gradient(135deg,#FFFBEB,#fff)">
+        <h3>✈ 起飛！KIX → 桃園（TPE）</h3>
+        <p>飛行約 2.5 小時，台灣時間約 10:30 抵達</p>
+        <div class="sub">時差 -1 小時（台灣 UTC+8，日本 UTC+9）</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-label">飯店 → KIX 三種方案</div>
+  <div class="card">
+    <table class="tbl">
+      <thead><tr><th>方案</th><th>時間</th><th>費用</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr class="top">
+          <td><b>接駁巴士</b> <span class="badge badge-green">首選</span></td>
+          <td>5–10 分</td>
+          <td>免費</td>
+          <td>昨天 check-in 詢問班表</td>
+        </tr>
+        <tr>
+          <td>JR 一站 <span class="badge badge-amber">備案A</span></td>
+          <td>6 分</td>
+          <td>¥380</td>
+          <td>Rinku-town → KIX</td>
+        </tr>
+        <tr>
+          <td>Nankai 電鐵</td>
+          <td>~8 分</td>
+          <td>¥460</td>
+          <td>同站出發，班次穩定</td>
+        </tr>
+        <tr>
+          <td>計程車</td>
+          <td>5–10 分</td>
+          <td>~¥2,000</td>
+          <td>行李超多 / 緊急時</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-label">航廈確認（很重要！）</div>
+  <div class="terminal-grid">
+    <div class="term">
+      <div class="term-label">第 1 航廈</div>
+      <div class="term-name">傳統航空</div>
+      <div class="term-airlines">中華航空、長榮<br>JAL、ANA</div>
+    </div>
+    <div class="term">
+      <div class="term-label">第 2 航廈</div>
+      <div class="term-name">LCC 廉航</div>
+      <div class="term-airlines">樂桃 Peach<br>春秋航空</div>
+    </div>
+  </div>
+  <div class="alert alert-i" style="margin-top:10px">
+    <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#D97706" stroke-width="1.5"/><path d="M10 9v5M10 7v.5" stroke="#D97706" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="alert-body">
+      <strong>第 2 航廈需提早 10–15 分</strong>
+      <p>若搭乘 LCC，從接駁巴士下車到第 2 航廈多走一段路，出飯店時間提前到 06:15。</p>
+    </div>
+  </div>
+
+  <div class="sec-label">KIX 免稅店採購清單</div>
+  <div class="card">
+    <div class="shop-list">
+      <div class="shop-item">
+        <div class="shop-name">ROYCE' 生巧克力</div>
+        <div class="shop-note">KIX 有，需冷藏</div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-name">抹茶 KitKat / 白色戀人</div>
+        <div class="shop-note">定番送禮</div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-name">大阪城 / 道頓堀紀念品</div>
+        <div class="shop-note">機場比市區貴，建議昨天買</div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-name">PABLO 半熟起司塔</div>
+        <div class="shop-note">KIX 部分店有賣</div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-name">飛機餐點（便利商店 or 7-11）</div>
+        <div class="shop-note">早上在機場解決早餐</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="farewell">
+    <h3>旅途愉快，いってらっしゃい！</h3>
+    <p>生日快樂 🎂<br>這趟旅行的所有美好時刻<br>都記在這個資料夾裡</p>
+  </div>
+
+  <div class="sec-label">最終 Checklist</div>
+  <div class="check-list">
+    <input type="checkbox" id="d5c1"><label for="d5c1">護照放隨身行李最外層</label>
+    <input type="checkbox" id="d5c2"><label for="d5c2">退稅商品密封袋確認沒拆封</label>
+    <input type="checkbox" id="d5c3"><label for="d5c3">接駁巴士班次確認（昨天問好）</label>
+    <input type="checkbox" id="d5c4"><label for="d5c4">確認航廈（第 1 或第 2）</label>
+    <input type="checkbox" id="d5c5"><label for="d5c5">行李重量確認（不超重）</label>
+    <input type="checkbox" id="d5c6"><label for="d5c6">ICOCA 留著（下次日本再用）或到 KIX 退卡</label>
+    <input type="checkbox" id="d5c7"><label for="d5c7">剩餘日圓現金（機場超商 or 帶回台灣）</label>
+    <input type="checkbox" id="d5c8"><label for="d5c8">拍照備份護照頁 + 機票 + 行李牌號碼</label>
+  </div>
+
+</div>
+<div class="pb"></div>
+
+<div class="bottom-nav">
+  <a href="day4-0531.html" class="bnav-btn bnav-prev">← Day 4</a>
+  <a href="index.html" class="bnav-btn bnav-next">總覽 →</a>
+</div>
+
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  const k='osaka_d5_'+cb.id;
+  if(localStorage.getItem(k))cb.checked=true;
+  cb.addEventListener('change',()=>{
+    if(cb.checked)localStorage.setItem(k,'1');
+    else localStorage.removeItem(k);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 · 5/30 勝尾寺 + 中崎町 + 道頓堀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:root{--a:#059669;--al:#ECFDF5;--am:#A7F3D0}
+
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+
+.hero{background:linear-gradient(135deg,#047857 0%,#065F46 100%);color:#fff;padding:32px 20px 28px}
+.hero-inner{max-width:520px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+
+.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+
+.timeline{position:relative;padding-left:72px}
+.timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-time{position:absolute;left:-72px;width:46px;text-align:right;font-size:12px;font-weight:600;color:var(--a);padding-top:14px;line-height:1}
+.tl-dot{position:absolute;left:-18px;top:15px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--a);transform:translateX(-50%)}
+.tl-dot-fill{background:var(--a)}
+.tl-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 15px}
+.tl-card h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.tl-card p{font-size:13px;color:#64748B;line-height:1.5}
+.tl-card .sub{font-size:12px;color:#94A3B8;margin-top:4px}
+
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:var(--al);border:1px solid var(--am)}
+.alert-d{background:#FEF2F2;border:1px solid #FECACA}
+.alert svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.5}
+
+.card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;padding:16px;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#0F172A}
+
+/* ROUTE */
+.route-steps{display:flex;flex-direction:column;gap:0}
+.route-step{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #F1F5F9}
+.route-step:last-child{border-bottom:none}
+.route-num{width:24px;height:24px;border-radius:50%;background:var(--a);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.route-body{flex:1}
+.route-body strong{font-size:14px;font-weight:600;display:block}
+.route-body span{font-size:12px;color:#64748B}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:500}
+.badge-green{background:#DCFCE7;color:#166534}
+.badge-amber{background:#FEF3C7;color:#92400E}
+.badge-blue{background:#EFF6FF;color:#1D4ED8}
+.badge-red{background:#FEF2F2;color:#991B1B}
+
+/* SPOTS GRID */
+.spots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.spot-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:14px}
+.spot-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.spot-desc{font-size:12px;color:#64748B;line-height:1.4}
+
+/* FOOD LIST */
+.food-list{display:flex;flex-direction:column;gap:0}
+.food-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #F1F5F9}
+.food-item:last-child{border-bottom:none}
+.food-name{font-size:14px;font-weight:600;flex:1}
+.food-note{font-size:12px;color:#64748B}
+.food-price{font-size:13px;color:#94A3B8;white-space:nowrap}
+
+/* CHECKLIST */
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:14px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:1px;transition:all 150ms}
+.check-list input:checked+label{color:#94A3B8;text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🗾 大阪</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="day1-0528.html" class="nav-pill">5/28</a>
+    <a href="day2-0529.html" class="nav-pill">5/29</a>
+    <a href="day3-0530.html" class="nav-pill active">5/30</a>
+    <a href="day4-0531.html" class="nav-pill">5/31</a>
+    <a href="day5-0601.html" class="nav-pill">6/1</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">DAY 3 · 5/30（六）</div>
+    <div class="hero-title">勝尾寺の達摩<br>中崎町 + 道頓堀</div>
+    <div class="hero-sub">上午山上拜達摩 → 下午文青咖啡 → 晚上夜逛道頓堀</div>
+    <div class="hero-tags">
+      <span class="htag">☯ 達摩寺</span>
+      <span class="htag">☕ 中崎町</span>
+      <span class="htag">🍡 道頓堀</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="alert alert-d">
+    <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#EF4444" stroke-width="1.5"/><path d="M10 7v4M10 12.5v.5" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="alert-body">
+      <strong>今天出發前：查巴士時刻！</strong>
+      <p>阪急巴士 #29（千里中央→勝尾寺）<b>僅週末運行</b>，約一小時一班，末班回程約 16:00。<b>昨晚就查好</b>確切班表。</p>
+    </div>
+  </div>
+
+  <div class="sec-label">今日時間軸</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">07:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>起床 + 便利商店早餐</h3>
+        <p>今天路程較多，早吃飽再出發</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🚇 難波 → 千里中央</h3>
+        <p>御堂筋線（北大阪急行）直通，難波→千里中央</p>
+        <div class="sub">約 30 分 · ¥380/人</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:45</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🚌 阪急巴士 #29 → 勝尾寺</h3>
+        <p>千里中央巴士總站 <b>5 號乘車處</b>出發</p>
+        <div class="sub">約 30 分 · ¥550/人（IC 可用）· 到站即勝尾寺</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:30</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>⛩ 勝尾寺參拜（約 1.5–2h）</h3>
+        <p>達摩不倒翁漫山遍野，求勝運名所。拍照、抽達摩神籤、觀多寶塔池水倒影</p>
+        <div class="sub">拜觀料：¥500/人</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🚌 回程巴士 → 千里中央</h3>
+        <p><b>注意末班車約 16:00 前後，不要賴太久</b></p>
+        <div class="sub">錯過巴士備案：計程車 ¥3,000–3,500</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🚇 千里中央 → 中崎町</h3>
+        <p>御堂筋線 → 梅田（步行 5 分到中崎町）或谷町線「中崎町」站</p>
+        <div class="sub">約 20 分 · ¥320/人</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>☕ 中崎町下午茶 + 逛街（約 2–3h）</h3>
+        <p>古民家咖啡、古著店、雜貨小店。不用趕，慢慢晃。</p>
+        <div class="sub">見下方推薦清單</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🚇 中崎町 → 難波</h3>
+        <p>御堂筋線梅田 → 難波，9 分 · ¥240/人</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🦑 道頓堀 + 難波夜逛</h3>
+        <p>固力果跑跑男打卡、戎橋、逐攤試吃、藥妝採購</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-label">勝尾寺 交通路線</div>
+  <div class="card">
+    <div class="card-title">🗺 難波 → 勝尾寺 完整路線</div>
+    <div class="route-steps">
+      <div class="route-step">
+        <div class="route-num">1</div>
+        <div class="route-body">
+          <strong>御堂筋線（北大阪急行）</strong>
+          <span>難波 → 千里中央 · 約 30 分 · ¥380</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-num">2</div>
+        <div class="route-body">
+          <strong>千里中央 巴士總站 5 號</strong>
+          <span>阪急巴士 #29 系統 · 週末限定 · 約一小時一班</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <div class="route-num">3</div>
+        <div class="route-body">
+          <strong>約 30 分後抵達勝尾寺</strong>
+          <span>¥550/人（IC 可用）· 終點站就是勝尾寺</span>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-w" style="margin-top:12px;margin-bottom:0">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 3L1.5 17h17L10 3z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 9v4M10 14.5v.5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div class="alert-body">
+        <strong>回程末班車注意</strong>
+        <p>回程末班 #29 約 <b>16:00</b> 前後，務必查當日時刻表。<br>備案：計程車 千里中央 ¥3,000–3,500（20 分）</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">中崎町 推薦咖啡 + 雜貨</div>
+  <div class="spots">
+    <div class="spot-card">
+      <div class="spot-name">太陽ノ塔</div>
+      <div class="spot-desc">古民家改裝，招牌起司蛋糕，文青大本營</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">Mole & Hosoi</div>
+      <div class="spot-desc">老派自家烘焙咖啡，低調安靜</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">Salon de AManTo</div>
+      <div class="spot-desc">古民家文化沙龍，藝術感強</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">古著街</div>
+      <div class="spot-desc">中崎町 1–3 丁目巷弄，挖寶好去處</div>
+    </div>
+  </div>
+
+  <div class="sec-label">道頓堀夜逛 · 邊走邊吃</div>
+  <div class="card">
+    <div class="food-list">
+      <div class="food-item">
+        <div class="food-name">本家 大たこ</div>
+        <div class="food-note">章魚燒名店</div>
+        <div class="food-price">~¥700</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">りくろーおじさん</div>
+        <div class="food-note">戎橋店·半熟起司蛋糕</div>
+        <div class="food-price">¥935</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">だるま 道頓堀總本店</div>
+        <div class="food-note">串炸代名詞</div>
+        <div class="food-price">~¥2,500</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">551 蓬萊</div>
+        <div class="food-note">豬肉包（現買現吃 or 帶回）</div>
+        <div class="food-price">¥220</div>
+      </div>
+      <div class="food-item">
+        <div class="food-name">大國藥妝 / 松本清</div>
+        <div class="food-note">藥妝採購（含休足時間、防曬）</div>
+        <div class="food-price">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">今日 Checklist</div>
+  <div class="check-list">
+    <input type="checkbox" id="d3c1"><label for="d3c1">出發前查阪急巴士 #29 當日班表（昨晚就查！）</label>
+    <input type="checkbox" id="d3c2"><label for="d3c2">準備 ¥1,100 現金（勝尾寺拜觀料 ¥500×2 + 巴士）</label>
+    <input type="checkbox" id="d3c3"><label for="d3c3">帶傘（5 月底可能有雷陣雨，達摩 + 雨傘更有味道）</label>
+    <input type="checkbox" id="d3c4"><label for="d3c4">抽達摩御籤（小達摩可帶回家）</label>
+    <input type="checkbox" id="d3c5"><label for="d3c5">中崎町挑一間咖啡坐下休息（腳已走很多路了）</label>
+    <input type="checkbox" id="d3c6"><label for="d3c6">道頓堀藥妝採購清單確認（休足時間、龍角散…）</label>
+    <input type="checkbox" id="d3c7"><label for="d3c7">明天退房前收好行李，拖去 OUTLET</label>
+  </div>
+
+</div>
+<div class="pb"></div>
+
+<div class="bottom-nav">
+  <a href="day2-0529.html" class="bnav-btn bnav-prev">← Day 2</a>
+  <a href="day4-0531.html" class="bnav-btn bnav-next">Day 4 →</a>
+</div>
+
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  const k='osaka_d3_'+cb.id;
+  if(localStorage.getItem(k))cb.checked=true;
+  cb.addEventListener('change',()=>{
+    if(cb.checked)localStorage.setItem(k,'1');
+    else localStorage.removeItem(k);
+  });
+});
+</script>
+</body>
+</html>

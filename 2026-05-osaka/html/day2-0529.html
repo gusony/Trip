@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 · 5/29 環球影城 + 生日大餐 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:root{--a:#E11D48;--al:#FFF1F2;--am:#FECDD3}
+
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#BE123C 0%,#9F1239 100%);color:#fff;padding:32px 20px 28px}
+.hero-inner{max-width:520px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+
+/* BIRTHDAY BANNER */
+.bday-banner{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:2px solid #FCD34D;border-radius:16px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.bday-icon{font-size:32px;flex-shrink:0}
+.bday-text strong{display:block;font-size:16px;font-weight:700;color:#92400E;margin-bottom:2px}
+.bday-text p{font-size:13px;color:#78350F;line-height:1.4}
+
+.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+
+.timeline{position:relative;padding-left:72px}
+.timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-time{position:absolute;left:-72px;width:46px;text-align:right;font-size:12px;font-weight:600;color:var(--a);padding-top:14px;line-height:1}
+.tl-dot{position:absolute;left:-18px;top:15px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--a);transform:translateX(-50%)}
+.tl-dot-fill{background:var(--a)}
+.tl-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 15px}
+.tl-card h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.tl-card p{font-size:13px;color:#64748B;line-height:1.5}
+.tl-card .sub{font-size:12px;color:#94A3B8;margin-top:4px}
+
+/* RIDE TABLE */
+.card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;padding:16px;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:#0F172A}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.tbl th{font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.05em;padding:6px 8px;text-align:left;border-bottom:1px solid #E2E8F0;background:#F8FAFC}
+.tbl td{padding:10px 8px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:#334155}
+.tbl tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:500}
+.badge-red{background:var(--al);color:#BE123C}
+.badge-amber{background:#FEF3C7;color:#92400E}
+.badge-blue{background:#EFF6FF;color:#1D4ED8}
+.badge-green{background:#DCFCE7;color:#166534}
+
+/* RESTAURANT CARDS */
+.rest-grid{display:flex;flex-direction:column;gap:10px}
+.rest-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.rest-card.featured{border:2px solid #FCD34D;background:linear-gradient(135deg,#FFFBEB,#FFFDE7)}
+.rest-info{flex:1}
+.rest-name{font-size:15px;font-weight:700;margin-bottom:4px;color:#0F172A}
+.rest-type{font-size:12px;color:#94A3B8;margin-bottom:6px}
+.rest-tags{display:flex;gap:6px;flex-wrap:wrap}
+.rest-tag{font-size:12px;padding:2px 8px;border-radius:99px;font-weight:500}
+.rest-price{font-size:13px;font-weight:600;color:#0F172A;white-space:nowrap;text-align:right}
+.rest-price span{display:block;font-size:11px;font-weight:400;color:#94A3B8;margin-top:2px}
+
+/* ALERT */
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:var(--al);border:1px solid var(--am)}
+.alert-s{background:#F0FDF4;border:1px solid #BBF7D0}
+.alert svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.5}
+
+/* TIP BOX */
+.tip{background:#F8FAFC;border-left:3px solid var(--a);border-radius:0 12px 12px 0;padding:12px 14px;margin:10px 0;font-size:13px;color:#475569;line-height:1.5}
+.tip strong{color:#0F172A;font-weight:600}
+
+/* CHECKLIST */
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:14px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:1px;transition:all 150ms}
+.check-list input:checked+label{color:#94A3B8;text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🗾 大阪</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="day1-0528.html" class="nav-pill">5/28</a>
+    <a href="day2-0529.html" class="nav-pill active">5/29</a>
+    <a href="day3-0530.html" class="nav-pill">5/30</a>
+    <a href="day4-0531.html" class="nav-pill">5/31</a>
+    <a href="day5-0601.html" class="nav-pill">6/1</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">DAY 2 · 5/29（五）</div>
+    <div class="hero-title">環球影城<br>生日大餐 🎂</div>
+    <div class="hero-sub">07:40 入園 → 快速通關攻略 → 21:00 道頓堀慶生</div>
+    <div class="hero-tags">
+      <span class="htag">USJ 全日</span>
+      <span class="htag">已有快速通關</span>
+      <span class="htag">🎂 生日大餐</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="bday-banner">
+    <div class="bday-icon">🎂</div>
+    <div class="bday-text">
+      <strong>今天是生日！</strong>
+      <p>USJ 玩爽之後，晚上道頓堀吃生日大餐。<br>訂位時記得跟店家說「お誕生日です」！</p>
+    </div>
+  </div>
+
+  <div class="alert alert-w">
+    <svg viewBox="0 0 20 20" fill="none"><path d="M10 3L1.5 17h17L10 3z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 9v4M10 14.5v.5" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="alert-body">
+      <strong>關鍵：SNW 瑪利歐區入場</strong>
+      <p>確認 Express Pass 是否含 SNW 指定入場。<b>若沒含</b>：一入園立刻跑去 SNW 入口抽「Area Timed Entry 整理券」，不然等 2h 以上。</p>
+    </div>
+  </div>
+
+  <div class="sec-label">今日時間軸</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">06:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>起床 + 便利商店早餐</h3>
+        <p>飯糰 × 2 + 飲料 + 能量棒。園區內早餐超貴又排隊，省下時間和錢。</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🚃 前往 USJ</h3>
+        <p>難波 → 御堂筋線 → 梅田 → JR 大阪環狀線 → 西九条 → 夢咲線 → ユニバーサルシティ駅</p>
+        <div class="sub">約 30 分 · IC 卡 ~¥370/人</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:40</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>抵達正門等待開園（08:00）</h3>
+        <p>提早到有機會搶到前幾排入場位置，開園後立刻衝高人氣設施</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🎮 衝超級任天堂世界（SNW）</h3>
+        <p>開園第一件事：進 SNW 玩「瑪利歐賽車〜庫巴的挑戰書〜」</p>
+        <div class="sub">若需整理券：入園後立刻去 SNW 入口前抽</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>按快速通關時段跑設施</h3>
+        <p>哈利波特禁忌之旅 → 飛天翼龍 → 好萊塢美夢 → 蜘蛛人</p>
+        <div class="sub">午餐避開 12:00–14:00 高峰，11:00 或 14:30 後吃</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>遊行 / 紀念品掃貨</h3>
+        <p>Super Nintendo World 周邊、哈利波特魔杖、蜘蛛人面具等</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">20:00</div>
+      <div class="tl-dot tl-dot-fill"></div>
+      <div class="tl-card">
+        <h3>🚃 離開 USJ → 回難波</h3>
+        <p>反向 JR 夢咲線 → 西九条 → 環狀線 → 大阪（地鐵）或 JR 難波</p>
+        <div class="sub">約 30–40 分</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-dot tl-dot-fill" style="background:#F59E0B;border-color:#F59E0B"></div>
+      <div class="tl-card" style="border-color:#FCD34D;background:linear-gradient(135deg,#FFFBEB,#fff)">
+        <h3 style="color:#92400E">🎂 生日大餐開始！</h3>
+        <p style="color:#78350F">道頓堀 / 難波，詳見下方餐廳清單</p>
+        <div class="sub">用餐前確認訂位細節、提醒店家生日慶祝</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-label">USJ 設施攻略順序</div>
+  <div class="card">
+    <div class="card-title">⚡ 建議順序（快速通關 + 早鳥）</div>
+    <table class="tbl">
+      <thead><tr><th>#</th><th>設施</th><th>方式</th><th>為什麼</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>瑪利歐賽車</b></td><td><span class="badge badge-red">快速通關</span></td><td>最熱門，必衝</td></tr>
+        <tr><td>2</td><td>耀西冒險</td><td><span class="badge badge-blue">SNW 內</span></td><td>順手玩</td></tr>
+        <tr><td>3</td><td>哈利波特禁忌之旅</td><td><span class="badge badge-red">快速通關</span></td><td>第二熱門</td></tr>
+        <tr><td>4</td><td>飛天翼龍</td><td><span class="badge badge-red">快速通關</span></td><td>最刺激飛車</td></tr>
+        <tr><td>5</td><td>好萊塢美夢</td><td><span class="badge badge-amber">早上空檔</span></td><td>人氣高</td></tr>
+        <tr><td>6</td><td>蜘蛛人</td><td><span class="badge badge-amber">早上空檔</span></td><td>4D 經典</td></tr>
+        <tr><td>7</td><td>小小兵乘車遊</td><td><span class="badge badge-green">下午補位</span></td><td>較快散</td></tr>
+      </tbody>
+    </table>
+    <div class="tip" style="margin-top:12px">
+      <strong>午餐策略：</strong>Kinopio's Cafe（瑪利歐區）體驗感最好但要排，建議 <b>11:00 前</b> 或 <b>14:30 後</b> 避開高峰。奶油啤酒（哈利波特區，¥200）一定要喝！
+    </div>
+  </div>
+
+  <div class="sec-label">生日大餐候選（⚠️ 今天就訂）</div>
+  <div class="rest-grid">
+
+    <div class="rest-card featured">
+      <div class="rest-info">
+        <div class="rest-name">播重（はり重）道頓堀本店 ⭐</div>
+        <div class="rest-type">黑毛和牛 壽喜燒 · 涮涮鍋 · 1926年創業</div>
+        <div class="rest-tags">
+          <span class="rest-tag" style="background:#DCFCE7;color:#166534">✅ 中文訂位</span>
+          <span class="rest-tag" style="background:#F0F9FF;color:#0369A1">17 間包廂</span>
+          <span class="rest-tag" style="background:#FEF3C7;color:#92400E">生日服務</span>
+        </div>
+        <div style="font-size:12px;color:#94A3B8;margin-top:6px">訂位：myconciergejapan.com/zh-hant（有中文頁面）</div>
+      </div>
+      <div class="rest-price">¥6,000~<br>8,000<span>/人</span></div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-info">
+        <div class="rest-name">蟹道楽 道頓堀本店</div>
+        <div class="rest-type">螃蟹料理 · 道頓堀地標</div>
+        <div class="rest-tags">
+          <span class="rest-tag" style="background:#DCFCE7;color:#166534">✅ 中文菜單</span>
+          <span class="rest-tag" style="background:#F0F9FF;color:#0369A1">tabelog 訂位</span>
+        </div>
+      </div>
+      <div class="rest-price">¥6,000~<br>10,000<span>/人</span></div>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-info">
+        <div class="rest-name">炭火焼肉 忍鬨（日本橋店）</div>
+        <div class="rest-type">和牛燒肉 · Google 4.8 分</div>
+        <div class="rest-tags">
+          <span class="rest-tag" style="background:#FEF3C7;color:#92400E">厚切牛舌</span>
+          <span class="rest-tag" style="background:#FFF1F2;color:#BE123C">和牛炙燒壽司</span>
+        </div>
+      </div>
+      <div class="rest-price">¥5,000~<br>7,000<span>/人</span></div>
+    </div>
+
+  </div>
+
+  <div class="alert alert-i" style="margin-top:12px">
+    <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#E11D48" stroke-width="1.5"/><path d="M10 9v5M10 7v.5" stroke="#E11D48" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="alert-body">
+      <strong>訂位時備註生日</strong>
+      <p>日文：「お誕生日のお祝いです。サプライズをお願いします。」<br>大部分日式餐廳會送小蛋糕、寫名字盤子，或拍照服務。</p>
+    </div>
+  </div>
+
+  <div class="sec-label">今日 Checklist</div>
+  <div class="check-list">
+    <input type="checkbox" id="d2c1"><label for="d2c1">出發前確認 Express Pass QR（手機截圖 + 充電）</label>
+    <input type="checkbox" id="d2c2"><label for="d2c2">查當日 USJ App 等待時間（入園後開啟）</label>
+    <input type="checkbox" id="d2c3"><label for="d2c3">確認 SNW 整理券是否需要（或 Express Pass 已含）</label>
+    <input type="checkbox" id="d2c4"><label for="d2c4">生日大餐訂位確認（若還沒訂：今天出發前訂！）</label>
+    <input type="checkbox" id="d2c5"><label for="d2c5">帶防曬乳、雨具（5 月底偶有雷陣雨）</label>
+    <input type="checkbox" id="d2c6"><label for="d2c6">帶行動電源（園內拍照耗電快）</label>
+    <input type="checkbox" id="d2c7"><label for="d2c7">園內買奶油啤酒打卡（哈利波特區，¥200）</label>
+    <input type="checkbox" id="d2c8"><label for="d2c8">晚上餐廳前確認訂位時間、地址</label>
+  </div>
+
+</div>
+<div class="pb"></div>
+
+<div class="bottom-nav">
+  <a href="day1-0528.html" class="bnav-btn bnav-prev">← Day 1</a>
+  <a href="day3-0530.html" class="bnav-btn bnav-next">Day 3 →</a>
+</div>
+
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+  const k='osaka_d2_'+cb.id;
+  if(localStorage.getItem(k))cb.checked=true;
+  cb.addEventListener('change',()=>{
+    if(cb.checked)localStorage.setItem(k,'1');
+    else localStorage.removeItem(k);
+  });
+});
+</script>
+</body>
+</html>
