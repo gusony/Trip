@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇳🇿 紐西蘭南島自駕旅遊 2026</title>
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;
+    --blue: #1e6091;
+    --blue-light: #48cae4;
+    --blue-pale: #caf0f8;
+    --orange: #e07b30;
+    --orange-pale: #fdebd0;
+    --yellow: #f4a261;
+    --gray: #6c757d;
+    --bg: #f8fffe;
+    --card: #ffffff;
+    --border: #dee2e6;
+    --text: #212529;
+    --text-muted: #6c757d;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #1e6091 100%);
+    color: white;
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2.2em; font-weight: 700; margin-bottom: 8px; }
+  .hero p { font-size: 1.05em; opacity: 0.88; }
+  .hero .tags { margin-top: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .tag {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.88em;
+  }
+
+  /* NAV */
+  .nav {
+    background: var(--green);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 6px 16px;
+  }
+  .nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    transition: background 0.2s;
+  }
+  .nav a:hover { background: rgba(255,255,255,0.2); color: white; }
+
+  /* LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--green);
+    border-left: 4px solid var(--green-light);
+    padding-left: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .date-badge {
+    background: var(--green);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.82em;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .date-badge.confirmed { background: var(--blue); }
+  .card-title { font-size: 1.1em; font-weight: 700; }
+  .card-subtitle { color: var(--text-muted); font-size: 0.88em; margin-top: 2px; }
+
+  /* DAY GRID */
+  .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  @media (max-width: 600px) { .day-grid { grid-template-columns: 1fr; } }
+  .day-col h4 { font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 6px; }
+  .day-col ul { list-style: none; }
+  .day-col ul li { padding: 2px 0; font-size: 0.9em; }
+  .day-col ul li::before { content: "•"; color: var(--green-light); margin-right: 6px; }
+
+  /* DRIVE INFO */
+  .drive-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.82em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  /* STOPS */
+  .stops { margin-top: 8px; }
+  .stop {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.88em;
+  }
+  .stop:last-child { border-bottom: none; }
+  .stop-icon { width: 22px; text-align: center; flex-shrink: 0; }
+
+  /* STAY */
+  .stay-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--green-pale);
+    color: var(--green);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.82em;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .stay-badge.confirmed { background: #dbeafe; color: #1d4ed8; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin-top: 10px; }
+  th {
+    background: var(--green);
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f9fafb; }
+
+  /* ACTIVITIES */
+  .activity-card {
+    border-left: 4px solid var(--orange);
+    background: var(--orange-pale);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .activity-card h3 { font-size: 1em; font-weight: 700; margin-bottom: 6px; }
+  .activity-card .price { color: var(--orange); font-weight: 700; }
+  .activity-card a { color: var(--blue); font-size: 0.85em; }
+
+  /* FOOD */
+  .food-row { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.88em; }
+  .food-row:last-child { border-bottom: none; }
+  .meal-tag {
+    background: var(--green-pale);
+    color: var(--green);
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 0.78em;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .meal-tag.lunch { background: #fef9c3; color: #854d0e; }
+  .meal-tag.dinner { background: #ede9fe; color: #5b21b6; }
+
+  /* ALERTS */
+  .alert {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 0.88em;
+    display: flex;
+    gap: 10px;
+  }
+  .alert-warning { background: #fef9c3; border-left: 4px solid #eab308; }
+  .alert-info { background: var(--blue-pale); border-left: 4px solid var(--blue-light); }
+  .alert-success { background: var(--green-pale); border-left: 4px solid var(--green-light); }
+
+  /* RENTAL */
+  .rental-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .rental-card.top { border-color: var(--green-light); }
+  .rental-card h3 { font-weight: 700; margin-bottom: 4px; }
+  .rental-card .badge { background: var(--green); color: white; border-radius: 4px; padding: 1px 8px; font-size: 0.75em; margin-left: 6px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li { padding: 5px 0; font-size: 0.9em; display: flex; gap: 8px; }
+  .checklist li::before { content: "☐"; color: var(--green); font-size: 1.1em; flex-shrink: 0; }
+
+  /* ROUTE COMPARE */
+  .route-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .route-compare { grid-template-columns: 1fr; } }
+  .route-box { border-radius: 10px; padding: 16px; }
+  .route-box.v1 { background: var(--green-pale); border: 2px solid var(--green-light); }
+  .route-box.v2 { background: #f1f5f9; border: 2px solid #cbd5e1; }
+  .route-box h3 { font-weight: 700; margin-bottom: 8px; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--green);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.82em;
+    margin-top: 40px;
+  }
+
+  /* OVERVIEW TABLE */
+  .overview-table th:first-child { width: 80px; }
+  .confirmed-row td { background: #dbeafe !important; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🇳🇿 紐西蘭南島自駕旅遊</h1>
+  <p>2026 年 9 月 27 日 ～ 10 月 10 日　｜　14 天 13 夜</p>
+  <div class="tags">
+    <span class="tag">👥 2人</span>
+    <span class="tag">🚗 全程自駕</span>
+    <span class="tag">✈️ 基督城進出</span>
+    <span class="tag">🏔️ 西海岸路線</span>
+    <span class="tag">🪂 跳傘</span>
+    <span class="tag">🏔️ 冰川健行</span>
+    <span class="tag">🔭 觀星</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#overview">📅 行程總覽</a>
+  <a href="#itinerary">🗺️ 每日行程</a>
+  <a href="#activities">🎯 活動</a>
+  <a href="#accommodation">🏨 住宿</a>
+  <a href="#food">🍽️ 餐飲</a>
+  <a href="#car">🚗 租車</a>
+  <a href="#checklist">✅ 準備清單</a>
+</nav>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <div class="section" id="overview">
+    <h2 class="section-title">📅 行程總覽</h2>
+
+    <div class="alert alert-warning">
+      ⚠️ <strong>10 月為紐西蘭春假旺季</strong>，住宿與活動需提早預訂！Lake Tekapo、皇后鎮旺季均價 NZD $280-350+/晚。
+    </div>
+
+    <table class="overview-table">
+      <thead>
+        <tr><th>日期</th><th>星期</th><th>地點</th><th>住宿</th><th>狀態</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>9/27</td><td>日</td><td>✈️ 入境基督城 → 市區</td><td>基督城</td><td>❌ 待訂</td></tr>
+        <tr><td>9/28</td><td>一</td><td>基督城 → Lake Tekapo（220km）</td><td>Tekapo</td><td>❌ 待訂</td></tr>
+        <tr class="confirmed-row"><td>9/29</td><td>二</td><td>Tekapo → Mt. Cook（105km）</td><td>The Hermitage ✅</td><td>✅ 確認</td></tr>
+        <tr class="confirmed-row"><td>9/30</td><td>三</td><td>Mt. Cook 整天</td><td>The Hermitage ✅</td><td>✅ 確認</td></tr>
+        <tr><td>10/1</td><td>四</td><td>Mt. Cook → Wanaka（260km）</td><td>Wanaka</td><td>❌ 待訂</td></tr>
+        <tr><td>10/2</td><td>五</td><td>Wanaka 整天</td><td>Wanaka</td><td>❌ 待訂</td></tr>
+        <tr><td>10/3</td><td>六</td><td>Wanaka → 皇后鎮（70km）</td><td>皇后鎮</td><td>❌ 待訂</td></tr>
+        <tr><td>10/4</td><td>日</td><td>皇后鎮（跳傘日）</td><td>皇后鎮</td><td>❌ 待訂</td></tr>
+        <tr><td>10/5</td><td>一</td><td>皇后鎮（Luge 日）</td><td>皇后鎮</td><td>❌ 待訂</td></tr>
+        <tr><td>10/6</td><td>二</td><td>皇后鎮 → Te Anau（175km）</td><td>Te Anau</td><td>❌ 待訂</td></tr>
+        <tr><td>10/7</td><td>三</td><td>Te Anau → Franz Josef（380km）</td><td>冰川區</td><td>❌ 待訂</td></tr>
+        <tr><td>10/8</td><td>四</td><td>冰川健行 → Hokitika → Punakaiki</td><td>Punakaiki / Greymouth</td><td>❌ 待訂</td></tr>
+        <tr><td>10/9</td><td>五</td><td>Punakaiki → Arthur's Pass → 基督城</td><td>基督城</td><td>❌ 待訂</td></tr>
+        <tr><td>10/10</td><td>六</td><td>✈️ 出境（09:00）</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="route-compare">
+      <div class="route-box v1">
+        <h3>✅ 版本一：西海岸路線（推薦）</h3>
+        <ul style="font-size:0.88em; padding-left:16px; margin-top:6px;">
+          <li>冰川、Pancake Rocks、海岸公路</li>
+          <li>總距離約 1,800 km</li>
+          <li>Haast Pass 部分路段崎嶇</li>
+          <li>獨特自然奇觀，不可取代</li>
+        </ul>
+      </div>
+      <div class="route-box v2">
+        <h3>版本二：但尼丁路線（備選）</h3>
+        <ul style="font-size:0.88em; padding-left:16px; margin-top:6px;">
+          <li>企鵝、Moeraki Boulders、歷史城市</li>
+          <li>總距離約 1,600 km</li>
+          <li>路況較平緩輕鬆</li>
+          <li>10/7 後改走但尼丁</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="section" id="itinerary">
+    <h2 class="section-title">🗺️ 每日詳細行程</h2>
+
+    <!-- Day 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">9/27 日</div>
+        <div>
+          <div class="card-title">✈️ 入境基督城 Christchurch</div>
+          <div class="card-subtitle">入境日，取租車，安頓</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🛬</span><span>約 10:00 抵達 CHC，過海關、提行李</span></div>
+        <div class="stop"><span class="stop-icon">🚗</span><span>租車公司取車（約 1 小時流程）</span></div>
+        <div class="stop"><span class="stop-icon">🛒</span><span>Countdown / New World 超市採購旅途補給</span></div>
+        <div class="stop"><span class="stop-icon">🏖️</span><span>South Brighton Beach 或市區逛逛</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：基督城市區或機場附近</div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">9/28 一</div>
+        <div>
+          <div class="card-title">基督城 → Lake Tekapo</div>
+          <div class="card-subtitle">羽扇豆花季 × 觀星聖地</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 220 km｜3 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🥧</span><span><strong>Fairlie Bakehouse</strong> — 傳說中最好吃的派，必停！</span></div>
+        <div class="stop"><span class="stop-icon">🏘️</span><span><strong>Geraldine 小鎮</strong> — 咖啡廳、起司店（Talbot Forest Cheese）</span></div>
+        <div class="stop"><span class="stop-icon">⛪</span><span><strong>Church of the Good Shepherd</strong> — 必拍打卡</span></div>
+        <div class="stop"><span class="stop-icon">🌸</span><span>湖邊羽扇豆（Lupin）— 10 月正是盛開季節！</span></div>
+        <div class="stop"><span class="stop-icon">🔭</span><span><strong>Dark Sky Project 觀星導覽</strong>（晚上）— 強烈推薦預訂 Summit Experience</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Lake Tekapo</div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge confirmed">9/29 二</div>
+        <div>
+          <div class="card-title">Lake Tekapo → Mt. Cook</div>
+          <div class="card-subtitle">Lake Pukaki 絕景公路 × The Hermitage 入住</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 105 km｜1.5 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">💙</span><span><strong>Lake Pukaki 觀景台</strong>（必停！Mt Cook 雪山倒影，最美打卡）</span></div>
+        <div class="stop"><span class="stop-icon">🥾</span><span><strong>Hooker Valley Track</strong>（3-4 小時，最推薦步道，終點有冰湖）</span></div>
+        <div class="stop"><span class="stop-icon">🏔️</span><span>Kea Point Track（短版替代，約 2 小時）</span></div>
+        <div class="stop"><span class="stop-icon">🌆</span><span>傍晚入住 The Hermitage，享用景觀餐廳</span></div>
+      </div>
+      <div class="stay-badge confirmed">🏨 住：The Hermitage Hotel ✅ 已確認</div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge confirmed">9/30 三</div>
+        <div>
+          <div class="card-title">Mt. Cook 整天</div>
+          <div class="card-subtitle">步道健行 × 自然觀星</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🥾</span><span>Mueller Hike 或 Blue Lakes 步道（若昨天走了 Hooker Valley）</span></div>
+        <div class="stop"><span class="stop-icon">☕</span><span>The Hermitage Panorama Room — 邊喝咖啡邊看 Mt Cook</span></div>
+        <div class="stop"><span class="stop-icon">🌟</span><span>夜晚戶外觀星（Mt Cook 也是絕佳觀星點，免費！）</span></div>
+      </div>
+      <div class="stay-badge confirmed">🏨 住：The Hermitage Hotel ✅ 已確認</div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/1 四</div>
+        <div>
+          <div class="card-title">Mt. Cook → Wanaka</div>
+          <div class="card-subtitle">土柱奇景 × 湖畔小城</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 260 km｜3.5-4 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🗿</span><span><strong>Omarama Clay Cliffs</strong>（值得繞路！奇特土柱地形）</span></div>
+        <div class="stop"><span class="stop-icon">🏔️</span><span>Lindis Pass 山嶺風景</span></div>
+        <div class="stop"><span class="stop-icon">🌳</span><span>Wanaka Tree（湖中獨樹，最著名打卡點）</span></div>
+        <div class="stop"><span class="stop-icon">🎬</span><span>Puzzling World（視覺錯覺博物館）</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Wanaka</div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/2 五</div>
+        <div>
+          <div class="card-title">Wanaka 整天</div>
+          <div class="card-subtitle">冰川步道 × 湖邊放鬆</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🥾</span><span><strong>Rob Roy Glacier Track</strong>（往返約 4h，評價極高，強烈推薦）</span></div>
+        <div class="stop"><span class="stop-icon">🚣</span><span>獨木舟 / 湖邊活動</span></div>
+        <div class="stop"><span class="stop-icon">🍻</span><span>下午湖邊咖啡廳放空（Kika / Ritual Café）</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Wanaka</div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/3 六</div>
+        <div>
+          <div class="card-title">Wanaka → 皇后鎮 Queenstown</div>
+          <div class="card-subtitle">NZ 最高公路 × 冒險之都</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 70 km｜1 小時（Crown Range 公路）</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🔥</span><span><strong>Crown Range 公路</strong>（NZ 最高公路，景觀壯闊必走）</span></div>
+        <div class="stop"><span class="stop-icon">🏙️</span><span>皇后鎮市中心逛逛、Steamer Wharf 碼頭</span></div>
+        <div class="stop"><span class="stop-icon">🍔</span><span>Fergburger（皇后鎮必吃漢堡神話！）</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：皇后鎮（3 晚）</div>
+    </div>
+
+    <!-- Day 8 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/4 日</div>
+        <div>
+          <div class="card-title">皇后鎮 — 活動日 1</div>
+          <div class="card-subtitle">🪂 跳傘日</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🪂</span><span><strong>NZONE Skydive</strong>（推薦 15,000ft，60 秒自由落體）視天氣排定</span></div>
+        <div class="stop"><span class="stop-icon">🍔</span><span>Fergburger 午餐（沒去的話這天去）</span></div>
+        <div class="stop"><span class="stop-icon">🌊</span><span>下午湖邊或酒吧放鬆</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：皇后鎮</div>
+    </div>
+
+    <!-- Day 9 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/5 一</div>
+        <div>
+          <div class="card-title">皇后鎮 — 活動日 2</div>
+          <div class="card-subtitle">🛷 Luge 溜溜車 × 山頂日落</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🚡</span><span><strong>Skyline Gondola</strong> — 纜車上山</span></div>
+        <div class="stop"><span class="stop-icon">🛷</span><span><strong>Skyline Luge</strong>（推薦 3 趟以上，不同難度賽道）</span></div>
+        <div class="stop"><span class="stop-icon">🌅</span><span>山頂看皇后鎮日落全景</span></div>
+        <div class="stop"><span class="stop-icon">🍽️</span><span>可選 Stratosfare 餐廳山頂晚餐</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：皇后鎮</div>
+    </div>
+
+    <!-- Day 10 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/6 二</div>
+        <div>
+          <div class="card-title">皇后鎮 → Te Anau</div>
+          <div class="card-subtitle">Fiordland 門戶小鎮</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 175 km｜2 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🏔️</span><span>Kingston 小鎮 — 可拍 Remarkables 山脈</span></div>
+        <div class="stop"><span class="stop-icon">✨</span><span><strong>Te Anau Glowworm Caves</strong>（夜遊，需提前預約）</span></div>
+        <div class="stop"><span class="stop-icon">🌊</span><span>Te Anau 湖邊散步</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Te Anau</div>
+    </div>
+
+    <!-- Day 11 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/7 三</div>
+        <div>
+          <div class="card-title">Te Anau → Haast Pass → Franz Josef</div>
+          <div class="card-subtitle">⚠️ 長途日 5-6 小時，帶足食物！</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 380 km｜5-6 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🪞</span><span><strong>Lake Gunn</strong> — 寧靜倒影，步道 45 分鐘</span></div>
+        <div class="stop"><span class="stop-icon">⛰️</span><span><strong>Haast Pass</strong> — 最高點，世界遺產景區</span></div>
+        <div class="stop"><span class="stop-icon">💦</span><span><strong>Thunder Creek Falls</strong> — 174m 瀑布</span></div>
+        <div class="stop"><span class="stop-icon">🌊</span><span><strong>Knights Point Lookout</strong> — 太平洋 + 山脈壯觀全景</span></div>
+        <div class="stop"><span class="stop-icon">🏔️</span><span>Lake Moeraki</span></div>
+        <div class="stop"><span class="stop-icon">🌌</span><span>夜晚戶外觀星（西海岸天然暗天，極佳！）</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Franz Josef 或 Fox Glacier 小鎮</div>
+    </div>
+
+    <!-- Day 12 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/8 四</div>
+        <div>
+          <div class="card-title">冰川健行 → Hokitika → Punakaiki</div>
+          <div class="card-subtitle">🏔️ Heli-Hike × 藍色峽谷 × 鬆餅岩</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 180 km｜3 小時（不含停點）</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">🚁</span><span><strong>Franz Josef Heli-Hike</strong>（早上，視天氣）— 直升機 + 冰川步行</span></div>
+        <div class="stop"><span class="stop-icon">💧</span><span><strong>Hokitika Gorge</strong>（必去！夢幻藍綠色水）</span></div>
+        <div class="stop"><span class="stop-icon">🏙️</span><span>Hokitika 小鎮 — 午餐、蜂蜜/玉石（pounamu）購物</span></div>
+        <div class="stop"><span class="stop-icon">🥞</span><span><strong>Punakaiki Pancake Rocks</strong>（必看！漲潮時噴水柱更壯觀）</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：Punakaiki 或 Greymouth</div>
+    </div>
+
+    <!-- Day 13 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/9 五</div>
+        <div>
+          <div class="card-title">Punakaiki → Arthur's Pass → 基督城</div>
+          <div class="card-subtitle">壯觀山嶺公路，返回起點</div>
+        </div>
+      </div>
+      <div class="drive-info">🚗 約 250 km｜3.5 小時</div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">☕</span><span><strong>The Wobbly Kea Café</strong> — Arthur's Pass 小村咖啡</span></div>
+        <div class="stop"><span class="stop-icon">🏔️</span><span>Otira Viaduct 觀景台</span></div>
+        <div class="stop"><span class="stop-icon">🪨</span><span><strong>Castle Hill / Kura Tāwhiti</strong>（巨石群，必停拍照！）</span></div>
+        <div class="stop"><span class="stop-icon">🌆</span><span>抵達基督城，整理行李，最後一晚好好吃一頓</span></div>
+      </div>
+      <div class="stay-badge">🏨 住：基督城（靠近機場）</div>
+    </div>
+
+    <!-- Day 14 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="date-badge">10/10 六</div>
+        <div>
+          <div class="card-title">✈️ 出境</div>
+          <div class="card-subtitle">約 09:00 出境，建議 07:00 前到機場</div>
+        </div>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="stop-icon">⏰</span><span>07:00 抵達機場，辦理還車手續</span></div>
+        <div class="stop"><span class="stop-icon">🛫</span><span>check-in、過安檢、出境</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div class="section" id="activities">
+    <h2 class="section-title">🎯 活動規劃</h2>
+
+    <div class="activity-card">
+      <h3>🪂 跳傘 — NZONE Skydive（皇后鎮 10/4）</h3>
+      <table>
+        <thead><tr><th>高度</th><th>自由落體</th><th>價格（NZD）</th><th>推薦</th></tr></thead>
+        <tbody>
+          <tr><td>9,000 ft</td><td>25 秒</td><td>~$245/人</td><td>—</td></tr>
+          <tr><td>12,000 ft</td><td>45 秒</td><td>~$295/人</td><td>—</td></tr>
+          <tr><td><strong>15,000 ft</strong></td><td><strong>60 秒</strong></td><td><strong class="price">~$345/人</strong></td><td>⭐ 最推薦</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px; font-size:0.85em;">可免費改期（天氣取消）｜與 AJ Hackett 蹦極有組合套票<br>
+      🔗 <a href="https://www.nzoneskydive.co.nz/prices-deals/" target="_blank">官網訂票：nzoneskydive.co.nz</a></p>
+    </div>
+
+    <div class="activity-card">
+      <h3>🛷 溜溜車 — Skyline Luge（皇后鎮 10/5）</h3>
+      <table>
+        <thead><tr><th>套票</th><th>內容</th><th>價格（NZD）</th></tr></thead>
+        <tbody>
+          <tr><td>Gondola + 3 Luge</td><td>纜車上山 + 3 趟溜溜車</td><td>~$89/人</td></tr>
+          <tr><td>Gondola + 5 Luge</td><td>纜車 + 5 趟（更划算）</td><td>~$109/人</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px; font-size:0.85em;">山頂景觀絕佳，日落時段最美｜可加購 Stratosfare 晚餐<br>
+      🔗 <a href="https://queenstown.skyline.co.nz/book-now/" target="_blank">官網訂票：queenstown.skyline.co.nz</a></p>
+    </div>
+
+    <div class="activity-card">
+      <h3>🏔️ 冰川健行 — Franz Josef（10/8 早上）</h3>
+      <table>
+        <thead><tr><th>方案</th><th>內容</th><th>價格</th><th>彈性</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Heli-Hike ⭐</strong></td><td>直升機飛上冰川，在冰川步行 2-3h，裝備提供</td><td>NZD ~$520-650/人</td><td>天氣取消可退款</td></tr>
+          <tr><td>Valley Walk（免費）</td><td>步行至冰川觀景點，無法踏上冰川</td><td>免費</td><td>隨時</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px; font-size:0.85em;">⚠️ 極度天氣依賴，建議選可免費取消方案<br>Fox Glacier 若 Franz Josef 全滿可替代（距離 30 分鐘）<br>
+      🔗 <a href="https://www.franz-josef-glacier.com/" target="_blank">Franz Josef Glacier Guides</a>　｜　
+      🔗 <a href="https://www.foxguides.co.nz/" target="_blank">Fox Glacier Guides</a></p>
+    </div>
+
+    <div class="activity-card">
+      <h3>🔭 觀星導覽 — Dark Sky Project（Lake Tekapo 9/28 晚）</h3>
+      <table>
+        <thead><tr><th>方案</th><th>地點</th><th>時長</th><th>推薦</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Summit Experience ⭐</strong></td><td>Mt John Observatory 山頂（1,029m）</td><td>1h 45min</td><td>最推薦</td></tr>
+          <tr><td>Crater Experience</td><td>Cowan's Private Observatory</td><td>75 min</td><td>入門款</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px; font-size:0.85em;">世界認證暗天區｜使用 9¼–16 吋專業望遠鏡<br>
+      🔗 <a href="https://www.darkskyproject.co.nz/" target="_blank">訂票：darkskyproject.co.nz</a></p>
+    </div>
+  </div>
+
+  <!-- ACCOMMODATION -->
+  <div class="section" id="accommodation">
+    <h2 class="section-title">🏨 住宿建議</h2>
+
+    <div class="alert alert-warning">
+      ⚠️ 10 月是紐西蘭春假旺季，尤其 Lake Tekapo / 皇后鎮，<strong>建議即刻開始訂房！</strong>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>日期</th><th>地點</th><th>含廚房選項</th><th>不含廚房選項</th><th>預估價格</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9/27</td><td>基督城</td>
+          <td>市區 Airbnb 公寓</td>
+          <td>Novotel Christchurch Airport（機場步行）</td>
+          <td>NZD $150-250</td>
+        </tr>
+        <tr>
+          <td>9/28</td><td>Lake Tekapo</td>
+          <td>Mantra Lake Tekapo（湖景，有廚房）</td>
+          <td>Peppers Bluewater Resort</td>
+          <td>NZD $280-380</td>
+        </tr>
+        <tr style="background:#dbeafe;">
+          <td>9/29-30</td><td>Mt. Cook</td>
+          <td colspan="2">✅ <strong>The Hermitage Hotel</strong>（已確認）</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>10/1-2</td><td>Wanaka</td>
+          <td>Airbnb 湖景公寓（多選擇）</td>
+          <td>The Rees Hotel Luxury Apartments</td>
+          <td>NZD $150-250</td>
+        </tr>
+        <tr>
+          <td>10/3-5</td><td>皇后鎮</td>
+          <td>市區 Airbnb 公寓 / Holiday Park 小木屋</td>
+          <td>Mercure / Novotel Lakeside</td>
+          <td>NZD $200-400</td>
+        </tr>
+        <tr>
+          <td>10/6</td><td>Te Anau</td>
+          <td>Alpine View Motel（廚房，Netflix，~$82 起）</td>
+          <td>Distinction Te Anau Hotel & Villas</td>
+          <td>NZD $100-200</td>
+        </tr>
+        <tr>
+          <td>10/7</td><td>Franz Josef</td>
+          <td>Rainforest Retreat Franz Josef</td>
+          <td>Scenic Hotel Franz Josef Glacier</td>
+          <td>NZD $150-250</td>
+        </tr>
+        <tr>
+          <td>10/8</td><td>Punakaiki / Greymouth</td>
+          <td>Greymouth 市區 Motel（選擇多）</td>
+          <td>Punakaiki Rocks Hotel & Villas（Pancake Rocks 旁）</td>
+          <td>NZD $120-220</td>
+        </tr>
+        <tr>
+          <td>10/9</td><td>基督城</td>
+          <td>市區 Airbnb</td>
+          <td>Novotel Christchurch Airport（出境最方便）</td>
+          <td>NZD $150-250</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="alert alert-info">
+      💡 <strong>訂房平台推薦：</strong>
+      <a href="https://www.booking.com" target="_blank">Booking.com</a>（彈性取消最多）、
+      <a href="https://www.airbnb.com" target="_blank">Airbnb</a>（自炊公寓首選）、
+      直訂官網（大飯店有時更便宜）
+    </div>
+  </div>
+
+  <!-- FOOD -->
+  <div class="section" id="food">
+    <h2 class="section-title">🍽️ 餐飲推薦</h2>
+
+    <div class="alert alert-success">
+      🛒 <strong>超市策略：</strong>Countdown / New World（品質好）、Pak'nSave（最便宜）。基督城、皇后鎮、Wanaka 都有超市，小鎮選擇有限。
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px; font-size:1em;">🏆 必吃清單</h3>
+      <div class="food-row"><span class="meal-tag">皇后鎮</span><span><strong>Fergburger</strong> — 紐西蘭最著名漢堡，24H 開放，一定要排隊</span></div>
+      <div class="food-row"><span class="meal-tag">Wanaka</span><span><strong>Francesca's Italian Kitchen</strong> — 評價極高，紐西蘭 Top 餐廳</span></div>
+      <div class="food-row"><span class="meal-tag">Tekapo</span><span><strong>Kohan Japanese Restaurant</strong> — 湖景日式，早午晚都供應</span></div>
+      <div class="food-row"><span class="meal-tag">基督城</span><span><strong>Gatherings</strong> — 現代紐式料理，評價極高</span></div>
+      <div class="food-row"><span class="meal-tag">Fairlie</span><span><strong>Fairlie Bakehouse</strong> — 傳說中 NZ 最好吃的派，路過必停</span></div>
+      <div class="food-row"><span class="meal-tag">Franz Josef</span><span><strong>Alice May Restaurant</strong> — 鎮上評價第一</span></div>
+      <div class="food-row"><span class="meal-tag">Te Anau</span><span><strong>The Moose</strong> — Te Anau 最推薦</span></div>
+      <div class="food-row"><span class="meal-tag">路上</span><span><strong>Arthur's Pass — The Wobbly Kea Café</strong> — 小村必停咖啡</span></div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:8px; font-size:1em;">⚠️ 需要帶食物的路段</h3>
+      <div class="stop"><span class="stop-icon">🚨</span><span><strong>10/7 Te Anau → Franz Josef（Haast Pass）</strong>：約 380km，中途幾乎沒有餐廳，務必帶足一日食物</span></div>
+      <div class="stop"><span class="stop-icon">⚠️</span><span><strong>Mt Cook 村子</strong>：選擇極少，建議帶零食備用</span></div>
+    </div>
+  </div>
+
+  <!-- CAR RENTAL -->
+  <div class="section" id="car">
+    <h2 class="section-title">🚗 租車資訊</h2>
+
+    <div class="alert alert-warning">
+      ⚠️ 訂車前確認：公司允許走 <strong>Haast Pass / 西海岸路段</strong>（部分公司限制）
+    </div>
+
+    <div class="rental-card top">
+      <h3>⭐ 首選：Apex Car Rentals <span class="badge">最推薦</span></h3>
+      <p style="font-size:0.88em; margin-top:6px;">TripAdvisor 及論壇一致推薦，性價比最高的本地公司。比國際大牌便宜 30-40%，車況好、有免費機場接駁。</p>
+      <p style="margin-top:6px; font-size:0.85em;">🔗 <a href="https://www.apexrentals.co.nz/" target="_blank">apexrentals.co.nz</a></p>
+    </div>
+
+    <div class="rental-card top">
+      <h3>⭐ 備選：Omega Rental Cars <span class="badge">強推</span></h3>
+      <p style="font-size:0.88em; margin-top:6px;">論壇大推，車輛較新、保險透明，與 Apex 並列 NZ 本地最推薦。</p>
+      <p style="margin-top:6px; font-size:0.85em;">🔗 <a href="https://www.omegarentalcars.com/" target="_blank">omegarentalcars.com</a></p>
+    </div>
+
+    <div class="rental-card">
+      <h3>備選：Ezi Car Rental</h3>
+      <p style="font-size:0.88em; margin-top:6px;">機場航廈內直接取車（最方便），大型車隊、新車。</p>
+      <p style="margin-top:6px; font-size:0.85em;">🔗 <a href="https://www.ezicarrental.co.nz/" target="_blank">ezicarrental.co.nz</a></p>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3 style="margin-bottom:10px; font-size:1em;">🚙 推薦車型（放兩個 29 吋行李箱）</h3>
+      <table>
+        <thead><tr><th>車型</th><th>說明</th><th>推薦程度</th></tr></thead>
+        <tbody>
+          <tr><td>Toyota RAV4 / Nissan X-Trail</td><td>中型 SUV，後車廂放 2 大箱沒問題</td><td>✅ 推薦</td></tr>
+          <tr><td>Toyota Highlander / Kia Sorento</td><td>大型 SUV，空間更寬裕</td><td>✅ 預算充裕首選</td></tr>
+          <tr><td>轎車 / 小型車</td><td>行李放不下，不適合</td><td>❌ 不推薦</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3 style="margin-bottom:10px; font-size:1em;">📋 需要準備的文件</h3>
+      <ul class="checklist">
+        <li><strong>國際駕照（IDP）</strong>＋本國駕照（兩者都要帶，台灣監理所辦理）</li>
+        <li><strong>護照</strong></li>
+        <li><strong>信用卡</strong>（Visa / Mastercard，用於押金）</li>
+        <li>訂房確認信（備用）</li>
+      </ul>
+      <div class="alert alert-info" style="margin-top:12px;">
+        🇳🇿 紐西蘭<strong>靠左行駛</strong>，注意路況調整！
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3 style="margin-bottom:10px; font-size:1em;">🛡️ 保險建議</h3>
+      <table>
+        <thead><tr><th>保險類型</th><th>說明</th><th>建議</th></tr></thead>
+        <tbody>
+          <tr><td>LDW / CDW（碰撞損傷免責）</td><td>降低車損自付額</td><td>✅ 必買</td></tr>
+          <tr><td><strong>Zero Excess</strong></td><td>完全免自付額</td><td>⭐ 強烈推薦</td></tr>
+          <tr><td>Windscreen / Tyre（玻璃/輪胎）</td><td>西海岸碎石路多</td><td>✅ 推薦加購</td></tr>
+          <tr><td>Roadside Assistance（道路救援）</td><td>長途自駕保障</td><td>✅ 必買</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.82em; color:var(--text-muted); margin-top:8px;">⚠️ 自付額（excess）有時高達 NZD $3,000-5,000，Zero Excess 升級很值得！</p>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section" id="checklist">
+    <h2 class="section-title">✅ 出發前準備清單</h2>
+    <div class="card">
+      <h3 style="margin-bottom:10px; font-size:1em;">📌 即刻需要處理（越早越好）</h3>
+      <ul class="checklist">
+        <li>訂租車（Apex / Omega，14 天，SUV，確認允許西海岸）</li>
+        <li>訂 9/28 Lake Tekapo 住宿（旺季搶手！）</li>
+        <li>訂 10/3-5 皇后鎮住宿（3 晚，旺季貴）</li>
+        <li>訂 Dark Sky Project 觀星（9/28 晚，Summit Experience）</li>
+        <li>訂 NZONE Skydive（15,000ft，皇后鎮）</li>
+        <li>訂其餘每晚住宿</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <h3 style="margin-bottom:10px; font-size:1em;">📅 出發前 1-2 個月</h3>
+      <ul class="checklist">
+        <li>辦理國際駕照（IDP）— 至台灣監理所</li>
+        <li>訂 Franz Josef Heli-Hike（早訂有位，可免費取消）</li>
+        <li>訂 Skyline Luge 套票</li>
+        <li>確認 NZ ETA（電子旅行授權）或簽證</li>
+        <li>購買旅遊保險</li>
+        <li>下載 NZ 離線地圖（Google Maps 或 Maps.me）</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <h3 style="margin-bottom:10px; font-size:1em;">🎒 行李建議</h3>
+      <ul class="checklist">
+        <li>防水外套（紐西蘭天氣多變）</li>
+        <li>登山鞋 / 防水健行鞋</li>
+        <li>保暖衣物（夜晚觀星、冰川很冷）</li>
+        <li>防曬 SPF 50+（NZ 紫外線強）</li>
+        <li>零食備糧（長途路段必備）</li>
+        <li>行動電源</li>
+        <li>相機 / 廣角鏡頭</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  🇳🇿 紐西蘭南島自駕旅遊 2026　｜　由巧寶 🧧 整理　｜　最後更新：2026-05-20<br>
+  <span style="font-size:0.9em; opacity:0.7;">資訊請以官方網站最新公告為準，旺季價格與可用性可能有所變動</span>
+</div>
+
+</body>
+</html>

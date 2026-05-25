@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🗼 東京小旅行 2026.7.3–7.6</title>
+<style>
+  /* ===== Design Tokens (ui-ux-pro-max) ===== */
+  :root {
+    --color-bg: #0f0f14;
+    --color-surface: #1a1a24;
+    --color-surface2: #22222f;
+    --color-border: rgba(255,255,255,0.08);
+    --color-primary: #e8956d;
+    --color-primary-light: #f2b49a;
+    --color-accent: #7c6aff;
+    --color-accent2: #4ecdc4;
+    --color-gold: #f5c842;
+    --color-text: #f0ede8;
+    --color-text-muted: #8a8a9a;
+    --color-day1: #e8956d;
+    --color-day2: #7c6aff;
+    --color-day3: #4ecdc4;
+    --color-day4: #f5c842;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+    --font-head: 'Georgia', 'Noto Serif TC', serif;
+    --font-body: 'Helvetica Neue', 'Noto Sans TC', sans-serif;
+    --transition: all 0.25s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, #1a0a2e 0%, #0f1a2e 40%, #0f2018 100%);
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(124,106,255,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(232,149,109,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-emoji { font-size: 72px; display: block; margin-bottom: 20px; }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+  .hero-subtitle { color: var(--color-text-muted); font-size: 16px; }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--color-border);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    backdrop-filter: blur(8px);
+  }
+  .badge strong { color: var(--color-text); }
+
+  /* ===== Nav Tabs ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,15,20,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 24px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .nav-btn:hover { color: var(--color-text); }
+  .nav-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+
+  /* ===== Container ===== */
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ===== Day Section ===== */
+  .day-section { display: none; }
+  .day-section.active { display: block; }
+
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding: 28px;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+  .day-num {
+    font-size: 48px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .day-info h2 { font-size: 22px; margin-bottom: 6px; }
+  .day-info p { color: var(--color-text-muted); font-size: 14px; }
+  .day-theme {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ===== Timeline ===== */
+  .timeline { display: flex; flex-direction: column; gap: 20px; }
+
+  .time-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .time-block:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+  .time-block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .time-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .morning .time-label { background: rgba(245,200,66,0.15); color: var(--color-gold); }
+  .afternoon .time-label { background: rgba(232,149,109,0.15); color: var(--color-primary); }
+  .evening .time-label { background: rgba(124,106,255,0.15); color: var(--color-accent); }
+
+  .time-block-body { padding: 20px; }
+
+  /* ===== Activity Cards ===== */
+  .activities { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+  .activity {
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    background: var(--color-surface2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+  .activity-icon { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
+  .activity-info { flex: 1; }
+  .activity-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+  .activity-desc { font-size: 13px; color: var(--color-text-muted); }
+  .activity-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    background: rgba(78,205,196,0.12);
+    color: var(--color-accent2);
+  }
+
+  /* ===== Meal Cards ===== */
+  .meals { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 16px; }
+
+  .meal-card {
+    padding: 16px;
+    background: var(--color-surface2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .meal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .meal-breakfast::before { background: var(--color-gold); }
+  .meal-lunch::before { background: var(--color-primary); }
+  .meal-tea::before { background: var(--color-accent2); }
+  .meal-dinner::before { background: var(--color-accent); }
+
+  .meal-type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .meal-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .meal-address { font-size: 12px; color: var(--color-text-muted); margin-bottom: 6px; }
+  .meal-desc { font-size: 13px; color: rgba(240,237,232,0.75); }
+
+  /* ===== Highlight Box (Concert etc.) ===== */
+  .highlight-box {
+    margin: 16px 0;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(124,106,255,0.4);
+    background: linear-gradient(135deg, rgba(124,106,255,0.12), rgba(78,205,196,0.06));
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-box::before {
+    content: '★ 重點行程';
+    position: absolute;
+    top: 12px; right: 14px;
+    font-size: 11px;
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .highlight-box h3 { font-size: 18px; margin-bottom: 8px; }
+  .highlight-box p { font-size: 13px; color: var(--color-text-muted); }
+  .highlight-box .hl-time { font-size: 28px; font-family: var(--font-head); color: var(--color-accent); }
+
+  /* ===== Rainy Day Section ===== */
+  .rainy-section {
+    margin-top: 32px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(78,205,196,0.08), rgba(124,106,255,0.06));
+    border: 1px solid rgba(78,205,196,0.2);
+    border-radius: var(--radius-lg);
+  }
+  .rainy-section h3 { font-size: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .rainy-items { display: flex; flex-direction: column; gap: 10px; }
+  .rainy-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+
+  /* ===== Tips Box ===== */
+  .tips-section {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: rgba(245,200,66,0.06);
+    border: 1px solid rgba(245,200,66,0.2);
+    border-radius: var(--radius-md);
+  }
+  .tips-section h3 { color: var(--color-gold); font-size: 15px; margin-bottom: 14px; }
+  .tips-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .tips-section li { font-size: 13px; color: var(--color-text-muted); display: flex; gap: 10px; }
+  .tips-section li::before { content: '→'; color: var(--color-gold); flex-shrink: 0; }
+
+  /* ===== Overview Tab ===== */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .ov-card {
+    padding: 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+  .ov-card .ov-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+  .ov-card .ov-label { font-size: 12px; color: var(--color-text-muted); margin-bottom: 4px; }
+  .ov-card .ov-value { font-size: 15px; font-weight: 600; }
+
+  .flight-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .flight-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .flight-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .flight-city { font-size: 28px; font-family: var(--font-head); }
+  .flight-arrow { flex: 1; text-align: center; color: var(--color-text-muted); font-size: 20px; }
+  .flight-info { font-size: 12px; color: var(--color-text-muted); }
+  .flight-info strong { display: block; font-size: 14px; color: var(--color-text); }
+
+  .hotel-card {
+    background: linear-gradient(135deg, rgba(232,149,109,0.1), rgba(124,106,255,0.06));
+    border: 1px solid rgba(232,149,109,0.25);
+    border-radius: var(--radius-md);
+    padding: 24px;
+  }
+  .hotel-card h3 { font-size: 18px; margin-bottom: 6px; }
+  .hotel-card p { font-size: 13px; color: var(--color-text-muted); }
+  .hotel-dates { font-size: 14px; color: var(--color-primary); font-weight: 600; margin-top: 8px; }
+
+  /* ===== Scrollbar ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-surface2); border-radius: 3px; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .meals { grid-template-columns: 1fr; }
+    .day-header { flex-direction: column; gap: 12px; }
+    .day-num { font-size: 36px; }
+    .hero { padding: 60px 16px 40px; }
+    .container { padding: 24px 14px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <span class="hero-emoji">🗼</span>
+  <h1>東京小旅行</h1>
+  <p class="hero-subtitle">2026 年 7 月 3 日 → 7 月 6 日 · JH &amp; 旅伴</p>
+  <div class="hero-badges">
+    <span class="badge"><strong>✈️ 去程</strong> Scoot TR876 TPE→NRT</span>
+    <span class="badge"><strong>🏨 飯店</strong> Sotetsu Grand Fresa · 有明</span>
+    <span class="badge"><strong>🎵 音樂會</strong> 澤野弘之 7/4 18:30</span>
+    <span class="badge"><strong>🎨 TeamLab</strong> 7/5 10:00 · 兩人</span>
+    <span class="badge"><strong>🦀 豐洲市場</strong> 7/5 早市</span>
+    <span class="badge"><strong>✈️ 回程</strong> Scoot TR875 NRT→TPE</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="showTab('overview')">📋 總覽</button>
+  <button class="nav-btn" onclick="showTab('day1')" style="--c: var(--color-day1)">7/3 抵達日</button>
+  <button class="nav-btn" onclick="showTab('day2')" style="--c: var(--color-day2)">7/4 音樂會</button>
+  <button class="nav-btn" onclick="showTab('day3')" style="--c: var(--color-day3)">7/5 TeamLab</button>
+  <button class="nav-btn" onclick="showTab('day4')" style="--c: var(--color-day4)">7/6 離境日</button>
+</nav>
+
+<div class="container">
+
+  <!-- ===== OVERVIEW ===== -->
+  <div id="overview" class="day-section active">
+    <div class="overview-grid">
+      <div class="ov-card">
+        <span class="ov-icon">🗓</span>
+        <div class="ov-label">旅行天數</div>
+        <div class="ov-value">4 天 3 夜</div>
+      </div>
+      <div class="ov-card">
+        <span class="ov-icon">👥</span>
+        <div class="ov-label">旅行人數</div>
+        <div class="ov-value">2 人</div>
+      </div>
+      <div class="ov-card">
+        <span class="ov-icon">🏨</span>
+        <div class="ov-label">住宿區域</div>
+        <div class="ov-value">有明 / 台場</div>
+      </div>
+      <div class="ov-card">
+        <span class="ov-icon">🌡</span>
+        <div class="ov-label">7 月東京氣候</div>
+        <div class="ov-value">28–35°C · 梅雨季末</div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <h2 style="margin-bottom:16px; font-size:16px; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.08em;">✈️ 航班資訊</h2>
+      <div class="flight-row">
+        <div>
+          <div class="flight-city">TPE</div>
+          <div class="flight-info">台灣桃園<strong>06:45 出發</strong></div>
+        </div>
+        <div class="flight-arrow">
+          ✈ Scoot TR876<br>
+          <span style="font-size:11px">7月3日</span>
+        </div>
+        <div>
+          <div class="flight-city">NRT</div>
+          <div class="flight-info">東京成田<strong>約 10:30 抵達</strong></div>
+        </div>
+      </div>
+      <div class="flight-row">
+        <div>
+          <div class="flight-city">NRT</div>
+          <div class="flight-info">東京成田<strong>21:15 出發</strong></div>
+        </div>
+        <div class="flight-arrow">
+          ✈ Scoot TR875<br>
+          <span style="font-size:11px">7月6日</span>
+        </div>
+        <div>
+          <div class="flight-city">TPE</div>
+          <div class="flight-info">台灣桃園<strong>深夜返抵</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <h3>🏨 Sotetsu Grand Fresa Tokyo-Bay Ariake</h3>
+      <p>東京都江東区有明 2-3-7 · 台場/有明エリア</p>
+      <p class="hotel-dates">入住 7/3（週五）→ 退房 7/6（週一）</p>
+      <p style="font-size:13px; color:var(--color-text-muted); margin-top:10px;">
+        ゆりかもめ 国際展示場正門駅 徒歩 2 分｜りんかい線 国際展示場駅 徒歩 4 分<br>
+        地理位置絕佳：步行可達台場、有明，搭車輕鬆前往豐洲市場、TeamLab
+      </p>
+    </div>
+
+    <div style="margin-top:24px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:24px;">
+      <h3 style="margin-bottom:16px; font-size:15px;">📍 地理區域速覽（行程都圍繞這幾區）</h3>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="rainy-item">🏠 <div><strong>有明・台場</strong> — 飯店根據地，Odaiba 海景、Venus Fort、Palette Town</div></div>
+        <div class="rainy-item">🐟 <div><strong>豐洲</strong> — 豐洲市場（早市）、TeamLab Planets（步行可達市場）</div></div>
+        <div class="rainy-item">🎵 <div><strong>渋谷・代々木</strong> — NHK ホール（7/4 音樂會）、原宿・表參道</div></div>
+        <div class="rainy-item">🛒 <div><strong>築地・銀座</strong> — 離境前購物、築地外場小吃</div></div>
+      </div>
+    </div>
+
+    <div class="tips-section" style="margin-top:20px;">
+      <h3>💡 行前提醒</h3>
+      <ul>
+        <li>7 月是梅雨季末，隨時備雨傘！每天都準備室內備案</li>
+        <li>Suica 西瓜卡 or PASMO 交通卡必備，方便搭地鐵/ゆりかもめ</li>
+        <li>NHK ホール 禁止攝影錄音，提前確認演唱會規定</li>
+        <li>豐洲市場早市建議 09:00 前抵達，避免人潮最多時段</li>
+        <li>TeamLab Planets 需穿著方便捲褲管（部分展間有水）</li>
+        <li>7/6 建議 17:00 前出發前往成田（取決於搭什麼交通，N'EX 約 1h20m）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== DAY 1: 7/3 ===== -->
+  <div id="day1" class="day-section">
+    <div class="day-header">
+      <div class="day-num" style="color:var(--color-day1)">01</div>
+      <div class="day-info">
+        <h2>7月3日（週五）— 抵達東京</h2>
+        <p>Scoot TR876 · 成田機場 → 有明飯店 → 台場初探</p>
+        <span class="day-theme" style="background:rgba(232,149,109,0.15); color:var(--color-day1)">🛬 抵達＆台場海景</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <!-- Morning -->
+      <div class="time-block morning">
+        <div class="time-block-header">
+          <span class="time-label">早上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">06:45 → 約 12:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">✈️</div>
+              <div class="activity-info">
+                <div class="activity-name">Scoot TR876 出發 / 抵達成田</div>
+                <div class="activity-desc">台北桃園 06:45 → 東京成田 約 10:30。入境、領行李、兌換少量現金（機場 ATM 也可提款）</div>
+                <span class="activity-tag">建議搭 N'EX 或 Access 特急至飯店</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🚂</div>
+              <div class="activity-info">
+                <div class="activity-name">成田 → 有明飯店</div>
+                <div class="activity-desc">搭 N'EX 至新木場，轉りんかい線至国際展示場駅，步行 4 分鐘。或搭巴士至台場。約 90 分鐘</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-breakfast">
+              <div class="meal-type">🌅 早餐</div>
+              <div class="meal-name">機場美食街 or 便利商店</div>
+              <div class="meal-address">成田機場第 2 航廈 B1</div>
+              <div class="meal-desc">抵達後先在機場解決早午餐，7-11 / FamilyMart 飯糰、三明治也是好選擇</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Afternoon -->
+      <div class="time-block afternoon">
+        <div class="time-block-header">
+          <span class="time-label">下午</span>
+          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 18:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🏨</div>
+              <div class="activity-info">
+                <div class="activity-name">飯店 Check-in ＆ 整理行李</div>
+                <div class="activity-desc">Sotetsu Grand Fresa Tokyo-Bay Ariake，標準入住 15:00，可先寄放行李後出發</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🏝</div>
+              <div class="activity-info">
+                <div class="activity-name">台場海濱公園散步</div>
+                <div class="activity-desc">お台場海浜公園，可遠眺彩虹橋與東京灣，夏天傍晚涼風宜人。步行即達</div>
+                <span class="activity-tag">飯店步行 10 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🤖</div>
+              <div class="activity-info">
+                <div class="activity-name">DiverCity Tokyo Plaza / 鋼彈立像</div>
+                <div class="activity-desc">1:1 比例 RX-93ff Hi-ν Gundam 鋼彈立像（免費觀看），周邊有餐廳與品牌店</div>
+                <span class="activity-tag">飯店步行 15 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🛍</div>
+              <div class="activity-info">
+                <div class="activity-name">Aqua City Odaiba 逛街</div>
+                <div class="activity-desc">台場大型商場，有 UNIQLO、藥妝、餐廳，適合剛到放鬆購物</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-lunch">
+              <div class="meal-type">🍱 午餐</div>
+              <div class="meal-name">大江戶温泉物語 お台場</div>
+              <div class="meal-address">東京都江東区青海 2-6-3</div>
+              <div class="meal-desc">溫泉主題設施內有多間食堂，可在此享用午餐後泡腳（自選）</div>
+            </div>
+            <div class="meal-card meal-tea">
+              <div class="meal-type">☕ 下午茶</div>
+              <div class="meal-name">Bills Odaiba</div>
+              <div class="meal-address">Aqua City Odaiba 3F</div>
+              <div class="meal-desc">澳洲知名 brunch 名店，Ricotta pancakes 超好吃！下午茶時段排隊較少</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evening -->
+      <div class="time-block evening">
+        <div class="time-block-header">
+          <span class="time-label">晚上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">18:00 → 結束</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🌆</div>
+              <div class="activity-info">
+                <div class="activity-name">台場夜景 · 彩虹橋</div>
+                <div class="activity-desc">夜晚的彩虹橋非常美，台場海濱公園黃昏到入夜的景色是東京必看之一</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🎡</div>
+              <div class="activity-info">
+                <div class="activity-name">Palette Town 摩天輪（Venus Fort）</div>
+                <div class="activity-desc">台場地標摩天輪，夜晚燈光點亮絕美。周邊 Venus Fort 歐風商場也可逛</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 晚餐</div>
+              <div class="meal-name">Decks Tokyo Beach 餐廳街</div>
+              <div class="meal-address">お台場 1-6-1 Decks Tokyo Beach</div>
+              <div class="meal-desc">多國料理選擇，推薦 2F「東京灣 izakaya」或居酒屋，邊吃邊看夜景。回程路上也有便利商店</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rainy-section">
+      <h3>☔ 雨天備案 — 7/3</h3>
+      <div class="rainy-items">
+        <div class="rainy-item">🏛 <div><strong>日本科学未来館（Miraikan）</strong> — 台場人工島上的科學博物館，全程室內，展覽豐富</div></div>
+        <div class="rainy-item">🛒 <div><strong>DiverCity Tokyo Plaza 全館室內逛街</strong> — 雨天最佳選擇之一，1F 至 3F 各種品牌</div></div>
+        <div class="rainy-item">🎮 <div><strong>Joypolis（SEGA 室內主題公園）</strong> — 台場的室內遊樂園，雨天超適合</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 2: 7/4 ===== -->
+  <div id="day2" class="day-section">
+    <div class="day-header">
+      <div class="day-num" style="color:var(--color-day2)">02</div>
+      <div class="day-info">
+        <h2>7月4日（週六）— 澤野弘之音樂會</h2>
+        <p>上午台場 → 下午原宿・表參道 → 18:30 NHK ホール</p>
+        <span class="day-theme" style="background:rgba(124,106,255,0.15); color:var(--color-day2)">🎵 音樂會之夜</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <!-- Morning -->
+      <div class="time-block morning">
+        <div class="time-block-header">
+          <span class="time-label">早上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">08:00 → 12:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🌅</div>
+              <div class="activity-info">
+                <div class="activity-name">有明 · 晨間散步</div>
+                <div class="activity-desc">飯店附近的有明公園或台場海濱，早晨空氣清新，7月朝陽配東京灣景色</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🦇</div>
+              <div class="activity-info">
+                <div class="activity-name">Diver City 周邊早市探索</div>
+                <div class="activity-desc">早上商場未開，可在附近便利商店買早餐，或直接前往附近的台場神社參拜</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-breakfast">
+              <div class="meal-type">🌅 早餐</div>
+              <div class="meal-name">飯店自助早餐</div>
+              <div class="meal-address">Sotetsu Grand Fresa Tokyo-Bay Ariake 1F</div>
+              <div class="meal-desc">和洋折衷自助餐，體力充電準備一天行程。含稅約 ¥1,500/人</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Afternoon -->
+      <div class="time-block afternoon">
+        <div class="time-block-header">
+          <span class="time-label">下午</span>
+          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 18:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🌿</div>
+              <div class="activity-info">
+                <div class="activity-name">代官山 T-Site（蔦屋書店）</div>
+                <div class="activity-desc">日本最美書店之一，結合咖啡廳、雜誌、藝術，氛圍超棒。從飯店搭りんかい線至渋谷約 35 分</div>
+                <span class="activity-tag">渋谷 → 代官山 步行 15 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🛍</div>
+              <div class="activity-info">
+                <div class="activity-name">原宿 竹下通り / 表參道</div>
+                <div class="activity-desc">竹下通逛特色小店，表參道看精品旗艦店建築（安藤忠雄設計的 Omotesando Hills）</div>
+                <span class="activity-tag">代官山 → 原宿 步行 20 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">⛩</div>
+              <div class="activity-info">
+                <div class="activity-name">明治神宮</div>
+                <div class="activity-desc">NHK ホール 步行 10 分鐘，原宿旁的神聖森林，適合音樂會前靜心散步</div>
+                <span class="activity-tag">NHK ホール 附近</span>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-lunch">
+              <div class="meal-type">🍱 午餐</div>
+              <div class="meal-name">Gyumon 牛門 渋谷店</div>
+              <div class="meal-address">渋谷区道玄坂 2-29-11</div>
+              <div class="meal-desc">高CP值黑毛和牛燒肉，午餐定食超值。渋谷道玄坂上，從代官山步行可達</div>
+            </div>
+            <div class="meal-card meal-tea">
+              <div class="meal-type">☕ 下午茶</div>
+              <div class="meal-name">Omotesando Koffee</div>
+              <div class="meal-address">表參道 GYRE B1F</div>
+              <div class="meal-desc">精品單品咖啡，空間極簡美學，音樂會前最佳放鬆場所</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evening / Concert -->
+      <div class="time-block evening">
+        <div class="time-block-header">
+          <span class="time-label">晚上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">18:00 → 結束</span>
+        </div>
+        <div class="time-block-body">
+          <div class="highlight-box">
+            <div class="hl-time">18:30</div>
+            <h3>🎵 澤野弘之 LIVE [nZk]009</h3>
+            <p>NHK ホール · 東京都渋谷区神南 2-2-1（代々木公園 旁）</p>
+            <p style="margin-top:8px; color:var(--color-accent-light)">建議 18:00 前抵達，排隊入場 / 購買周邊 · 演出約 2-2.5 小時，預計 21:00 結束</p>
+            <p style="margin-top:6px; font-size:12px; color:var(--color-text-muted)">交通：原宿駅 or 渋谷駅 步行 15 分 · 禁止攝影錄音</p>
+          </div>
+          <div class="meals" style="margin-top:16px;">
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 演後晚餐（21:00 後）</div>
+              <div class="meal-name">鳥貴族 渋谷東口店</div>
+              <div class="meal-address">渋谷区渋谷 1-24-6</div>
+              <div class="meal-desc">日本平價燒烤居酒屋，全品項均一價 ¥360，演唱會後最佳犒賞！深夜也有開</div>
+            </div>
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 備選晚餐</div>
+              <div class="meal-name">一蘭拉麵 渋谷店</div>
+              <div class="meal-address">渋谷区道玄坂 1-12-5</div>
+              <div class="meal-desc">24 小時營業，個人隔間拉麵體驗，演唱會後宵夜首選，不怕人多擠</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rainy-section">
+      <h3>☔ 雨天備案 — 7/4（音樂會日）</h3>
+      <div class="rainy-items">
+        <div class="rainy-item">📚 <div><strong>代官山 T-Site 全日停留</strong> — 雨天最美書店，咖啡 + 雜誌消磨時光</div></div>
+        <div class="rainy-item">🎨 <div><strong>森美術館（六本木ヒルズ）</strong> — 渋谷旁的當代藝術館，全程室內，可填補傍晚時間</div></div>
+        <div class="rainy-item">🛒 <div><strong>表參道 Hills / Omotesando Hills</strong> — 安藤忠雄設計室內商場，全天候逛街</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 3: 7/5 ===== -->
+  <div id="day3" class="day-section">
+    <div class="day-header">
+      <div class="day-num" style="color:var(--color-day3)">03</div>
+      <div class="day-info">
+        <h2>7月5日（週日）— TeamLab ＆ 豐洲市場</h2>
+        <p>早晨豐洲市場海鮮 → 10:00 TeamLab Planets → 台場午後</p>
+        <span class="day-theme" style="background:rgba(78,205,196,0.15); color:var(--color-day3)">🎨 藝術與海鮮日</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <!-- Morning -->
+      <div class="time-block morning">
+        <div class="time-block-header">
+          <span class="time-label">早上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">08:00 → 12:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🐟</div>
+              <div class="activity-info">
+                <div class="activity-name">豊洲市場 早市</div>
+                <div class="activity-desc">世界最大的批發魚市場，建議 08:30-09:30 到。可在場內餐廳吃超新鮮海鮮早餐！市場本身免費參觀</div>
+                <span class="activity-tag">飯店→豊洲 搭ゆりかもめ 10 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🎨</div>
+              <div class="activity-info">
+                <div class="activity-name">TeamLab Planets TOKYO</div>
+                <div class="activity-desc">江東区豊洲 6-1-16｜10:00 已預訂兩人。沉浸式互動藝術空間，約 90 分鐘體驗。注意：部分展間有淺水，需捲褲管</div>
+                <span class="activity-tag">豊洲市場 步行 5 分鐘</span>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-breakfast">
+              <div class="meal-type">🌅 早餐</div>
+              <div class="meal-name">豊洲市場 魚がし横丁</div>
+              <div class="meal-address">豊洲市場 6 街区 3F</div>
+              <div class="meal-desc">市場內食堂街，超新鮮海鮮丼、壽司早餐。推薦「大和寿司」或「魚竹」，¥1,500 左右</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Afternoon -->
+      <div class="time-block afternoon">
+        <div class="time-block-header">
+          <span class="time-label">下午</span>
+          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 18:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🌊</div>
+              <div class="activity-info">
+                <div class="activity-name">お台場 海浜公園 午後散步</div>
+                <div class="activity-desc">TeamLab 結束後回台場，海邊散步放鬆。夏日海風涼爽，自由女神像複製品在這裡！</div>
+                <span class="activity-tag">豊洲 → 台場 ゆりかもめ 10 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">👗</div>
+              <div class="activity-info">
+                <div class="activity-name">Venus Fort 購物</div>
+                <div class="activity-desc">歐風室內商場，品牌店、藥妝、雜貨，適合下午購物掃貨</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🔭</div>
+              <div class="activity-info">
+                <div class="activity-name">東京灣大橋觀景台（レインボーブリッジ遊歩道）</div>
+                <div class="activity-desc">彩虹橋步行道（免費），可步行穿越橋面，東京灣全景盡收眼底</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-lunch">
+              <div class="meal-type">🍱 午餐</div>
+              <div class="meal-name">マクセルアクアパーク品川 周邊</div>
+              <div class="meal-address">Aqua City Odaiba 2F 餐廳街</div>
+              <div class="meal-desc">Aqua City 內有多家餐廳，推薦「鰹だしらーめん 海老勝」或台場拉麵激戰區</div>
+            </div>
+            <div class="meal-card meal-tea">
+              <div class="meal-type">☕ 下午茶</div>
+              <div class="meal-name">Starbucks Reserve Odaiba</div>
+              <div class="meal-address">DiverCity Tokyo Plaza 1F</div>
+              <div class="meal-desc">台場限定 Starbucks，落地窗看海，Reserve 限定飲品，下午拍照必去</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evening -->
+      <div class="time-block evening">
+        <div class="time-block-header">
+          <span class="time-label">晚上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">18:00 → 結束</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🌃</div>
+              <div class="activity-info">
+                <div class="activity-name">台場夜景 · 最後夜晚</div>
+                <div class="activity-desc">旅程倒數第二晚，慢慢走台場海邊，拍攝彩虹橋夜景、城市燈光倒影</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 晚餐</div>
+              <div class="meal-name">大江戸温泉物語 食事処「はなの湯」</div>
+              <div class="meal-address">江東区青海 2-6-3</div>
+              <div class="meal-desc">江戶風情餐廳，旅程最後夜晚享用刺身定食＋溫泉泡腳，輕鬆舒適的結尾</div>
+            </div>
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 備選晚餐</div>
+              <div class="meal-name">東京灣 火鍋店「温野菜」台場</div>
+              <div class="meal-address">Aqua City 3F</div>
+              <div class="meal-desc">涮涮鍋吃到飽，多種湯底，台場店可遠眺夜景邊吃火鍋</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rainy-section">
+      <h3>☔ 雨天備案 — 7/5（此日大多室內，影響最小！）</h3>
+      <div class="rainy-items">
+        <div class="rainy-item">✅ <div><strong>豊洲市場 + TeamLab Planets 全程室內</strong> — 雨天完全不影響，本日行程天然防雨</div></div>
+        <div class="rainy-item">🎮 <div><strong>Joypolis（SEGA 室內遊樂園）</strong> — 台場室內機台、VR，雨天娛樂首選</div></div>
+        <div class="rainy-item">🎬 <div><strong>Odaiba 109 Cinemas</strong> — 看一場日本電影院體驗（有中文字幕場次）</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 4: 7/6 ===== -->
+  <div id="day4" class="day-section">
+    <div class="day-header">
+      <div class="day-num" style="color:var(--color-day4)">04</div>
+      <div class="day-info">
+        <h2>7月6日（週一）— 最後巡禮＆返程</h2>
+        <p>退房 → 築地外場 / 銀座 → 成田機場 21:15 起飛</p>
+        <span class="day-theme" style="background:rgba(245,200,66,0.12); color:var(--color-day4)">🛫 最後衝刺</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <!-- Morning -->
+      <div class="time-block morning">
+        <div class="time-block-header">
+          <span class="time-label">早上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">08:00 → 12:00</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🧳</div>
+              <div class="activity-info">
+                <div class="activity-name">整理行李 ＆ 飯店退房</div>
+                <div class="activity-desc">退房時間 11:00 前，可將大行李寄放飯店或直接帶上電車，成田機場行李托運服務（宅急便）可提前寄送</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🐟</div>
+              <div class="activity-info">
+                <div class="activity-name">築地場外市場</div>
+                <div class="activity-desc">仍對外開放的外場，玉子燒、海鮮串、醃漬物，早市氣氛熱鬧。從台場搭都バス約 30 分</div>
+                <span class="activity-tag">最後採買伴手禮</span>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-breakfast">
+              <div class="meal-type">🌅 早餐</div>
+              <div class="meal-name">飯店早餐 or 築地玉子燒</div>
+              <div class="meal-address">築地場外市場内 各店鋪</div>
+              <div class="meal-desc">築地「山長」玉子燒專賣、「丸武」新鮮玉子燒，搭配熱咖啡，¥500 內搞定</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Afternoon -->
+      <div class="time-block afternoon">
+        <div class="time-block-header">
+          <span class="time-label">下午</span>
+          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 17:00（出發機場）</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">🛍</div>
+              <div class="activity-info">
+                <div class="activity-name">銀座 最後購物</div>
+                <div class="activity-desc">銀座三越、松屋、UNIQLO（最大旗艦店）、無印良品旗艦店，最後掃貨藥妝、點心</div>
+                <span class="activity-tag">築地 步行 10 分</span>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🚂</div>
+              <div class="activity-info">
+                <div class="activity-name">17:00 出發前往成田機場</div>
+                <div class="activity-desc">建議搭 N'EX 成田特快（銀座→東京站→成田），車程約 60 分。最晚 17:30 出發，TR875 21:15 需提前 2.5h 辦理登機</div>
+                <span class="activity-tag">⚠️ 勿逾時！</span>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-lunch">
+              <div class="meal-type">🍱 午餐</div>
+              <div class="meal-name">銀座 久兵衛（壽司）</div>
+              <div class="meal-address">銀座 6-7-6</div>
+              <div class="meal-desc">旅程最後一頓正式午餐！銀座老牌壽司名店，午餐套餐約 ¥3,000，離程前的完美句點</div>
+            </div>
+            <div class="meal-card meal-tea">
+              <div class="meal-type">☕ 機場咖啡</div>
+              <div class="meal-name">成田機場 第 2 航廈 免稅區</div>
+              <div class="meal-address">成田國際空港 第 2 ターミナル</div>
+              <div class="meal-desc">過安檢後免稅區有星巴克、和菓子店，最後喝杯咖啡、買伴手禮（日本零食、化妝品）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evening -->
+      <div class="time-block evening">
+        <div class="time-block-header">
+          <span class="time-label">晚上</span>
+          <span style="color:var(--color-text-muted); font-size:13px">18:30 → 21:15 起飛</span>
+        </div>
+        <div class="time-block-body">
+          <div class="activities">
+            <div class="activity">
+              <div class="activity-icon">✈️</div>
+              <div class="activity-info">
+                <div class="activity-name">成田機場 Check-in / 過安檢</div>
+                <div class="activity-desc">Scoot 建議提早 2.5 小時到達，辦理行李托運、過安檢、逛免稅店</div>
+              </div>
+            </div>
+            <div class="activity">
+              <div class="activity-icon">🛫</div>
+              <div class="activity-info">
+                <div class="activity-name">21:15 Scoot TR875 起飛</div>
+                <div class="activity-desc">成田 NRT → 台北桃園 TPE，飛行約 3.5 小時，帶著滿滿的回憶回家！</div>
+              </div>
+            </div>
+          </div>
+          <div class="meals">
+            <div class="meal-card meal-dinner">
+              <div class="meal-type">🍽 晚餐</div>
+              <div class="meal-name">成田機場 免稅區餐廳</div>
+              <div class="meal-address">第 2 ターミナル 4F 出発ロビー</div>
+              <div class="meal-desc">機場內有拉麵、定食、迴轉壽司，「旬菜 成田空港店」或「空の驛 そばうどん」都不錯</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rainy-section">
+      <h3>☔ 雨天備案 — 7/6</h3>
+      <div class="rainy-items">
+        <div class="rainy-item">🏛 <div><strong>銀座 伊東屋（文具旗艦店）</strong> — 全棟超美文具書店，逛上 2 小時不成問題</div></div>
+        <div class="rainy-item">🎭 <div><strong>東京都現代美術館</strong> — 若早上行程有餘裕，門票 ¥1,200，當代藝術展常設館</div></div>
+        <div class="rainy-item">☕ <div><strong>機場多停留時間</strong> — 成田機場本身很好逛，提早出發在機場享用晚餐+購物</div></div>
+      </div>
+    </div>
+
+    <div class="tips-section">
+      <h3>⏰ 7/6 時間規劃提醒</h3>
+      <ul>
+        <li>最晚 17:30 從銀座/市區出發（N'EX 約 60 分鐘）</li>
+        <li>成田機場最晚 18:45 抵達（Scoot 報到截止通常是起飛前 60 分鐘）</li>
+        <li>若選擇利木津巴士（Limousine Bus）需 90 分鐘，請提早出發</li>
+        <li>大行李可前一天在飯店辦「宅急便」寄至機場（隔日送達服務）</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  function showTab(id) {
+    // Sections
+    document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    // Nav buttons
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
