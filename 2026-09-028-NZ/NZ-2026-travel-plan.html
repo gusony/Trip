@@ -257,13 +257,19 @@
   .overview-table th:first-child { width: 80px; }
   .confirmed-row td { background: #dbeafe !important; }
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+@media (max-width: 600px) { #trip-map { height: 380px !important; } }
+.map-legend-item { display:flex;align-items:center;gap:5px;font-size:0.78em;background:#fff;border:1px solid var(--border);border-radius:20px;padding:3px 10px; }
+</style>
 </head>
 <body>
 
 <!-- HERO -->
 <div class="hero">
   <h1>🇳🇿 紐西蘭南島自駕旅遊</h1>
-  <p>2026 年 9 月 27 日 ～ 10 月 10 日　｜　14 天 13 夜</p>
+  <p>2026 年 9 月 26 日出發 ／ 9 月 27 日抵達紐西蘭 ～ 10 月 10 日　｜　14 天 13 夜</p>
   <div class="tags">
     <span class="tag">👥 2人</span>
     <span class="tag">🚗 全程自駕</span>
@@ -277,6 +283,7 @@
 
 <!-- NAV -->
 <nav class="nav">
+  <a href="#map-section">📍 景點地圖</a>
   <a href="#overview">📅 行程總覽</a>
   <a href="#itinerary">🗺️ 每日行程</a>
   <a href="#activities">🎯 活動</a>
@@ -287,6 +294,16 @@
 </nav>
 
 <div class="container">
+
+  <!-- MAP -->
+  <div class="section" id="map-section">
+    <h2 class="section-title">📍 景點地圖總覽</h2>
+    <p style="color:var(--text-muted);font-size:0.88em;margin-bottom:14px;">
+      37 個景點 · 綠色虛線為版本一西海岸路線順序（約 1,800 km）· 點擊標記查看詳情 · 大圓點為過夜點
+    </p>
+    <div id="trip-map" style="height:560px;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.1);"></div>
+    <div id="map-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;"></div>
+  </div>
 
   <!-- OVERVIEW -->
   <div class="section" id="overview">
@@ -301,10 +318,11 @@
         <tr><th>日期</th><th>星期</th><th>地點</th><th>住宿</th><th>狀態</th></tr>
       </thead>
       <tbody>
-        <tr><td>9/27</td><td>日</td><td>✈️ 入境基督城 → 市區</td><td>基督城</td><td>❌ 待訂</td></tr>
+        <tr style="background:#fef9c3;"><td>9/26</td><td>六</td><td>✈️ NZ78｜桃園 T2 18:35 出發 → 奧克蘭（隔天抵達）</td><td>機上</td><td>—</td></tr>
+        <tr><td>9/27</td><td>日</td><td>NZ78 10:15 抵奧克蘭 → NZ547 14:00 轉機 → 15:25 抵基督城 CHC</td><td>基督城</td><td>❌ 待訂</td></tr>
         <tr><td>9/28</td><td>一</td><td>基督城 → Lake Tekapo（220km）</td><td>Tekapo</td><td>❌ 待訂</td></tr>
         <tr class="confirmed-row"><td>9/29</td><td>二</td><td>Tekapo → Mt. Cook（105km）</td><td>The Hermitage ✅</td><td>✅ 確認</td></tr>
-        <tr class="confirmed-row"><td>9/30</td><td>三</td><td>Mt. Cook 整天</td><td>The Hermitage ✅</td><td>✅ 確認</td></tr>
+        <tr><td>9/30</td><td>三</td><td>Mt. Cook 整天</td><td>Mt. Cook 其他住宿</td><td>❌ 待訂</td></tr>
         <tr><td>10/1</td><td>四</td><td>Mt. Cook → Wanaka（260km）</td><td>Wanaka</td><td>❌ 待訂</td></tr>
         <tr><td>10/2</td><td>五</td><td>Wanaka 整天</td><td>Wanaka</td><td>❌ 待訂</td></tr>
         <tr><td>10/3</td><td>六</td><td>Wanaka → 皇后鎮（70km）</td><td>皇后鎮</td><td>❌ 待訂</td></tr>
@@ -314,7 +332,7 @@
         <tr><td>10/7</td><td>三</td><td>Te Anau → Franz Josef（380km）</td><td>冰川區</td><td>❌ 待訂</td></tr>
         <tr><td>10/8</td><td>四</td><td>冰川健行 → Hokitika → Punakaiki</td><td>Punakaiki / Greymouth</td><td>❌ 待訂</td></tr>
         <tr><td>10/9</td><td>五</td><td>Punakaiki → Arthur's Pass → 基督城</td><td>基督城</td><td>❌ 待訂</td></tr>
-        <tr><td>10/10</td><td>六</td><td>✈️ 出境（09:00）</td><td>—</td><td>—</td></tr>
+        <tr style="background:#fef9c3;"><td>10/10</td><td>六</td><td>✈️ NZ586｜CHC 07:20 → AKL 08:45 → NZ77｜AKL 10:40 → 桃園 T2 17:05</td><td>—</td><td>—</td></tr>
       </tbody>
     </table>
 
@@ -350,15 +368,20 @@
       <div class="card-header">
         <div class="date-badge">9/27 日</div>
         <div>
-          <div class="card-title">✈️ 入境基督城 Christchurch</div>
-          <div class="card-subtitle">入境日，取租車，安頓</div>
+          <div class="card-title">✈️ 奧克蘭轉機 → 入境基督城 Christchurch</div>
+          <div class="card-subtitle">9/26 18:35 桃園 T2 出發 · 下午抵達基督城</div>
         </div>
       </div>
+      <div class="alert alert-info" style="margin-bottom:10px;">
+        ✈️ <strong>去程班機：</strong>NZ78｜桃園 T2 18:35 → 奧克蘭 10:15（+1）　→　NZ547｜奧克蘭 14:00 → 基督城 <strong>15:25</strong>
+      </div>
       <div class="stops">
-        <div class="stop"><span class="stop-icon">🛬</span><span>約 10:00 抵達 CHC，過海關、提行李</span></div>
-        <div class="stop"><span class="stop-icon">🚗</span><span>租車公司取車（約 1 小時流程）</span></div>
-        <div class="stop"><span class="stop-icon">🛒</span><span>Countdown / New World 超市採購旅途補給</span></div>
-        <div class="stop"><span class="stop-icon">🏖️</span><span>South Brighton Beach 或市區逛逛</span></div>
+        <div class="stop"><span class="stop-icon">🛬</span><span><strong>10:15</strong> 抵達奧克蘭 AKL（NZ78 落地），過境候機約 3h45m</span></div>
+        <div class="stop"><span class="stop-icon">✈️</span><span><strong>14:00</strong> NZ547 奧克蘭出發 → 基督城（1h25m）</span></div>
+        <div class="stop"><span class="stop-icon">🛬</span><span><strong>15:25</strong> 抵達 CHC，過海關、提行李（預留 1h）</span></div>
+        <div class="stop"><span class="stop-icon">🚗</span><span><strong>約 16:30</strong> 租車公司取車（約 1 小時流程）</span></div>
+        <div class="stop"><span class="stop-icon">🛒</span><span>Countdown / New World 超市採購旅途補給（趁 CHC 選擇最多）</span></div>
+        <div class="stop"><span class="stop-icon">🍽️</span><span>市區晚餐，早點入住休息（長途飛行後）</span></div>
       </div>
       <div class="stay-badge">🏨 住：基督城市區或機場附近</div>
     </div>
@@ -405,7 +428,7 @@
     <!-- Day 4 -->
     <div class="card">
       <div class="card-header">
-        <div class="date-badge confirmed">9/30 三</div>
+        <div class="date-badge">9/30 三</div>
         <div>
           <div class="card-title">Mt. Cook 整天</div>
           <div class="card-subtitle">步道健行 × 自然觀星</div>
@@ -416,7 +439,7 @@
         <div class="stop"><span class="stop-icon">☕</span><span>The Hermitage Panorama Room — 邊喝咖啡邊看 Mt Cook</span></div>
         <div class="stop"><span class="stop-icon">🌟</span><span>夜晚戶外觀星（Mt Cook 也是絕佳觀星點，免費！）</span></div>
       </div>
-      <div class="stay-badge confirmed">🏨 住：The Hermitage Hotel ✅ 已確認</div>
+      <div class="stay-badge">🏨 住：Mt. Cook 其他住宿（待訂）</div>
     </div>
 
     <!-- Day 5 -->
@@ -581,8 +604,9 @@
         <div class="stop"><span class="stop-icon">🏔️</span><span>Otira Viaduct 觀景台</span></div>
         <div class="stop"><span class="stop-icon">🪨</span><span><strong>Castle Hill / Kura Tāwhiti</strong>（巨石群，必停拍照！）</span></div>
         <div class="stop"><span class="stop-icon">🌆</span><span>抵達基督城，整理行李，最後一晚好好吃一頓</span></div>
+        <div class="stop"><span class="stop-icon">⚠️</span><span>隔天 NZ586 <strong>07:20</strong> 起飛，建議 <strong>住機場附近</strong>，05:30 需到機場！早點入睡</span></div>
       </div>
-      <div class="stay-badge">🏨 住：基督城（靠近機場）</div>
+      <div class="stay-badge">🏨 住：基督城機場附近（⚠️ 隔天 05:30 出門）</div>
     </div>
 
     <!-- Day 14 -->
@@ -590,13 +614,23 @@
       <div class="card-header">
         <div class="date-badge">10/10 六</div>
         <div>
-          <div class="card-title">✈️ 出境</div>
-          <div class="card-subtitle">約 09:00 出境，建議 07:00 前到機場</div>
+          <div class="card-title">✈️ 出境 · 返回台灣</div>
+          <div class="card-subtitle">NZ586 07:20 基督城出發 ⚠️ 需 05:30 前到機場</div>
         </div>
       </div>
+      <div class="alert alert-warning" style="margin-bottom:10px;">
+        ⚠️ <strong>NZ586 07:20 起飛</strong>，比原本預計早很多！建議 <strong>05:30</strong> 抵達 CHC 機場還車 + check-in。
+      </div>
+      <div class="alert alert-info" style="margin-bottom:10px;">
+        ✈️ <strong>回程班機：</strong>NZ586｜基督城 CHC 07:20 → 奧克蘭 08:45　→　NZ77｜奧克蘭 10:40 → 桃園 T2 <strong>17:05</strong>
+      </div>
       <div class="stops">
-        <div class="stop"><span class="stop-icon">⏰</span><span>07:00 抵達機場，辦理還車手續</span></div>
-        <div class="stop"><span class="stop-icon">🛫</span><span>check-in、過安檢、出境</span></div>
+        <div class="stop"><span class="stop-icon">⏰</span><span><strong>05:00</strong> 起床，退房</span></div>
+        <div class="stop"><span class="stop-icon">🚗</span><span><strong>05:30</strong> 抵達 CHC 機場，辦理還車手續</span></div>
+        <div class="stop"><span class="stop-icon">🛫</span><span><strong>07:20</strong> NZ586 基督城 → 奧克蘭（1h25m）</span></div>
+        <div class="stop"><span class="stop-icon">🔄</span><span><strong>08:45</strong> 抵奧克蘭，轉國際線（約 1h55m 轉機時間）</span></div>
+        <div class="stop"><span class="stop-icon">🛫</span><span><strong>10:40</strong> NZ77 奧克蘭 → 桃園 T2（約 10h25m）</span></div>
+        <div class="stop"><span class="stop-icon">🏠</span><span><strong>17:05</strong> 落地桃園第二航廈，回家！</span></div>
       </div>
     </div>
   </div>
@@ -686,9 +720,15 @@
           <td>NZD $280-380</td>
         </tr>
         <tr style="background:#dbeafe;">
-          <td>9/29-30</td><td>Mt. Cook</td>
-          <td colspan="2">✅ <strong>The Hermitage Hotel</strong>（已確認）</td>
+          <td>9/29</td><td>Mt. Cook</td>
+          <td colspan="2">✅ <strong>The Hermitage Hotel</strong>（已確認，1 晚）</td>
           <td>—</td>
+        </tr>
+        <tr>
+          <td>9/30</td><td>Mt. Cook</td>
+          <td>Mt Cook Lodge / Aoraki Court Motel</td>
+          <td>The Hermitage（若有空房）</td>
+          <td>NZD $150-280</td>
         </tr>
         <tr>
           <td>10/1-2</td><td>Wanaka</td>
@@ -876,6 +916,160 @@
   🇳🇿 紐西蘭南島自駕旅遊 2026　｜　由巧寶 🧧 整理　｜　最後更新：2026-05-20<br>
   <span style="font-size:0.9em; opacity:0.7;">資訊請以官方網站最新公告為準，旺季價格與可用性可能有所變動</span>
 </div>
+
+<script>
+(function () {
+  var GROUPS = {
+    chc:        { color: '#1e6091', label: 'D1/D14  基督城', days: '9/27, 10/10' },
+    tekapo:     { color: '#7c3aed', label: 'D2  Lake Tekapo', days: '9/28' },
+    mtcook:     { color: '#2d6a4f', label: 'D3-4  Mt. Cook', days: '9/29-30' },
+    wanaka:     { color: '#b45309', label: 'D5-6  Wanaka', days: '10/1-2' },
+    queenstown: { color: '#ea580c', label: 'D7-9  皇后鎮', days: '10/3-5' },
+    teanau:     { color: '#78350f', label: 'D10  Te Anau', days: '10/6' },
+    haast:      { color: '#4b5563', label: 'D11  Haast 公路', days: '10/7' },
+    westcoast:  { color: '#065f46', label: 'D12  冰川→西海岸', days: '10/8' },
+    rtn:        { color: '#0369a1', label: "D13  Arthur's Pass 返程", days: '10/9' }
+  };
+
+  var PLACES = [
+    // 9/27 基督城
+    { g:'chc', name:'基督城 Christchurch', sub:'入境 / 出境基地', lat:-43.5321, lng:172.6362, stay:true, ic:'✈️' },
+    { g:'chc', name:'South Brighton Beach', sub:'市區散步', lat:-43.5632, lng:172.7262, ic:'🏖️' },
+    // 9/28 Tekapo 路線
+    { g:'tekapo', name:'Geraldine 小鎮', sub:'咖啡廳、Talbot Forest Cheese 起司店', lat:-44.0917, lng:171.2378, ic:'🏘️' },
+    { g:'tekapo', name:'Fairlie Bakehouse', sub:'傳說中 NZ 最好吃的派，必停！', lat:-44.0952, lng:170.8344, ic:'🥧' },
+    { g:'tekapo', name:'Church of the Good Shepherd', sub:'必拍打卡', lat:-44.0050, lng:170.4817, ic:'⛪' },
+    { g:'tekapo', name:'Lake Tekapo / Lupin 羽扇豆', sub:'10 月盛開！', lat:-44.0048, lng:170.4739, stay:true, ic:'🌸' },
+    { g:'tekapo', name:'Mt John Observatory（Dark Sky Project）', sub:'世界認證暗天區 · 觀星導覽', lat:-44.0060, lng:170.4647, ic:'🔭' },
+    // 9/29-30 Mt Cook
+    { g:'mtcook', name:'Lake Pukaki 觀景台', sub:'Mt Cook 雪山倒影，最美打卡點', lat:-44.1816, lng:170.1433, ic:'💙' },
+    { g:'mtcook', name:'Hooker Valley Track', sub:'最推薦步道 3-4h，終點有冰湖', lat:-43.7490, lng:170.0990, ic:'🥾' },
+    { g:'mtcook', name:'The Hermitage Hotel ✅ Mt. Cook', sub:'已確認住宿 9/29（1 晚）', lat:-43.7358, lng:170.0967, stay:true, ic:'🏔️' },
+    { g:'mtcook', name:'Kea Point Track', sub:'短版步道 約 2h', lat:-43.7274, lng:170.1026, ic:'🥾' },
+    // 10/1-2 Wanaka
+    { g:'wanaka', name:'Omarama Clay Cliffs', sub:'奇特土柱地形，值得繞路', lat:-44.5079, lng:169.9735, ic:'🗿' },
+    { g:'wanaka', name:'Lindis Pass 山嶺', sub:'高山公路景觀', lat:-44.5771, lng:169.6519, ic:'⛰️' },
+    { g:'wanaka', name:'Wanaka Tree（湖中孤樹）', sub:'最著名打卡點', lat:-44.6999, lng:169.1466, ic:'🌳' },
+    { g:'wanaka', name:'Wanaka 小鎮', sub:'湖邊放空 + 住宿', lat:-44.7007, lng:169.1444, stay:true, ic:'🏙️' },
+    { g:'wanaka', name:'Puzzling World', sub:'視覺錯覺博物館', lat:-44.6788, lng:169.0996, ic:'🎬' },
+    { g:'wanaka', name:'Rob Roy Glacier Track', sub:'往返約 4h，評價極高', lat:-44.4845, lng:169.0468, ic:'🥾' },
+    // 10/3-5 皇后鎮
+    { g:'queenstown', name:'Crown Range 公路頂點', sub:'NZ 最高公路，景觀壯闊', lat:-44.7630, lng:168.9289, ic:'🔥' },
+    { g:'queenstown', name:'皇后鎮 Queenstown', sub:'冒險之都，住 3 晚', lat:-45.0312, lng:168.6626, stay:true, ic:'🏙️' },
+    { g:'queenstown', name:'NZONE Skydive 跳傘', sub:'15,000ft · 60 秒自由落體', lat:-45.0210, lng:168.7393, ic:'🪂' },
+    { g:'queenstown', name:'Skyline Gondola & Luge', sub:'纜車 + 溜溜車 + 山頂日落', lat:-45.0243, lng:168.6507, ic:'🛷' },
+    // 10/6 Te Anau
+    { g:'teanau', name:'Kingston 小鎮', sub:'Remarkables 山脈景觀', lat:-45.3313, lng:168.7130, ic:'🏔️' },
+    { g:'teanau', name:'Te Anau Glowworm Caves', sub:'夜遊螢火蟲洞，需提前預約', lat:-45.2778, lng:167.4722, ic:'✨' },
+    { g:'teanau', name:'Te Anau 小鎮', sub:'Fiordland 門戶', lat:-45.4133, lng:167.7191, stay:true, ic:'🌊' },
+    // 10/7 Haast 公路
+    { g:'haast', name:'Lake Gunn', sub:'寧靜倒影，步道 45 分鐘', lat:-44.9890, lng:168.1840, ic:'🪞' },
+    { g:'haast', name:'Haast Pass（世界遺產）', sub:'最高點，險峻山嶺', lat:-44.1016, lng:169.2660, ic:'⛰️' },
+    { g:'haast', name:'Thunder Creek Falls', sub:'174m 壯觀瀑布', lat:-44.1639, lng:169.2889, ic:'💦' },
+    { g:'haast', name:'Knights Point Lookout', sub:'太平洋 + 山脈壯觀全景', lat:-43.7580, lng:168.9020, ic:'🌊' },
+    { g:'haast', name:'Lake Moeraki', sub:'美麗湖景', lat:-43.6924, lng:168.9700, ic:'🏔️' },
+    { g:'haast', name:'Fox Glacier（備選）', sub:'距 Franz Josef 30 分鐘', lat:-43.4600, lng:170.0130, ic:'🏔️' },
+    { g:'haast', name:'Franz Josef Glacier 冰川', sub:'Heli-Hike 直升機健行', lat:-43.3900, lng:170.1856, stay:true, ic:'🏔️' },
+    // 10/8 西海岸北上
+    { g:'westcoast', name:'Hokitika Gorge', sub:'夢幻藍綠色水峽谷，必去！', lat:-42.7693, lng:171.0234, ic:'💧' },
+    { g:'westcoast', name:'Hokitika 小鎮', sub:'蜂蜜 / 玉石 pounamu 購物', lat:-42.7157, lng:170.9644, ic:'🏙️' },
+    { g:'westcoast', name:'Punakaiki Pancake Rocks', sub:'必看！漲潮時噴水柱更壯觀', lat:-42.1147, lng:171.3312, ic:'🥞' },
+    { g:'westcoast', name:'Greymouth', sub:'過夜選項', lat:-42.4503, lng:171.2117, stay:true, ic:'🏠' },
+    // 10/9 返程
+    { g:'rtn', name:"Arthur's Pass 小村（Wobbly Kea Café）", sub:'山嶺小村必停咖啡', lat:-42.9488, lng:171.5712, ic:'☕' },
+    { g:'rtn', name:'Otira Viaduct 觀景台', sub:'壯觀橋樑公路', lat:-42.8025, lng:171.5427, ic:'🏔️' },
+    { g:'rtn', name:'Castle Hill / Kura Tāwhiti', sub:'巨石群，必停拍照！', lat:-43.2071, lng:171.7248, ic:'🪨' }
+  ];
+
+  // Main route waypoints (version 1 west coast)
+  var ROUTE = [
+    [-43.5321, 172.6362],
+    [-44.0917, 171.2378],
+    [-44.0952, 170.8344],
+    [-44.0048, 170.4739],
+    [-44.1816, 170.1433],
+    [-43.7358, 170.0967],
+    [-44.5079, 169.9735],
+    [-44.5771, 169.6519],
+    [-44.6999, 169.1466],
+    [-44.7630, 168.9289],
+    [-45.0312, 168.6626],
+    [-45.3313, 168.7130],
+    [-45.4133, 167.7191],
+    [-44.9890, 168.1840],
+    [-44.1016, 169.2660],
+    [-44.1639, 169.2889],
+    [-43.7580, 168.9020],
+    [-43.6924, 168.9700],
+    [-43.4600, 170.0130],
+    [-43.3900, 170.1856],
+    [-42.7693, 171.0234],
+    [-42.7157, 170.9644],
+    [-42.4503, 171.2117],
+    [-42.1147, 171.3312],
+    [-42.9488, 171.5712],
+    [-43.2071, 171.7248],
+    [-43.5321, 172.6362]
+  ];
+
+  var map = L.map('trip-map', {
+    center: [-43.8, 170.0],
+    zoom: 7,
+    scrollWheelZoom: false
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  // Enable scroll zoom on mouse enter
+  var mapEl = document.getElementById('trip-map');
+  mapEl.addEventListener('mouseenter', function () { map.scrollWheelZoom.enable(); });
+  mapEl.addEventListener('mouseleave', function () { map.scrollWheelZoom.disable(); });
+
+  // Route polyline
+  L.polyline(ROUTE, {
+    color: '#2d6a4f',
+    weight: 2.5,
+    opacity: 0.65,
+    dashArray: '7, 5'
+  }).addTo(map);
+
+  // Markers
+  PLACES.forEach(function (p) {
+    var g = GROUPS[p.g];
+    var sz = p.stay ? 16 : 11;
+    var border = p.stay ? '2.5px solid white' : '2px solid white';
+    var icon = L.divIcon({
+      className: '',
+      html: '<div style="width:' + sz + 'px;height:' + sz + 'px;background:' + g.color + ';border:' + border + ';border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,0.45);"></div>',
+      iconSize: [sz, sz],
+      iconAnchor: [sz / 2, sz / 2],
+      popupAnchor: [0, -sz / 2 - 4]
+    });
+    var popupHtml =
+      '<div style="min-width:190px;font-family:-apple-system,sans-serif;">' +
+      '<div style="font-size:0.8em;color:' + g.color + ';font-weight:700;margin-bottom:4px;">' + g.label + '</div>' +
+      '<div style="font-weight:700;font-size:0.95em;">' + p.ic + ' ' + p.name + '</div>' +
+      (p.sub ? '<div style="font-size:0.82em;color:#6c757d;margin-top:3px;">' + p.sub + '</div>' : '') +
+      (p.stay ? '<div style="font-size:0.78em;font-weight:600;color:#1d4ed8;margin-top:5px;">🏨 過夜點</div>' : '') +
+      '</div>';
+    L.marker([p.lat, p.lng], { icon: icon })
+      .addTo(map)
+      .bindPopup(popupHtml);
+  });
+
+  // Legend
+  var legendEl = document.getElementById('map-legend');
+  Object.values(GROUPS).forEach(function (g) {
+    var el = document.createElement('div');
+    el.className = 'map-legend-item';
+    el.innerHTML = '<span style="width:10px;height:10px;background:' + g.color + ';border-radius:50%;flex-shrink:0;display:inline-block;"></span>' + g.label;
+    legendEl.appendChild(el);
+  });
+})();
+</script>
 
 </body>
 </html>
