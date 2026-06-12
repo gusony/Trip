@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 · 9/28 基督城→Lake Tekapo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:root{--a:#7c3aed;--al:#F5F3FF;--am:#DDD6FE}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+.hero{color:#fff;padding:32px 20px 28px}
+.hero-inner{max-width:520px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+.timeline{position:relative;padding-left:72px}
+.timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-time{position:absolute;left:-72px;width:46px;text-align:right;font-size:12px;font-weight:600;color:var(--a);padding-top:14px;line-height:1}
+.tl-dot{position:absolute;left:-18px;top:15px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--a);transform:translateX(-50%)}
+.tl-dot.key{background:var(--a)}
+.tl-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 15px}
+.tl-card h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.tl-card p{font-size:13px;color:#64748B;line-height:1.5}
+.tl-card .sub{font-size:12px;color:#94A3B8;margin-top:4px}
+.drive-row{display:flex;align-items:center;margin:2px 0}
+.drive-badge{display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;border:1px solid #E2E8F0;border-radius:99px;font-size:12px;font-weight:500;color:#64748B;padding:5px 12px}
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:var(--al);border:1px solid var(--am)}
+.alert-s{background:#F0FDF4;border:1px solid #BBF7D0}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.5}
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:14px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:1px;transition:all 150ms;flex-shrink:0}
+.check-list input:checked+label{color:#94A3B8;text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🥝 NZ</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill active">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero" style="background:linear-gradient(135deg,#3b0f8a 0%,#7c3aed 100%)">
+  <div class="hero-inner">
+    <div class="day-badge">Day 2 · 9/28 基督城→Lake Tekapo</div>
+    <div class="hero-title">🌸 Lake Tekapo<br>羽扇豆與觀星</div>
+    <div class="hero-sub">220km · 約 2.5 小時 · 黑暗天空保護區</div>
+    <div class="hero-tags">
+      <span class="htag">🚗 220km</span>
+      <span class="htag">Church of Good Shepherd</span>
+      <span class="htag">🔭 Dark Sky</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="sec-label">今日行程</div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">09:00</div>
+      <div class="tl-dot key"></div>
+      <div class="tl-card">
+        <h3>🚗 出發 Christchurch</h3>
+        <p>SH1 南下 → SH79 往內陸</p>
+        <p class="sub">⏱ 全程約 2.5 小時</p>
+      </div>
+    </div>
+
+    <div class="tl-item drive-row">
+      <span class="drive-badge">🚗 約 2h 30m · 220km</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:30</div>
+      <div class="tl-dot key"></div>
+      <div class="tl-card">
+        <h3>📍 Lake Tekapo 抵達</h3>
+        <p>車停湖邊停車場，先欣賞第一眼的蔚藍湖色</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:40</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>⛪ Church of the Good Shepherd</h3>
+        <p>紐西蘭最多人拍照的小教堂，建議早去避開人潮</p>
+        <p class="sub">⏱ 約 30 分鐘</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:20</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🍽️ 午餐</h3>
+        <p>推薦 Kohan Restaurant（湖景日式）或 Mackenzie's Bar &amp; Grill</p>
+        <p class="sub">⏱ 約 1 小時</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>♨️ Tekapo Springs 溫泉</h3>
+        <p>戶外溫泉泳池，視野開闊可看湖景，提前預訂</p>
+        <p class="sub">⏱ 約 2 小時</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">16:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🥾 Mt. John 觀測站步道</h3>
+        <p>環山步道約 4km，可俯瞰整個 Tekapo 湖</p>
+        <p class="sub">⏱ 約 1 小時</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🏨 Check-in 住宿</h3>
+        <p>Tekapo 住宿非常搶手，請確認預訂</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h3>🍽️ 晚餐</h3>
+        <p>推薦 Jade Palace / Mackenzie's</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">20:30</div>
+      <div class="tl-dot key"></div>
+      <div class="tl-card">
+        <h3>🔭 Dark Sky Project 觀星 ✅</h3>
+        <p>Summit Experience 2h，可見南半球銀河，絕對不能錯過！</p>
+        <p class="sub">⚠️ 需提前預訂 · 帶厚外套</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-label">注意事項</div>
+
+  <div class="alert alert-w">
+    <span style="font-size:20px">⚠️</span>
+    <div class="alert-body">
+      <strong>Dark Sky 觀星注意</strong>
+      <p>請穿多層保暖衣物，即使是春天，Mt. John 山頂夜間氣溫接近 0°C！</p>
+    </div>
+  </div>
+
+  <div class="sec-label">今日清單</div>
+
+  <div class="check-list">
+    <input type="checkbox" id="c1">
+    <label for="c1">✅ 確認 Dark Sky Project 觀星預訂（Summit Experience）</label>
+    <input type="checkbox" id="c2">
+    <label for="c2">帶多層保暖衣物（觀星時會很冷）</label>
+    <input type="checkbox" id="c3">
+    <label for="c3">相機帶好（銀河攝影機會！三腳架建議帶）</label>
+    <input type="checkbox" id="c4">
+    <label for="c4">Tekapo Springs 是否已預訂</label>
+    <input type="checkbox" id="c5">
+    <label for="c5">明天 Mt. Cook 距離 100km，不急，可晚點出發</label>
+  </div>
+
+</div>
+
+<div class="pb"></div>
+
+<div class="bottom-nav">
+  <a href="day01-0927.html" class="bnav-btn bnav-prev">← 前一天</a>
+  <a href="day03-0929.html" class="bnav-btn bnav-next">後一天 →</a>
+</div>
+
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+  var k='nz26_d02_'+cb.id;
+  if(localStorage.getItem(k))cb.checked=true;
+  cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
+});
+</script>
+</body>
+</html>

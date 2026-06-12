@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紐西蘭南島自駕 2026 · 總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;color:#0F172A;flex-shrink:0;margin-right:4px}
+.nav-dot{color:#CBD5E1;flex-shrink:0}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:#10B981;color:#fff}
+.hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 50%,#1e6091 100%);color:#fff;padding:40px 20px 36px}
+.hero-inner{max-width:520px;margin:0 auto}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6EE7B7;margin-bottom:10px}
+.hero-title{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:24px}
+.countdown{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:16px 20px;display:flex;gap:24px;align-items:center}
+.countdown-item{text-align:center}
+.countdown-num{font-size:28px;font-weight:700;color:#fff;display:block;line-height:1}
+.countdown-label{font-size:11px;color:#6EE7B7;margin-top:2px}
+.countdown-divider{color:#2d6a4f;font-size:20px}
+.content{max-width:520px;margin:0 auto;padding:20px 16px 60px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+#overview-map{height:300px;border-radius:16px;overflow:hidden;border:1px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+@media(max-width:480px){#overview-map{height:220px}}
+.days-grid{display:flex;flex-direction:column;gap:10px}
+.day-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;display:flex;align-items:stretch;transition:transform 150ms,box-shadow 150ms;cursor:pointer}
+.day-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.day-card-accent{width:5px;flex-shrink:0}
+.day-card-body{flex:1;padding:13px 15px}
+.day-card-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.day-num{font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.06em}
+.day-date-badge{font-size:11px;font-weight:500;color:#64748B;background:#F8FAFC;border:1px solid #E2E8F0;padding:2px 8px;border-radius:99px}
+.day-card-title{font-size:14px;font-weight:600;color:#0F172A;margin-bottom:5px}
+.day-card-tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500}
+.day-card-arrow{display:flex;align-items:center;padding:0 14px 0 0;color:#CBD5E1;font-size:18px}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.bento-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 14px}
+.bento-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94A3B8;margin-bottom:5px}
+.bento-value{font-size:13px;font-weight:600;color:#0F172A;line-height:1.3}
+.bento-sub{font-size:12px;color:#64748B;margin-top:2px}
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:11px 15px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:13.5px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:1px;transition:all 150ms;flex-shrink:0}
+.check-list input:checked+label{color:#94A3B8;text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.check-urgent label::before{border-color:#FCA5A5}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">🥝 NZ</span>
+    <span class="nav-dot">·</span>
+    <a href="index.html" class="nav-pill active">總覽</a>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">紐西蘭南島 · New Zealand 2026</div>
+    <div class="hero-title">14 天 13 夜<br>南島大環島自駕</div>
+    <div class="hero-sub">9/26（六）桃園出發 → 10/10（六）返台 · 2 人同行</div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item"><span class="countdown-num" id="cd-days">—</span><div class="countdown-label">天</div></div>
+      <div class="countdown-divider">:</div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-hrs">—</span><div class="countdown-label">時</div></div>
+      <div class="countdown-divider">:</div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-min">—</span><div class="countdown-label">分</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="sec-label">路線地圖</div>
+  <div id="overview-map"></div>
+
+  <div class="sec-label">行程總覽</div>
+  <div class="days-grid">
+
+    <a href="day01-0927.html" class="day-card">
+      <div class="day-card-accent" style="background:#1e6091"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 1</span><span class="day-date-badge">9/27（日）</span></div>
+        <div class="day-card-title">✈️ 抵達基督城 Christchurch</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#EFF6FF;color:#1D4ED8">NZ547 15:25 落地</span>
+          <span class="tag" style="background:#F0FDF4;color:#166534">取租車</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">超市採買</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day02-0928.html" class="day-card">
+      <div class="day-card-accent" style="background:#7c3aed"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 2</span><span class="day-date-badge">9/28（一）</span></div>
+        <div class="day-card-title">基督城 → Lake Tekapo</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#F5F3FF;color:#5B21B6">220km · 3h</span>
+          <span class="tag" style="background:#FDF4FF;color:#7E22CE">🌸 羽扇豆花季</span>
+          <span class="tag" style="background:#EFF6FF;color:#1D4ED8">🔭 Dark Sky 觀星</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day03-0929.html" class="day-card">
+      <div class="day-card-accent" style="background:#2d6a4f"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 3</span><span class="day-date-badge">9/29（二）✅</span></div>
+        <div class="day-card-title">Lake Tekapo → Mt. Cook</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#ECFDF5;color:#065F46">Lake Pukaki 倒影</span>
+          <span class="tag" style="background:#F0FDF4;color:#166534">🥾 Hooker Valley</span>
+          <span class="tag" style="background:#DBEAFE;color:#1E40AF">The Hermitage ✅</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day04-0930.html" class="day-card">
+      <div class="day-card-accent" style="background:#2d6a4f"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 4</span><span class="day-date-badge">9/30（三）</span></div>
+        <div class="day-card-title">Mt. Cook 整天</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#ECFDF5;color:#065F46">🥾 Mueller Hike</span>
+          <span class="tag" style="background:#F0FDF4;color:#166534">Blue Lakes</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">🌟 戶外觀星</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day05-1001.html" class="day-card">
+      <div class="day-card-accent" style="background:#b45309"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 5</span><span class="day-date-badge">10/1（四）</span></div>
+        <div class="day-card-title">Mt. Cook → Wanaka</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FEF3C7;color:#92400E">Omarama Clay Cliffs</span>
+          <span class="tag" style="background:#FEF9C3;color:#713F12">Lindis Pass</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">🌳 Wanaka Tree</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day06-1002.html" class="day-card">
+      <div class="day-card-accent" style="background:#b45309"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 6</span><span class="day-date-badge">10/2（五）</span></div>
+        <div class="day-card-title">Wanaka 整天</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FEF3C7;color:#92400E">🥾 Rob Roy Glacier Track</span>
+          <span class="tag" style="background:#FEF9C3;color:#713F12">湖邊活動</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day07-1003.html" class="day-card">
+      <div class="day-card-accent" style="background:#ea580c"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 7</span><span class="day-date-badge">10/3（六）</span></div>
+        <div class="day-card-title">Wanaka → 皇后鎮 Queenstown</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FFF7ED;color:#C2410C">🔥 Crown Range 最高公路</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">🍔 Fergburger</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day08-1004.html" class="day-card">
+      <div class="day-card-accent" style="background:#ea580c"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 8</span><span class="day-date-badge">10/4（日）</span></div>
+        <div class="day-card-title">皇后鎮 · 🪂 跳傘日</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FFF7ED;color:#C2410C">NZONE Skydive</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">15,000ft · 60 秒自由落體</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day09-1005.html" class="day-card">
+      <div class="day-card-accent" style="background:#ea580c"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 9</span><span class="day-date-badge">10/5（一）</span></div>
+        <div class="day-card-title">皇后鎮 · 🛷 Luge 日</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FFF7ED;color:#C2410C">Skyline Gondola</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">溜溜車 3 趟+</span>
+          <span class="tag" style="background:#FFF7ED;color:#C2410C">山頂日落</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day10-1006.html" class="day-card">
+      <div class="day-card-accent" style="background:#78350f"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 10</span><span class="day-date-badge">10/6（二）</span></div>
+        <div class="day-card-title">皇后鎮 → Te Anau</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FEF3C7;color:#92400E">175km · 2h</span>
+          <span class="tag" style="background:#FFF7ED;color:#C2410C">Kingston 小鎮</span>
+          <span class="tag" style="background:#FEF3C7;color:#92400E">✨ 螢火蟲洞</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day11-1007.html" class="day-card">
+      <div class="day-card-accent" style="background:#374151"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 11</span><span class="day-date-badge">10/7（三）</span></div>
+        <div class="day-card-title">Te Anau → Haast Pass → Franz Josef</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#F1F5F9;color:#374151">⚠️ 長途 380km · 5-6h</span>
+          <span class="tag" style="background:#F1F5F9;color:#475569">冰川抵達</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day12-1008.html" class="day-card">
+      <div class="day-card-accent" style="background:#065f46"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 12</span><span class="day-date-badge">10/8（四）</span></div>
+        <div class="day-card-title">冰川健行 → Hokitika → Punakaiki</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#ECFDF5;color:#065F46">🚁 Heli-Hike</span>
+          <span class="tag" style="background:#F0FDF4;color:#166534">Hokitika Gorge</span>
+          <span class="tag" style="background:#ECFDF5;color:#065F46">🥞 Pancake Rocks</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day13-1009.html" class="day-card">
+      <div class="day-card-accent" style="background:#0369a1"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 13</span><span class="day-date-badge">10/9（五）</span></div>
+        <div class="day-card-title">Punakaiki → Arthur's Pass → 基督城</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#EFF6FF;color:#1D4ED8">Castle Hill 巨石群</span>
+          <span class="tag" style="background:#FEF2F2;color:#991B1B">⚠️ 隔天 05:30 出門</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+    <a href="day14-1010.html" class="day-card">
+      <div class="day-card-accent" style="background:#1e6091"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 14</span><span class="day-date-badge">10/10（六）</span></div>
+        <div class="day-card-title">✈️ 出境 · 回台灣</div>
+        <div class="day-card-tags">
+          <span class="tag" style="background:#FEF2F2;color:#991B1B">⚠️ 05:30 機場</span>
+          <span class="tag" style="background:#EFF6FF;color:#1D4ED8">NZ586 07:20 起飛</span>
+          <span class="tag" style="background:#F0FDF4;color:#166534">桃園 T2 17:05 落地</span>
+        </div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+
+  </div>
+
+  <div class="sec-label">班機資訊</div>
+  <div class="bento">
+    <div class="bento-card">
+      <div class="bento-label">去程 1</div>
+      <div class="bento-value">NZ78 · 9/26 18:35</div>
+      <div class="bento-sub">桃園 T2 → 奧克蘭 10:15(+1)</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-label">去程 2（轉機）</div>
+      <div class="bento-value">NZ547 · 9/27 14:00</div>
+      <div class="bento-sub">奧克蘭 → 基督城 15:25</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-label">回程 1</div>
+      <div class="bento-value">NZ586 · 10/10 07:20</div>
+      <div class="bento-sub">基督城 → 奧克蘭 08:45</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-label">回程 2（轉機）</div>
+      <div class="bento-value">NZ77 · 10:40</div>
+      <div class="bento-sub">奧克蘭 → 桃園 T2 17:05</div>
+    </div>
+  </div>
+  <div class="bento">
+    <div class="bento-card" style="grid-column:span 2">
+      <div class="bento-label">唯一已確認住宿</div>
+      <div class="bento-value">The Hermitage Hotel · Mt. Cook</div>
+      <div class="bento-sub">9/29（1 晚）✅ 已確認 · 其餘住宿全部待訂</div>
+    </div>
+  </div>
+
+  <div class="sec-label">⚠️ 需要提早預訂</div>
+  <div class="check-list check-urgent">
+    <input type="checkbox" id="b1"><label for="b1">🚗 租車 — Apex / Omega，14 天，SUV，確認允許 Haast Pass 西海岸路段</label>
+    <input type="checkbox" id="b2"><label for="b2">🏨 9/28 Lake Tekapo 住宿（10 月旺季超搶手！）</label>
+    <input type="checkbox" id="b3" checked><label for="b3">🏨 9/29 The Hermitage Hotel ✅（已確認）</label>
+    <input type="checkbox" id="b4"><label for="b4">🏨 9/30 Mt. Cook 住宿（Mt Cook Lodge / Aoraki Court Motel）</label>
+    <input type="checkbox" id="b5"><label for="b5">🏨 10/1–2 Wanaka 住宿（2 晚）</label>
+    <input type="checkbox" id="b6"><label for="b6">🏨 10/3–5 皇后鎮住宿（3 晚，旺季最貴！）</label>
+    <input type="checkbox" id="b7"><label for="b7">🏨 10/6 Te Anau 住宿</label>
+    <input type="checkbox" id="b8"><label for="b8">🏨 10/7 Franz Josef 冰川區住宿</label>
+    <input type="checkbox" id="b9"><label for="b9">🏨 10/8 Punakaiki / Greymouth 住宿</label>
+    <input type="checkbox" id="b10"><label for="b10">🏨 10/9 基督城機場附近住宿（⚠️ 隔天 05:30 出門！）</label>
+    <input type="checkbox" id="b11"><label for="b11">🔭 Dark Sky Project 觀星（9/28 晚，Summit Experience）</label>
+    <input type="checkbox" id="b12"><label for="b12">🪂 NZONE Skydive 跳傘（15,000ft，建議提前訂）</label>
+    <input type="checkbox" id="b13"><label for="b13">🛷 Skyline Luge 套票（Gondola + 5 Luge）</label>
+    <input type="checkbox" id="b14"><label for="b14">🏔️ Franz Josef Heli-Hike（早訂有位，可免費取消）</label>
+    <input type="checkbox" id="b15"><label for="b15">✨ Te Anau Glowworm Caves（至少提前 1–2 天預約）</label>
+  </div>
+
+  <div class="sec-label">🎒 帶好就行</div>
+  <div class="check-list">
+    <input type="checkbox" id="p1"><label for="p1">護照（有效期 6 個月以上）</label>
+    <input type="checkbox" id="p2"><label for="p2">國際駕照 IDP ＋ 台灣駕照（兩樣都要帶！）</label>
+    <input type="checkbox" id="p3"><label for="p3">信用卡 Visa / Mastercard（租車押金用）</label>
+    <input type="checkbox" id="p4"><label for="p4">紐西蘭 NZeTA 電子旅行授權（出發前線上申請）</label>
+    <input type="checkbox" id="p5"><label for="p5">旅遊不便險（含自駕保障）</label>
+    <input type="checkbox" id="p6"><label for="p6">防水外套（NZ 天氣多變，即使夏季也要帶）</label>
+    <input type="checkbox" id="p7"><label for="p7">登山鞋 / 防水健行鞋（步道路面崎嶇）</label>
+    <input type="checkbox" id="p8"><label for="p8">保暖衣物（觀星、冰川區夜間很冷）</label>
+    <input type="checkbox" id="p9"><label for="p9">防曬 SPF 50+（NZ 紫外線極強）</label>
+    <input type="checkbox" id="p10"><label for="p10">相機 ＋ 廣角鏡頭</label>
+    <input type="checkbox" id="p11"><label for="p11">行動電源（步道無法充電）</label>
+    <input type="checkbox" id="p12"><label for="p12">零食備糧（10/7 Haast Pass 長途路段無餐廳，必備！）</label>
+    <input type="checkbox" id="p13"><label for="p13">下載 NZ 離線地圖（Google Maps 離線包）</label>
+    <input type="checkbox" id="p14"><label for="p14">備份重要文件電子檔（護照、IDP、訂單）</label>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var map=L.map('overview-map',{center:[-43.8,170.0],zoom:6,scrollWheelZoom:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
+  var stops=[
+    {n:'基督城 Christchurch',lat:-43.5321,lng:172.6362,c:'#1e6091',d:'D1 / D13-14'},
+    {n:'Lake Tekapo',lat:-44.0048,lng:170.4739,c:'#7c3aed',d:'D2'},
+    {n:'Mt. Cook / The Hermitage',lat:-43.7358,lng:170.0967,c:'#2d6a4f',d:'D3–4'},
+    {n:'Wanaka',lat:-44.7007,lng:169.1444,c:'#b45309',d:'D5–6'},
+    {n:'皇后鎮 Queenstown',lat:-45.0312,lng:168.6626,c:'#ea580c',d:'D7–9'},
+    {n:'Te Anau',lat:-45.4133,lng:167.7191,c:'#78350f',d:'D10'},
+    {n:'Franz Josef Glacier',lat:-43.3900,lng:170.1856,c:'#374151',d:'D11–12'},
+    {n:'Punakaiki / Greymouth',lat:-42.4503,lng:171.2117,c:'#065f46',d:'D12'},
+  ];
+  var route=stops.map(function(s){return[s.lat,s.lng];});
+  route.push([-42.9488,171.5712],[-43.2071,171.7248],[-43.5321,172.6362]);
+  L.polyline(route,{color:'#2d6a4f',weight:2.5,opacity:.65,dashArray:'7,5'}).addTo(map);
+  stops.forEach(function(s){
+    var ic=L.divIcon({className:'',html:'<div style="width:14px;height:14px;background:'+s.c+';border:2.5px solid white;border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,.4)"></div>',iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});
+    L.marker([s.lat,s.lng],{icon:ic}).addTo(map).bindPopup('<b>'+s.n+'</b><br><span style="font-size:12px;color:#666">'+s.d+'</span>');
+  });
+  document.getElementById('overview-map').addEventListener('mouseenter',function(){map.scrollWheelZoom.enable();});
+  document.getElementById('overview-map').addEventListener('mouseleave',function(){map.scrollWheelZoom.disable();});
+})();
+
+function tick(){
+  var dep=new Date('2026-09-26T18:35:00+08:00'),now=new Date(),diff=dep-now;
+  if(diff<=0){document.getElementById('countdown').innerHTML='<div style="color:#6EE7B7;font-size:14px">已出發！旅途愉快 ✈️</div>';return;}
+  var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+}
+tick();setInterval(tick,30000);
+
+document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+  var k='nz26_idx_'+cb.id;
+  if(localStorage.getItem(k))cb.checked=true;
+  cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
+});
+</script>
+</body>
+</html>
