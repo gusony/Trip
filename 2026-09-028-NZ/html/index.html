@@ -376,22 +376,42 @@ a{text-decoration:none;color:inherit}
 (function(){
   var map=L.map('overview-map',{center:[-43.8,170.0],zoom:6,scrollWheelZoom:false});
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
-  var stops=[
-    {n:'基督城 Christchurch',lat:-43.5321,lng:172.6362,c:'#1e6091',d:'D1 / D13-14'},
-    {n:'Lake Tekapo',lat:-44.0048,lng:170.4739,c:'#7c3aed',d:'D2'},
-    {n:'Mt. Cook / The Hermitage',lat:-43.7358,lng:170.0967,c:'#2d6a4f',d:'D3–4'},
-    {n:'Wanaka',lat:-44.7007,lng:169.1444,c:'#b45309',d:'D5–6'},
-    {n:'皇后鎮 Queenstown',lat:-45.0312,lng:168.6626,c:'#ea580c',d:'D7–9'},
-    {n:'Te Anau',lat:-45.4133,lng:167.7191,c:'#78350f',d:'D10'},
-    {n:'Franz Josef Glacier',lat:-43.3900,lng:170.1856,c:'#374151',d:'D11–12'},
-    {n:'Punakaiki / Greymouth',lat:-42.4503,lng:171.2117,c:'#065f46',d:'D12'},
+  function pp(name,day,acts){return'<div style="font-family:sans-serif;min-width:160px"><b style="font-size:13px">'+name+'</b><br><span style="font-size:11px;color:#888">'+day+'</span><div style="font-size:12px;color:#334155;margin-top:5px;line-height:1.6">'+acts.map(function(a){return'・'+a;}).join('<br>')+'</div></div>';}
+  // overnight stops (larger, coloured)
+  var stays=[
+    {n:'基督城 Christchurch',lat:-43.5321,lng:172.6362,c:'#1e6091',d:'D1 / D13–14',a:['✈️ NZ547 抵達・取租車','🛒 Countdown 超市採買','🏙️ 市區晚餐','✈️ D14: NZ586 07:20 出境']},
+    {n:'Lake Tekapo',lat:-44.0048,lng:170.4739,c:'#7c3aed',d:'D2 · 9/28',a:['⛪ Church of the Good Shepherd','♨️ Tekapo Springs 溫泉','🚶 Mt. John 環山步道','🔭 Dark Sky Project 觀星']},
+    {n:'Mt. Cook / Aoraki',lat:-43.7358,lng:170.0967,c:'#2d6a4f',d:'D3–4 · 9/29–30',a:['🥾 Hooker Valley Track 10.6km','🥾 Mueller Lake Lookout（爬升700m）','🏔️ Tasman Glacier View Track','🌟 Gold 級暗空觀星','✅ The Hermitage 1晚（已訂）']},
+    {n:'Wanaka',lat:-44.7007,lng:169.1444,c:'#b45309',d:'D5–6 · 10/1–2',a:['🌳 That Wanaka Tree 拍照','🥾 Rob Roy Glacier Track 16km','☕ 湖邊市區漫步']},
+    {n:'皇后鎮 Queenstown',lat:-45.0312,lng:168.6626,c:'#ea580c',d:'D7–9 · 10/3–5',a:['🍔 Fergburger 排隊必吃','🪂 NZONE Skydive 15,000ft 跳傘','🛷 Skyline Gondola & Luge','🌅 Queenstown Gardens 散步']},
+    {n:'Te Anau',lat:-45.4133,lng:167.7191,c:'#78350f',d:'D10 · 10/6',a:['🦅 湖畔散步 & 野生動物中心（奇異鳥！）','✨ Glowworm Caves 螢火蟲洞（需預訂）']},
+    {n:'Franz Josef Glacier',lat:-43.3900,lng:170.1856,c:'#374151',d:'D11–12 · 10/7–8',a:['🚁 Heli-Hike 直升機冰川健行（需預訂）','🥾 Franz Josef Glacier 步道']},
+    {n:'Punakaiki',lat:-42.1167,lng:171.3333,c:'#065f46',d:'D12 · 10/8',a:['🥞 Pancake Rocks & Blowholes','🌊 漲潮噴水孔奇景']},
   ];
-  var route=stops.map(function(s){return[s.lat,s.lng];});
-  route.push([-42.9488,171.5712],[-43.2071,171.7248],[-43.5321,172.6362]);
-  L.polyline(route,{color:'#2d6a4f',weight:2.5,opacity:.65,dashArray:'7,5'}).addTo(map);
-  stops.forEach(function(s){
-    var ic=L.divIcon({className:'',html:'<div style="width:14px;height:14px;background:'+s.c+';border:2.5px solid white;border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,.4)"></div>',iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});
-    L.marker([s.lat,s.lng],{icon:ic}).addTo(map).bindPopup('<b>'+s.n+'</b><br><span style="font-size:12px;color:#666">'+s.d+'</span>');
+  // day-stop attractions (smaller, grey)
+  var spots=[
+    {n:'Lake Pukaki 觀景台',lat:-44.0323,lng:170.1448,d:'D3 · 9/29',a:['💙 Mt. Cook 乳藍倒影','📸 南島最佳拍照點之一']},
+    {n:'Omarama Clay Cliffs',lat:-44.4932,lng:169.9706,d:'D5 · 10/1',a:['🪨 奇異黏土尖頂地形','💰 停車費 NZD 5']},
+    {n:'Lindis Pass',lat:-44.5967,lng:169.6500,d:'D5 · 10/1',a:['🏔️ SH8 最高點','🎑 褐色絲絨山坡延伸至天邊']},
+    {n:'Rob Roy Glacier 步道口',lat:-44.5067,lng:168.6558,d:'D6 · 10/2',a:['🥾 Rob Roy Glacier Track 起點','16.4km 往返・爬升 465m']},
+    {n:'Kingston',lat:-45.3233,lng:168.7167,d:'D10 · 10/6',a:['🚂 蒸汽火車頭展示','📍 Lake Wakatipu 南端']},
+    {n:'Haast',lat:-43.8793,lng:169.0419,d:'D11 · 10/7',a:['🍽️ 午餐補給（Fantail Cafe）','⛽ 最後加油站（往 Franz Josef 前）']},
+    {n:'Fox Glacier Village',lat:-43.4580,lng:170.0117,d:'D11–12',a:['🧊 Fox Glacier Lookout Walk','短步道可見冰川入口']},
+    {n:'Hokitika',lat:-42.7126,lng:170.9644,d:'D12 · 10/8',a:['💚 Hokitika Gorge 乳綠峽谷','💎 Greenstone 玉石工坊選購']},
+    {n:'Arthur\'s Pass',lat:-42.9488,lng:171.5712,d:'D13 · 10/9',a:['🌊 Devil\'s Punchbowl 瀑布 131m','🏔️ 南阿爾卑斯山中高山村']},
+    {n:'Castle Hill 巨石群',lat:-43.2017,lng:171.7333,d:'D13 · 10/9',a:['🗿 Kura Tāwhiti 石灰岩巨石','🧗 攀爬拍照・達人格鬥王拍攝地']},
+  ];
+  // route polyline through overnight stops + return
+  var routePts=stays.map(function(s){return[s.lat,s.lng];});
+  routePts.push([-42.9488,171.5712],[-43.2017,171.7333],[-43.5321,172.6362]);
+  L.polyline(routePts,{color:'#2d6a4f',weight:2.5,opacity:.65,dashArray:'7,5'}).addTo(map);
+  stays.forEach(function(s){
+    var ic=L.divIcon({className:'',html:'<div style="width:16px;height:16px;background:'+s.c+';border:2.5px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.45)"></div>',iconSize:[16,16],iconAnchor:[8,8],popupAnchor:[0,-10]});
+    L.marker([s.lat,s.lng],{icon:ic}).addTo(map).bindPopup(pp(s.n,s.d,s.a),{maxWidth:220});
+  });
+  spots.forEach(function(s){
+    var ic=L.divIcon({className:'',html:'<div style="width:10px;height:10px;background:#64748B;border:2px solid white;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>',iconSize:[10,10],iconAnchor:[5,5],popupAnchor:[0,-8]});
+    L.marker([s.lat,s.lng],{icon:ic}).addTo(map).bindPopup(pp(s.n,s.d,s.a),{maxWidth:220});
   });
   document.getElementById('overview-map').addEventListener('mouseenter',function(){map.scrollWheelZoom.enable();});
   document.getElementById('overview-map').addEventListener('mouseleave',function(){map.scrollWheelZoom.disable();});
