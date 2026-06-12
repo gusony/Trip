@@ -13,7 +13,7 @@
 body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6;min-height:100vh}
 a{text-decoration:none;color:inherit}
 .nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
-.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
 .nav-logo{font-size:15px;font-weight:700;color:#0F172A;flex-shrink:0;margin-right:4px}
 .nav-dot{color:#CBD5E1;flex-shrink:0}
@@ -21,7 +21,7 @@ a{text-decoration:none;color:inherit}
 .nav-pill:hover{background:#F1F5F9}
 .nav-pill.active{background:#10B981;color:#fff}
 .hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 50%,#1e6091 100%);color:#fff;padding:40px 20px 36px}
-.hero-inner{max-width:520px;margin:0 auto}
+.hero-inner{max-width:960px;margin:0 auto}
 .hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6EE7B7;margin-bottom:10px}
 .hero-title{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:8px}
 .hero-sub{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:24px}
@@ -30,10 +30,19 @@ a{text-decoration:none;color:inherit}
 .countdown-num{font-size:28px;font-weight:700;color:#fff;display:block;line-height:1}
 .countdown-label{font-size:11px;color:#6EE7B7;margin-top:2px}
 .countdown-divider{color:#2d6a4f;font-size:20px}
-.content{max-width:520px;margin:0 auto;padding:20px 16px 60px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
 .sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+.map-section{background:#F0F4F8}
+.map-section-inner{max-width:960px;margin:0 auto;padding:0 20px}
 #overview-map{height:300px;border-radius:16px;overflow:hidden;border:1px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 @media(max-width:480px){#overview-map{height:220px}}
+@media(min-width:768px){
+  #overview-map{height:480px;border-radius:0;border-left:none;border-right:none;border-top:none;border-bottom:1px solid #E2E8F0;box-shadow:none}
+  .days-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bento.flight-bento{grid-template-columns:1fr 1fr 1fr 1fr}
+  .check-list label{font-size:14px;padding:12px 18px}
+  .countdown{max-width:400px}
+}
 .days-grid{display:flex;flex-direction:column;gap:10px}
 .day-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;display:flex;align-items:stretch;transition:transform 150ms,box-shadow 150ms;cursor:pointer}
 .day-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
@@ -101,10 +110,14 @@ a{text-decoration:none;color:inherit}
   </div>
 </div>
 
-<div class="content">
-
-  <div class="sec-label">路線地圖</div>
+<div class="map-section">
+  <div class="map-section-inner">
+    <div class="sec-label" style="padding-top:20px">路線地圖</div>
+  </div>
   <div id="overview-map"></div>
+</div>
+
+<div class="content">
 
   <div class="sec-label">行程總覽</div>
   <div class="days-grid">
@@ -303,7 +316,7 @@ a{text-decoration:none;color:inherit}
   </div>
 
   <div class="sec-label">班機資訊</div>
-  <div class="bento">
+  <div class="bento flight-bento">
     <div class="bento-card">
       <div class="bento-label">去程 1</div>
       <div class="bento-value">NZ78 · 9/26 18:35</div>
