@@ -65,7 +65,7 @@ a{text-decoration:none;color:inherit}
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">🥝 NZ</a>
+    <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
     <a href="index.html" class="nav-pill">總覽</a>
     <a href="day01-0927.html" class="nav-pill">9/27</a>
     <a href="day02-0928.html" class="nav-pill">9/28</a>
@@ -223,6 +223,8 @@ document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
   if(localStorage.getItem(k))cb.checked=true;
   cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
 });
+
+document.querySelector('.nav-pill.active')?.scrollIntoView({inline:'nearest',behavior:'instant'});
 </script>
 </body>
 </html>

@@ -1,0 +1,912 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - heading "🇳🇿 紐西蘭南島自駕旅遊" [level=1] [ref=e3]
+    - paragraph [ref=e4]: 2026 年 9 月 27 日 ～ 10 月 10 日 ｜ 14 天 13 夜
+    - generic [ref=e5]:
+      - generic [ref=e6]: 👥 2人
+      - generic [ref=e7]: 🚗 全程自駕
+      - generic [ref=e8]: ✈️ 基督城進出
+      - generic [ref=e9]: 🏔️ 西海岸路線
+      - generic [ref=e10]: 🪂 跳傘
+      - generic [ref=e11]: 🏔️ 冰川健行
+      - generic [ref=e12]: 🔭 觀星
+  - navigation [ref=e13]:
+    - link "📍 景點地圖" [ref=e14] [cursor=pointer]:
+      - /url: "#map-section"
+    - link "📅 行程總覽" [ref=e15] [cursor=pointer]:
+      - /url: "#overview"
+    - link "🗺️ 每日行程" [ref=e16] [cursor=pointer]:
+      - /url: "#itinerary"
+    - link "🎯 活動" [ref=e17] [cursor=pointer]:
+      - /url: "#activities"
+    - link "🏨 住宿" [ref=e18] [cursor=pointer]:
+      - /url: "#accommodation"
+    - link "🍽️ 餐飲" [ref=e19] [cursor=pointer]:
+      - /url: "#food"
+    - link "🚗 租車" [ref=e20] [cursor=pointer]:
+      - /url: "#car"
+    - link "✅ 準備清單" [ref=e21] [cursor=pointer]:
+      - /url: "#checklist"
+  - generic [ref=e22]:
+    - generic [ref=e23]:
+      - heading "📍 景點地圖總覽" [level=2] [ref=e24]
+      - paragraph [ref=e25]: 37 個景點 · 綠色虛線為版本一西海岸路線順序（約 1,800 km）· 點擊標記查看詳情 · 大圓點為過夜點
+      - generic [ref=e26]:
+        - generic:
+          - generic:
+            - img
+          - generic:
+            - button [ref=e28] [cursor=pointer]
+            - button [ref=e30] [cursor=pointer]
+            - button [ref=e32] [cursor=pointer]
+            - button [ref=e34] [cursor=pointer]
+            - button [ref=e36] [cursor=pointer]
+            - button [ref=e38] [cursor=pointer]
+            - button [ref=e40] [cursor=pointer]
+            - button [ref=e42] [cursor=pointer]
+            - button [ref=e44] [cursor=pointer]
+            - button [ref=e46] [cursor=pointer]
+            - button [ref=e48] [cursor=pointer]
+            - button [ref=e50] [cursor=pointer]
+            - button [ref=e52] [cursor=pointer]
+            - button [ref=e54] [cursor=pointer]
+            - button [ref=e56] [cursor=pointer]
+            - button [ref=e58] [cursor=pointer]
+            - button [ref=e60] [cursor=pointer]
+            - button [ref=e62] [cursor=pointer]
+            - button [ref=e64] [cursor=pointer]
+            - button [ref=e66] [cursor=pointer]
+            - button [ref=e68] [cursor=pointer]
+            - button [ref=e70] [cursor=pointer]
+            - button [ref=e72] [cursor=pointer]
+            - button [ref=e74] [cursor=pointer]
+            - button [ref=e76] [cursor=pointer]
+            - button [ref=e78] [cursor=pointer]
+            - button [ref=e80] [cursor=pointer]
+            - button [ref=e82] [cursor=pointer]
+            - button [ref=e84] [cursor=pointer]
+            - button [ref=e86] [cursor=pointer]
+            - button [ref=e88] [cursor=pointer]
+            - button [ref=e90] [cursor=pointer]
+            - button [ref=e92] [cursor=pointer]
+            - button [ref=e94] [cursor=pointer]
+            - button [ref=e96] [cursor=pointer]
+            - button [ref=e98] [cursor=pointer]
+            - button [ref=e100] [cursor=pointer]
+            - button [ref=e102] [cursor=pointer]
+        - generic:
+          - generic [ref=e104]:
+            - button "Zoom in" [ref=e105] [cursor=pointer]: +
+            - button "Zoom out" [ref=e106] [cursor=pointer]: −
+          - generic [ref=e107]:
+            - link "Leaflet" [ref=e108] [cursor=pointer]:
+              - /url: https://leafletjs.com
+              - img [ref=e109]
+              - text: Leaflet
+            - text: "| ©"
+            - link "OpenStreetMap" [ref=e113] [cursor=pointer]:
+              - /url: https://www.openstreetmap.org/copyright
+      - generic [ref=e114]:
+        - generic [ref=e115]: D1/D14 基督城
+        - generic [ref=e117]: D2 Lake Tekapo
+        - generic [ref=e119]: D3-4 Mt. Cook
+        - generic [ref=e121]: D5-6 Wanaka
+        - generic [ref=e123]: D7-9 皇后鎮
+        - generic [ref=e125]: D10 Te Anau
+        - generic [ref=e127]: D11 Haast 公路
+        - generic [ref=e129]: D12 冰川→西海岸
+        - generic [ref=e131]: D13 Arthur's Pass 返程
+    - generic [ref=e133]:
+      - heading "📅 行程總覽" [level=2] [ref=e134]
+      - generic [ref=e135]:
+        - text: ⚠️
+        - strong [ref=e136]: 10 月為紐西蘭春假旺季
+        - text: ，住宿與活動需提早預訂！Lake Tekapo、皇后鎮旺季均價 NZD $280-350+/晚。
+      - table [ref=e137]:
+        - rowgroup [ref=e138]:
+          - row "日期 星期 地點 住宿 狀態" [ref=e139]:
+            - columnheader "日期" [ref=e140]
+            - columnheader "星期" [ref=e141]
+            - columnheader "地點" [ref=e142]
+            - columnheader "住宿" [ref=e143]
+            - columnheader "狀態" [ref=e144]
+        - rowgroup [ref=e145]:
+          - row "9/27 日 ✈️ 入境基督城 → 市區 基督城 ❌ 待訂" [ref=e146]:
+            - cell "9/27" [ref=e147]
+            - cell "日" [ref=e148]
+            - cell "✈️ 入境基督城 → 市區" [ref=e149]
+            - cell "基督城" [ref=e150]
+            - cell "❌ 待訂" [ref=e151]
+          - row "9/28 一 基督城 → Lake Tekapo（220km） Tekapo ❌ 待訂" [ref=e152]:
+            - cell "9/28" [ref=e153]
+            - cell "一" [ref=e154]
+            - cell "基督城 → Lake Tekapo（220km）" [ref=e155]
+            - cell "Tekapo" [ref=e156]
+            - cell "❌ 待訂" [ref=e157]
+          - row "9/29 二 Tekapo → Mt. Cook（105km） The Hermitage ✅ ✅ 確認" [ref=e158]:
+            - cell "9/29" [ref=e159]
+            - cell "二" [ref=e160]
+            - cell "Tekapo → Mt. Cook（105km）" [ref=e161]
+            - cell "The Hermitage ✅" [ref=e162]
+            - cell "✅ 確認" [ref=e163]
+          - row "9/30 三 Mt. Cook 整天 The Hermitage ✅ ✅ 確認" [ref=e164]:
+            - cell "9/30" [ref=e165]
+            - cell "三" [ref=e166]
+            - cell "Mt. Cook 整天" [ref=e167]
+            - cell "The Hermitage ✅" [ref=e168]
+            - cell "✅ 確認" [ref=e169]
+          - row "10/1 四 Mt. Cook → Wanaka（260km） Wanaka ❌ 待訂" [ref=e170]:
+            - cell "10/1" [ref=e171]
+            - cell "四" [ref=e172]
+            - cell "Mt. Cook → Wanaka（260km）" [ref=e173]
+            - cell "Wanaka" [ref=e174]
+            - cell "❌ 待訂" [ref=e175]
+          - row "10/2 五 Wanaka 整天 Wanaka ❌ 待訂" [ref=e176]:
+            - cell "10/2" [ref=e177]
+            - cell "五" [ref=e178]
+            - cell "Wanaka 整天" [ref=e179]
+            - cell "Wanaka" [ref=e180]
+            - cell "❌ 待訂" [ref=e181]
+          - row "10/3 六 Wanaka → 皇后鎮（70km） 皇后鎮 ❌ 待訂" [ref=e182]:
+            - cell "10/3" [ref=e183]
+            - cell "六" [ref=e184]
+            - cell "Wanaka → 皇后鎮（70km）" [ref=e185]
+            - cell "皇后鎮" [ref=e186]
+            - cell "❌ 待訂" [ref=e187]
+          - row "10/4 日 皇后鎮（跳傘日） 皇后鎮 ❌ 待訂" [ref=e188]:
+            - cell "10/4" [ref=e189]
+            - cell "日" [ref=e190]
+            - cell "皇后鎮（跳傘日）" [ref=e191]
+            - cell "皇后鎮" [ref=e192]
+            - cell "❌ 待訂" [ref=e193]
+          - row "10/5 一 皇后鎮（Luge 日） 皇后鎮 ❌ 待訂" [ref=e194]:
+            - cell "10/5" [ref=e195]
+            - cell "一" [ref=e196]
+            - cell "皇后鎮（Luge 日）" [ref=e197]
+            - cell "皇后鎮" [ref=e198]
+            - cell "❌ 待訂" [ref=e199]
+          - row "10/6 二 皇后鎮 → Te Anau（175km） Te Anau ❌ 待訂" [ref=e200]:
+            - cell "10/6" [ref=e201]
+            - cell "二" [ref=e202]
+            - cell "皇后鎮 → Te Anau（175km）" [ref=e203]
+            - cell "Te Anau" [ref=e204]
+            - cell "❌ 待訂" [ref=e205]
+          - row "10/7 三 Te Anau → Franz Josef（380km） 冰川區 ❌ 待訂" [ref=e206]:
+            - cell "10/7" [ref=e207]
+            - cell "三" [ref=e208]
+            - cell "Te Anau → Franz Josef（380km）" [ref=e209]
+            - cell "冰川區" [ref=e210]
+            - cell "❌ 待訂" [ref=e211]
+          - row "10/8 四 冰川健行 → Hokitika → Punakaiki Punakaiki / Greymouth ❌ 待訂" [ref=e212]:
+            - cell "10/8" [ref=e213]
+            - cell "四" [ref=e214]
+            - cell "冰川健行 → Hokitika → Punakaiki" [ref=e215]
+            - cell "Punakaiki / Greymouth" [ref=e216]
+            - cell "❌ 待訂" [ref=e217]
+          - row "10/9 五 Punakaiki → Arthur's Pass → 基督城 基督城 ❌ 待訂" [ref=e218]:
+            - cell "10/9" [ref=e219]
+            - cell "五" [ref=e220]
+            - cell "Punakaiki → Arthur's Pass → 基督城" [ref=e221]
+            - cell "基督城" [ref=e222]
+            - cell "❌ 待訂" [ref=e223]
+          - row "10/10 六 ✈️ 出境（09:00） — —" [ref=e224]:
+            - cell "10/10" [ref=e225]
+            - cell "六" [ref=e226]
+            - cell "✈️ 出境（09:00）" [ref=e227]
+            - cell "—" [ref=e228]
+            - cell "—" [ref=e229]
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - heading "✅ 版本一：西海岸路線（推薦）" [level=3] [ref=e232]
+          - list [ref=e233]:
+            - listitem [ref=e234]: 冰川、Pancake Rocks、海岸公路
+            - listitem [ref=e235]: 總距離約 1,800 km
+            - listitem [ref=e236]: Haast Pass 部分路段崎嶇
+            - listitem [ref=e237]: 獨特自然奇觀，不可取代
+        - generic [ref=e238]:
+          - heading "版本二：但尼丁路線（備選）" [level=3] [ref=e239]
+          - list [ref=e240]:
+            - listitem [ref=e241]: 企鵝、Moeraki Boulders、歷史城市
+            - listitem [ref=e242]: 總距離約 1,600 km
+            - listitem [ref=e243]: 路況較平緩輕鬆
+            - listitem [ref=e244]: 10/7 後改走但尼丁
+    - generic [ref=e245]:
+      - heading "🗺️ 每日詳細行程" [level=2] [ref=e246]
+      - generic [ref=e247]:
+        - generic [ref=e248]:
+          - generic [ref=e249]: 9/27 日
+          - generic [ref=e250]:
+            - generic [ref=e251]: ✈️ 入境基督城 Christchurch
+            - generic [ref=e252]: 入境日，取租車，安頓
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]: 🛬
+            - generic [ref=e256]: 約 10:00 抵達 CHC，過海關、提行李
+          - generic [ref=e257]:
+            - generic [ref=e258]: 🚗
+            - generic [ref=e259]: 租車公司取車（約 1 小時流程）
+          - generic [ref=e260]:
+            - generic [ref=e261]: 🛒
+            - generic [ref=e262]: Countdown / New World 超市採購旅途補給
+          - generic [ref=e263]:
+            - generic [ref=e264]: 🏖️
+            - generic [ref=e265]: South Brighton Beach 或市區逛逛
+        - generic [ref=e266]: 🏨 住：基督城市區或機場附近
+      - generic [ref=e267]:
+        - generic [ref=e268]:
+          - generic [ref=e269]: 9/28 一
+          - generic [ref=e270]:
+            - generic [ref=e271]: 基督城 → Lake Tekapo
+            - generic [ref=e272]: 羽扇豆花季 × 觀星聖地
+        - generic [ref=e273]: 🚗 約 220 km｜3 小時
+        - generic [ref=e274]:
+          - generic [ref=e275]:
+            - generic [ref=e276]: 🥧
+            - generic [ref=e277]:
+              - strong [ref=e278]: Fairlie Bakehouse
+              - text: — 傳說中最好吃的派，必停！
+          - generic [ref=e279]:
+            - generic [ref=e280]: 🏘️
+            - generic [ref=e281]:
+              - strong [ref=e282]: Geraldine 小鎮
+              - text: — 咖啡廳、起司店（Talbot Forest Cheese）
+          - generic [ref=e283]:
+            - generic [ref=e284]: ⛪
+            - generic [ref=e285]:
+              - strong [ref=e286]: Church of the Good Shepherd
+              - text: — 必拍打卡
+          - generic [ref=e287]:
+            - generic [ref=e288]: 🌸
+            - generic [ref=e289]: 湖邊羽扇豆（Lupin）— 10 月正是盛開季節！
+          - generic [ref=e290]:
+            - generic [ref=e291]: 🔭
+            - generic [ref=e292]:
+              - strong [ref=e293]: Dark Sky Project 觀星導覽
+              - text: （晚上）— 強烈推薦預訂 Summit Experience
+        - generic [ref=e294]: 🏨 住：Lake Tekapo
+      - generic [ref=e295]:
+        - generic [ref=e296]:
+          - generic [ref=e297]: 9/29 二
+          - generic [ref=e298]:
+            - generic [ref=e299]: Lake Tekapo → Mt. Cook
+            - generic [ref=e300]: Lake Pukaki 絕景公路 × The Hermitage 入住
+        - generic [ref=e301]: 🚗 約 105 km｜1.5 小時
+        - generic [ref=e302]:
+          - generic [ref=e303]:
+            - generic [ref=e304]: 💙
+            - generic [ref=e305]:
+              - strong [ref=e306]: Lake Pukaki 觀景台
+              - text: （必停！Mt Cook 雪山倒影，最美打卡）
+          - generic [ref=e307]:
+            - generic [ref=e308]: 🥾
+            - generic [ref=e309]:
+              - strong [ref=e310]: Hooker Valley Track
+              - text: （3-4 小時，最推薦步道，終點有冰湖）
+          - generic [ref=e311]:
+            - generic [ref=e312]: 🏔️
+            - generic [ref=e313]: Kea Point Track（短版替代，約 2 小時）
+          - generic [ref=e314]:
+            - generic [ref=e315]: 🌆
+            - generic [ref=e316]: 傍晚入住 The Hermitage，享用景觀餐廳
+        - generic [ref=e317]: 🏨 住：The Hermitage Hotel ✅ 已確認
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - generic [ref=e320]: 9/30 三
+          - generic [ref=e321]:
+            - generic [ref=e322]: Mt. Cook 整天
+            - generic [ref=e323]: 步道健行 × 自然觀星
+        - generic [ref=e324]:
+          - generic [ref=e325]:
+            - generic [ref=e326]: 🥾
+            - generic [ref=e327]: Mueller Hike 或 Blue Lakes 步道（若昨天走了 Hooker Valley）
+          - generic [ref=e328]:
+            - generic [ref=e329]: ☕
+            - generic [ref=e330]: The Hermitage Panorama Room — 邊喝咖啡邊看 Mt Cook
+          - generic [ref=e331]:
+            - generic [ref=e332]: 🌟
+            - generic [ref=e333]: 夜晚戶外觀星（Mt Cook 也是絕佳觀星點，免費！）
+        - generic [ref=e334]: 🏨 住：The Hermitage Hotel ✅ 已確認
+      - generic [ref=e335]:
+        - generic [ref=e336]:
+          - generic [ref=e337]: 10/1 四
+          - generic [ref=e338]:
+            - generic [ref=e339]: Mt. Cook → Wanaka
+            - generic [ref=e340]: 土柱奇景 × 湖畔小城
+        - generic [ref=e341]: 🚗 約 260 km｜3.5-4 小時
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - generic [ref=e344]: 🗿
+            - generic [ref=e345]:
+              - strong [ref=e346]: Omarama Clay Cliffs
+              - text: （值得繞路！奇特土柱地形）
+          - generic [ref=e347]:
+            - generic [ref=e348]: 🏔️
+            - generic [ref=e349]: Lindis Pass 山嶺風景
+          - generic [ref=e350]:
+            - generic [ref=e351]: 🌳
+            - generic [ref=e352]: Wanaka Tree（湖中獨樹，最著名打卡點）
+          - generic [ref=e353]:
+            - generic [ref=e354]: 🎬
+            - generic [ref=e355]: Puzzling World（視覺錯覺博物館）
+        - generic [ref=e356]: 🏨 住：Wanaka
+      - generic [ref=e357]:
+        - generic [ref=e358]:
+          - generic [ref=e359]: 10/2 五
+          - generic [ref=e360]:
+            - generic [ref=e361]: Wanaka 整天
+            - generic [ref=e362]: 冰川步道 × 湖邊放鬆
+        - generic [ref=e363]:
+          - generic [ref=e364]:
+            - generic [ref=e365]: 🥾
+            - generic [ref=e366]:
+              - strong [ref=e367]: Rob Roy Glacier Track
+              - text: （往返約 4h，評價極高，強烈推薦）
+          - generic [ref=e368]:
+            - generic [ref=e369]: 🚣
+            - generic [ref=e370]: 獨木舟 / 湖邊活動
+          - generic [ref=e371]:
+            - generic [ref=e372]: 🍻
+            - generic [ref=e373]: 下午湖邊咖啡廳放空（Kika / Ritual Café）
+        - generic [ref=e374]: 🏨 住：Wanaka
+      - generic [ref=e375]:
+        - generic [ref=e376]:
+          - generic [ref=e377]: 10/3 六
+          - generic [ref=e378]:
+            - generic [ref=e379]: Wanaka → 皇后鎮 Queenstown
+            - generic [ref=e380]: NZ 最高公路 × 冒險之都
+        - generic [ref=e381]: 🚗 約 70 km｜1 小時（Crown Range 公路）
+        - generic [ref=e382]:
+          - generic [ref=e383]:
+            - generic [ref=e384]: 🔥
+            - generic [ref=e385]:
+              - strong [ref=e386]: Crown Range 公路
+              - text: （NZ 最高公路，景觀壯闊必走）
+          - generic [ref=e387]:
+            - generic [ref=e388]: 🏙️
+            - generic [ref=e389]: 皇后鎮市中心逛逛、Steamer Wharf 碼頭
+          - generic [ref=e390]:
+            - generic [ref=e391]: 🍔
+            - generic [ref=e392]: Fergburger（皇后鎮必吃漢堡神話！）
+        - generic [ref=e393]: 🏨 住：皇后鎮（3 晚）
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - generic [ref=e396]: 10/4 日
+          - generic [ref=e397]:
+            - generic [ref=e398]: 皇后鎮 — 活動日 1
+            - generic [ref=e399]: 🪂 跳傘日
+        - generic [ref=e400]:
+          - generic [ref=e401]:
+            - generic [ref=e402]: 🪂
+            - generic [ref=e403]:
+              - strong [ref=e404]: NZONE Skydive
+              - text: （推薦 15,000ft，60 秒自由落體）視天氣排定
+          - generic [ref=e405]:
+            - generic [ref=e406]: 🍔
+            - generic [ref=e407]: Fergburger 午餐（沒去的話這天去）
+          - generic [ref=e408]:
+            - generic [ref=e409]: 🌊
+            - generic [ref=e410]: 下午湖邊或酒吧放鬆
+        - generic [ref=e411]: 🏨 住：皇后鎮
+      - generic [ref=e412]:
+        - generic [ref=e413]:
+          - generic [ref=e414]: 10/5 一
+          - generic [ref=e415]:
+            - generic [ref=e416]: 皇后鎮 — 活動日 2
+            - generic [ref=e417]: 🛷 Luge 溜溜車 × 山頂日落
+        - generic [ref=e418]:
+          - generic [ref=e419]:
+            - generic [ref=e420]: 🚡
+            - generic [ref=e421]:
+              - strong [ref=e422]: Skyline Gondola
+              - text: — 纜車上山
+          - generic [ref=e423]:
+            - generic [ref=e424]: 🛷
+            - generic [ref=e425]:
+              - strong [ref=e426]: Skyline Luge
+              - text: （推薦 3 趟以上，不同難度賽道）
+          - generic [ref=e427]:
+            - generic [ref=e428]: 🌅
+            - generic [ref=e429]: 山頂看皇后鎮日落全景
+          - generic [ref=e430]:
+            - generic [ref=e431]: 🍽️
+            - generic [ref=e432]: 可選 Stratosfare 餐廳山頂晚餐
+        - generic [ref=e433]: 🏨 住：皇后鎮
+      - generic [ref=e434]:
+        - generic [ref=e435]:
+          - generic [ref=e436]: 10/6 二
+          - generic [ref=e437]:
+            - generic [ref=e438]: 皇后鎮 → Te Anau
+            - generic [ref=e439]: Fiordland 門戶小鎮
+        - generic [ref=e440]: 🚗 約 175 km｜2 小時
+        - generic [ref=e441]:
+          - generic [ref=e442]:
+            - generic [ref=e443]: 🏔️
+            - generic [ref=e444]: Kingston 小鎮 — 可拍 Remarkables 山脈
+          - generic [ref=e445]:
+            - generic [ref=e446]: ✨
+            - generic [ref=e447]:
+              - strong [ref=e448]: Te Anau Glowworm Caves
+              - text: （夜遊，需提前預約）
+          - generic [ref=e449]:
+            - generic [ref=e450]: 🌊
+            - generic [ref=e451]: Te Anau 湖邊散步
+        - generic [ref=e452]: 🏨 住：Te Anau
+      - generic [ref=e453]:
+        - generic [ref=e454]:
+          - generic [ref=e455]: 10/7 三
+          - generic [ref=e456]:
+            - generic [ref=e457]: Te Anau → Haast Pass → Franz Josef
+            - generic [ref=e458]: ⚠️ 長途日 5-6 小時，帶足食物！
+        - generic [ref=e459]: 🚗 約 380 km｜5-6 小時
+        - generic [ref=e460]:
+          - generic [ref=e461]:
+            - generic [ref=e462]: 🪞
+            - generic [ref=e463]:
+              - strong [ref=e464]: Lake Gunn
+              - text: — 寧靜倒影，步道 45 分鐘
+          - generic [ref=e465]:
+            - generic [ref=e466]: ⛰️
+            - generic [ref=e467]:
+              - strong [ref=e468]: Haast Pass
+              - text: — 最高點，世界遺產景區
+          - generic [ref=e469]:
+            - generic [ref=e470]: 💦
+            - generic [ref=e471]:
+              - strong [ref=e472]: Thunder Creek Falls
+              - text: — 174m 瀑布
+          - generic [ref=e473]:
+            - generic [ref=e474]: 🌊
+            - generic [ref=e475]:
+              - strong [ref=e476]: Knights Point Lookout
+              - text: — 太平洋 + 山脈壯觀全景
+          - generic [ref=e477]:
+            - generic [ref=e478]: 🏔️
+            - generic [ref=e479]: Lake Moeraki
+          - generic [ref=e480]:
+            - generic [ref=e481]: 🌌
+            - generic [ref=e482]: 夜晚戶外觀星（西海岸天然暗天，極佳！）
+        - generic [ref=e483]: 🏨 住：Franz Josef 或 Fox Glacier 小鎮
+      - generic [ref=e484]:
+        - generic [ref=e485]:
+          - generic [ref=e486]: 10/8 四
+          - generic [ref=e487]:
+            - generic [ref=e488]: 冰川健行 → Hokitika → Punakaiki
+            - generic [ref=e489]: 🏔️ Heli-Hike × 藍色峽谷 × 鬆餅岩
+        - generic [ref=e490]: 🚗 約 180 km｜3 小時（不含停點）
+        - generic [ref=e491]:
+          - generic [ref=e492]:
+            - generic [ref=e493]: 🚁
+            - generic [ref=e494]:
+              - strong [ref=e495]: Franz Josef Heli-Hike
+              - text: （早上，視天氣）— 直升機 + 冰川步行
+          - generic [ref=e496]:
+            - generic [ref=e497]: 💧
+            - generic [ref=e498]:
+              - strong [ref=e499]: Hokitika Gorge
+              - text: （必去！夢幻藍綠色水）
+          - generic [ref=e500]:
+            - generic [ref=e501]: 🏙️
+            - generic [ref=e502]: Hokitika 小鎮 — 午餐、蜂蜜/玉石（pounamu）購物
+          - generic [ref=e503]:
+            - generic [ref=e504]: 🥞
+            - generic [ref=e505]:
+              - strong [ref=e506]: Punakaiki Pancake Rocks
+              - text: （必看！漲潮時噴水柱更壯觀）
+        - generic [ref=e507]: 🏨 住：Punakaiki 或 Greymouth
+      - generic [ref=e508]:
+        - generic [ref=e509]:
+          - generic [ref=e510]: 10/9 五
+          - generic [ref=e511]:
+            - generic [ref=e512]: Punakaiki → Arthur's Pass → 基督城
+            - generic [ref=e513]: 壯觀山嶺公路，返回起點
+        - generic [ref=e514]: 🚗 約 250 km｜3.5 小時
+        - generic [ref=e515]:
+          - generic [ref=e516]:
+            - generic [ref=e517]: ☕
+            - generic [ref=e518]:
+              - strong [ref=e519]: The Wobbly Kea Café
+              - text: — Arthur's Pass 小村咖啡
+          - generic [ref=e520]:
+            - generic [ref=e521]: 🏔️
+            - generic [ref=e522]: Otira Viaduct 觀景台
+          - generic [ref=e523]:
+            - generic [ref=e524]: 🪨
+            - generic [ref=e525]:
+              - strong [ref=e526]: Castle Hill / Kura Tāwhiti
+              - text: （巨石群，必停拍照！）
+          - generic [ref=e527]:
+            - generic [ref=e528]: 🌆
+            - generic [ref=e529]: 抵達基督城，整理行李，最後一晚好好吃一頓
+        - generic [ref=e530]: 🏨 住：基督城（靠近機場）
+      - generic [ref=e531]:
+        - generic [ref=e532]:
+          - generic [ref=e533]: 10/10 六
+          - generic [ref=e534]:
+            - generic [ref=e535]: ✈️ 出境
+            - generic [ref=e536]: 約 09:00 出境，建議 07:00 前到機場
+        - generic [ref=e537]:
+          - generic [ref=e538]:
+            - generic [ref=e539]: ⏰
+            - generic [ref=e540]: 07:00 抵達機場，辦理還車手續
+          - generic [ref=e541]:
+            - generic [ref=e542]: 🛫
+            - generic [ref=e543]: check-in、過安檢、出境
+    - generic [ref=e544]:
+      - heading "🎯 活動規劃" [level=2] [ref=e545]
+      - generic [ref=e546]:
+        - heading "🪂 跳傘 — NZONE Skydive（皇后鎮 10/4）" [level=3] [ref=e547]
+        - table [ref=e548]:
+          - rowgroup [ref=e549]:
+            - row "高度 自由落體 價格（NZD） 推薦" [ref=e550]:
+              - columnheader "高度" [ref=e551]
+              - columnheader "自由落體" [ref=e552]
+              - columnheader "價格（NZD）" [ref=e553]
+              - columnheader "推薦" [ref=e554]
+          - rowgroup [ref=e555]:
+            - row "9,000 ft 25 秒 ~$245/人 —" [ref=e556]:
+              - cell "9,000 ft" [ref=e557]
+              - cell "25 秒" [ref=e558]
+              - cell "~$245/人" [ref=e559]
+              - cell "—" [ref=e560]
+            - row "12,000 ft 45 秒 ~$295/人 —" [ref=e561]:
+              - cell "12,000 ft" [ref=e562]
+              - cell "45 秒" [ref=e563]
+              - cell "~$295/人" [ref=e564]
+              - cell "—" [ref=e565]
+            - row "15,000 ft 60 秒 ~$345/人 ⭐ 最推薦" [ref=e566]:
+              - cell "15,000 ft" [ref=e567]:
+                - strong [ref=e568]: 15,000 ft
+              - cell "60 秒" [ref=e569]:
+                - strong [ref=e570]: 60 秒
+              - cell "~$345/人" [ref=e571]:
+                - strong [ref=e572]: ~$345/人
+              - cell "⭐ 最推薦" [ref=e573]
+        - paragraph [ref=e574]:
+          - text: 可免費改期（天氣取消）｜與 AJ Hackett 蹦極有組合套票
+          - text: 🔗
+          - link "官網訂票：nzoneskydive.co.nz" [ref=e575] [cursor=pointer]:
+            - /url: https://www.nzoneskydive.co.nz/prices-deals/
+      - generic [ref=e576]:
+        - heading "🛷 溜溜車 — Skyline Luge（皇后鎮 10/5）" [level=3] [ref=e577]
+        - table [ref=e578]:
+          - rowgroup [ref=e579]:
+            - row "套票 內容 價格（NZD）" [ref=e580]:
+              - columnheader "套票" [ref=e581]
+              - columnheader "內容" [ref=e582]
+              - columnheader "價格（NZD）" [ref=e583]
+          - rowgroup [ref=e584]:
+            - row "Gondola + 3 Luge 纜車上山 + 3 趟溜溜車 ~$89/人" [ref=e585]:
+              - cell "Gondola + 3 Luge" [ref=e586]
+              - cell "纜車上山 + 3 趟溜溜車" [ref=e587]
+              - cell "~$89/人" [ref=e588]
+            - row "Gondola + 5 Luge 纜車 + 5 趟（更划算） ~$109/人" [ref=e589]:
+              - cell "Gondola + 5 Luge" [ref=e590]
+              - cell "纜車 + 5 趟（更划算）" [ref=e591]
+              - cell "~$109/人" [ref=e592]
+        - paragraph [ref=e593]:
+          - text: 山頂景觀絕佳，日落時段最美｜可加購 Stratosfare 晚餐
+          - text: 🔗
+          - link "官網訂票：queenstown.skyline.co.nz" [ref=e594] [cursor=pointer]:
+            - /url: https://queenstown.skyline.co.nz/book-now/
+      - generic [ref=e595]:
+        - heading "🏔️ 冰川健行 — Franz Josef（10/8 早上）" [level=3] [ref=e596]
+        - table [ref=e597]:
+          - rowgroup [ref=e598]:
+            - row "方案 內容 價格 彈性" [ref=e599]:
+              - columnheader "方案" [ref=e600]
+              - columnheader "內容" [ref=e601]
+              - columnheader "價格" [ref=e602]
+              - columnheader "彈性" [ref=e603]
+          - rowgroup [ref=e604]:
+            - row "Heli-Hike ⭐ 直升機飛上冰川，在冰川步行 2-3h，裝備提供 NZD ~$520-650/人 天氣取消可退款" [ref=e605]:
+              - cell "Heli-Hike ⭐" [ref=e606]:
+                - strong [ref=e607]: Heli-Hike ⭐
+              - cell "直升機飛上冰川，在冰川步行 2-3h，裝備提供" [ref=e608]
+              - cell "NZD ~$520-650/人" [ref=e609]
+              - cell "天氣取消可退款" [ref=e610]
+            - row "Valley Walk（免費） 步行至冰川觀景點，無法踏上冰川 免費 隨時" [ref=e611]:
+              - cell "Valley Walk（免費）" [ref=e612]
+              - cell "步行至冰川觀景點，無法踏上冰川" [ref=e613]
+              - cell "免費" [ref=e614]
+              - cell "隨時" [ref=e615]
+        - paragraph [ref=e616]:
+          - text: ⚠️ 極度天氣依賴，建議選可免費取消方案
+          - text: Fox Glacier 若 Franz Josef 全滿可替代（距離 30 分鐘）
+          - text: 🔗
+          - link "Franz Josef Glacier Guides" [ref=e617] [cursor=pointer]:
+            - /url: https://www.franz-josef-glacier.com/
+          - text: ｜ 🔗
+          - link "Fox Glacier Guides" [ref=e618] [cursor=pointer]:
+            - /url: https://www.foxguides.co.nz/
+      - generic [ref=e619]:
+        - heading "🔭 觀星導覽 — Dark Sky Project（Lake Tekapo 9/28 晚）" [level=3] [ref=e620]
+        - table [ref=e621]:
+          - rowgroup [ref=e622]:
+            - row "方案 地點 時長 推薦" [ref=e623]:
+              - columnheader "方案" [ref=e624]
+              - columnheader "地點" [ref=e625]
+              - columnheader "時長" [ref=e626]
+              - columnheader "推薦" [ref=e627]
+          - rowgroup [ref=e628]:
+            - row "Summit Experience ⭐ Mt John Observatory 山頂（1,029m） 1h 45min 最推薦" [ref=e629]:
+              - cell "Summit Experience ⭐" [ref=e630]:
+                - strong [ref=e631]: Summit Experience ⭐
+              - cell "Mt John Observatory 山頂（1,029m）" [ref=e632]
+              - cell "1h 45min" [ref=e633]
+              - cell "最推薦" [ref=e634]
+            - row "Crater Experience Cowan's Private Observatory 75 min 入門款" [ref=e635]:
+              - cell "Crater Experience" [ref=e636]
+              - cell "Cowan's Private Observatory" [ref=e637]
+              - cell "75 min" [ref=e638]
+              - cell "入門款" [ref=e639]
+        - paragraph [ref=e640]:
+          - text: 世界認證暗天區｜使用 9¼–16 吋專業望遠鏡
+          - text: 🔗
+          - link "訂票：darkskyproject.co.nz" [ref=e641] [cursor=pointer]:
+            - /url: https://www.darkskyproject.co.nz/
+    - generic [ref=e642]:
+      - heading "🏨 住宿建議" [level=2] [ref=e643]
+      - generic [ref=e644]:
+        - text: ⚠️ 10 月是紐西蘭春假旺季，尤其 Lake Tekapo / 皇后鎮，
+        - strong [ref=e645]: 建議即刻開始訂房！
+      - table [ref=e646]:
+        - rowgroup [ref=e647]:
+          - row "日期 地點 含廚房選項 不含廚房選項 預估價格" [ref=e648]:
+            - columnheader "日期" [ref=e649]
+            - columnheader "地點" [ref=e650]
+            - columnheader "含廚房選項" [ref=e651]
+            - columnheader "不含廚房選項" [ref=e652]
+            - columnheader "預估價格" [ref=e653]
+        - rowgroup [ref=e654]:
+          - row "9/27 基督城 市區 Airbnb 公寓 Novotel Christchurch Airport（機場步行） NZD $150-250" [ref=e655]:
+            - cell "9/27" [ref=e656]
+            - cell "基督城" [ref=e657]
+            - cell "市區 Airbnb 公寓" [ref=e658]
+            - cell "Novotel Christchurch Airport（機場步行）" [ref=e659]
+            - cell "NZD $150-250" [ref=e660]
+          - row "9/28 Lake Tekapo Mantra Lake Tekapo（湖景，有廚房） Peppers Bluewater Resort NZD $280-380" [ref=e661]:
+            - cell "9/28" [ref=e662]
+            - cell "Lake Tekapo" [ref=e663]
+            - cell "Mantra Lake Tekapo（湖景，有廚房）" [ref=e664]
+            - cell "Peppers Bluewater Resort" [ref=e665]
+            - cell "NZD $280-380" [ref=e666]
+          - row "9/29-30 Mt. Cook ✅ The Hermitage Hotel（已確認） —" [ref=e667]:
+            - cell "9/29-30" [ref=e668]
+            - cell "Mt. Cook" [ref=e669]
+            - cell "✅ The Hermitage Hotel（已確認）" [ref=e670]:
+              - text: ✅
+              - strong [ref=e671]: The Hermitage Hotel
+              - text: （已確認）
+            - cell "—" [ref=e672]
+          - row "10/1-2 Wanaka Airbnb 湖景公寓（多選擇） The Rees Hotel Luxury Apartments NZD $150-250" [ref=e673]:
+            - cell "10/1-2" [ref=e674]
+            - cell "Wanaka" [ref=e675]
+            - cell "Airbnb 湖景公寓（多選擇）" [ref=e676]
+            - cell "The Rees Hotel Luxury Apartments" [ref=e677]
+            - cell "NZD $150-250" [ref=e678]
+          - row "10/3-5 皇后鎮 市區 Airbnb 公寓 / Holiday Park 小木屋 Mercure / Novotel Lakeside NZD $200-400" [ref=e679]:
+            - cell "10/3-5" [ref=e680]
+            - cell "皇后鎮" [ref=e681]
+            - cell "市區 Airbnb 公寓 / Holiday Park 小木屋" [ref=e682]
+            - cell "Mercure / Novotel Lakeside" [ref=e683]
+            - cell "NZD $200-400" [ref=e684]
+          - row "10/6 Te Anau Alpine View Motel（廚房，Netflix，~$82 起） Distinction Te Anau Hotel & Villas NZD $100-200" [ref=e685]:
+            - cell "10/6" [ref=e686]
+            - cell "Te Anau" [ref=e687]
+            - cell "Alpine View Motel（廚房，Netflix，~$82 起）" [ref=e688]
+            - cell "Distinction Te Anau Hotel & Villas" [ref=e689]
+            - cell "NZD $100-200" [ref=e690]
+          - row "10/7 Franz Josef Rainforest Retreat Franz Josef Scenic Hotel Franz Josef Glacier NZD $150-250" [ref=e691]:
+            - cell "10/7" [ref=e692]
+            - cell "Franz Josef" [ref=e693]
+            - cell "Rainforest Retreat Franz Josef" [ref=e694]
+            - cell "Scenic Hotel Franz Josef Glacier" [ref=e695]
+            - cell "NZD $150-250" [ref=e696]
+          - row "10/8 Punakaiki / Greymouth Greymouth 市區 Motel（選擇多） Punakaiki Rocks Hotel & Villas（Pancake Rocks 旁） NZD $120-220" [ref=e697]:
+            - cell "10/8" [ref=e698]
+            - cell "Punakaiki / Greymouth" [ref=e699]
+            - cell "Greymouth 市區 Motel（選擇多）" [ref=e700]
+            - cell "Punakaiki Rocks Hotel & Villas（Pancake Rocks 旁）" [ref=e701]
+            - cell "NZD $120-220" [ref=e702]
+          - row "10/9 基督城 市區 Airbnb Novotel Christchurch Airport（出境最方便） NZD $150-250" [ref=e703]:
+            - cell "10/9" [ref=e704]
+            - cell "基督城" [ref=e705]
+            - cell "市區 Airbnb" [ref=e706]
+            - cell "Novotel Christchurch Airport（出境最方便）" [ref=e707]
+            - cell "NZD $150-250" [ref=e708]
+      - generic [ref=e709]:
+        - text: 💡
+        - strong [ref=e710]: 訂房平台推薦：
+        - link "Booking.com" [ref=e711] [cursor=pointer]:
+          - /url: https://www.booking.com
+        - text: （彈性取消最多）、
+        - link "Airbnb" [ref=e712] [cursor=pointer]:
+          - /url: https://www.airbnb.com
+        - text: （自炊公寓首選）、 直訂官網（大飯店有時更便宜）
+    - generic [ref=e713]:
+      - heading "🍽️ 餐飲推薦" [level=2] [ref=e714]
+      - generic [ref=e715]:
+        - text: 🛒
+        - strong [ref=e716]: 超市策略：
+        - text: Countdown / New World（品質好）、Pak'nSave（最便宜）。基督城、皇后鎮、Wanaka 都有超市，小鎮選擇有限。
+      - generic [ref=e717]:
+        - heading "🏆 必吃清單" [level=3] [ref=e718]
+        - generic [ref=e719]:
+          - generic [ref=e720]: 皇后鎮
+          - generic [ref=e721]:
+            - strong [ref=e722]: Fergburger
+            - text: — 紐西蘭最著名漢堡，24H 開放，一定要排隊
+        - generic [ref=e723]:
+          - generic [ref=e724]: Wanaka
+          - generic [ref=e725]:
+            - strong [ref=e726]: Francesca's Italian Kitchen
+            - text: — 評價極高，紐西蘭 Top 餐廳
+        - generic [ref=e727]:
+          - generic [ref=e728]: Tekapo
+          - generic [ref=e729]:
+            - strong [ref=e730]: Kohan Japanese Restaurant
+            - text: — 湖景日式，早午晚都供應
+        - generic [ref=e731]:
+          - generic [ref=e732]: 基督城
+          - generic [ref=e733]:
+            - strong [ref=e734]: Gatherings
+            - text: — 現代紐式料理，評價極高
+        - generic [ref=e735]:
+          - generic [ref=e736]: Fairlie
+          - generic [ref=e737]:
+            - strong [ref=e738]: Fairlie Bakehouse
+            - text: — 傳說中 NZ 最好吃的派，路過必停
+        - generic [ref=e739]:
+          - generic [ref=e740]: Franz Josef
+          - generic [ref=e741]:
+            - strong [ref=e742]: Alice May Restaurant
+            - text: — 鎮上評價第一
+        - generic [ref=e743]:
+          - generic [ref=e744]: Te Anau
+          - generic [ref=e745]:
+            - strong [ref=e746]: The Moose
+            - text: — Te Anau 最推薦
+        - generic [ref=e747]:
+          - generic [ref=e748]: 路上
+          - generic [ref=e749]:
+            - strong [ref=e750]: Arthur's Pass — The Wobbly Kea Café
+            - text: — 小村必停咖啡
+      - generic [ref=e751]:
+        - heading "⚠️ 需要帶食物的路段" [level=3] [ref=e752]
+        - generic [ref=e753]:
+          - generic [ref=e754]: 🚨
+          - generic [ref=e755]:
+            - strong [ref=e756]: 10/7 Te Anau → Franz Josef（Haast Pass）
+            - text: ：約 380km，中途幾乎沒有餐廳，務必帶足一日食物
+        - generic [ref=e757]:
+          - generic [ref=e758]: ⚠️
+          - generic [ref=e759]:
+            - strong [ref=e760]: Mt Cook 村子
+            - text: ：選擇極少，建議帶零食備用
+    - generic [ref=e761]:
+      - heading "🚗 租車資訊" [level=2] [ref=e762]
+      - generic [ref=e763]:
+        - text: ⚠️ 訂車前確認：公司允許走
+        - strong [ref=e764]: Haast Pass / 西海岸路段
+        - text: （部分公司限制）
+      - generic [ref=e765]:
+        - heading "⭐ 首選：Apex Car Rentals 最推薦" [level=3] [ref=e766]
+        - paragraph [ref=e767]: TripAdvisor 及論壇一致推薦，性價比最高的本地公司。比國際大牌便宜 30-40%，車況好、有免費機場接駁。
+        - paragraph [ref=e768]:
+          - text: 🔗
+          - link "apexrentals.co.nz" [ref=e769] [cursor=pointer]:
+            - /url: https://www.apexrentals.co.nz/
+      - generic [ref=e770]:
+        - heading "⭐ 備選：Omega Rental Cars 強推" [level=3] [ref=e771]
+        - paragraph [ref=e772]: 論壇大推，車輛較新、保險透明，與 Apex 並列 NZ 本地最推薦。
+        - paragraph [ref=e773]:
+          - text: 🔗
+          - link "omegarentalcars.com" [ref=e774] [cursor=pointer]:
+            - /url: https://www.omegarentalcars.com/
+      - generic [ref=e775]:
+        - heading "備選：Ezi Car Rental" [level=3] [ref=e776]
+        - paragraph [ref=e777]: 機場航廈內直接取車（最方便），大型車隊、新車。
+        - paragraph [ref=e778]:
+          - text: 🔗
+          - link "ezicarrental.co.nz" [ref=e779] [cursor=pointer]:
+            - /url: https://www.ezicarrental.co.nz/
+      - generic [ref=e780]:
+        - heading "🚙 推薦車型（放兩個 29 吋行李箱）" [level=3] [ref=e781]
+        - table [ref=e782]:
+          - rowgroup [ref=e783]:
+            - row "車型 說明 推薦程度" [ref=e784]:
+              - columnheader "車型" [ref=e785]
+              - columnheader "說明" [ref=e786]
+              - columnheader "推薦程度" [ref=e787]
+          - rowgroup [ref=e788]:
+            - row "Toyota RAV4 / Nissan X-Trail 中型 SUV，後車廂放 2 大箱沒問題 ✅ 推薦" [ref=e789]:
+              - cell "Toyota RAV4 / Nissan X-Trail" [ref=e790]
+              - cell "中型 SUV，後車廂放 2 大箱沒問題" [ref=e791]
+              - cell "✅ 推薦" [ref=e792]
+            - row "Toyota Highlander / Kia Sorento 大型 SUV，空間更寬裕 ✅ 預算充裕首選" [ref=e793]:
+              - cell "Toyota Highlander / Kia Sorento" [ref=e794]
+              - cell "大型 SUV，空間更寬裕" [ref=e795]
+              - cell "✅ 預算充裕首選" [ref=e796]
+            - row "轎車 / 小型車 行李放不下，不適合 ❌ 不推薦" [ref=e797]:
+              - cell "轎車 / 小型車" [ref=e798]
+              - cell "行李放不下，不適合" [ref=e799]
+              - cell "❌ 不推薦" [ref=e800]
+      - generic [ref=e801]:
+        - heading "📋 需要準備的文件" [level=3] [ref=e802]
+        - list [ref=e803]:
+          - listitem [ref=e804]:
+            - text: ☐
+            - strong [ref=e805]: 國際駕照（IDP）
+            - text: ＋本國駕照（兩者都要帶，台灣監理所辦理）
+          - listitem [ref=e806]:
+            - text: ☐
+            - strong [ref=e807]: 護照
+          - listitem [ref=e808]:
+            - text: ☐
+            - strong [ref=e809]: 信用卡
+            - text: （Visa / Mastercard，用於押金）
+          - listitem [ref=e810]: ☐ 訂房確認信（備用）
+        - generic [ref=e811]:
+          - text: 🇳🇿 紐西蘭
+          - strong [ref=e812]: 靠左行駛
+          - text: ，注意路況調整！
+      - generic [ref=e813]:
+        - heading "🛡️ 保險建議" [level=3] [ref=e814]
+        - table [ref=e815]:
+          - rowgroup [ref=e816]:
+            - row "保險類型 說明 建議" [ref=e817]:
+              - columnheader "保險類型" [ref=e818]
+              - columnheader "說明" [ref=e819]
+              - columnheader "建議" [ref=e820]
+          - rowgroup [ref=e821]:
+            - row "LDW / CDW（碰撞損傷免責） 降低車損自付額 ✅ 必買" [ref=e822]:
+              - cell "LDW / CDW（碰撞損傷免責）" [ref=e823]
+              - cell "降低車損自付額" [ref=e824]
+              - cell "✅ 必買" [ref=e825]
+            - row "Zero Excess 完全免自付額 ⭐ 強烈推薦" [ref=e826]:
+              - cell "Zero Excess" [ref=e827]:
+                - strong [ref=e828]: Zero Excess
+              - cell "完全免自付額" [ref=e829]
+              - cell "⭐ 強烈推薦" [ref=e830]
+            - row "Windscreen / Tyre（玻璃/輪胎） 西海岸碎石路多 ✅ 推薦加購" [ref=e831]:
+              - cell "Windscreen / Tyre（玻璃/輪胎）" [ref=e832]
+              - cell "西海岸碎石路多" [ref=e833]
+              - cell "✅ 推薦加購" [ref=e834]
+            - row "Roadside Assistance（道路救援） 長途自駕保障 ✅ 必買" [ref=e835]:
+              - cell "Roadside Assistance（道路救援）" [ref=e836]
+              - cell "長途自駕保障" [ref=e837]
+              - cell "✅ 必買" [ref=e838]
+        - paragraph [ref=e839]: ⚠️ 自付額（excess）有時高達 NZD $3,000-5,000，Zero Excess 升級很值得！
+    - generic [ref=e840]:
+      - heading "✅ 出發前準備清單" [level=2] [ref=e841]
+      - generic [ref=e842]:
+        - heading "📌 即刻需要處理（越早越好）" [level=3] [ref=e843]
+        - list [ref=e844]:
+          - listitem [ref=e845]: ☐ 訂租車（Apex / Omega，14 天，SUV，確認允許西海岸）
+          - listitem [ref=e846]: ☐ 訂 9/28 Lake Tekapo 住宿（旺季搶手！）
+          - listitem [ref=e847]: ☐ 訂 10/3-5 皇后鎮住宿（3 晚，旺季貴）
+          - listitem [ref=e848]: ☐ 訂 Dark Sky Project 觀星（9/28 晚，Summit Experience）
+          - listitem [ref=e849]: ☐ 訂 NZONE Skydive（15,000ft，皇后鎮）
+          - listitem [ref=e850]: ☐ 訂其餘每晚住宿
+      - generic [ref=e851]:
+        - heading "📅 出發前 1-2 個月" [level=3] [ref=e852]
+        - list [ref=e853]:
+          - listitem [ref=e854]: ☐ 辦理國際駕照（IDP）— 至台灣監理所
+          - listitem [ref=e855]: ☐ 訂 Franz Josef Heli-Hike（早訂有位，可免費取消）
+          - listitem [ref=e856]: ☐ 訂 Skyline Luge 套票
+          - listitem [ref=e857]: ☐ 確認 NZ ETA（電子旅行授權）或簽證
+          - listitem [ref=e858]: ☐ 購買旅遊保險
+          - listitem [ref=e859]: ☐ 下載 NZ 離線地圖（Google Maps 或 Maps.me）
+      - generic [ref=e860]:
+        - heading "🎒 行李建議" [level=3] [ref=e861]
+        - list [ref=e862]:
+          - listitem [ref=e863]: ☐ 防水外套（紐西蘭天氣多變）
+          - listitem [ref=e864]: ☐ 登山鞋 / 防水健行鞋
+          - listitem [ref=e865]: ☐ 保暖衣物（夜晚觀星、冰川很冷）
+          - listitem [ref=e866]: ☐ 防曬 SPF 50+（NZ 紫外線強）
+          - listitem [ref=e867]: ☐ 零食備糧（長途路段必備）
+          - listitem [ref=e868]: ☐ 行動電源
+          - listitem [ref=e869]: ☐ 相機 / 廣角鏡頭
+  - generic [ref=e870]:
+    - text: 🇳🇿 紐西蘭南島自駕旅遊 2026 ｜ 由巧寶 🧧 整理 ｜ 最後更新：2026-05-20
+    - text: 資訊請以官方網站最新公告為準，旺季價格與可用性可能有所變動
