@@ -14,6 +14,8 @@ a{text-decoration:none;color:inherit}
 .nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
 .nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
+.nav{position:relative}
+.nav::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,#fff);pointer-events:none}
 .nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
 .nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
 .nav-pill:hover{background:#F1F5F9}
@@ -227,7 +229,11 @@ document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
   cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
 });
 
-document.querySelector('.nav-pill.active')?.scrollIntoView({inline:'nearest',behavior:'instant'});
+(function(){
+  var a=document.querySelector('.nav-pill.active');
+  var n=document.querySelector('.nav-inner');
+  if(a&&n){n.scrollLeft=a.offsetLeft-(n.offsetWidth/2)+(a.offsetWidth/2);}
+})();
 </script>
 </body>
 </html>
