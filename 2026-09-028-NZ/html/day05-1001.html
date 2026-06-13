@@ -12,25 +12,22 @@ body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4
 a{text-decoration:none;color:inherit}
 :root{--a:#b45309;--al:#FEF3C7;--am:#FDE68A}
 .nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
-.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav{position:relative}
-.nav-arr{position:absolute;top:0;bottom:0;width:34px;border:none;cursor:pointer;font-size:22px;font-weight:300;color:#64748B;z-index:10;display:flex;align-items:center;justify-content:center;padding:0;line-height:1}
-.nav-arr-l{left:0;background:linear-gradient(to right,#fff 55%,rgba(255,255,255,0))}
-.nav-arr-r{right:0;background:linear-gradient(to left,#fff 55%,rgba(255,255,255,0))}
-.nav-arr:hover{color:#0F172A}
 .nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
 .nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
 .nav-pill:hover{background:#F1F5F9}
 .nav-pill.active{background:var(--a);color:#fff}
 .hero{color:#fff;padding:32px 20px 28px}
-.hero-inner{max-width:520px;margin:0 auto}
+.hero-inner{max-width:960px;margin:0 auto}
 .day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
 .hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
 .hero-tags{display:flex;gap:8px;flex-wrap:wrap}
 .htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
-.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+.day-grid{display:block}
+@media(min-width:768px){.day-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start}.day-side{position:sticky;top:72px}}
 .sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
 .timeline{position:relative;padding-left:72px}
 .timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
@@ -69,7 +66,6 @@ a{text-decoration:none;color:inherit}
 <body>
 
 <nav class="nav">
-  <button class="nav-arr nav-arr-l" onclick="navScroll(-1)" aria-label="向左">‹</button>
   <div class="nav-inner">
     <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
     <a href="index.html" class="nav-pill">總覽</a>
@@ -88,7 +84,6 @@ a{text-decoration:none;color:inherit}
     <a href="day13-1009.html" class="nav-pill">10/9</a>
     <a href="day14-1010.html" class="nav-pill">10/10</a>
   </div>
-  <button class="nav-arr nav-arr-r" onclick="navScroll(1)" aria-label="向右">›</button>
 </nav>
 
 <div class="hero" style="background:linear-gradient(135deg,#5a2a00 0%,#b45309 100%)">
@@ -106,129 +101,140 @@ a{text-decoration:none;color:inherit}
 
 <div class="content">
 
-  <div class="sec-label">注意事項</div>
+  <div class="day-grid">
+    <div class="day-main">
 
-  <div class="alert alert-w">
-    <span style="font-size:20px">⛽</span>
-    <div class="alert-body">
-      <strong>加油提醒</strong>
-      <p>離開 Mt. Cook 前加滿油！Omarama 也有加油站，但 Mt. Cook 村的加油站最貴，建議在基督城方向 SH8 沿線補充。</p>
+      <div class="sec-label">今日行程</div>
+
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-time">09:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🚗 出發 Mt. Cook</h3>
+              <p>SH80 南下返回 SH8，往 Omarama 方向</p>
+              <p class="sub">⏱ 全程約 3 小時</p>
+            </div>
+          </div>
+
+          <div class="tl-item drive-row">
+            <span class="drive-badge">🚗 約 1h · 100km</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">10:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🪨 Omarama Clay Cliffs</h3>
+              <p>奇異的尖頂黏土峽谷，如月球地表！需付停車費 NZD 5</p>
+              <p class="sub">⏱ 約 1 小時</p>
+            </div>
+          </div>
+
+          <div class="tl-item drive-row">
+            <span class="drive-badge">🚗 約 15min · 12km</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">11:15</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🍽️ Omarama 小鎮午餐</h3>
+              <p>Wrinkly Rams Cafe 或加油站附近小店</p>
+              <p class="sub">⏱ 約 45 分鐘</p>
+            </div>
+          </div>
+
+          <div class="tl-item drive-row">
+            <span class="drive-badge">🚗 約 1h 10m · 105km（via Lindis Pass）</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">12:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🌄 Lindis Pass 觀景台</h3>
+              <p>SH8 最高點，褐色絲絨山坡延伸至天邊，必停拍照</p>
+              <p class="sub">⏱ 約 15 分鐘</p>
+            </div>
+          </div>
+
+          <div class="tl-item drive-row">
+            <span class="drive-badge">🚗 約 50min · 65km</span>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🏨 Wanaka 抵達 Check-in</h3>
+              <p>湖邊小城，悠閒氣質，相對皇后鎮更靜謐</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">14:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🌳 That Wanaka Tree 拍照</h3>
+              <p>Wanaka 最著名的孤柳，站在湖中，下午光線最佳</p>
+              <p class="sub">⏱ 約 20 分鐘</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">15:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🛍️ Wanaka 市區探索</h3>
+              <p>Ardmore St 餐廳、咖啡廳、紀念品</p>
+              <p class="sub">⏱ 約 1.5 小時</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">18:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🍽️ 晚餐</h3>
+              <p>推薦：Francesca's Italian Kitchen（超人氣！建議提前預訂）</p>
+            </div>
+          </div>
+
+        </div>
+
     </div>
-  </div>
+    <aside class="day-side">
 
-  <div class="sec-label">今日行程</div>
+        <div class="sec-label">注意事項</div>
 
-  <div class="timeline">
+        <div class="alert alert-w">
+          <span style="font-size:20px">⛽</span>
+          <div class="alert-body">
+            <strong>加油提醒</strong>
+            <p>離開 Mt. Cook 前加滿油！Omarama 也有加油站，但 Mt. Cook 村的加油站最貴，建議在基督城方向 SH8 沿線補充。</p>
+          </div>
+        </div>
 
-    <div class="tl-item">
-      <div class="tl-time">09:00</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>🚗 出發 Mt. Cook</h3>
-        <p>SH80 南下返回 SH8，往 Omarama 方向</p>
-        <p class="sub">⏱ 全程約 3 小時</p>
-      </div>
-    </div>
 
-    <div class="tl-item drive-row">
-      <span class="drive-badge">🚗 約 1h · 100km</span>
-    </div>
 
-    <div class="tl-item">
-      <div class="tl-time">10:00</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🪨 Omarama Clay Cliffs</h3>
-        <p>奇異的尖頂黏土峽谷，如月球地表！需付停車費 NZD 5</p>
-        <p class="sub">⏱ 約 1 小時</p>
-      </div>
-    </div>
+        <div class="sec-label">今日清單</div>
 
-    <div class="tl-item drive-row">
-      <span class="drive-badge">🚗 約 15min · 12km</span>
-    </div>
+        <div class="check-list">
+          <input type="checkbox" id="c1">
+          <label for="c1">出發前退房並加滿油</label>
+          <input type="checkbox" id="c2">
+          <label for="c2">Omarama Clay Cliffs 帶 NZD 5 停車費（現金）</label>
+          <input type="checkbox" id="c3">
+          <label for="c3">確認 Wanaka 住宿地址</label>
+          <input type="checkbox" id="c4">
+          <label for="c4">預訂明天 Rob Roy Track 停車（Raspberry Creek，免費但車位有限）</label>
+          <input type="checkbox" id="c5">
+          <label for="c5">Francesca's Italian 提前訂位</label>
+        </div>
 
-    <div class="tl-item">
-      <div class="tl-time">11:15</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🍽️ Omarama 小鎮午餐</h3>
-        <p>Wrinkly Rams Cafe 或加油站附近小店</p>
-        <p class="sub">⏱ 約 45 分鐘</p>
-      </div>
-    </div>
-
-    <div class="tl-item drive-row">
-      <span class="drive-badge">🚗 約 1h 10m · 105km（via Lindis Pass）</span>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">12:30</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🌄 Lindis Pass 觀景台</h3>
-        <p>SH8 最高點，褐色絲絨山坡延伸至天邊，必停拍照</p>
-        <p class="sub">⏱ 約 15 分鐘</p>
-      </div>
-    </div>
-
-    <div class="tl-item drive-row">
-      <span class="drive-badge">🚗 約 50min · 65km</span>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">14:00</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>🏨 Wanaka 抵達 Check-in</h3>
-        <p>湖邊小城，悠閒氣質，相對皇后鎮更靜謐</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">14:30</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🌳 That Wanaka Tree 拍照</h3>
-        <p>Wanaka 最著名的孤柳，站在湖中，下午光線最佳</p>
-        <p class="sub">⏱ 約 20 分鐘</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">15:30</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🛍️ Wanaka 市區探索</h3>
-        <p>Ardmore St 餐廳、咖啡廳、紀念品</p>
-        <p class="sub">⏱ 約 1.5 小時</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">18:00</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>🍽️ 晚餐</h3>
-        <p>推薦：Francesca's Italian Kitchen（超人氣！建議提前預訂）</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="sec-label">今日清單</div>
-
-  <div class="check-list">
-    <input type="checkbox" id="c1">
-    <label for="c1">出發前退房並加滿油</label>
-    <input type="checkbox" id="c2">
-    <label for="c2">Omarama Clay Cliffs 帶 NZD 5 停車費（現金）</label>
-    <input type="checkbox" id="c3">
-    <label for="c3">確認 Wanaka 住宿地址</label>
-    <input type="checkbox" id="c4">
-    <label for="c4">預訂明天 Rob Roy Track 停車（Raspberry Creek，免費但車位有限）</label>
-    <input type="checkbox" id="c5">
-    <label for="c5">Francesca's Italian 提前訂位</label>
+    </aside>
   </div>
 
 </div>
@@ -247,7 +253,6 @@ document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
   cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
 });
 
-function navScroll(d){var n=document.querySelector('.nav-inner');n.scrollTo({left:d>0?n.scrollWidth:0,behavior:'smooth'});}
 </script>
 </body>
 </html>

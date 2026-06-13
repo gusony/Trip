@@ -20,10 +20,6 @@ a{text-decoration:none;color:inherit}
 .nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
 .nav-pill:hover{background:#F1F5F9}
 .nav-pill.active{background:#10B981;color:#fff}
-.nav-arr{position:absolute;top:0;bottom:0;width:34px;border:none;cursor:pointer;font-size:22px;font-weight:300;color:#64748B;z-index:10;display:flex;align-items:center;justify-content:center;padding:0;line-height:1}
-.nav-arr-l{left:0;background:linear-gradient(to right,#fff 55%,rgba(255,255,255,0))}
-.nav-arr-r{right:0;background:linear-gradient(to left,#fff 55%,rgba(255,255,255,0))}
-.nav-arr:hover{color:#0F172A}
 .hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 50%,#1e6091 100%);color:#fff;padding:40px 20px 36px}
 .hero-inner{max-width:960px;margin:0 auto}
 .hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6EE7B7;margin-bottom:10px}
@@ -78,7 +74,6 @@ a{text-decoration:none;color:inherit}
 <body>
 
 <nav class="nav">
-  <button class="nav-arr nav-arr-l" onclick="navScroll(-1)" aria-label="向左">‹</button>
   <div class="nav-inner">
     <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><span class="nav-logo">🥝 NZ</span>
     <span class="nav-dot">·</span>
@@ -98,7 +93,6 @@ a{text-decoration:none;color:inherit}
     <a href="day13-1009.html" class="nav-pill">10/9</a>
     <a href="day14-1010.html" class="nav-pill">10/10</a>
   </div>
-  <button class="nav-arr nav-arr-r" onclick="navScroll(1)" aria-label="向右">›</button>
 </nav>
 
 <div class="hero">

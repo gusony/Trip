@@ -12,25 +12,22 @@ body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4
 a{text-decoration:none;color:inherit}
 :root{--a:#1e6091;--al:#EFF6FF;--am:#BFDBFE}
 .nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
-.nav-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav{position:relative}
-.nav-arr{position:absolute;top:0;bottom:0;width:34px;border:none;cursor:pointer;font-size:22px;font-weight:300;color:#64748B;z-index:10;display:flex;align-items:center;justify-content:center;padding:0;line-height:1}
-.nav-arr-l{left:0;background:linear-gradient(to right,#fff 55%,rgba(255,255,255,0))}
-.nav-arr-r{right:0;background:linear-gradient(to left,#fff 55%,rgba(255,255,255,0))}
-.nav-arr:hover{color:#0F172A}
 .nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
 .nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
 .nav-pill:hover{background:#F1F5F9}
 .nav-pill.active{background:var(--a);color:#fff}
 .hero{color:#fff;padding:32px 20px 28px}
-.hero-inner{max-width:520px;margin:0 auto}
+.hero-inner{max-width:960px;margin:0 auto}
 .day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
 .hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
 .hero-tags{display:flex;gap:8px;flex-wrap:wrap}
 .htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
-.content{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+.day-grid{display:block}
+@media(min-width:768px){.day-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start}.day-side{position:sticky;top:72px}}
 .sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
 .timeline{position:relative;padding-left:72px}
 .timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
@@ -69,7 +66,6 @@ a{text-decoration:none;color:inherit}
 <body>
 
 <nav class="nav">
-  <button class="nav-arr nav-arr-l" onclick="navScroll(-1)" aria-label="向左">‹</button>
   <div class="nav-inner">
     <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
     <a href="index.html" class="nav-pill">總覽</a>
@@ -88,7 +84,6 @@ a{text-decoration:none;color:inherit}
     <a href="day13-1009.html" class="nav-pill">10/9</a>
     <a href="day14-1010.html" class="nav-pill active">10/10</a>
   </div>
-  <button class="nav-arr nav-arr-r" onclick="navScroll(1)" aria-label="向右">›</button>
 </nav>
 
 <div class="hero" style="background:linear-gradient(135deg,#0c3251 0%,#1e6091 100%)">
@@ -106,139 +101,150 @@ a{text-decoration:none;color:inherit}
 
 <div class="content">
 
-  <div class="alert alert-w">
-    <span style="font-size:20px">⚠️</span>
-    <div class="alert-body">
-      <strong>⚠️ 今天時間非常緊</strong>
-      <p>CHC 機場建議 06:00 抵達（距起飛 80 分鐘）。NZ 航空的地勤會在起飛前 45 分鐘關閉登機門，千萬不要遲到！</p>
+  <div class="day-grid">
+    <div class="day-main">
+
+      <div class="sec-label">今日行程</div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-time">04:30</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>起床</h3>
+              <p>鬧鐘響！整理最後行李，退房手續確認</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">05:30</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>出發機場 ⚠️</h3>
+              <p>CHC 機場 Ground Level 還車，走向 International Terminal</p>
+              <p class="sub">距機場約 15-20 分鐘車程</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">06:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>抵達基督城機場 CHC</h3>
+              <p>還車 → International Terminal Check-in</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">06:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>📍 Check-in &amp; 行李托運</h3>
+              <p>NZ586 Check-in Counter，需出示護照、確認行李重量</p>
+              <p class="sub">⚠️ NZ 航班起飛前 75-90 分鐘截止 Check-in</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">06:45</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>📍 過安檢 &amp; 出境</h3>
+              <p>NZ 出境：交出入境卡，行李 X-ray 掃描</p>
+              <p class="sub">⚠️ 不能帶水果、食物、泥土出境（MAF 嚴格！）</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">07:20</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>NZ586 起飛 · 基督城 → 奧克蘭</h3>
+              <p>飛行時間約 1h 25m</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">08:45</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>奧克蘭 AKL 落地</h3>
+              <p>走往 International Departure（需過安檢再進免稅店區）</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">09:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>📍 轉機 AKL</h3>
+              <p>從 Domestic Arrivals 步行至 International Departures，約 15-20 分鐘</p>
+              <p class="sub">⏱ 約 1h 40m 等候</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">10:40</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>NZ77 起飛 · 奧克蘭 → 桃園</h3>
+              <p>飛行時間約 10h 25m（享受長途飛行！）</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-time">17:05</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>桃園 T2 落地 🎉</h3>
+              <p>NZ 旅程圓滿結束！過海關 → 取行李 → 回家</p>
+            </div>
+          </div>
+
+        </div>
+
     </div>
-  </div>
+    <aside class="day-side">
 
-  <div class="sec-label">今日行程</div>
-  <div class="timeline">
+        <div class="alert alert-w">
+          <span style="font-size:20px">⚠️</span>
+          <div class="alert-body">
+            <strong>⚠️ 今天時間非常緊</strong>
+            <p>CHC 機場建議 06:00 抵達（距起飛 80 分鐘）。NZ 航空的地勤會在起飛前 45 分鐘關閉登機門，千萬不要遲到！</p>
+          </div>
+        </div>
 
-    <div class="tl-item">
-      <div class="tl-time">04:30</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>起床</h3>
-        <p>鬧鐘響！整理最後行李，退房手續確認</p>
-      </div>
-    </div>
 
-    <div class="tl-item">
-      <div class="tl-time">05:30</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>出發機場 ⚠️</h3>
-        <p>CHC 機場 Ground Level 還車，走向 International Terminal</p>
-        <p class="sub">距機場約 15-20 分鐘車程</p>
-      </div>
-    </div>
 
-    <div class="tl-item">
-      <div class="tl-time">06:00</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>抵達基督城機場 CHC</h3>
-        <p>還車 → International Terminal Check-in</p>
-      </div>
-    </div>
+        <div class="alert alert-i">
+          <span style="font-size:20px">ℹ️</span>
+          <div class="alert-body">
+            <strong>奧克蘭轉機提醒</strong>
+            <p>AKL 轉機需重新過安檢進入國際出境區。NZ586 是國內線，落地在 Domestic Terminal，需步行至 International Terminal（約 15-20 分鐘）。</p>
+          </div>
+        </div>
 
-    <div class="tl-item">
-      <div class="tl-time">06:00</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>📍 Check-in &amp; 行李托運</h3>
-        <p>NZ586 Check-in Counter，需出示護照、確認行李重量</p>
-        <p class="sub">⚠️ NZ 航班起飛前 75-90 分鐘截止 Check-in</p>
-      </div>
-    </div>
+        <div class="sec-label">今日清單</div>
+        <div class="check-list">
+          <input type="checkbox" id="c1">
+          <label for="c1">⚠️ 04:30 起床，05:30 出發！</label>
+          <input type="checkbox" id="c2">
+          <label for="c2">還車：機場還車區加滿油</label>
+          <input type="checkbox" id="c3">
+          <label for="c3">確認所有行李（護照、手機、充電器）</label>
+          <input type="checkbox" id="c4">
+          <label for="c4">清空行李中的食物、蜂蜜、新鮮植物（海關嚴格！）</label>
+          <input type="checkbox" id="c5">
+          <label for="c5">NZ77 登機証已下載到手機</label>
+          <input type="checkbox" id="c6">
+          <label for="c6">台灣海關申報：NZD 10,000 以上現金需申報</label>
+          <input type="checkbox" id="c7">
+          <label for="c7">解除數據漫遊 / 關閉國際漫遊</label>
+          <input type="checkbox" id="c8">
+          <label for="c8">感謝紐西蘭 14 天的美好時光！</label>
+        </div>
 
-    <div class="tl-item">
-      <div class="tl-time">06:45</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>📍 過安檢 &amp; 出境</h3>
-        <p>NZ 出境：交出入境卡，行李 X-ray 掃描</p>
-        <p class="sub">⚠️ 不能帶水果、食物、泥土出境（MAF 嚴格！）</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">07:20</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>NZ586 起飛 · 基督城 → 奧克蘭</h3>
-        <p>飛行時間約 1h 25m</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">08:45</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>奧克蘭 AKL 落地</h3>
-        <p>走往 International Departure（需過安檢再進免稅店區）</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">09:00</div>
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <h3>📍 轉機 AKL</h3>
-        <p>從 Domestic Arrivals 步行至 International Departures，約 15-20 分鐘</p>
-        <p class="sub">⏱ 約 1h 40m 等候</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">10:40</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>NZ77 起飛 · 奧克蘭 → 桃園</h3>
-        <p>飛行時間約 10h 25m（享受長途飛行！）</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-time">17:05</div>
-      <div class="tl-dot key"></div>
-      <div class="tl-card">
-        <h3>桃園 T2 落地 🎉</h3>
-        <p>NZ 旅程圓滿結束！過海關 → 取行李 → 回家</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="alert alert-i">
-    <span style="font-size:20px">ℹ️</span>
-    <div class="alert-body">
-      <strong>奧克蘭轉機提醒</strong>
-      <p>AKL 轉機需重新過安檢進入國際出境區。NZ586 是國內線，落地在 Domestic Terminal，需步行至 International Terminal（約 15-20 分鐘）。</p>
-    </div>
-  </div>
-
-  <div class="sec-label">今日清單</div>
-  <div class="check-list">
-    <input type="checkbox" id="c1">
-    <label for="c1">⚠️ 04:30 起床，05:30 出發！</label>
-    <input type="checkbox" id="c2">
-    <label for="c2">還車：機場還車區加滿油</label>
-    <input type="checkbox" id="c3">
-    <label for="c3">確認所有行李（護照、手機、充電器）</label>
-    <input type="checkbox" id="c4">
-    <label for="c4">清空行李中的食物、蜂蜜、新鮮植物（海關嚴格！）</label>
-    <input type="checkbox" id="c5">
-    <label for="c5">NZ77 登機証已下載到手機</label>
-    <input type="checkbox" id="c6">
-    <label for="c6">台灣海關申報：NZD 10,000 以上現金需申報</label>
-    <input type="checkbox" id="c7">
-    <label for="c7">解除數據漫遊 / 關閉國際漫遊</label>
-    <input type="checkbox" id="c8">
-    <label for="c8">感謝紐西蘭 14 天的美好時光！</label>
+    </aside>
   </div>
 
 </div>
@@ -257,7 +263,6 @@ document.querySelectorAll('input[type=checkbox]').forEach(function(cb){
   cb.addEventListener('change',function(){if(cb.checked)localStorage.setItem(k,'1');else localStorage.removeItem(k);});
 });
 
-function navScroll(d){var n=document.querySelector('.nav-inner');n.scrollTo({left:d>0?n.scrollWidth:0,behavior:'smooth'});}
 </script>
 </body>
 </html>
