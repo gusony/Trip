@@ -359,6 +359,44 @@
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb { background: var(--color-surface2); border-radius: 3px; }
 
+  /* ===== Info / Warning Blocks ===== */
+  .info-block {
+    padding: 12px 16px;
+    background: rgba(78,205,196,0.07);
+    border-left: 3px solid var(--color-accent2);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-top: 12px;
+    line-height: 1.65;
+  }
+  .info-block strong { color: var(--color-text); }
+  .warning-block {
+    padding: 14px 16px;
+    background: rgba(239,68,68,0.10);
+    border: 1px solid rgba(239,68,68,0.35);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: #fca5a5;
+    margin-top: 12px;
+    line-height: 1.65;
+  }
+  .warning-block strong { color: #f87171; display: block; margin-bottom: 4px; font-size: 14px; }
+  .transport-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .transport-opt {
+    padding: 10px 14px;
+    background: var(--color-surface2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .transport-opt.best { border-color: rgba(78,205,196,0.45); background: rgba(78,205,196,0.06); }
+  .transport-opt .opt-label { font-weight: 700; color: var(--color-text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .badge-best { background: rgba(78,205,196,0.2); color: var(--color-accent2); font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .badge-warn { background: rgba(245,200,66,0.15); color: var(--color-gold); font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .transport-opt .opt-detail { color: var(--color-text-muted); }
+
   /* ===== Responsive ===== */
   @media (max-width: 600px) {
     .meals { grid-template-columns: 1fr; }
@@ -468,7 +506,7 @@
       <h3 style="margin-bottom:16px; font-size:15px;">📍 地理區域速覽（行程都圍繞這幾區）</h3>
       <div style="display:flex; flex-direction:column; gap:10px;">
         <div class="rainy-item">🏠 <div><strong>有明・台場</strong> — 飯店根據地，Odaiba 海景、Venus Fort、Palette Town</div></div>
-        <div class="rainy-item">🐟 <div><strong>豐洲</strong> — 豐洲市場（早市）、TeamLab Planets（步行可達市場）</div></div>
+        <div class="rainy-item">🐟 <div><strong>豐洲</strong> — TeamLab Planets（新豊洲）、豊洲千客萬來午餐（步行 10 分）</div></div>
         <div class="rainy-item">🎵 <div><strong>渋谷・代々木</strong> — NHK ホール（7/4 音樂會）、原宿・表參道</div></div>
         <div class="rainy-item">🛒 <div><strong>築地・銀座</strong> — 離境前購物、築地外場小吃</div></div>
       </div>
@@ -478,11 +516,13 @@
       <h3>💡 行前提醒</h3>
       <ul>
         <li>7 月是梅雨季末，隨時備雨傘！每天都準備室內備案</li>
-        <li>Suica 西瓜卡 or PASMO 交通卡必備，方便搭地鐵/ゆりかもめ</li>
-        <li>NHK ホール 禁止攝影錄音，提前確認演唱會規定</li>
-        <li>豐洲市場早市建議 09:00 前抵達，避免人潮最多時段</li>
-        <li>TeamLab Planets 需穿著方便捲褲管（部分展間有水）</li>
-        <li>7/6 建議 17:00 前出發前往成田（取決於搭什麼交通，N'EX 約 1h20m）</li>
+        <li><strong>Suica / PASMO 交通 IC 卡必備</strong>，りんかい線、ゆりかもめ、東京 Metro 全部通用，自動扣費不需買單程票</li>
+        <li>Scoot 去回都是 <strong>成田第 1 航廈南翼（Terminal 1, South Wing）</strong>，出發日記得確認</li>
+        <li><strong>Visit Japan Web 預先登錄</strong>入境資料，可使用自動通關 e-gate，大幅節省入境排隊時間</li>
+        <li>⚠️ <strong>豐洲市場週日通常公休（7/5 是週日！）</strong>，出發前確認當月行事曆</li>
+        <li>NHK ホール 禁止攝影錄音；包包限 A4 大小，大包需存 ¥300–500 衣物間；帶護照</li>
+        <li>TeamLab Planets：穿可捲至膝蓋以上的褲子，入口有免費置物櫃，備拖鞋或涼鞋</li>
+        <li>7/6 <strong>最晚 18:00 從銀座出發</strong>，搭 N'EX（¥3,020）從東京站 18:20 班次，19:30 抵達成田 T1</li>
       </ul>
     </div>
   </div>
@@ -510,16 +550,38 @@
             <div class="activity">
               <div class="activity-icon">✈️</div>
               <div class="activity-info">
-                <div class="activity-name">Scoot TR876 出發 / 抵達成田</div>
-                <div class="activity-desc">台北桃園 06:45 → 東京成田 約 10:30。入境、領行李、兌換少量現金（機場 ATM 也可提款）</div>
-                <span class="activity-tag">建議搭 N'EX 或 Access 特急至飯店</span>
+                <div class="activity-name">Scoot TR876 出發 / 抵達成田 第 1 航廈</div>
+                <div class="activity-desc">台北桃園 06:45 → 東京成田 約 10:30。<strong>Scoot 使用第 1 航廈南翼（Terminal 1 South Wing）</strong>，Check-in 櫃台在 4F Counter I。</div>
+                <div class="info-block">
+                  ✈️ <strong>入境流程（約 60–90 分鐘）：</strong>下機 → 防疫檢查 → 入境審查 → 行李提領 → 海關申報<br>
+                  💡 強烈建議事先在 <strong>Visit Japan Web</strong> 完成入境手續預登錄，可使用自動通關電子閘門大幅縮短隊伍時間。週末、連假入境人潮多，最多可等 90–120 分鐘。<br>
+                  💴 現金可在機場 ATM（7-Bank 手續費最低）提領，不一定要兌換窗口
+                </div>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">🚂</div>
               <div class="activity-info">
-                <div class="activity-name">成田 → 有明飯店</div>
-                <div class="activity-desc">搭 N'EX 至新木場，轉りんかい線至国際展示場駅，步行 4 分鐘。或搭巴士至台場。約 90 分鐘</div>
+                <div class="activity-name">成田第 1 航廈 → 有明飯店</div>
+                <div class="activity-desc">以下兩種方案，有行李時都適合：</div>
+                <div class="transport-opts">
+                  <div class="transport-opt best">
+                    <div class="opt-label">🚌 利木津巴士（Limousine Bus）<span class="badge-best">最推薦・0 轉乘</span></div>
+                    <div class="opt-detail">
+                      第 1 航廈 1F 巴士站搭乘「成田→有明・台場方向」直達巴士 → <strong>国際展示場駅前</strong>下車 → 步行 7 分鐘到飯店<br>
+                      費用 <strong>¥3,100</strong>｜車程 約 90–120 分鐘（視交通狀況）｜行李放車廂底部，輕鬆不費力<br>
+                      ⚠️ 尖峰時段（17:30–19:30）可能塞車，建議提早預訂座位（limousinebus.co.jp）
+                    </div>
+                  </div>
+                  <div class="transport-opt">
+                    <div class="opt-label">🚂 N'EX + りんかい線<span class="badge-warn">2 次轉乘</span></div>
+                    <div class="opt-detail">
+                      成田 T1 地下站 → <strong>N'EX</strong>（指定席，需提前買票）→ 東京站（約 55 分鐘）→ 轉 JR 京葉線 → 新木場 → 轉 <strong>りんかい線</strong> → 国際展示場駅 → 步行 5 分鐘<br>
+                      費用 <strong>¥3,533</strong>（N'EX ¥3,020 + りんかい線 ¥513）｜車程 約 95 分鐘｜班次穩定不受塞車影響
+                    </div>
+                  </div>
+                </div>
+                <div class="info-block">❌ Keisei Skyliner 不建議：到有明需要 3–5 次轉乘，比以上兩者更麻煩</div>
               </div>
             </div>
           </div>
@@ -546,23 +608,40 @@
               <div class="activity-icon">🏨</div>
               <div class="activity-info">
                 <div class="activity-name">飯店 Check-in ＆ 整理行李</div>
-                <div class="activity-desc">Sotetsu Grand Fresa Tokyo-Bay Ariake，標準入住 15:00，可先寄放行李後出發</div>
+                <div class="activity-desc">Sotetsu Grand Fresa Tokyo-Bay Ariake，最近的站：国際展示場駅（りんかい線）步行 3 分、東京ビッグサイト駅（ゆりかもめ）步行 3 分</div>
+                <div class="info-block">
+                  🕒 <strong>Check-in：15:00（官網訂房為 14:00）｜Check-out：11:00</strong><br>
+                  🧳 <strong>行李寄放：</strong>抵達後可免費寄放行李於前台（同一天取件），不限件數<br>
+                  ⏰ <strong>提早 Check-in：</strong>12:00 起可提早入住，費用 <strong>¥1,000 / 小時</strong>（依空房狀況，建議提前致電確認）<br>
+                  🍳 飯店早餐：2F 創菜Patio 自助餐，06:45–10:30（非住客 ¥2,420）<br>
+                  🏪 飯店 2F 有 Lawson 便利商店（24 小時）｜大廳有 11 種貨幣換匯機
+                </div>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">🏝</div>
               <div class="activity-info">
-                <div class="activity-name">台場海濱公園散步</div>
-                <div class="activity-desc">お台場海浜公園，可遠眺彩虹橋與東京灣，夏天傍晚涼風宜人。步行即達</div>
-                <span class="activity-tag">飯店步行 10 分</span>
+                <div class="activity-name">Check-in 前推薦：有明ガーデン（Ariake Garden）</div>
+                <div class="activity-desc">飯店步行 10–15 分鐘。大型室內購物中心（含 MUJI、AEON Style、各式餐廳），全程冷氣，7 月酷暑最適合等待 Check-in 的地方。</div>
+                <span class="activity-tag">推薦：室內冷氣・步行 12 分</span>
+                <div class="info-block">
+                  ♨️ <strong>泉天空の湯（Izumi Tenku no Yu）</strong> 就在 Ariake Garden 內：天然溫泉 + 三溫暖，飛機上悶了一早上，到了先泡湯放鬆！<br>
+                  平日 ¥2,600（06:00–01:30，無需預約）<br>
+                  🛍 購物：10:00–21:00　🍽 餐廳：11:00–23:00（全部免費入場）
+                </div>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">🤖</div>
               <div class="activity-info">
                 <div class="activity-name">DiverCity Tokyo Plaza / 鋼彈立像</div>
-                <div class="activity-desc">1:1 比例 RX-93ff Hi-ν Gundam 鋼彈立像（免費觀看），周邊有餐廳與品牌店</div>
-                <span class="activity-tag">飯店步行 15 分</span>
+                <div class="activity-desc">1:1 比例 RX-93ff Hi-ν Gundam 鋼彈立像（免費觀看），周邊有餐廳與品牌店。從飯店搭 ゆりかもめ 至台場（約 5 站 12 分鐘）或步行 15 分。</div>
+                <span class="activity-tag">台場駅 步行 2 分</span>
+                <div class="info-block">
+                  🤖 <strong>鋼彈變形展示時間：</strong>11:00 / 13:00 / 15:00 / 17:00（白天）；19:00–21:30 每 30 分鐘一次（夜間燈光秀）<br>
+                  ⚠️ 展示期限至 2026 年 8 月 31 日，你們的行程時間內還看得到！<br>
+                  商場 10:00–21:00 開放（免費入場）
+                </div>
               </div>
             </div>
             <div class="activity">
@@ -658,8 +737,14 @@
             <div class="activity">
               <div class="activity-icon">🌅</div>
               <div class="activity-info">
-                <div class="activity-name">有明 · 晨間散步</div>
+                <div class="activity-name">有明 · 晨間散步 ＆ 前往代官山</div>
                 <div class="activity-desc">飯店附近的有明公園或台場海濱，早晨空氣清新，7月朝陽配東京灣景色</div>
+                <div class="info-block">
+                  🚂 <strong>前往代官山交通（出發前確認時刻表）：</strong><br>
+                  国際展示場駅（りんかい線）→ 澀谷（約 25 分，直通埼京線）→ 轉 東急東橫線 → 代官山駅（1 站 3 分）<br>
+                  <strong>約 40–45 分鐘，費用 ¥640</strong>（IC 卡：Suica / PASMO，三段自動扣費）<br>
+                  📍 代官山站南口出來直走 200 公尺，T-Site 在右手邊（步行 5 分鐘）
+                </div>
               </div>
             </div>
             <div class="activity">
@@ -693,24 +778,32 @@
               <div class="activity-icon">🌿</div>
               <div class="activity-info">
                 <div class="activity-name">代官山 T-Site（蔦屋書店）</div>
-                <div class="activity-desc">日本最美書店之一，結合咖啡廳、雜誌、藝術，氛圍超棒。從飯店搭りんかい線至渋谷約 35 分</div>
-                <span class="activity-tag">渋谷 → 代官山 步行 15 分</span>
+                <div class="activity-desc">日本最美書店之一，結合咖啡廳、雜誌、藝術，氛圍超棒。地址：東京都澀谷区猿楽町 16-15</div>
+                <span class="activity-tag">代官山駅南口 步行 5 分</span>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">🛍</div>
               <div class="activity-info">
                 <div class="activity-name">原宿 竹下通り / 表參道</div>
-                <div class="activity-desc">竹下通逛特色小店，表參道看精品旗艦店建築（安藤忠雄設計的 Omotesando Hills）</div>
+                <div class="activity-desc">竹下通逛特色小店，表參道看精品旗艦店建築（安藤忠雄設計的 Omotesando Hills）。從代官山步行約 20–25 分鐘（1.8 km，沿表參道，推薦步行，沿途風景佳）</div>
                 <span class="activity-tag">代官山 → 原宿 步行 20 分</span>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">⛩</div>
               <div class="activity-info">
-                <div class="activity-name">明治神宮</div>
-                <div class="activity-desc">NHK ホール 步行 10 分鐘，原宿旁的神聖森林，適合音樂會前靜心散步</div>
+                <div class="activity-name">明治神宮 → 前往 NHK ホール</div>
+                <div class="activity-desc">NHK ホール 步行 10 分鐘，原宿旁的神聖森林，適合音樂會前靜心散步。從原宿駅（JR 山手線）表參道口出來，森林入口立刻就在眼前，步行約 10 分鐘可到神社本殿。</div>
                 <span class="activity-tag">NHK ホール 附近</span>
+                <div class="info-block">
+                  📍 <strong>NHK ホール 地址：</strong>東京都澀谷区神南 2-2-1（代々木公園旁）<br>
+                  🚉 <strong>交通：</strong>原宿駅西口（JR 山手線） → 步行 10 分 ／ 或 澀谷駅ハチ公口 → 步行 15 分<br>
+                  🎵 <strong>開場時間：</strong>通常為開演前 60 分鐘（18:30 演出 → 17:30 開場）<br>
+                  🛍 <strong>周邊販售：</strong>有時在開場前 2–3 小時開始販售，想買 goods 建議 17:00 前抵達<br>
+                  🎒 <strong>包包限制：</strong>A4 大小（30×21 cm）以下才可帶入場；大包需寄存衣物間（クローク，¥300–500）<br>
+                  🪪 <strong>攜帶：</strong>票券 + 護照（部分活動需驗證姓名）；禁止攝影錄影
+                </div>
               </div>
             </div>
           </div>
@@ -742,8 +835,10 @@
             <div class="hl-time">18:30</div>
             <h3>🎵 澤野弘之 LIVE [nZk]009</h3>
             <p>NHK ホール · 東京都渋谷区神南 2-2-1（代々木公園 旁）</p>
-            <p style="margin-top:8px; color:var(--color-accent-light)">建議 18:00 前抵達，排隊入場 / 購買周邊 · 演出約 2-2.5 小時，預計 21:00 結束</p>
-            <p style="margin-top:6px; font-size:12px; color:var(--color-text-muted)">交通：原宿駅 or 渋谷駅 步行 15 分 · 禁止攝影錄音</p>
+            <p style="margin-top:8px; color:var(--color-accent-light)">⏰ <strong>建議 17:30–17:45 抵達</strong>（開場前 30–45 分鐘），若想買周邊可更早 17:00 到</p>
+            <p style="margin-top:6px; font-size:12px; color:var(--color-text-muted)">交通：原宿駅西口 步行 10 分｜澀谷駅ハチ公口 步行 15 分｜禁止攝影錄音</p>
+            <p style="margin-top:8px; font-size:13px; color:var(--color-text-muted)">🎒 包包限 A4 以下（¥300–500 寄存大包）｜帶票 + 護照入場</p>
+            <p style="margin-top:6px; font-size:13px; color:var(--color-text-muted)">🏠 <strong>演後返飯店：</strong>原宿駅 → JR 山手線至澀谷（2 分）→ 埼京/りんかい線直通 → 国際展示場駅，約 50 分鐘，¥640。末班車接近午夜，完全無問題。</p>
           </div>
           <div class="meals" style="margin-top:16px;">
             <div class="meal-card meal-dinner">
@@ -778,8 +873,8 @@
     <div class="day-header">
       <div class="day-num" style="color:var(--color-day3)">03</div>
       <div class="day-info">
-        <h2>7月5日（週日）— TeamLab ＆ 豐洲市場</h2>
-        <p>早晨豐洲市場海鮮 → 10:00 TeamLab Planets → 台場午後</p>
+        <h2>7月5日（週日）— TeamLab ＆ 豊洲千客萬來</h2>
+        <p>10:00 TeamLab Planets（新豊洲）→ 豊洲千客萬來午餐 → 台場午後</p>
         <span class="day-theme" style="background:rgba(78,205,196,0.15); color:var(--color-day3)">🎨 藝術與海鮮日</span>
       </div>
     </div>
@@ -794,28 +889,26 @@
         <div class="time-block-body">
           <div class="activities">
             <div class="activity">
-              <div class="activity-icon">🐟</div>
-              <div class="activity-info">
-                <div class="activity-name">豊洲市場 早市</div>
-                <div class="activity-desc">世界最大的批發魚市場，建議 08:30-09:30 到。可在場內餐廳吃超新鮮海鮮早餐！市場本身免費參觀</div>
-                <span class="activity-tag">飯店→豊洲 搭ゆりかもめ 10 分</span>
-              </div>
-            </div>
-            <div class="activity">
               <div class="activity-icon">🎨</div>
               <div class="activity-info">
                 <div class="activity-name">TeamLab Planets TOKYO</div>
-                <div class="activity-desc">江東区豊洲 6-1-16｜10:00 已預訂兩人。沉浸式互動藝術空間，約 90 分鐘體驗。注意：部分展間有淺水，需捲褲管</div>
-                <span class="activity-tag">豊洲市場 步行 5 分鐘</span>
+                <div class="activity-desc">江東区豊洲 6-1-16｜10:00 已預訂兩人。沉浸式互動藝術空間，約 90–120 分鐘體驗。</div>
+                <span class="activity-tag">飯店 → 東京ビッグサイト駅（ゆりかもめ）→ 新豊洲駅，約 15 分，¥200</span>
+                <div class="info-block">
+                  👟 <strong>著裝準備：</strong>部分展間有水（深可至膝），需脫鞋入場。穿容易捲起的長褲或短褲，不建議穿裙子（反射地板）<br>
+                  🎒 <strong>行前準備：</strong>入口有<strong>免費置物櫃</strong>（放包包、鞋子）；手機可帶入（建議放口袋或防水袋）<br>
+                  ⏰ <strong>票券時段彈性：</strong>可在入場前 2 小時內改時間（例：10:00 場次 → 可在 8:00 前修改）<br>
+                  🚉 <strong>出口交通：</strong>新豊洲駅（ゆりかもめ，步行 1 分）→ 回台場，或前往豊洲駅（有楽町線）→ 銀座（約 5 站 ¥200）
+                </div>
               </div>
             </div>
           </div>
           <div class="meals">
             <div class="meal-card meal-breakfast">
               <div class="meal-type">🌅 早餐</div>
-              <div class="meal-name">豊洲市場 魚がし横丁</div>
-              <div class="meal-address">豊洲市場 6 街区 3F</div>
-              <div class="meal-desc">市場內食堂街，超新鮮海鮮丼、壽司早餐。推薦「大和寿司」或「魚竹」，¥1,500 左右</div>
+              <div class="meal-name">飯店自助早餐</div>
+              <div class="meal-address">Sotetsu Grand Fresa 2F 創菜Patio｜06:45–10:30</div>
+              <div class="meal-desc">和洋折衷自助餐，體力充電；10:00 前出發前往新豊洲</div>
             </div>
           </div>
         </div>
@@ -825,7 +918,7 @@
       <div class="time-block afternoon">
         <div class="time-block-header">
           <span class="time-label">下午</span>
-          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 18:00</span>
+          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 18:00（千客萬來午餐 → 台場）</span>
         </div>
         <div class="time-block-body">
           <div class="activities">
@@ -855,9 +948,9 @@
           <div class="meals">
             <div class="meal-card meal-lunch">
               <div class="meal-type">🍱 午餐</div>
-              <div class="meal-name">マクセルアクアパーク品川 周邊</div>
-              <div class="meal-address">Aqua City Odaiba 2F 餐廳街</div>
-              <div class="meal-desc">Aqua City 內有多家餐廳，推薦「鰹だしらーめん 海老勝」或台場拉麵激戰區</div>
+              <div class="meal-name">豊洲千客萬來</div>
+              <div class="meal-address">江東区豊洲 6-5-1（豊洲市場前）｜TeamLab 步行 10 分</div>
+              <div class="meal-desc">2024 年新開幕的豊洲市場周邊食市，集結新鮮海鮮丼、壽司、串燒等多家店鋪，週日正常營業。可彌補市場不開放的海鮮體驗，性價比高。</div>
             </div>
             <div class="meal-card meal-tea">
               <div class="meal-type">☕ 下午茶</div>
@@ -906,7 +999,7 @@
     <div class="rainy-section">
       <h3>☔ 雨天備案 — 7/5（此日大多室內，影響最小！）</h3>
       <div class="rainy-items">
-        <div class="rainy-item">✅ <div><strong>豊洲市場 + TeamLab Planets 全程室內</strong> — 雨天完全不影響，本日行程天然防雨</div></div>
+        <div class="rainy-item">✅ <div><strong>TeamLab Planets + 豊洲千客萬來 全程室內</strong> — 雨天完全不影響，本日行程天然防雨</div></div>
         <div class="rainy-item">🎮 <div><strong>Joypolis（SEGA 室內遊樂園）</strong> — 台場室內機台、VR，雨天娛樂首選</div></div>
         <div class="rainy-item">🎬 <div><strong>Odaiba 109 Cinemas</strong> — 看一場日本電影院體驗（有中文字幕場次）</div></div>
       </div>
@@ -919,7 +1012,7 @@
       <div class="day-num" style="color:var(--color-day4)">04</div>
       <div class="day-info">
         <h2>7月6日（週一）— 最後巡禮＆返程</h2>
-        <p>退房 → 築地外場 / 銀座 → 成田機場 21:15 起飛</p>
+        <p>退房 → 築地早市 → Lature 午餐（澀谷 11:30）→ 銀座購物 → 成田機場 21:15 起飛</p>
         <span class="day-theme" style="background:rgba(245,200,66,0.12); color:var(--color-day4)">🛫 最後衝刺</span>
       </div>
     </div>
@@ -929,32 +1022,38 @@
       <div class="time-block morning">
         <div class="time-block-header">
           <span class="time-label">早上</span>
-          <span style="color:var(--color-text-muted); font-size:13px">08:00 → 12:00</span>
+          <span style="color:var(--color-text-muted); font-size:13px">08:00 → 11:30</span>
         </div>
         <div class="time-block-body">
           <div class="activities">
             <div class="activity">
               <div class="activity-icon">🧳</div>
               <div class="activity-info">
-                <div class="activity-name">整理行李 ＆ 飯店退房</div>
-                <div class="activity-desc">退房時間 11:00 前，可將大行李寄放飯店或直接帶上電車，成田機場行李托運服務（宅急便）可提前寄送</div>
+                <div class="activity-name">飯店早餐 ＆ 退房</div>
+                <div class="activity-desc">06:45 起享用飯店自助早餐；11:00 前退房，行李寄放飯店前台（同日取件免費）</div>
               </div>
             </div>
             <div class="activity">
-              <div class="activity-icon">🐟</div>
+              <div class="activity-icon">🚇</div>
               <div class="activity-info">
-                <div class="activity-name">築地場外市場</div>
-                <div class="activity-desc">仍對外開放的外場，玉子燒、海鮮串、醃漬物，早市氣氛熱鬧。從台場搭都バス約 30 分</div>
-                <span class="activity-tag">最後採買伴手禮</span>
+                <div class="activity-name">有明 → 表參道 / 澀谷（前往 Lature）</div>
+                <div class="activity-desc">国際展示場駅（りんかい線）→ 澀谷（約 25 分，¥513）→ 步行至表參道・Omotesando Hills 一帶逛逛，11:30 前到 Lature。</div>
+                <span class="activity-tag">りんかい線直通澀谷，無換乘</span>
               </div>
             </div>
           </div>
           <div class="meals">
             <div class="meal-card meal-breakfast">
               <div class="meal-type">🌅 早餐</div>
-              <div class="meal-name">飯店早餐 or 築地玉子燒</div>
-              <div class="meal-address">築地場外市場内 各店鋪</div>
-              <div class="meal-desc">築地「山長」玉子燒專賣、「丸武」新鮮玉子燒，搭配熱咖啡，¥500 內搞定</div>
+              <div class="meal-name">飯店自助早餐</div>
+              <div class="meal-address">Sotetsu Grand Fresa 2F 創菜Patio｜06:45–10:30</div>
+              <div class="meal-desc">旅程最後一個飯店早餐，吃飽再出發</div>
+            </div>
+            <div class="meal-card meal-lunch" style="border-color: rgba(124,106,255,0.45); background: linear-gradient(135deg, rgba(124,106,255,0.08), transparent);">
+              <div class="meal-type">🍽 午餐 <span style="background:rgba(124,106,255,0.2);color:var(--color-accent);font-size:11px;padding:2px 8px;border-radius:4px;margin-left:6px;font-weight:700;">✅ 已訂位 11:30・2 位</span></div>
+              <div class="meal-name">Lature</div>
+              <div class="meal-address">東京都澀谷区澀谷 2-2-2 Luke Building B1F｜澀谷駅宮益坂口（東口）步行 5 分</div>
+              <div class="meal-desc">Michelin 1 星創意法式料理。主廚親自在山中狩獵、自家農園栽種食材，風土哲學貫穿每一道菜。旅程的完美收尾。午餐約 13:00–13:30 結束。</div>
             </div>
           </div>
         </div>
@@ -964,7 +1063,7 @@
       <div class="time-block afternoon">
         <div class="time-block-header">
           <span class="time-label">下午</span>
-          <span style="color:var(--color-text-muted); font-size:13px">12:00 → 17:00（出發機場）</span>
+          <span style="color:var(--color-text-muted); font-size:13px">13:30 → 18:00（出發機場）</span>
         </div>
         <div class="time-block-body">
           <div class="activities">
@@ -972,30 +1071,42 @@
               <div class="activity-icon">🛍</div>
               <div class="activity-info">
                 <div class="activity-name">銀座 最後購物</div>
-                <div class="activity-desc">銀座三越、松屋、UNIQLO（最大旗艦店）、無印良品旗艦店，最後掃貨藥妝、點心</div>
-                <span class="activity-tag">築地 步行 10 分</span>
+                <div class="activity-desc">Lature 用餐後搭銀座線（澀谷→銀座，15 分，¥200）至銀座。三越、松屋、UNIQLO 旗艦店、無印良品，掃最後藥妝與點心。</div>
+                <span class="activity-tag">澀谷 → 銀座 Metro 15 分</span>
               </div>
             </div>
             <div class="activity">
               <div class="activity-icon">🚂</div>
               <div class="activity-info">
-                <div class="activity-name">17:00 出發前往成田機場</div>
-                <div class="activity-desc">建議搭 N'EX 成田特快（銀座→東京站→成田），車程約 60 分。最晚 17:30 出發，TR875 21:15 需提前 2.5h 辦理登機</div>
-                <span class="activity-tag">⚠️ 勿逾時！</span>
+                <div class="activity-name">⚠️ 最晚 18:00–18:15 從銀座出發前往成田</div>
+                <div class="activity-desc">Scoot TR875 21:15 起飛，Check-in 截止約 65 分鐘前（~20:10），加上安檢移民手續需 60 分鐘，最晚 19:00–19:30 要抵達成田 <strong>第 1 航廈（Terminal 1）</strong></div>
+                <span class="activity-tag">⚠️ 勿逾時！N'EX 需預訂座位</span>
+                <div class="transport-opts">
+                  <div class="transport-opt best">
+                    <div class="opt-label">🚂 N'EX 成田特快（最推薦）<span class="badge-best">穩定不塞車</span></div>
+                    <div class="opt-detail">
+                      銀座 → 步行/地鐵 10 分 → <strong>東京駅</strong> → N'EX（指定席）→ 成田空港第 1 ターミナル，約 55–60 分鐘<br>
+                      費用 <strong>¥3,020</strong>（需事先在 JR 售票機或窗口買指定席，不能直接搭）<br>
+                      推薦班次：<strong>18:20 從東京駅出發</strong> → 約 19:30 抵達成田 T1（充裕）<br>
+                      最晚班次：18:49 從東京駅 → 19:52 到成田（時間緊但可行）
+                    </div>
+                  </div>
+                  <div class="transport-opt">
+                    <div class="opt-label">🚌 利木津巴士（備選）<span class="badge-warn">注意塞車</span></div>
+                    <div class="opt-detail">
+                      銀座/東京站附近搭乘 → 成田空港，約 65–90 分鐘，¥1,500–3,100<br>
+                      班次較少，傍晚塞車風險高，<strong>晚上 18:30 後不建議選擇此方式</strong>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="meals">
-            <div class="meal-card meal-lunch">
-              <div class="meal-type">🍱 午餐</div>
-              <div class="meal-name">銀座 久兵衛（壽司）</div>
-              <div class="meal-address">銀座 6-7-6</div>
-              <div class="meal-desc">旅程最後一頓正式午餐！銀座老牌壽司名店，午餐套餐約 ¥3,000，離程前的完美句點</div>
-            </div>
             <div class="meal-card meal-tea">
               <div class="meal-type">☕ 機場咖啡</div>
-              <div class="meal-name">成田機場 第 2 航廈 免稅區</div>
-              <div class="meal-address">成田國際空港 第 2 ターミナル</div>
+              <div class="meal-name">成田機場 第 1 航廈 免稅區</div>
+              <div class="meal-address">成田國際空港 第 1 ターミナル（Scoot 所在航廈）</div>
               <div class="meal-desc">過安檢後免稅區有星巴克、和菓子店，最後喝杯咖啡、買伴手禮（日本零食、化妝品）</div>
             </div>
           </div>
