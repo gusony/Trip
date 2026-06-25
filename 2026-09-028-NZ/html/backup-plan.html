@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天氣備案總覽 · NZ 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:15px;line-height:1.6;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:#10B981;color:#fff}
+
+.hero{color:#fff;padding:32px 20px 28px;background:linear-gradient(135deg,#064e3b 0%,#065f46 50%,#0c4a6e 100%)}
+.hero-inner{max-width:960px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+
+.content{max-width:960px;margin:0 auto;padding:20px 20px 80px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+
+/* Town card */
+.town-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;margin-bottom:20px}
+.town-header{display:flex;align-items:center;gap:12px;padding:16px 18px 14px;border-bottom:1px solid #F1F5F9}
+.town-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.town-meta{flex:1}
+.town-name{font-size:15px;font-weight:700;color:#0F172A}
+.town-days{font-size:12px;color:#94A3B8;margin-top:1px}
+.town-body{padding:14px 18px 16px}
+
+/* Sub-area */
+.sub-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#10B981;margin:16px 0 8px 2px}
+.sub-label:first-child{margin-top:0}
+
+/* Activity list */
+.act-list{display:flex;flex-direction:column;gap:8px}
+.act-item{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:12px 14px;display:flex;gap:11px;align-items:flex-start}
+.act-icon{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.icon-any{background:#DCFCE7}
+.icon-rain{background:#DBEAFE}
+.icon-indoor{background:#EDE9FE}
+.icon-light{background:#FEF9C3}
+.icon-warn{background:#FEE2E2}
+.act-body{flex:1;min-width:0}
+.act-name{font-size:13px;font-weight:600;color:#0F172A;margin-bottom:2px}
+.act-desc{font-size:12px;color:#64748B;line-height:1.5}
+
+/* Weather tags */
+.act-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500}
+.tag-any{background:#DCFCE7;color:#166534}
+.tag-rain{background:#DBEAFE;color:#1e40af}
+.tag-indoor{background:#EDE9FE;color:#5b21b6}
+.tag-light{background:#FEF9C3;color:#854d0e}
+.tag-warn{background:#FEE2E2;color:#991b1b}
+
+/* Ticket info row */
+.tkt-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;align-items:center;padding-top:7px;border-top:1px solid #E2E8F0}
+.tkt{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.tkt-free{background:#DCFCE7;color:#166534}
+.tkt-price{background:#F0F9FF;color:#0369a1}
+.tkt-site{background:#F1F5F9;color:#475569}
+.tkt-book{background:#FFF7ED;color:#c2410c}
+.tkt-link{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;text-decoration:none}
+.tkt-link:hover{background:#DCFCE7}
+
+/* Bottom nav */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:#10B981;color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+
+@media(min-width:640px){
+  .act-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .act-item.full{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="backup-plan.html" class="nav-pill active">🌧️ 備案</a>
+    <span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">天氣備案總覽</div>
+    <div class="hero-title">🌧️ 各站備案一覽</div>
+    <div class="hero-sub">天氣不好時直接查這頁 · 依沿途城鎮分類</div>
+    <div class="hero-tags">
+      <span class="htag">🟢 任何天氣</span>
+      <span class="htag">🔵 小雨可行</span>
+      <span class="htag">🟣 室內活動</span>
+      <span class="htag">🟡 陰天／輕霧佳</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ───── 基督城 ───── -->
+  <div class="town-card" id="christchurch">
+    <div class="town-header">
+      <div class="town-icon icon-indoor">🏙️</div>
+      <div class="town-meta">
+        <div class="town-name">基督城 Christchurch</div>
+        <div class="town-days">Day 01（9/27 抵達）· Day 13–14（10/9–10/10 離開）</div>
+      </div>
+    </div>
+    <div class="town-body">
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🏛️</div>
+          <div class="act-body">
+            <div class="act-name">Canterbury Museum</div>
+            <div class="act-desc">南島自然史、毛利文化展覽，市中心步行可達。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🧊</div>
+          <div class="act-body">
+            <div class="act-name">International Antarctic Centre</div>
+            <div class="act-desc">南極體驗中心：暴風雪模擬艙、雪橇車、企鵝餵食。全室內，雨天最適合。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 45</span><span class="tkt tkt-site">🏪 現場購票</span><span class="tkt tkt-book">💻 線上預購可省時</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🛍️</div>
+          <div class="act-body">
+            <div class="act-name">Riverside Market</div>
+            <div class="act-desc">市中心室內市集，餐廳、咖啡、精釀啤酒、小食攤一應俱全。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場（消費另計）</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🛒</div>
+          <div class="act-body">
+            <div class="act-name">Westfield Riccarton 購物中心</div>
+            <div class="act-desc">市區最大購物中心，補給食品、採買紀念品，雨天殺時間首選。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Lake Tekapo ───── -->
+  <div class="town-card" id="tekapo">
+    <div class="town-header">
+      <div class="town-icon icon-light">⭐</div>
+      <div class="town-meta">
+        <div class="town-name">Lake Tekapo · Mackenzie</div>
+        <div class="town-days">Day 02（9/28）· 基督城出發 225km · 約 2.5h</div>
+      </div>
+    </div>
+    <div class="town-body">
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🔭</div>
+          <div class="act-body">
+            <div class="act-name">Dark Sky Project 室內天文體驗</div>
+            <div class="act-desc">觀星取消（雲厚）的最佳替代：古董望遠鏡、星空解說、室內天文館。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span><span class="tag tag-any">觀星取消首選</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 36</span><span class="tkt tkt-book">📅 建議提前線上預購（旺季可能售罄）</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-any">♨️</div>
+          <div class="act-body">
+            <div class="act-name">Tekapo Springs 溫泉</div>
+            <div class="act-desc">戶外溫泉池＋水療，雨雪天泡溫泉最享受。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 雨雪天最佳</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 32</span><span class="tkt tkt-book">📅 建議線上預購</span><a href="https://www.tekaposprings.co.nz" target="_blank" class="tkt tkt-link">tekaposprings.co.nz ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-light">⛪</div>
+          <div class="act-body">
+            <div class="act-name">Church of the Good Shepherd</div>
+            <div class="act-desc">湖邊小教堂，下車拍照即可；陰天雲層低配合湖色反而出片。</div>
+            <div class="act-tags"><span class="tag tag-light">🟡 陰天出片</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-light">🏔️</div>
+          <div class="act-body">
+            <div class="act-name">Mt John 觀景台（開車上山）</div>
+            <div class="act-desc">不用健行，開車直上，Summit Café 喝咖啡看 Mackenzie 盆地全景。有霧時景色更具氣氛。</div>
+            <div class="act-tags"><span class="tag tag-light">🟡 開車直上</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費（Summit Café 飲料另計）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Mt. Cook ───── -->
+  <div class="town-card" id="mtcook">
+    <div class="town-header">
+      <div class="town-icon icon-light">🏔️</div>
+      <div class="town-meta">
+        <div class="town-name">Mt. Cook / Aoraki</div>
+        <div class="town-days">Day 03–04（9/29–9/30）· Tekapo 出發 105km · 約 1.5h</div>
+      </div>
+    </div>
+    <div class="town-body">
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🏅</div>
+          <div class="act-body">
+            <div class="act-name">Sir Edmund Hillary Alpine Centre</div>
+            <div class="act-desc">The Hermitage 飯店內：博物館＋天文館＋3D 劇院，全天候室內體驗。冰川健行飛不了時的完美備案。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span><span class="tag tag-any">冰川取消首選</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 博物館免費</span><span class="tkt tkt-price">💵 3D 劇院約 NZD 20</span><span class="tkt tkt-site">🏪 現場購票</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">⛵</div>
+          <div class="act-body">
+            <div class="act-name">Tasman 冰河湖遊船（Glacier Explorers）</div>
+            <div class="act-desc">在浮冰間划橡皮艇，小雨仍可出行；大風時停駛。約 2.5 小時。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 165</span><span class="tkt tkt-book">📅 強烈建議提前線上預訂</span><a href="https://www.glacierexplorers.com" target="_blank" class="tkt tkt-link">glacierexplorers.com ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🥾</div>
+          <div class="act-body">
+            <div class="act-name">Tasman Glacier View 步道</div>
+            <div class="act-desc">短走約 40 分鐘，俯瞰冰河與冰湖。比 Hooker Valley 容易，小雨可行；強風不建議。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費步道</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🌲</div>
+          <div class="act-body">
+            <div class="act-name">Governors Bush / Bowen Bush 短步道</div>
+            <div class="act-desc">飯店附近有遮蔽的森林步道，小雨可走，約 45 分鐘。比 Hooker Valley 吊橋安全。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費步道</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Wanaka ───── -->
+  <div class="town-card" id="wanaka">
+    <div class="town-header">
+      <div class="town-icon icon-any">🌿</div>
+      <div class="town-meta">
+        <div class="town-name">Wanaka</div>
+        <div class="town-days">Day 05–06（10/1–10/2）· Mt. Cook 出發 200km · 約 2.5h</div>
+      </div>
+    </div>
+    <div class="town-body">
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🌀</div>
+          <div class="act-body">
+            <div class="act-name">Puzzling World</div>
+            <div class="act-desc">傾斜屋、視覺錯覺廳、三維立體迷宮。Wanaka 招牌室內景點。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span><span class="tag tag-any">Wanaka 必去</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 25</span><span class="tkt tkt-site">🏪 現場購票</span><a href="https://www.puzzlingworld.co.nz" target="_blank" class="tkt tkt-link">puzzlingworld.co.nz ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🚗</div>
+          <div class="act-body">
+            <div class="act-name">National Transport &amp; Toy Museum</div>
+            <div class="act-desc">超大型室內博物館：老爺車、火車模型、玩具收藏，適合殺時間。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 20</span><span class="tkt tkt-site">🏪 現場購票</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🎬</div>
+          <div class="act-body">
+            <div class="act-name">Cinema Paradiso 特色戲院</div>
+            <div class="act-desc">改裝老戲院，沙發座椅、中場休息供咖啡餅乾。雨天最適合，查場次再訂。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 18</span><span class="tkt tkt-site">🏪 現場購票即可</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🍷</div>
+          <div class="act-body">
+            <div class="act-name">Rippon Vineyard 品酒</div>
+            <div class="act-desc">湖景葡萄園，室內 cellar door 品酒，不受天氣影響。Wanaka 最美葡萄園之一。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內品酒</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場</span><span class="tkt tkt-site">🏪 品酒現場消費</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🍫</div>
+          <div class="act-body">
+            <div class="act-name">Patagonia Chocolates（Wanaka 店）</div>
+            <div class="act-desc">手工巧克力＆冰淇淋，Ardmore St 一帶。雨天室內甜點站。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 無需購票（消費即可）</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🏔️</div>
+          <div class="act-body">
+            <div class="act-name">Mt Iron 環走</div>
+            <div class="act-desc">低緩步道約 1.5h，俯瞰全鎮與 Lake Wanaka。小雨可行，步道泥濘但路線明確。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費步道</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── 皇后鎮 ───── -->
+  <div class="town-card" id="queenstown">
+    <div class="town-header">
+      <div class="town-icon" style="background:#EDE9FE">👑</div>
+      <div class="town-meta">
+        <div class="town-name">皇后鎮 Queenstown 及周邊</div>
+        <div class="town-days">Day 07–10（10/3–10/6）· Wanaka 出發 67km · 約 1h（Crown Range）</div>
+      </div>
+    </div>
+    <div class="town-body">
+
+      <div class="sub-label">皇后鎮市區</div>
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-any">🚢</div>
+          <div class="act-body">
+            <div class="act-name">TSS Earnslaw + Walter Peak BBQ</div>
+            <div class="act-desc">百年蒸汽船橫渡 Lake Wakatipu → Walter Peak 農場導覽＋BBQ 晚餐。全程有遮蔽，颳風下雨都能去。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 任何天氣</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 169</span><span class="tkt tkt-book">📅 必須提前線上預訂</span><a href="https://www.realnz.com" target="_blank" class="tkt tkt-link">realnz.com ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-any">♨️</div>
+          <div class="act-body">
+            <div class="act-name">Onsen Hot Pools 私人溫泉</div>
+            <div class="act-desc">獨立包廂溫泉，俯瞰山谷，雨雪天泡湯最享受。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 雨雪天首選</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 60–80／人</span><span class="tkt tkt-book">📅 必須線上預訂</span><a href="https://www.onsen.co.nz" target="_blank" class="tkt tkt-link">onsen.co.nz ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-any">🔭</div>
+          <div class="act-body">
+            <div class="act-name">Skyline Gondola + Stratosfare 旋轉餐廳</div>
+            <div class="act-desc">纜車除強風外照開，山頂俯瞰 Lake Wakatipu 全景＋旋轉餐廳用餐。霧天有另一種氣氛。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 強風才停</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 Gondola 約 NZD 45</span><span class="tkt tkt-site">🏪 現場購票</span><span class="tkt tkt-book">💻 線上有時有優惠</span><a href="https://www.skyline.co.nz" target="_blank" class="tkt tkt-link">skyline.co.nz ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-any">🐦</div>
+          <div class="act-body">
+            <div class="act-name">Kiwi Birdlife Park</div>
+            <div class="act-desc">近距離看奇異鳥等紐西蘭特有鳥類。多為室內有遮蔽展區，不受天氣影響。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 任何天氣</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 32</span><span class="tkt tkt-site">🏪 現場購票</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🌲</div>
+          <div class="act-body">
+            <div class="act-name">Ziptrek Ecotours 森林滑索</div>
+            <div class="act-desc">Bob's Peak 出發，賽道在樹林下有遮蔽、提供雨衣；小雨照跑，僅強風／暴雨取消。建議和 Skyline Luge 同天，纜車費只付一次。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨照跑</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 149–179</span><span class="tkt tkt-book">📅 建議提前線上預訂</span><a href="https://www.ziptrek.com" target="_blank" class="tkt tkt-link">ziptrek.com ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">☕</div>
+          <div class="act-body">
+            <div class="act-name">SPA · 購物 · 室內咖啡</div>
+            <div class="act-desc">The Mall 購物街、Cookie Time Cookie Bar（現烤餅乾冰淇淋）、Odd Saint（咖啡＋精釀）、Reading 戲院。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費逛（消費另計）</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">Arrowtown 老金礦鎮（皇后鎮 20 分鐘）</div>
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🏛️</div>
+          <div class="act-body">
+            <div class="act-name">Lakes District Museum</div>
+            <div class="act-desc">淘金年代歷史展覽，室內。雨天逛博物館最適合。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 10</span><span class="tkt tkt-site">🏪 現場購票</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🍫</div>
+          <div class="act-body">
+            <div class="act-name">Patagonia Chocolates（Arrowtown 店）</div>
+            <div class="act-desc">Buckingham St 上的手工巧克力＆冰淇淋，古建築室內用餐，逛 Arrowtown 的必訪甜點站。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 無需購票（消費即可）</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">☕</div>
+          <div class="act-body">
+            <div class="act-name">Buckingham St 淘金小鎮漫步</div>
+            <div class="act-desc">維多利亞時代建築街道，咖啡廳、手工藝店密集；下雨逛商店最舒適。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內為主</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費逛街</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🏘️</div>
+          <div class="act-body">
+            <div class="act-name">華人聚落遺址 Chinese Settlement</div>
+            <div class="act-desc">19 世紀淘金時期華人聚落遺址，戶外開放但路程短，小雨可走，約 20 分鐘。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">Kawarau Gorge（Arrowtown 途中，皇后鎮 20 分鐘）</div>
+      <div class="act-list">
+        <div class="act-item full">
+          <div class="act-icon icon-warn">🪂</div>
+          <div class="act-body">
+            <div class="act-name">Kawarau Gorge Suspension Bridge 高空彈跳</div>
+            <div class="act-desc">AJ Hackett，全球第一條商業蹦極（1988 年）。43m 高懸 Kawarau River 峽谷，除強風外多數天氣照常運作。<b>橋上觀景台免費</b>——即使不跳，停車圍觀也很刺激，值得順路停。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 強風才停</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 275（跳傘本人）</span><span class="tkt tkt-free">🆓 觀景台免費</span><span class="tkt tkt-book">📅 建議線上預訂</span><a href="https://www.bungy.co.nz" target="_blank" class="tkt tkt-link">bungy.co.nz ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-rain">🌊</div>
+          <div class="act-body">
+            <div class="act-name">Lake Hayes 環湖</div>
+            <div class="act-desc">皇后鎮往 Arrowtown 途中的寧靜湖泊，環湖步道約 45 分鐘。陰天湖面倒影更美，小雨可行。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 小雨可行</span><span class="tag tag-light">🟡 陰天出片</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費步道</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">Gibbston Valley 酒區（皇后鎮 25 分鐘）</div>
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🍷</div>
+          <div class="act-body">
+            <div class="act-name">Gibbston Valley Winery 酒窖品酒</div>
+            <div class="act-desc">全室內酒窖（山洞鑿入），品酒＋起司拼盤，不受天氣影響。全紐最大酒窖之一。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場</span><span class="tkt tkt-site">🏪 品酒現場消費</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🍷</div>
+          <div class="act-body">
+            <div class="act-name">Cromwell Old Town + Bannockburn 酒區</div>
+            <div class="act-desc">Cromwell 果園鎮老街、Bannockburn 中奧塔哥乾燥酒區酒莊，Cellar Door 多數室內。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內品酒</span><span class="tag tag-rain">🔵 兜風</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費入場（品酒消費另計）</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">鹿園高地 Deer Park Heights（皇后鎮 15 分鐘）</div>
+      <div class="act-list">
+        <div class="act-item full">
+          <div class="act-icon icon-light">🦌</div>
+          <div class="act-body">
+            <div class="act-name">Deer Park Heights 自駕牧場</div>
+            <div class="act-desc">Coronet Peak Rd 轉入，約 5km 碎石山路自駕上山。自由放養鹿群、麋鹿、羊駝等；LOTR《雙塔奇兵》Rohan 拍攝地，輕霧有魔戒氛圍。<br>⚠️ 山頂開闊風大寒冷，務必帶外套；碎石路大雨或積雪後泥濘打滑，<b>中雨以上建議不上</b>。</div>
+            <div class="act-tags"><span class="tag tag-light">🟡 陰天／輕雨佳</span><span class="tag tag-warn">中雨不上</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 NZD 25–35／車</span><span class="tkt tkt-site">🏪 路口閘門刷卡，無需預訂</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">Glenorchy Road（皇后鎮 45 分鐘）</div>
+      <div class="act-list">
+        <div class="act-item full">
+          <div class="act-icon icon-light">🚗</div>
+          <div class="act-body">
+            <div class="act-name">Glenorchy Road 兜風</div>
+            <div class="act-desc">沿 Lake Wakatipu 湖畔公路，全紐最美公路之一，雨霧反而有魔戒場景感。終點 Glenorchy 小鎮、Glenorchy Lagoon 木棧道、Paradise（魔戒拍攝地）。大雨／積雪出發前查 NZTA。</div>
+            <div class="act-tags"><span class="tag tag-light">🟡 雨霧更有氣氛</span><span class="tag tag-warn">大雨查路況</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費（油費另計）</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-label">Milford Sound（皇后鎮出發，約 4 小時單程）</div>
+      <div class="act-list">
+        <div class="act-item full">
+          <div class="act-icon icon-rain">🏔️</div>
+          <div class="act-body">
+            <div class="act-name">Milford Sound 峽灣一日遊</div>
+            <div class="act-desc">雨天峽灣最壯觀（千條瀑布傾瀉），但需查 Homer Tunnel 雪況、封路情況（NZTA），暴雪封路無法抵達。全程約 10–12 小時。</div>
+            <div class="act-tags"><span class="tag tag-rain">🔵 雨天更壯觀</span><span class="tag tag-warn">查封路情況</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 遊船約 NZD 89–150</span><span class="tkt tkt-book">📅 強烈建議提前線上預訂（旺季極熱門）</span><a href="https://www.realnz.com" target="_blank" class="tkt tkt-link">realnz.com ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ───── Te Anau ───── -->
+  <div class="town-card" id="teanau">
+    <div class="town-header">
+      <div class="town-icon icon-any">✨</div>
+      <div class="town-meta">
+        <div class="town-name">Te Anau</div>
+        <div class="town-days">Day 10（10/6 當天往返）· 皇后鎮出發 170km · 約 2.5h</div>
+      </div>
+    </div>
+    <div class="town-body">
+      <div class="act-list">
+        <div class="act-item">
+          <div class="act-icon icon-any">🪲</div>
+          <div class="act-body">
+            <div class="act-name">Glowworm Caves 螢火蟲洞</div>
+            <div class="act-desc">地底洞穴，完全不受天氣影響。接駁船遇強風／湖浪大可能取消。由 RealNZ 經營。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 不怕雨（地底）</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 89–110</span><span class="tkt tkt-book">📅 必須提前線上預訂</span><a href="https://www.realnz.com" target="_blank" class="tkt tkt-link">realnz.com ↗</a></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">🎬</div>
+          <div class="act-body">
+            <div class="act-name">Fiordland Cinema《Ata Whenua》</div>
+            <div class="act-desc">接駁船取消時的室內替代：約 30 分鐘峽灣空拍電影，超震撼。</div>
+            <div class="act-tags"><span class="tag tag-indoor">完全室內</span><span class="tag tag-any">接駁取消首選</span></div>
+            <div class="tkt-row"><span class="tkt tkt-price">💵 約 NZD 15</span><span class="tkt tkt-site">🏪 現場購票</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-any">🦜</div>
+          <div class="act-body">
+            <div class="act-name">Te Anau 野生動物中心</div>
+            <div class="act-desc">看稀有鳥類（含 Takahē 南秧雞，瀕臨絕種）。有遮蔽展區，快速參觀約 30 分鐘。</div>
+            <div class="act-tags"><span class="tag tag-any">🟢 任何天氣</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 免費</span></div>
+          </div>
+        </div>
+        <div class="act-item">
+          <div class="act-icon icon-indoor">☕</div>
+          <div class="act-body">
+            <div class="act-name">Te Anau 市區咖啡廳</div>
+            <div class="act-desc">The Fat Duck、Redcliff（人氣餐廳建議訂位），或 Sandfly Café。等接駁或天氣轉好的休息站。</div>
+            <div class="act-tags"><span class="tag tag-indoor">室內</span></div>
+            <div class="tkt-row"><span class="tkt tkt-free">🆓 無需購票（消費即可）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="index.html" class="bnav-btn bnav-prev">← 總覽</a>
+  <a href="day07-1003.html" class="bnav-btn bnav-next">皇后鎮 Day 07 →</a>
+</div>
+
+<div class="pb"></div>
+</body>
+</html>
