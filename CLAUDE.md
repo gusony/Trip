@@ -24,7 +24,7 @@ Standard contents per trip folder:
 HTML entry points per trip:
 - Osaka → `2026-05-osaka/html/index.html`
 - Tokyo → `2026-07-03-Tokyo/trip.html`
-- NZ → `2026-09-028-NZ/NZ-2026-travel-plan.html`
+- NZ → `2026-09-028-NZ/html/index.html`
 
 The landing page `index.html` at repo root links to each trip.
 
