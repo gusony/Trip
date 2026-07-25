@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⏰ 提醒總表 · NZ 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:15px;line-height:1.6;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:#DC2626;color:#fff}
+
+.hero{color:#fff;padding:32px 20px 28px;background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#dc2626 100%)}
+.hero-inner{max-width:960px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:18px}
+
+/* 一鍵匯入 */
+.import-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:16px;padding:16px}
+.btn-import{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#fff;color:#b91c1c;border:none;border-radius:12px;padding:15px 18px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:transform 120ms,box-shadow 120ms;box-shadow:0 2px 10px rgba(0,0,0,.14)}
+.btn-import:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.btn-import:active{transform:translateY(0)}
+.import-hint{font-size:12px;color:rgba(255,255,255,.72);margin-top:10px;line-height:1.55}
+.import-sub{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn-sub{flex:1;min-width:130px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:10px;padding:9px 10px;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:background 120ms}
+.btn-sub:hover{background:rgba(255,255,255,.26)}
+
+.content{max-width:960px;margin:0 auto;padding:20px 20px 80px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:28px 0 12px 2px}
+
+.cat-header{display:flex;align-items:center;gap:10px;margin:26px 0 12px}
+.cat-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.cat-title{font-size:16px;font-weight:700}
+.cat-sub{font-size:12px;color:#94A3B8;margin-left:auto;text-align:right}
+
+/* 提醒卡 */
+.rm{background:#fff;border-radius:14px;border:1px solid #E2E8F0;margin-bottom:10px;overflow:hidden;display:flex;align-items:stretch}
+.rm-accent{width:5px;flex-shrink:0}
+.rm-main{flex:1;padding:13px 15px;min-width:0}
+.rm-top{display:flex;align-items:flex-start;gap:9px;margin-bottom:5px}
+.rm-icon{font-size:19px;line-height:1.2;flex-shrink:0}
+.rm-name{font-size:14.5px;font-weight:700;flex:1;min-width:0}
+.rm-when{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.chip{font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px;white-space:nowrap}
+.chip-nz{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE}
+.chip-tw{background:#F8FAFC;color:#64748B;border:1px solid #E2E8F0}
+.chip-hard{background:#FEE2E2;color:#B91C1C;border:1px solid #FCA5A5}
+.rm-desc{font-size:12.5px;color:#64748B;line-height:1.55}
+.rm-desc b{color:#334155}
+.rm-act{flex-shrink:0;display:flex;align-items:center;padding:0 12px 0 4px}
+.btn-add{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;border-radius:9px;padding:7px 11px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 120ms}
+.btn-add:hover{background:#DCFCE7}
+.btn-add.done{background:#DCFCE7;border-color:#86EFAC}
+
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:#EFF6FF;border:1px solid #BFDBFE}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.55}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);background:#0F172A;color:#fff;font-size:13.5px;font-weight:600;padding:12px 20px;border-radius:99px;box-shadow:0 8px 24px rgba(0,0,0,.28);opacity:0;transition:all 260ms;z-index:200;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:200px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:#DC2626;color:#fff}
+.pb{height:80px}
+
+@media(max-width:520px){
+  .rm{flex-direction:column}
+  .rm-accent{width:100%;height:4px}
+  .rm-act{padding:0 15px 13px;align-items:stretch}
+  .btn-add{width:100%;padding:10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="backup-plan.html" class="nav-pill" style="color:#10B981;font-weight:600">🌧️ 備案</a>
+    <a href="booking-guide.html" class="nav-pill" style="color:#d97706;font-weight:600">🎫 預訂</a>
+    <a href="reminders.html" class="nav-pill active">⏰ 提醒</a>
+    <span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">提醒總表 · 22 個時間點</div>
+    <div class="hero-title">⏰ 提醒總表</div>
+    <div class="hero-sub">所有訂票死線、退訂期限、現場報到時間都在這裡 · 時間以<b>紐西蘭當地時間</b>為準</div>
+
+    <div class="import-box">
+      <button class="btn-import" id="btn-all">
+        <span style="font-size:20px">📥</span>
+        <span>一鍵匯入全部到行事曆</span>
+      </button>
+      <div class="import-sub">
+        <button class="btn-sub" data-cat="prep">🎫 只匯入「出發前要辦」</button>
+        <button class="btn-sub" data-cat="dl">🔴 只匯入「退訂死線」</button>
+        <button class="btn-sub" data-cat="meet">📍 只匯入「報到時間」</button>
+      </div>
+      <div class="import-hint">
+        📱 <b>手機用法</b>：點上面按鈕會下載一個 <code>.ics</code> 檔 → iPhone 選「加入全部」／Android 用 Google 日曆開啟即可。<br>
+        🕐 每個項目都已內建<b>提前提醒</b>（死線類提前 2 小時、報到類提前 1 小時）。時間用 UTC 寫入，<b>手機在紐西蘭會自動顯示當地時間</b>。
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="alert alert-w">
+    <span style="font-size:20px">🔴</span>
+    <div class="alert-body">
+      <strong>三個最容易漏掉、漏掉就要花錢的</strong>
+      <p>① <b>9/26 鹿園開賣</b>——只開放 7 天內預約，10/3 的票 9/26 才買得到，當天沒訂就沒了<br>② <b>10/4 18:00 企鵝退訂截止</b>——過了就完全不退<br>③ <b>10/5 08:00 跳傘②決策</b>——10/1 跳成了卻忘了退 10/6，等於白付 NZD $449</p>
+    </div>
+  </div>
+
+  <!-- ───────── 出發前 ───────── -->
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#7C3AED"></div>
+    <div class="cat-title">🎫 出發前要辦</div>
+    <div class="cat-sub">台灣時間</div>
+  </div>
+  <div id="list-prep"></div>
+
+  <!-- ───────── 死線 ───────── -->
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#DC2626"></div>
+    <div class="cat-title">🔴 退訂／訂票死線</div>
+    <div class="cat-sub">紐西蘭時間 · 過期不退</div>
+  </div>
+  <div id="list-dl"></div>
+
+  <!-- ───────── 報到 ───────── -->
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#0369a1"></div>
+    <div class="cat-title">📍 現場報到／集合時間</div>
+    <div class="cat-sub">紐西蘭時間</div>
+  </div>
+  <div id="list-meet"></div>
+
+  <!-- ───────── 航班 ───────── -->
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#059669"></div>
+    <div class="cat-title">✈️ 航班</div>
+    <div class="cat-sub">起飛時間</div>
+  </div>
+  <div id="list-fly"></div>
+
+  <div class="alert alert-i" style="margin-top:24px">
+    <span style="font-size:20px">💡</span>
+    <div class="alert-body">
+      <strong>匯入後想改提醒時間？</strong>
+      <p>匯入的是一般行事曆事件，直接在手機行事曆 App 裡編輯該事件的「提醒」即可，不影響這個頁面。<br>如果重複匯入，同一事件會因為 UID 相同而<b>覆蓋而非重複</b>（多數行事曆 App 的行為）。</p>
+    </div>
+  </div>
+
+  <div class="pb"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="bottom-nav">
+  <a href="booking-guide.html" class="bnav-btn bnav-prev">← 🎫 預訂攻略</a>
+  <a href="index.html" class="bnav-btn bnav-next">總覽 →</a>
+</div>
+
+<script>
+// 所有時間以 UTC 寫入 → 手機自動換算當地時區
+// NZ 於 2026/9/27 進入夏令時間 NZDT (UTC+13)；9/26 以前為 NZST (UTC+12)
+var EVENTS = [
+  // ── 出發前（台灣時間）──
+  {id:'prep-blackcat', cat:'prep', icon:'🐬', name:'訂 Black Cat 海豚船（10/9）',
+   utc:'20260801T010000Z', dur:30, alarm:0, when:'台灣 8/1（六）09:00', hard:false,
+   loc:'blackcat.co.nz',
+   desc:'10/9 上午班 · 成人 NZD $130 · 一天只開 1–2 班，隔天就要搭早班機回台，沒有備用日。訂完把手機號碼留給船家。'},
+
+  {id:'prep-docs', cat:'prep', icon:'📄', name:'辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險',
+   utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:false,
+   loc:'',
+   desc:'NZeTA 電子旅行授權（線上申請，需審核時間）· IDP 國際駕照（監理站當天可辦，台灣駕照也要一起帶）· 旅遊不便險要含自駕保障。'},
+
+  {id:'prep-deerpark', cat:'prep', icon:'🦌', name:'🔴 鹿園高地開賣！立刻訂 10/3 下午',
+   utc:'20260926T000000Z', dur:30, alarm:0, when:'台灣 9/26（六）08:00', hard:true,
+   loc:'deerparkheights.co.nz/book-now',
+   desc:'⚠️ 官網只開放「7 天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒了。NZD $75/車（最多 8 人），閘門認線上訂單，現場買不到，也不接受 Klook 等第三方。今晚 18:35 就要出發，記得出門前訂完。'},
+
+  // ── 死線（NZ 時間）──
+  {id:'dl-glacier', cat:'dl', icon:'🚁', name:'冰川飛行決策：明天 09:30 的班要不要退',
+   utc:'20260927T190000Z', dur:30, alarm:120, when:'NZ 9/28（一）08:00', hard:true,
+   loc:'',
+   desc:'9/29 09:30 Mt Cook 冰川飛行（GetYourGuide 已訂）可 24h 前免費退 → 期限是今天 09:30。看 Mt Cook 明早預報，不妙就退掉，改訂 10/2 Wanaka 冰川健行或 10/3 皇后鎮的備援窗口。'},
+
+  {id:'dl-skydive1', cat:'dl', icon:'🪂', name:'跳傘①決策 ＋ 順手退 Rippon 品酒',
+   utc:'20260929T223000Z', dur:60, alarm:120, when:'NZ 9/30（三）11:30', hard:true,
+   loc:'',
+   desc:'① 10/1 12:30 Skydive Wanaka（Klook）可 24h 前免費退 → 期限今天 12:30，只剩 1 小時。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免費退。'},
+
+  {id:'dl-horse', cat:'dl', icon:'🐴', name:'騎馬退款分界：過了只能退 50%',
+   utc:'20261001T210000Z', dur:30, alarm:120, when:'NZ 10/2（五）10:00', hard:true,
+   loc:'',
+   desc:'Moke Valley 騎馬（10/4 12:00）退款規則：7 天前全額退 → 48h~7天退 50% → 48h 內完全不退。今天 12:00 就是 48h 分界。除非確定不去，否則不用動作，這是提醒你「最後能拿回一半錢的時間點」。'},
+
+  {id:'dl-luge', cat:'dl', icon:'🛷', name:'Skyline Luge 訂票死線（48h 退改規則）',
+   utc:'20261003T200000Z', dur:30, alarm:120, when:'NZ 10/4（日）09:00', hard:true,
+   loc:'queenstown.skyline.co.nz',
+   desc:'10/6 下午要玩 Gondola + Luge。Skyline 是全行程最嚴的 48 小時退改 → 現在看 10/6 預報再決定訂不訂，剛好卡在 48h 邊界。天氣好就線上買組合票（比現場分開買省，也免排隊）。'},
+
+  {id:'dl-penguin', cat:'dl', icon:'🐧', name:'🔴 企鵝 Premium 最後免費退訂點',
+   utc:'20261004T030000Z', dur:30, alarm:120, when:'NZ 10/4（日）16:00', hard:true,
+   loc:'',
+   desc:'10/7 20:00 Oamaru 藍企鵝 Premium 看台（$63/人 × 2）→ 今天 18:00 是最後可免費退的時間，過了完全不退。除非行程有變，否則保留即可——雨天企鵝照樣回巢，幾乎不會取消。'},
+
+  {id:'dl-skydive2', cat:'dl', icon:'🪂', name:'🔴 跳傘②決策：10/1 跳成了就退掉明天',
+   utc:'20261004T190000Z', dur:60, alarm:120, when:'NZ 10/5（一）08:00', hard:true,
+   loc:'',
+   desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 期限今天 09:00，只剩 1 小時。10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449，退掉後明早還能提早上山玩 Luge。沒跳成 → 保留，明天照跳。'},
+
+  // ── 報到（NZ 時間）──
+  {id:'meet-darksky', cat:'meet', icon:'🔭', name:'Dark Sky 銀河觀星（中文導覽）',
+   utc:'20260928T081500Z', dur:120, alarm:60, when:'NZ 9/28（一）21:15', hard:false,
+   loc:'Tekapo · 含飯店接送',
+   desc:'含飯店接送，全程約 2 小時。⚠️ 山頂近 0°C，多層保暖＋毛帽手套。出發前 15 分鐘到報到處聽天氣最終判定；雲太厚可改室內天文導覽退差額、改期或全退。'},
+
+  {id:'meet-glacier', cat:'meet', icon:'🚁', name:'冰川飛行 · Mount Cook Airport 集合',
+   utc:'20260928T203000Z', dur:45, alarm:60, when:'NZ 9/29（二）09:30', hard:true,
+   loc:'Mount Cook Airport',
+   desc:'45 分鐘 · 2 人 · GetYourGuide 已訂。下午照走 Hooker Valley 步道。'},
+
+  {id:'meet-skydive1', cat:'meet', icon:'🪂', name:'Skydive Wanaka 報到（12:30 場）',
+   utc:'20260930T230000Z', dur:210, alarm:60, when:'NZ 10/1（四）12:00 抵達', hard:true,
+   loc:'14 Mustang Lane, Wanaka Airport',
+   desc:'⚠️ 提早 30 分鐘抵達 → 12:00 到、11:45 從住處出發（機場在 SH6 上，距鎮中心約 10 分鐘）。12:30 是報到時間不是跳傘時間，全程 3–3.5 小時，預計 15:30–16:00 結束。帶證件＋Klook QR；穿深色運動服＋包腳鞋，不戴飾品。11:00 先吃輕食，別空腹也別吃太飽。'},
+
+  {id:'meet-rippon', cat:'meet', icon:'🍷', name:'Rippon 酒莊免費導覽（2 人）',
+   utc:'20261001T033000Z', dur:60, alarm:60, when:'NZ 10/1（四）16:30', hard:false,
+   loc:'Rippon Vineyard, Wanaka',
+   desc:'⚠️ 跟跳傘結束時間（15:30–16:00）非常接近，Wanaka Airport → Rippon 還要 15–20 分鐘車程。已定策略：9/30 確認跳傘照跳就先退掉這個。no-show 收 $10/人。'},
+
+  {id:'meet-deerpark', cat:'meet', icon:'🦌', name:'鹿園高地 Deer Park Heights',
+   utc:'20261003T010000Z', dur:120, alarm:60, when:'NZ 10/3（六）14:00', hard:false,
+   loc:'Peninsula Rd, Kelvin Heights（沿路 4km）',
+   desc:'皇后鎮 4 天唯一的寬鬆時段。市區開過去約 20 分鐘，園內 5km 景觀車道自駕環繞，停留 1.5–2 小時很充裕。餵鹿、山羊、驢子、迷你馬要帶 NZ$2 硬幣。LOTR《雙塔奇兵》Rohan 拍攝地。⚠️ 關園 18:00、禁止步行進入、要先線上訂票。'},
+
+  {id:'meet-horse', cat:'meet', icon:'🐴', name:'出發往 Moke Valley 騎馬',
+   utc:'20261003T221500Z', dur:45, alarm:60, when:'NZ 10/4（日）11:15 出發', hard:true,
+   loc:'Moke Lake, Queenstown',
+   desc:'12:00 前一定要抵達集合（騎馬 12:00–13:30）。Moke Lake Rd 末段是碎石路，慢慢開、預留時間。⚠️ 48 小時內不退，遲到＝全額損失。穿長褲＋包腳鞋，山谷比市區冷。'},
+
+  {id:'meet-tss', cat:'meet', icon:'🚢', name:'TSS Earnslaw 蒸汽船報到 · Steamer Wharf',
+   utc:'20261004T034500Z', dur:225, alarm:60, when:'NZ 10/4（日）16:45 報到', hard:true,
+   loc:'Steamer Wharf, Queenstown',
+   desc:'17:00 開船，全程約 3 小時 45 分（Walter Peak Gourmet BBQ 晚餐）。船有遮蔽，風雨照開，是全行程最穩的晚間活動。'},
+
+  {id:'meet-glowworm', cat:'meet', icon:'✨', name:'螢火蟲洞報到 · RealNZ 遊客中心',
+   utc:'20261005T003000Z', dur:135, alarm:60, when:'NZ 10/5（一）13:30 報到', hard:true,
+   loc:'85 Lakefront Dr, Te Anau',
+   desc:'14:00 場出發，全程約 2 小時 15 分。出發前 30 分鐘報到。洞內完全黑暗、不能拍照，手機收好；洞內溫度低要帶保暖衣物。'},
+
+  {id:'meet-skydive2', cat:'meet', icon:'🪂', name:'NZONE 跳傘報到 · 35 Shotover St',
+   utc:'20261005T194000Z', dur:240, alarm:60, when:'NZ 10/6（二）08:40 抵達', hard:true,
+   loc:'35 Shotover Street, Queenstown',
+   desc:'⚠️ 報到 08:50 截止（預約時間前 10 分鐘關閉 check-in），遲到視同 no-show → 08:40 抵達、08:30 從 Hampshire Holiday Parks 出發（步行 12–15 分鐘）。報到處是市區店面不是跳傘場，報到後有接駁車。全程 3–4 小時，預計 12:00–13:00 結束，下午 Luge 時間別訂死。'},
+
+  {id:'meet-penguin', cat:'meet', icon:'🐧', name:'Oamaru 藍企鵝歸巢（Premium 看台）',
+   utc:'20261007T070000Z', dur:90, alarm:60, when:'NZ 10/7（三）20:00', hard:false,
+   loc:'Oamaru Blue Penguin Colony',
+   desc:'Premium 看台僅 60 席、距企鵝數公尺。雨天照常舉行，帶雨衣即可。'},
+
+  {id:'meet-blackcat', cat:'meet', icon:'🐬', name:'Black Cat 海豚船報到（時間待確認）',
+   utc:'20261008T213000Z', dur:150, alarm:60, when:'NZ 10/9（五）約 10:00 報到', hard:false,
+   loc:'61 Beach Road, Akaroa',
+   desc:'⚠️ 這筆還沒訂，時間是暫定的上午班（約 10:30 開船）——訂好之後記得回來改這個事件的時間。提前 30 分鐘報到，全程約 2 小時。'},
+
+  // ── 航班 ──
+  {id:'fly-out', cat:'fly', icon:'✈️', name:'NZ78 桃園 T2 → 奧克蘭',
+   utc:'20260926T103500Z', dur:660, alarm:180, when:'台灣 9/26（六）18:35 起飛', hard:true,
+   loc:'桃園機場 T2',
+   desc:'隔天 10:15 抵達奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。'},
+
+  {id:'fly-home', cat:'fly', icon:'✈️', name:'NZ586 基督城 → 奧克蘭（回程）',
+   utc:'20261009T182000Z', dur:85, alarm:180, when:'NZ 10/10（六）07:20 起飛', hard:true,
+   loc:'基督城機場',
+   desc:'08:45 抵達奧克蘭 → 轉 NZ77（10:40）→ 17:05 抵達桃園 T2。早班機，前一晚就要打包好、確認租車還車時間。'}
+];
+
+var CAT_COLOR = {prep:'#7C3AED', dl:'#DC2626', meet:'#0369a1', fly:'#059669'};
+var CAT_NAME  = {prep:'出發前要辦', dl:'退訂死線', meet:'報到時間', fly:'航班'};
+
+/* ---------- 畫面 ---------- */
+function render(){
+  ['prep','dl','meet','fly'].forEach(function(cat){
+    var box = document.getElementById('list-' + cat);
+    box.innerHTML = EVENTS.filter(function(e){ return e.cat === cat; }).map(function(e){
+      return '<div class="rm">' +
+        '<div class="rm-accent" style="background:' + CAT_COLOR[cat] + '"></div>' +
+        '<div class="rm-main">' +
+          '<div class="rm-top"><span class="rm-icon">' + e.icon + '</span><span class="rm-name">' + e.name + '</span></div>' +
+          '<div class="rm-when">' +
+            '<span class="chip ' + (e.cat === 'prep' ? 'chip-tw' : 'chip-nz') + '">' + e.when + '</span>' +
+            (e.hard ? '<span class="chip chip-hard">⚠️ 硬期限</span>' : '') +
+            (e.loc ? '<span class="chip chip-tw">📍 ' + e.loc + '</span>' : '') +
+          '</div>' +
+          '<div class="rm-desc">' + e.desc + '</div>' +
+        '</div>' +
+        '<div class="rm-act"><button class="btn-add" data-id="' + e.id + '">＋ 加入</button></div>' +
+      '</div>';
+    }).join('');
+  });
+}
+
+/* ---------- ICS ---------- */
+function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+function stamp(){
+  var d = new Date();
+  return d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) + 'T' +
+         pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds()) + 'Z';
+}
+
+// 由 UTC 起始字串 + 分鐘數推算結束時間
+function addMin(utcStr, min){
+  var y = +utcStr.slice(0,4), mo = +utcStr.slice(4,6) - 1, d = +utcStr.slice(6,8);
+  var h = +utcStr.slice(9,11), mi = +utcStr.slice(11,13);
+  var t = new Date(Date.UTC(y, mo, d, h, mi) + min * 60000);
+  return t.getUTCFullYear() + pad(t.getUTCMonth() + 1) + pad(t.getUTCDate()) + 'T' +
+         pad(t.getUTCHours()) + pad(t.getUTCMinutes()) + '00Z';
+}
+
+function esc(s){
+  return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+
+// RFC5545：每行 75 bytes 上限，超過要折行（續行以空白開頭）
+// 用 Array.from 依 code point 切割，避免拆開 emoji 的 surrogate pair
+var ENC = typeof TextEncoder !== 'undefined' ? new TextEncoder() : null;
+function byteLen(ch){
+  if (ENC) return ENC.encode(ch).length;
+  var c = ch.codePointAt(0);
+  return c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
+}
+function fold(line){
+  var chars = Array.from(line);
+  var bytes = 0, out = '';
+  for (var i = 0; i < chars.length; i++){
+    var b = byteLen(chars[i]);
+    if (bytes + b > 73){ out += '\r\n '; bytes = 1; }
+    out += chars[i]; bytes += b;
+  }
+  return out;
+}
+
+function buildICS(list){
+  var L = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//NZ2026//Trip Reminders//ZH-TW',
+           'CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:紐西蘭 2026 行程提醒','X-WR-TIMEZONE:Pacific/Auckland'];
+  var now = stamp();
+  list.forEach(function(e){
+    L.push('BEGIN:VEVENT');
+    L.push('UID:' + e.id + '@nz2026.trip');
+    L.push('DTSTAMP:' + now);
+    L.push('DTSTART:' + e.utc);
+    L.push('DTEND:' + addMin(e.utc, e.dur));
+    L.push('SUMMARY:' + esc(e.icon + ' ' + e.name));
+    if (e.loc) L.push('LOCATION:' + esc(e.loc));
+    L.push('DESCRIPTION:' + esc('【' + e.when + '】\n\n' + e.desc));
+    if (e.alarm > 0){
+      L.push('BEGIN:VALARM');
+      L.push('TRIGGER:-PT' + e.alarm + 'M');
+      L.push('ACTION:DISPLAY');
+      L.push('DESCRIPTION:' + esc(e.name));
+      L.push('END:VALARM');
+    }
+    // 事件開始當下也提醒一次
+    L.push('BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:' + esc(e.name),'END:VALARM');
+    L.push('END:VEVENT');
+  });
+  L.push('END:VCALENDAR');
+  return L.map(fold).join('\r\n') + '\r\n';
+}
+
+function download(list, filename){
+  if (!list.length){ toast('沒有可匯入的項目'); return; }
+  var ics = buildICS(list);
+  var blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 1500);
+  toast('已產生 ' + list.length + ' 個行程 · 開啟檔案即可加入行事曆');
+}
+
+var toastTimer;
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+}
+
+/* ---------- 綁定 ---------- */
+render();
+
+document.getElementById('btn-all').addEventListener('click', function(){
+  download(EVENTS, 'NZ2026-全部提醒.ics');
+});
+
+Array.prototype.forEach.call(document.querySelectorAll('.btn-sub'), function(btn){
+  btn.addEventListener('click', function(){
+    var cat = btn.getAttribute('data-cat');
+    download(EVENTS.filter(function(e){ return e.cat === cat; }), 'NZ2026-' + CAT_NAME[cat] + '.ics');
+  });
+});
+
+document.addEventListener('click', function(ev){
+  var btn = ev.target.closest ? ev.target.closest('.btn-add') : null;
+  if (!btn) return;
+  var id = btn.getAttribute('data-id');
+  var e = EVENTS.filter(function(x){ return x.id === id; })[0];
+  if (!e) return;
+  download([e], 'NZ2026-' + e.id + '.ics');
+  btn.classList.add('done');
+  btn.textContent = '✓ 已產生';
+  setTimeout(function(){ btn.classList.remove('done'); btn.textContent = '＋ 加入'; }, 3000);
+});
+</script>
+
+</body>
+</html>
