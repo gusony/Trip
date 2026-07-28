@@ -114,7 +114,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 22 個時間點</div>
+    <div class="day-badge">提醒總表 · 35 個時間點</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">所有訂票死線、退訂期限、現場報到時間都在這裡 · 時間以<b>紐西蘭當地時間</b>為準</div>
 
@@ -126,6 +126,7 @@ a{text-decoration:none;color:inherit}
       <div class="import-sub">
         <button class="btn-sub" data-cat="prep">🎫 只匯入「出發前要辦」</button>
         <button class="btn-sub" data-cat="dl">🔴 只匯入「退訂死線」</button>
+        <button class="btn-sub" data-cat="ops">🚗 只匯入「行程硬時間」</button>
         <button class="btn-sub" data-cat="meet">📍 只匯入「報到時間」</button>
       </div>
       <div class="import-hint">
@@ -161,6 +162,14 @@ a{text-decoration:none;color:inherit}
     <div class="cat-sub">紐西蘭時間 · 過期不退</div>
   </div>
   <div id="list-dl"></div>
+
+  <!-- ───────── 行程硬時間 ───────── -->
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#c2410c"></div>
+    <div class="cat-title">🚗 行程硬時間（過了就來不及）</div>
+    <div class="cat-sub">紐西蘭時間</div>
+  </div>
+  <div id="list-ops"></div>
 
   <!-- ───────── 報到 ───────── -->
   <div class="cat-header">
@@ -209,7 +218,22 @@ var EVENTS = [
   {id:'prep-docs', cat:'prep', icon:'📄', name:'辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險',
    utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:false,
    loc:'',
-   desc:'NZeTA 電子旅行授權（線上申請，需審核時間）· IDP 國際駕照（監理站當天可辦，台灣駕照也要一起帶）· 旅遊不便險要含自駕保障。'},
+   desc:'NZeTA 電子旅行授權（線上申請，需審核時間）· IDP 國際駕照（監理站當天可辦，台灣駕照也要一起帶）· 旅遊不便險要含自駕保障。順便向 Apex 確認租車保險等級（建議加購 Full Cover）。'},
+
+  {id:'prep-restaurant', cat:'prep', icon:'🍽️', name:'訂三家人氣餐廳（免費，但會被訂滿）',
+   utc:'20260912T020000Z', dur:30, alarm:0, when:'台灣 9/12（六）10:00', hard:false,
+   loc:'',
+   desc:'Wanaka Francesca\'s Italian（9/30–10/2 擇一晚）· Te Anau The Fat Duck / Redcliff（10/5 17:30，吃完就要開 2.5 小時夜路回皇后鎮）· 皇后鎮 Rata / Botswana Butchery（10/3 晚）。都是免費訂位，但行程撞上 NZ 學校假期，人氣店會被訂滿。'},
+
+  {id:'prep-pack', cat:'prep', icon:'📦', name:'行前打包 ＋ 文件備份 ＋ 離線地圖',
+   utc:'20260924T120000Z', dur:60, alarm:0, when:'台灣 9/24（四）20:00', hard:false,
+   loc:'',
+   desc:'證件：護照（效期 6 個月以上）· IDP ＋ 台灣駕照「兩張都要帶」· Visa/Mastercard（租車押金用）· NZeTA 核准信 · 保單 → 全部拍照存雲端。\n裝備：防水外套、登山鞋、保暖層（觀星山頂近 0°C）、SPF50+、行動電源、相機＋廣角鏡。\n手機：下載 Google Maps 紐西蘭離線包、確認 SIM/eSIM（Spark 或 One NZ）。'},
+
+  {id:'prep-checkin', cat:'prep', icon:'🛫', name:'NZ78 線上 check-in ＋ 選位',
+   utc:'20260925T103500Z', dur:30, alarm:0, when:'台灣 9/25（五）18:35', hard:false,
+   loc:'',
+   desc:'起飛前 24 小時開放。順手確認行李額度、把登機證存進手機錢包。⚠️ 這也是最後一次檢查 NZeTA 是否已核准的時間點——明天 18:35 就要飛了。'},
 
   {id:'prep-deerpark', cat:'prep', icon:'🦌', name:'🔴 鹿園高地開賣！立刻訂 10/3 下午',
    utc:'20260926T000000Z', dur:30, alarm:0, when:'台灣 9/26（六）08:00', hard:true,
@@ -246,6 +270,57 @@ var EVENTS = [
    utc:'20261004T190000Z', dur:60, alarm:120, when:'NZ 10/5（一）08:00', hard:true,
    loc:'',
    desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 期限今天 09:00，只剩 1 小時。10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449，退掉後明早還能提早上山玩 Luge。沒跳成 → 保留，明天照跳。'},
+
+  {id:'dl-avon', cat:'dl', icon:'🚣', name:'訂明天下午的 Avon 撐篙',
+   utc:'20261007T083000Z', dur:20, alarm:0, when:'NZ 10/7（三）21:30', hard:false,
+   loc:'christchurchattractions.nz',
+   desc:'10/8 傍晚 17:00 場 · 成人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買得到，但官方建議先預約減少排隊；10 月營業到 18:00，weather permitting。看基督城明天的天氣預報再決定訂不訂——剛看完企鵝回住處，順手訂一下。'},
+
+  {id:'dl-blackcat-time', cat:'dl', icon:'🐬', name:'🔴 確認 Black Cat 明早確切開船時間',
+   utc:'20261008T060000Z', dur:20, alarm:0, when:'NZ 10/8（四）19:00', hard:true,
+   loc:'',
+   desc:'一天只有 1–2 班，行事曆裡「Black Cat 報到」是暫定的 10:00——確認訂單上的實際開船時間後，回去把那個事件改掉。明天 07:30 就要從基督城出發（SH75 山路 1h30m / 80km），開船前 30 分鐘要完成報到。⚠️ 已進入 24 小時內，此時取消不退款。'},
+
+  // ── 行程硬時間（NZ 時間）──
+  {id:'op-roys', cat:'ops', icon:'🥾', name:'🔴 Roy\'s Peak 最晚上步道時間',
+   utc:'20260929T220000Z', dur:30, alarm:60, when:'NZ 9/30（三）11:00', hard:true,
+   loc:'Roy\'s Peak 登山口, Mt Aspiring Rd',
+   desc:'往返 16km、爬升 1,236m，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿 2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠️ 今天 11:30 同時是跳傘①的決策點，兩件事一起處理。'},
+
+  {id:'op-crown', cat:'ops', icon:'⛰️', name:'出發前查 Crown Range 路況',
+   utc:'20261002T203000Z', dur:15, alarm:60, when:'NZ 10/3（六）09:30', hard:false,
+   loc:'journeys.nzta.govt.nz',
+   desc:'Crown Range Road（SH89）是全紐最高公路（1,121m），10 月初仍可能結冰或積雪封路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要不要訂（48h 退改，別拖過明天 09:00）。'},
+
+  {id:'op-teanau', cat:'ops', icon:'🚗', name:'出發 Te Anau（來回 350km、12 小時）',
+   utc:'20261004T193000Z', dur:30, alarm:60, when:'NZ 10/5（一）08:30', hard:true,
+   loc:'',
+   desc:'08:45 出發，單趟 175km / 2h30m → 13:30 前一定要到 RealNZ 遊客中心報到（85 Lakefront Dr）。行李留皇后鎮，今晚開夜路回來住。⚠️ 出發前確認油箱夠來回。今天 08:00 也是跳傘②的決策點，出門前先處理完。'},
+
+  {id:'op-oamaru', cat:'ops', icon:'⛽', name:'退房皇后鎮 ＋ 加滿油，出發 Oamaru',
+   utc:'20261006T181500Z', dur:30, alarm:60, when:'NZ 10/7（三）07:15', hard:false,
+   loc:'',
+   desc:'250km / 3.5–4 小時，翻越 Lindis Pass（971m，清晨可能結冰，出發前查 NZTA）。⚠️ Cromwell 之前務必加滿油，這段補給點少。行李全部帶走，今晚換住 Oamaru，傍晚 20:00 看企鵝。'},
+
+  {id:'op-lastnight', cat:'ops', icon:'🧳', name:'🔴 最後一晚整備（明天 04:15 起床！）',
+   utc:'20261009T073000Z', dur:60, alarm:60, when:'NZ 10/9（五）20:30', hard:true,
+   loc:'',
+   desc:'① 回程順路把油加滿（明早沒時間）② 確認 Apex 清晨還車與 shuttle 流程——06:00 前有沒有人？要不要用 key drop？③ 設 04:00 ＋ 04:15 兩個鬧鐘 ④ 行李今晚全部收好，早上直接出門 ⑤ 清空所有食物、蜂蜜、新鮮植物（台灣海關嚴格）⑥ 21:00 就寢。'},
+
+  {id:'op-wakeup', cat:'ops', icon:'⏰', name:'🔴 起床！（05:00 就要出門）',
+   utc:'20261009T151500Z', dur:45, alarm:0, when:'NZ 10/10（六）04:15', hard:true,
+   loc:'蘇迪馬酒店 Sudima Hotel',
+   desc:'快速梳洗、退房。行李昨晚已經收好，直接出門。'},
+
+  {id:'op-car', cat:'ops', icon:'🚗', name:'🔴 出發還車 · Apex 場外 28 Ron Guthrey Rd',
+   utc:'20261009T160000Z', dur:45, alarm:0, when:'NZ 10/10（六）05:00', hard:true,
+   loc:'28 Ron Guthrey Road, Christchurch',
+   desc:'⚠️ 還車處在場外，不是航廈旁——這是整趟最容易被低估的 30 分鐘。Sudima → Apex 約 5–10 分鐘車程；還車驗車 ＋ 搭免費 shuttle 到國際航廈，含接駁抓 30 分鐘 → 05:45 才會到航廈。'},
+
+  {id:'op-cutoff', cat:'ops', icon:'🛄', name:'🔴 NZ586 Check-in 截止 06:05',
+   utc:'20261009T164500Z', dur:20, alarm:0, when:'NZ 10/10（六）05:45 抵達航廈', hard:true,
+   loc:'基督城機場 國際航廈',
+   desc:'NZ 航班起飛前 75–90 分鐘關櫃 → 最晚 06:05 完成托運。登機門起飛前 45 分鐘（06:35）關閉。出境不能帶水果、食物、泥土（MAF 檢查很嚴）。'},
 
   // ── 報到（NZ 時間）──
   {id:'meet-darksky', cat:'meet', icon:'🔭', name:'Dark Sky 銀河觀星（中文導覽）',
@@ -315,12 +390,12 @@ var EVENTS = [
    desc:'08:45 抵達奧克蘭 → 轉 NZ77（10:40）→ 17:05 抵達桃園 T2。早班機，前一晚就要打包好、確認租車還車時間。'}
 ];
 
-var CAT_COLOR = {prep:'#7C3AED', dl:'#DC2626', meet:'#0369a1', fly:'#059669'};
-var CAT_NAME  = {prep:'出發前要辦', dl:'退訂死線', meet:'報到時間', fly:'航班'};
+var CAT_COLOR = {prep:'#7C3AED', dl:'#DC2626', ops:'#c2410c', meet:'#0369a1', fly:'#059669'};
+var CAT_NAME  = {prep:'出發前要辦', dl:'退訂死線', ops:'行程硬時間', meet:'報到時間', fly:'航班'};
 
 /* ---------- 畫面 ---------- */
 function render(){
-  ['prep','dl','meet','fly'].forEach(function(cat){
+  ['prep','dl','ops','meet','fly'].forEach(function(cat){
     var box = document.getElementById('list-' + cat);
     box.innerHTML = EVENTS.filter(function(e){ return e.cat === cat; }).map(function(e){
       return '<div class="rm">' +
