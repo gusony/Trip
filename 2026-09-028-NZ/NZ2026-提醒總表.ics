@@ -7,14 +7,16 @@ X-WR-CALNAME:紐西蘭 2026 行程提醒
 X-WR-TIMEZONE:Pacific/Auckland
 BEGIN:VEVENT
 UID:prep-blackcat@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260801T010000Z
 DTEND:20260801T013000Z
 SUMMARY:🐬 訂 Black Cat 海豚船（10/9）
-LOCATION:blackcat.co.nz
 DESCRIPTION:【台灣 8/1（六）09:00】\n\n10/9 上午班 · 成人 NZ
  D $130 · 一天只開 1–2 班，隔天就要搭早班機回台，沒
- 有備用日。訂完把手機號碼留給船家。
+ 有備用日。訂完把手機號碼留給船家。\n🔗 官網／訂
+ 票：https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-AN
+ C
+URL:https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -23,7 +25,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:prep-docs@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260901T010000Z
 DTEND:20260901T020000Z
 SUMMARY:📄 辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險
@@ -39,16 +41,41 @@ DESCRIPTION:辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:prep-deerpark-pre@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260903T010000Z
+DTEND:20260903T013000Z
+SUMMARY:🚗 鹿園前置：確認訂票視窗＋跟 Apex 要車牌
+DESCRIPTION:【台灣 9/3（四）09:00】\n\n① 上官網確認「7 天
+ 內才開放預約」這個規則還在——這是 2026 上半年入口
+ 道路施工期間的臨時措施（原本是 30 天），施工已於 7
+ /27 結束，有可能改回 30 天。若改回 30 天，10/3 的票 9/3
+  就能訂，別錯過。\n② ⚠️ 訂票系統「必須填車牌號
+ 碼」，但你 9/26 訂票時人在台灣、9/27 才在基督城取車 
+ → 現在就寫信問 Apex 能不能先給車牌，或問鹿園能否
+ 事後補填／改車牌。這件事沒解決，9/26 當天會卡住。\
+ n🔗 官網／訂票：https://deerparkheights.co.nz/info/faqs/
+URL:https://deerparkheights.co.nz/info/faqs/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:鹿園前置：確認訂票視窗＋跟 Apex 要車牌
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:prep-restaurant@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260912T020000Z
 DTEND:20260912T023000Z
 SUMMARY:🍽️ 訂三家人氣餐廳（免費，但會被訂滿）
-DESCRIPTION:【台灣 9/12（六）10:00】\n\nWanaka Francesca's Italian
- （9/30–10/2 擇一晚）· Te Anau The Fat Duck / Redcliff（10/5 17:
- 30，吃完就要開 2.5 小時夜路回皇后鎮）· 皇后鎮 Rata / 
- Botswana Butchery（10/3 晚）。都是免費訂位，但行程撞上 N
- Z 學校假期，人氣店會被訂滿。
+DESCRIPTION:【台灣 9/12（六）10:00】\n\n① Te Anau（10/5 17:45
+ ，最要緊——吃完要開 2h30m 夜路回皇后鎮）：首選 The 
+ Redcliff（老字號、在地食材創意菜，4.5★）／The Fat Duck
+ （2025 紐西蘭 Top 50 Gastropubs 全國冠軍，份量大）／The Mo
+ ose（湖景最隨性）。\n② Wanaka（9/30–10/2 擇一晚）：Fra
+ ncesca's Italian Kitchen。\n③ 皇后鎮（10/3 晚）：Rata／Botswa
+ na Butchery。\n都是免費訂位，但行程撞上 NZ 學校假期，
+ 人氣店會被訂滿。
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -57,7 +84,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:prep-pack@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260924T120000Z
 DTEND:20260924T130000Z
 SUMMARY:📦 行前打包 ＋ 文件備份 ＋ 離線地圖
@@ -76,7 +103,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:prep-checkin@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260925T103500Z
 DTEND:20260925T110500Z
 SUMMARY:🛫 NZ78 線上 check-in ＋ 選位
@@ -92,16 +119,22 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:prep-deerpark@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260926T000000Z
-DTEND:20260926T003000Z
+DTSTAMP:20260728T164444Z
+DTSTART:20260925T140000Z
+DTEND:20260925T144500Z
 SUMMARY:🦌 🔴 鹿園高地開賣！立刻訂 10/3 下午
-LOCATION:deerparkheights.co.nz/book-now
-DESCRIPTION:【台灣 9/26（六）08:00】\n\n⚠️ 官網只開放「7
-  天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就
- 沒了。NZD $75/車（最多 8 人），閘門認線上訂單，現場
- 買不到，也不接受 Klook 等第三方。今晚 18:35 就要出發
- ，記得出門前訂完。
+DESCRIPTION:【台灣 9/25（五）22:00】\n🌙 原訂 9/26 08:00 開
+ 賣 · 已提前到睡前\n\n⚠️ 官網只開放「到訪日前 7 天
+ 內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒
+ 了。每日限 80 台車，賣完就沒有。\nNZD $75/車（8 座以
+ 下）。⚠️ 訂票要填車牌號碼（見 9/3 那筆提醒）。\n
+ 🚫 只能官網 booking.deerparkheights.co.nz 訂——官方明文「
+ 第三方票無效，會被拒絕入園」，Klook／KKday／Viator 都
+ 不行，現場也沒有售票。\n閘門是車牌辨識自動開啟，
+ 另會寄簡訊＋Email 備援 PIN（進出各一次）。\n今晚 18:35
+  就要出發，記得出門前訂完。\n🔗 官網／訂票：https:/
+ /booking.deerparkheights.co.nz/
+URL:https://booking.deerparkheights.co.nz/
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -109,20 +142,40 @@ DESCRIPTION:🔴 鹿園高地開賣！立刻訂 10/3 下午
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:dl-glacier@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260927T190000Z
-DTEND:20260927T193000Z
-SUMMARY:🚁 冰川飛行決策：明天 09:30 的班要不要退
-DESCRIPTION:【NZ 9/28（一）08:00】\n\n9/29 09:30 Mt Cook 冰川飛
- 行（GetYourGuide 已訂）可 24h 前免費退 → 期限是今天 09:
- 30。看 Mt Cook 明早預報，不妙就退掉，改訂 10/2 Wanaka 冰
- 川健行或 10/3 皇后鎮的備援窗口。
+UID:fly-out@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260926T103500Z
+DTEND:20260926T211500Z
+SUMMARY:✈️ NZ78 桃園 T2 → 奧克蘭
+LOCATION:Taoyuan International Airport Terminal 2
+DESCRIPTION:【台灣 9/26（六）18:35 起飛】\n\n隔天 10:15 抵達
+ 奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。\n\n
+ 📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Taoy
+ uan%20International%20Airport%20Terminal%202
+URL:https://www.google.com/maps/search/?api=1&query=Taoyuan%20Internation
+ al%20Airport%20Terminal%202
 BEGIN:VALARM
-TRIGGER:-PT120M
+TRIGGER:-PT180M
 ACTION:DISPLAY
-DESCRIPTION:冰川飛行決策：明天 09:30 的班要不要退
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
 END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-glacier@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260927T090000Z
+DTEND:20260927T093000Z
+SUMMARY:🚁 冰川飛行決策：明天 09:30 的班要不要退
+DESCRIPTION:【NZ 9/27（日）22:00】\n🌙 死線 9/28 09:30 · 已提
+ 前到睡前\n\n9/29 09:30 Mt Cook 冰川飛行（GetYourGuide 已訂）
+ 可 24h 前免費退 → 期限是今天 09:30。看 Mt Cook 明早預
+ 報，不妙就退掉，改訂 10/2 Wanaka 冰川健行或 10/3 皇后
+ 鎮的備援窗口。
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -130,8 +183,107 @@ DESCRIPTION:冰川飛行決策：明天 09:30 的班要不要退
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:night-glacier@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260928T074500Z
+DTEND:20260928T080500Z
+SUMMARY:🌙 睡前：明天 08:00 就要出發
+DESCRIPTION:【NZ 9/28（一）20:45】\n\n明天冰川飛行 09:00 報
+ 到（Mount Cook Airport），要 08:00 從 Tekapo 出發，比平常早
+ 起。\n今晚 21:15 還有 Dark Sky 觀星（約 23:15 回來）→ 現
+ 在先把明早的東西準備好：登山鞋、2L 飲水、防曬、相
+ 機充電。設好 07:00 鬧鐘。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:睡前：明天 08:00 就要出發
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-darksky@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260928T081500Z
+DTEND:20260928T101500Z
+SUMMARY:🔭 Dark Sky 銀河觀星（中文導覽）
+LOCATION:Dark Sky Project\, Lake Tekapo
+DESCRIPTION:【NZ 9/28（一）21:15】\n\n含飯店接送，全程約 2 
+ 小時。⚠️ 山頂近 0°C，多層保暖＋毛帽手套。出發前
+  15 分鐘到報到處聽天氣最終判定；雲太厚可改室內天
+ 文導覽退差額、改期或全退。\n\n📍 地圖導航：https://w
+ ww.google.com/maps/search/?api=1&query=Dark%20Sky%20Project%2C%20Lake%20
+ Tekapo
+URL:https://www.google.com/maps/search/?api=1&query=Dark%20Sky%20Project%
+ 2C%20Lake%20Tekapo
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-glacier@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260928T200000Z
+DTEND:20260928T211500Z
+SUMMARY:🚁 冰川飛行報到 · Mount Cook Airport
+LOCATION:Mount Cook Airport
+DESCRIPTION:【NZ 9/29（二）09:00 報到】\n\n⚠️ 09:30 是飛行
+ 時間，09:00 要到機場報到 → 08:00 就要從 Tekapo 出發（55
+ km，Pukaki 觀景台只能快拍即走）。飛行 45 分鐘 · 2 人 
+ · GetYourGuide 已訂。\n10:45 南下 High Country Salmon 吃午餐，
+ 13:00 回 Mt Cook 走 Hooker Valley 步道（⏰ 最晚 13:30 前要上
+ 步道，10.6km 往返 3.5–4 小時，天黑前才走得完）。\n\n
+ 📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Moun
+ t%20Cook%20Airport
+URL:https://www.google.com/maps/search/?api=1&query=Mount%20Cook%20Airpor
+ t
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:冰川飛行報到 · Mount Cook Airport
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:冰川飛行報到 · Mount Cook Airport
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:op-roys@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260929T220000Z
+DTEND:20260929T223000Z
+SUMMARY:🥾 🔴 Roy's Peak 最晚上步道時間
+LOCATION:Roy's Peak Track car park\, Mount Aspiring Road\, Wanaka
+DESCRIPTION:【NZ 9/30（三）11:00】\n\n往返 16km、爬升 1\,236m
+ ，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上
+ 步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿
+  2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠
+ ️ 今天 11:30 同時是跳傘①的決策點，兩件事一起處理
+ 。\n\n📍 地圖導航：https://www.google.com/maps/search/?api=1&que
+ ry=Roy's%20Peak%20Track%20car%20park%2C%20Mount%20Aspiring%20Road%2C%20W
+ anaka
+URL:https://www.google.com/maps/search/?api=1&query=Roy's%20Peak%20Track%
+ 20car%20park%2C%20Mount%20Aspiring%20Road%2C%20Wanaka
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Roy's Peak 最晚上步道時間
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Roy's Peak 最晚上步道時間
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dl-skydive1@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20260929T223000Z
 DTEND:20260929T233000Z
 SUMMARY:🪂 跳傘①決策 ＋ 順手退 Rippon 品酒
@@ -153,8 +305,83 @@ DESCRIPTION:跳傘①決策 ＋ 順手退 Rippon 品酒
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:dl-rippon@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260930T090000Z
+DTEND:20260930T093000Z
+SUMMARY:🍷 🔴 Rippon 品酒最後退訂點（睡前處理）
+DESCRIPTION:【NZ 9/30（三）22:00】\n🌙 死線 10/1 04:30 · 已提
+ 前到睡前\n\n明天 16:30 的 Rippon 免費導覽（2 人），退訂
+ 期限是開始前 12 小時 ＝ 10/1 04:30，那個時間你在睡覺 
+ → 今晚睡前就要決定。\n判斷：明天 12:30 跳傘照跳的
+ 話，全程 3–3.5 小時、15:30–16:00 才結束，Wanaka Airport 
+ → Rippon 還要 15–20 分鐘車程 → 幾乎一定遲到。跳傘
+ 照跳就退掉。\nno-show 會收 $10/人。\n🔗 官網／訂票：ht
+ tps://rippon.co.nz/tasting-bookings/
+URL:https://rippon.co.nz/tasting-bookings/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Rippon 品酒最後退訂點（睡前處理）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-skydive1@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20260930T230000Z
+DTEND:20261001T023000Z
+SUMMARY:🪂 Skydive Wanaka 報到（12:30 場）
+LOCATION:Skydive Wanaka\, 14 Mustang Lane\, Wanaka Airport
+DESCRIPTION:【NZ 10/1（四）12:00 抵達】\n\n⚠️ 提早 30 分鐘
+ 抵達 → 12:00 到、11:45 從住處出發（機場在 SH6 上，距
+ 鎮中心約 10 分鐘）。12:30 是報到時間不是跳傘時間，
+ 全程 3–3.5 小時，預計 15:30–16:00 結束。帶證件＋Klook 
+ QR；穿深色運動服＋包腳鞋，不戴飾品。11:00 先吃輕食
+ ，別空腹也別吃太飽。\n\n📍 地圖導航：https://www.google
+ .com/maps/search/?api=1&query=Skydive%20Wanaka%2C%2014%20Mustang%20Lane%
+ 2C%20Wanaka%20Airport
+URL:https://www.google.com/maps/search/?api=1&query=Skydive%20Wanaka%2C%2
+ 014%20Mustang%20Lane%2C%20Wanaka%20Airport
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Skydive Wanaka 報到（12:30 場）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Skydive Wanaka 報到（12:30 場）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-rippon@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261001T033000Z
+DTEND:20261001T043000Z
+SUMMARY:🍷 Rippon 酒莊免費導覽（2 人）
+LOCATION:Rippon Vineyard\, Wanaka
+DESCRIPTION:【NZ 10/1（四）16:30】\n\n⚠️ 跟跳傘結束時間
+ （15:30–16:00）非常接近，Wanaka Airport → Rippon 還要 15–
+ 20 分鐘車程。已定策略：9/30 確認跳傘照跳就先退掉這
+ 個。no-show 收 $10/人。\n\n📍 地圖導航：https://www.google.c
+ om/maps/search/?api=1&query=Rippon%20Vineyard%2C%20Wanaka\n🔗 官網
+ ／訂票：https://rippon.co.nz/tasting-bookings/
+URL:https://www.google.com/maps/search/?api=1&query=Rippon%20Vineyard%2C%
+ 20Wanaka
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Rippon 酒莊免費導覽（2 人）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Rippon 酒莊免費導覽（2 人）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dl-horse@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261001T210000Z
 DTEND:20261001T213000Z
 SUMMARY:🐴 騎馬退款分界：過了只能退 50%
@@ -175,16 +402,71 @@ DESCRIPTION:騎馬退款分界：過了只能退 50%
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:op-crown@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261002T203000Z
+DTEND:20261002T204500Z
+SUMMARY:⛰️ 出發前查 Crown Range 路況
+DESCRIPTION:【NZ 10/3（六）09:30】\n\nCrown Range Road（SH89）是
+ 全紐最高公路（1\,121m），10 月初仍可能結冰或積雪封
+ 路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安
+ 全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要
+ 不要訂（48h 退改，別拖過明天 09:00）。\n🔗 官網／訂
+ 票：https://www.journeys.nzta.govt.nz
+URL:https://www.journeys.nzta.govt.nz
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:出發前查 Crown Range 路況
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:出發前查 Crown Range 路況
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-deerpark@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261003T010000Z
+DTEND:20261003T030000Z
+SUMMARY:🦌 鹿園高地 Deer Park Heights
+LOCATION:Deer Park Heights\, Peninsula Road\, Kelvin Heights\, Queenstown
+DESCRIPTION:【NZ 10/3（六）14:00】\n\n皇后鎮 4 天唯一的寬鬆
+ 時段。市區開過去約 20 分鐘，園內 5km 景觀車道自駕環
+ 繞，停留 1.5–2 小時很充裕。餵鹿、山羊、驢子、迷你
+ 馬要帶 NZ$2 硬幣。LOTR《雙塔奇兵》Rohan 拍攝地。⚠️ 
+ 關園 18:00、禁止步行進入、要先線上訂票。\n\n📍 地圖
+ 導航：https://www.google.com/maps/search/?api=1&query=Deer%20Park%20H
+ eights%2C%20Peninsula%20Road%2C%20Kelvin%20Heights%2C%20Queenstown\n🔗
+  官網／訂票：https://booking.deerparkheights.co.nz/
+URL:https://www.google.com/maps/search/?api=1&query=Deer%20Park%20Heights
+ %2C%20Peninsula%20Road%2C%20Kelvin%20Heights%2C%20Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:鹿園高地 Deer Park Heights
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:鹿園高地 Deer Park Heights
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dl-luge@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261003T200000Z
 DTEND:20261003T203000Z
 SUMMARY:🛷 Skyline Luge 訂票死線（48h 退改規則）
-LOCATION:queenstown.skyline.co.nz
-DESCRIPTION:【NZ 10/4（日）09:00】\n\n10/6 下午要玩 Gondola + Lu
- ge。Skyline 是全行程最嚴的 48 小時退改 → 現在看 10/6 
- 預報再決定訂不訂，剛好卡在 48h 邊界。天氣好就線上
- 買組合票（比現場分開買省，也免排隊）。
+DESCRIPTION:【NZ 10/4（日）09:00】\n\n10/6 下午 14:00 上山玩 Go
+ ndola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是
+ 全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現
+ 在還有 5 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣
+ 好就線上買組合票（比現場分開買省，也免排售票隊伍
+ ）。⚠️ 別拖過今天 14:00，過了就變成不能退。\n🔗 
+ 官網／訂票：https://queenstown.skyline.co.nz
+URL:https://queenstown.skyline.co.nz
 BEGIN:VALARM
 TRIGGER:-PT120M
 ACTION:DISPLAY
@@ -197,8 +479,34 @@ DESCRIPTION:Skyline Luge 訂票死線（48h 退改規則）
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:meet-horse@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261003T221500Z
+DTEND:20261003T230000Z
+SUMMARY:🐴 出發往 Moke Valley 騎馬
+LOCATION:Moke Lake\, Queenstown
+DESCRIPTION:【NZ 10/4（日）11:15 出發】\n\n12:00 前一定要抵
+ 達集合（騎馬 12:00–13:30）。Moke Lake Rd 末段是碎石路，
+ 慢慢開、預留時間。⚠️ 48 小時內不退，遲到＝全額
+ 損失。穿長褲＋包腳鞋，山谷比市區冷。\n\n📍 地圖導
+ 航：https://www.google.com/maps/search/?api=1&query=Moke%20Lake%2C%20Q
+ ueenstown
+URL:https://www.google.com/maps/search/?api=1&query=Moke%20Lake%2C%20Quee
+ nstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:出發往 Moke Valley 騎馬
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:出發往 Moke Valley 騎馬
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dl-penguin@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261004T030000Z
 DTEND:20261004T033000Z
 SUMMARY:🐧 🔴 企鵝 Premium 最後免費退訂點
@@ -218,113 +526,53 @@ DESCRIPTION:🔴 企鵝 Premium 最後免費退訂點
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:meet-tss@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261004T034500Z
+DTEND:20261004T074500Z
+SUMMARY:🚢 TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+LOCATION:Steamer Wharf\, Queenstown
+DESCRIPTION:【NZ 10/4（日）16:45 報到】\n\n17:00 開船，全程
+ 約 3 小時 45 分（Walter Peak Gourmet BBQ 晚餐）。船有遮蔽
+ ，風雨照開，是全行程最穩的晚間活動。\n\n📍 地圖導
+ 航：https://www.google.com/maps/search/?api=1&query=Steamer%20Wharf%2C
+ %20Queenstown
+URL:https://www.google.com/maps/search/?api=1&query=Steamer%20Wharf%2C%20
+ Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dl-skydive2@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261004T190000Z
-DTEND:20261004T200000Z
+DTSTAMP:20260728T164444Z
+DTSTART:20261004T090000Z
+DTEND:20261004T094500Z
 SUMMARY:🪂 🔴 跳傘②決策：10/1 跳成了就退掉明天
-DESCRIPTION:【NZ 10/5（一）08:00】\n\n10/6 09:00 NZONE 皇后鎮（K
- look）可 24h 前免費退 → 期限今天 09:00，只剩 1 小時。1
- 0/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449，
- 退掉後明早還能提早上山玩 Luge。沒跳成 → 保留，明
- 天照跳。
-BEGIN:VALARM
-TRIGGER:-PT120M
-ACTION:DISPLAY
-DESCRIPTION:🔴 跳傘②決策：10/1 跳成了就退掉明天
-END:VALARM
+DESCRIPTION:【NZ 10/4（日）22:00】\n🌙 死線 10/5 09:00 · 已提
+ 前到睡前\n\n10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費
+ 退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門
+ 去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 
+ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6
+  照跳。\n⚠️ 順帶提醒：明天（10/5）08:30 就要出發 Te 
+ Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前
+ 確認油箱夠來回。
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
 DESCRIPTION:🔴 跳傘②決策：10/1 跳成了就退掉明天
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:dl-avon@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261007T083000Z
-DTEND:20261007T085000Z
-SUMMARY:🚣 訂明天下午的 Avon 撐篙
-LOCATION:christchurchattractions.nz
-DESCRIPTION:【NZ 10/7（三）21:30】\n\n10/8 傍晚 17:00 場 · 成
- 人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買
- 得到，但官方建議先預約減少排隊；10 月營業到 18:00，
- weather permitting。看基督城明天的天氣預報再決定訂不訂
- ——剛看完企鵝回住處，順手訂一下。
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:訂明天下午的 Avon 撐篙
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:dl-blackcat-time@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261008T060000Z
-DTEND:20261008T062000Z
-SUMMARY:🐬 🔴 確認 Black Cat 明早確切開船時間
-DESCRIPTION:【NZ 10/8（四）19:00】\n\n一天只有 1–2 班，行
- 事曆裡「Black Cat 報到」是暫定的 10:00——確認訂單上
- 的實際開船時間後，回去把那個事件改掉。明天 07:30 
- 就要從基督城出發（SH75 山路 1h30m / 80km），開船前 30 
- 分鐘要完成報到。⚠️ 已進入 24 小時內，此時取消不
- 退款。
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:🔴 確認 Black Cat 明早確切開船時間
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:op-roys@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260929T220000Z
-DTEND:20260929T223000Z
-SUMMARY:🥾 🔴 Roy's Peak 最晚上步道時間
-LOCATION:Roy's Peak 登山口\, Mt Aspiring Rd
-DESCRIPTION:【NZ 9/30（三）11:00】\n\n往返 16km、爬升 1\,236m
- ，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上
- 步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿
-  2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠
- ️ 今天 11:30 同時是跳傘①的決策點，兩件事一起處理
- 。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:🔴 Roy's Peak 最晚上步道時間
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:🔴 Roy's Peak 最晚上步道時間
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:op-crown@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261002T203000Z
-DTEND:20261002T204500Z
-SUMMARY:⛰️ 出發前查 Crown Range 路況
-LOCATION:journeys.nzta.govt.nz
-DESCRIPTION:【NZ 10/3（六）09:30】\n\nCrown Range Road（SH89）是
- 全紐最高公路（1\,121m），10 月初仍可能結冰或積雪封
- 路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安
- 全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要
- 不要訂（48h 退改，別拖過明天 09:00）。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:出發前查 Crown Range 路況
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:出發前查 Crown Range 路況
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:op-teanau@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261004T193000Z
 DTEND:20261004T200000Z
 SUMMARY:🚗 出發 Te Anau（來回 350km、12 小時）
@@ -345,8 +593,98 @@ DESCRIPTION:出發 Te Anau（來回 350km、12 小時）
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:meet-glowworm@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261005T003000Z
+DTEND:20261005T031500Z
+SUMMARY:✨ 螢火蟲洞報到 · RealNZ 遊客中心
+LOCATION:RealNZ Visitor Centre\, 85 Lakefront Drive\, Te Anau
+DESCRIPTION:【NZ 10/5（一）13:30 報到】\n\n14:00 場出發，全
+ 程約 2 小時 15 分。出發前 30 分鐘報到。洞內完全黑暗
+ 、不能拍照，手機收好；洞內溫度低要帶保暖衣物。\n\
+ n📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Rea
+ lNZ%20Visitor%20Centre%2C%2085%20Lakefront%20Drive%2C%20Te%20Anau
+URL:https://www.google.com/maps/search/?api=1&query=RealNZ%20Visitor%20Ce
+ ntre%2C%2085%20Lakefront%20Drive%2C%20Te%20Anau
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:night-skydive2@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261005T090000Z
+DTEND:20261005T092000Z
+SUMMARY:🌙 睡前：明天 08:30 出門跳傘
+DESCRIPTION:【NZ 10/5（一）22:00】\n\n明天 09:00 NZONE 跳傘（Kl
+ ook 已訂）→ ⏰ 報到 08:50 截止，遲到視同 no-show。08:40 
+ 要到 35 Shotover St，08:30 從 Hampshire Holiday Parks 出發（步
+ 行 12–15 分鐘）。\n今晚設好 07:30 鬧鐘；備妥證件＋Klo
+ ok QR Code；穿深色運動服＋包腳鞋、不戴飾品。\n今天剛
+ 從 Te Anau 開了 5 小時車回來，早點睡。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:睡前：明天 08:30 出門跳傘
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-skydive2@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261005T194000Z
+DTEND:20261005T234000Z
+SUMMARY:🪂 NZONE 跳傘報到 · 35 Shotover St
+LOCATION:NZONE Skydive\, 35 Shotover Street\, Queenstown
+DESCRIPTION:【NZ 10/6（二）08:40 抵達】\n\n⚠️ 報到 08:50 截
+ 止（預約時間前 10 分鐘關閉 check-in），遲到視同 no-show
+  → 08:40 抵達、08:30 從 Hampshire Holiday Parks 出發（步行 12
+ –15 分鐘）。報到處是市區店面不是跳傘場，報到後有
+ 接駁車。全程 3–4 小時，預計 12:00–13:00 結束，下午 L
+ uge 時間別訂死。\n\n📍 地圖導航：https://www.google.com/map
+ s/search/?api=1&query=NZONE%20Skydive%2C%2035%20Shotover%20Street%2C%20Q
+ ueenstown
+URL:https://www.google.com/maps/search/?api=1&query=NZONE%20Skydive%2C%20
+ 35%20Shotover%20Street%2C%20Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:night-oamaru@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261006T090000Z
+DTEND:20261006T093000Z
+SUMMARY:🌙 睡前：收行李＋明天 07:15 退房
+DESCRIPTION:【NZ 10/6（二）22:00】\n\n明天要退房皇后鎮、開
+  250km 到 Oamaru（翻 Lindis Pass），07:15 就要出發。\n① 今
+ 晚把行李收好——皇后鎮住了 4 晚，東西攤最開，早上
+ 邊收邊出發最容易漏。\n② 明早超市還沒開 → 長途路
+ 段的零食飲水今晚先買（Cromwell 之後補給點少）。\n③ 
+ 設好 06:30 鬧鐘。加油可以明早在皇后鎮出發前或 Cromwel
+ l 前處理。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:睡前：收行李＋明天 07:15 退房
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:op-oamaru@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261006T181500Z
 DTEND:20261006T184500Z
 SUMMARY:⛽ 退房皇后鎮 ＋ 加滿油，出發 Oamaru
@@ -366,8 +704,105 @@ DESCRIPTION:退房皇后鎮 ＋ 加滿油，出發 Oamaru
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:meet-penguin@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261007T070000Z
+DTEND:20261007T083000Z
+SUMMARY:🐧 Oamaru 藍企鵝歸巢（Premium 看台）
+LOCATION:Oamaru Blue Penguin Colony
+DESCRIPTION:【NZ 10/7（三）20:00】\n\nPremium 看台僅 60 席、距
+ 企鵝數公尺。雨天照常舉行，帶雨衣即可。\n\n📍 地圖
+ 導航：https://www.google.com/maps/search/?api=1&query=Oamaru%20Blue%2
+ 0Penguin%20Colony\n🔗 官網／訂票：https://www.penguins.co.nz/vis
+ it/evening-viewing/
+URL:https://www.google.com/maps/search/?api=1&query=Oamaru%20Blue%20Pengu
+ in%20Colony
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-avon@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261007T083000Z
+DTEND:20261007T085000Z
+SUMMARY:🚣 訂明天下午的 Avon 撐篙
+DESCRIPTION:【NZ 10/7（三）21:30】\n\n10/8 傍晚 17:00 場 · 成
+ 人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買
+ 得到，但官方建議先預約減少排隊；10 月營業到 18:00，
+ weather permitting。看基督城明天的天氣預報再決定訂不訂
+ ——剛看完企鵝回住處，順手訂一下。\n🔗 官網／訂
+ 票：https://www.christchurchattractions.nz/punting/
+URL:https://www.christchurchattractions.nz/punting/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:訂明天下午的 Avon 撐篙
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-blackcat-time@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261008T060000Z
+DTEND:20261008T062000Z
+SUMMARY:🐬 🔴 明早 Black Cat 出發前最後確認
+DESCRIPTION:【NZ 10/8（四）19:00】\n\n① 對一次訂單場次：
+ 應為 10/9 10:45 早班（10 月只有 10:45／13:30 兩班），報到
+  10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（S
+ H75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 
+ 確認船家有你的手機號碼——浪大取消會提前電話通知
+ 。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-sh
+ ow 也不退。
+BEGIN:VALARM
+TRIGGER:-PT120M
+ACTION:DISPLAY
+DESCRIPTION:🔴 明早 Black Cat 出發前最後確認
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 明早 Black Cat 出發前最後確認
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:meet-blackcat@nz2026.trip
+DTSTAMP:20260728T164444Z
+DTSTART:20261008T211500Z
+DTEND:20261008T234500Z
+SUMMARY:🐬 Black Cat 海豚船報到 · 10:45 早班
+LOCATION:Black Cat Cruises\, 61 Beach Road\, Akaroa
+DESCRIPTION:【NZ 10/9（五）10:15 報到】\n\n10:45 開船、全程 2
+  小時 → 12:45 回港，接著在 Akaroa 吃午餐。開船前 30 分
+ 鐘完成報到。\n🕐 10 月只有 10:45 與 13:30 兩班，已選早
+ 班（下午海風較強；且明天 04:15 就要起床搭機）。\n⚠
+ ️ 今天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m）
+ ，別睡晚。\n\n📍 地圖導航：https://www.google.com/maps/searc
+ h/?api=1&query=Black%20Cat%20Cruises%2C%2061%20Beach%20Road%2C%20Akaroa\
+ n🔗 官網／訂票：https://book.blackcat.co.nz/activity/selection?f
+ ilter=ProdGroup-ANC
+URL:https://www.google.com/maps/search/?api=1&query=Black%20Cat%20Cruises
+ %2C%2061%20Beach%20Road%2C%20Akaroa
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Black Cat 海豚船報到 · 10:45 早班
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Black Cat 海豚船報到 · 10:45 早班
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:op-lastnight@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261009T073000Z
 DTEND:20261009T083000Z
 SUMMARY:🧳 🔴 最後一晚整備（明天 04:15 起床！）
@@ -390,13 +825,17 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:op-wakeup@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261009T151500Z
 DTEND:20261009T160000Z
 SUMMARY:⏰ 🔴 起床！（05:00 就要出門）
-LOCATION:蘇迪馬酒店 Sudima Hotel
+LOCATION:Sudima Christchurch Airport\, 550 Memorial Avenue\, Christchurch
 DESCRIPTION:【NZ 10/10（六）04:15】\n\n快速梳洗、退房。行
- 李昨晚已經收好，直接出門。
+ 李昨晚已經收好，直接出門。\n\n📍 地圖導航：https://w
+ ww.google.com/maps/search/?api=1&query=Sudima%20Christchurch%20Airport%2
+ C%20550%20Memorial%20Avenue%2C%20Christchurch
+URL:https://www.google.com/maps/search/?api=1&query=Sudima%20Christchurch
+ %20Airport%2C%20550%20Memorial%20Avenue%2C%20Christchurch
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -405,15 +844,19 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:op-car@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261009T160000Z
 DTEND:20261009T164500Z
 SUMMARY:🚗 🔴 出發還車 · Apex 場外 28 Ron Guthrey Rd
-LOCATION:28 Ron Guthrey Road\, Christchurch
+LOCATION:Apex Car Rentals\, 28 Ron Guthrey Road\, Christchurch
 DESCRIPTION:【NZ 10/10（六）05:00】\n\n⚠️ 還車處在場外，
  不是航廈旁——這是整趟最容易被低估的 30 分鐘。Sudim
  a → Apex 約 5–10 分鐘車程；還車驗車 ＋ 搭免費 shuttle 
- 到國際航廈，含接駁抓 30 分鐘 → 05:45 才會到航廈。
+ 到國際航廈，含接駁抓 30 分鐘 → 05:45 才會到航廈。\n\
+ n📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Ape
+ x%20Car%20Rentals%2C%2028%20Ron%20Guthrey%20Road%2C%20Christchurch
+URL:https://www.google.com/maps/search/?api=1&query=Apex%20Car%20Rentals%
+ 2C%2028%20Ron%20Guthrey%20Road%2C%20Christchurch
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -422,15 +865,19 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:op-cutoff@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261009T164500Z
 DTEND:20261009T170500Z
 SUMMARY:🛄 🔴 NZ586 Check-in 截止 06:05
-LOCATION:基督城機場 國際航廈
+LOCATION:Christchurch Airport International Terminal
 DESCRIPTION:【NZ 10/10（六）05:45 抵達航廈】\n\nNZ 航班起飛
  前 75–90 分鐘關櫃 → 最晚 06:05 完成托運。登機門起飛
  前 45 分鐘（06:35）關閉。出境不能帶水果、食物、泥土
- （MAF 檢查很嚴）。
+ （MAF 檢查很嚴）。\n\n📍 地圖導航：https://www.google.com/
+ maps/search/?api=1&query=Christchurch%20Airport%20International%20Termin
+ al
+URL:https://www.google.com/maps/search/?api=1&query=Christchurch%20Airpor
+ t%20International%20Terminal
 BEGIN:VALARM
 TRIGGER:PT0M
 ACTION:DISPLAY
@@ -438,276 +885,18 @@ DESCRIPTION:🔴 NZ586 Check-in 截止 06:05
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:meet-darksky@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260928T081500Z
-DTEND:20260928T101500Z
-SUMMARY:🔭 Dark Sky 銀河觀星（中文導覽）
-LOCATION:Tekapo · 含飯店接送
-DESCRIPTION:【NZ 9/28（一）21:15】\n\n含飯店接送，全程約 2 
- 小時。⚠️ 山頂近 0°C，多層保暖＋毛帽手套。出發前
-  15 分鐘到報到處聽天氣最終判定；雲太厚可改室內天
- 文導覽退差額、改期或全退。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-glacier@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260928T203000Z
-DTEND:20260928T211500Z
-SUMMARY:🚁 冰川飛行 · Mount Cook Airport 集合
-LOCATION:Mount Cook Airport
-DESCRIPTION:【NZ 9/29（二）09:30】\n\n45 分鐘 · 2 人 · GetYourG
- uide 已訂。下午照走 Hooker Valley 步道。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:冰川飛行 · Mount Cook Airport 集合
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:冰川飛行 · Mount Cook Airport 集合
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-skydive1@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260930T230000Z
-DTEND:20261001T023000Z
-SUMMARY:🪂 Skydive Wanaka 報到（12:30 場）
-LOCATION:14 Mustang Lane\, Wanaka Airport
-DESCRIPTION:【NZ 10/1（四）12:00 抵達】\n\n⚠️ 提早 30 分鐘
- 抵達 → 12:00 到、11:45 從住處出發（機場在 SH6 上，距
- 鎮中心約 10 分鐘）。12:30 是報到時間不是跳傘時間，
- 全程 3–3.5 小時，預計 15:30–16:00 結束。帶證件＋Klook 
- QR；穿深色運動服＋包腳鞋，不戴飾品。11:00 先吃輕食
- ，別空腹也別吃太飽。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:Skydive Wanaka 報到（12:30 場）
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:Skydive Wanaka 報到（12:30 場）
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-rippon@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261001T033000Z
-DTEND:20261001T043000Z
-SUMMARY:🍷 Rippon 酒莊免費導覽（2 人）
-LOCATION:Rippon Vineyard\, Wanaka
-DESCRIPTION:【NZ 10/1（四）16:30】\n\n⚠️ 跟跳傘結束時間
- （15:30–16:00）非常接近，Wanaka Airport → Rippon 還要 15–
- 20 分鐘車程。已定策略：9/30 確認跳傘照跳就先退掉這
- 個。no-show 收 $10/人。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:Rippon 酒莊免費導覽（2 人）
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:Rippon 酒莊免費導覽（2 人）
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-deerpark@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261003T010000Z
-DTEND:20261003T030000Z
-SUMMARY:🦌 鹿園高地 Deer Park Heights
-LOCATION:Peninsula Rd\, Kelvin Heights（沿路 4km）
-DESCRIPTION:【NZ 10/3（六）14:00】\n\n皇后鎮 4 天唯一的寬鬆
- 時段。市區開過去約 20 分鐘，園內 5km 景觀車道自駕環
- 繞，停留 1.5–2 小時很充裕。餵鹿、山羊、驢子、迷你
- 馬要帶 NZ$2 硬幣。LOTR《雙塔奇兵》Rohan 拍攝地。⚠️ 
- 關園 18:00、禁止步行進入、要先線上訂票。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:鹿園高地 Deer Park Heights
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:鹿園高地 Deer Park Heights
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-horse@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261003T221500Z
-DTEND:20261003T230000Z
-SUMMARY:🐴 出發往 Moke Valley 騎馬
-LOCATION:Moke Lake\, Queenstown
-DESCRIPTION:【NZ 10/4（日）11:15 出發】\n\n12:00 前一定要抵
- 達集合（騎馬 12:00–13:30）。Moke Lake Rd 末段是碎石路，
- 慢慢開、預留時間。⚠️ 48 小時內不退，遲到＝全額
- 損失。穿長褲＋包腳鞋，山谷比市區冷。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:出發往 Moke Valley 騎馬
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:出發往 Moke Valley 騎馬
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-tss@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261004T034500Z
-DTEND:20261004T073000Z
-SUMMARY:🚢 TSS Earnslaw 蒸汽船報到 · Steamer Wharf
-LOCATION:Steamer Wharf\, Queenstown
-DESCRIPTION:【NZ 10/4（日）16:45 報到】\n\n17:00 開船，全程
- 約 3 小時 45 分（Walter Peak Gourmet BBQ 晚餐）。船有遮蔽
- ，風雨照開，是全行程最穩的晚間活動。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-glowworm@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261005T003000Z
-DTEND:20261005T024500Z
-SUMMARY:✨ 螢火蟲洞報到 · RealNZ 遊客中心
-LOCATION:85 Lakefront Dr\, Te Anau
-DESCRIPTION:【NZ 10/5（一）13:30 報到】\n\n14:00 場出發，全
- 程約 2 小時 15 分。出發前 30 分鐘報到。洞內完全黑暗
- 、不能拍照，手機收好；洞內溫度低要帶保暖衣物。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-skydive2@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261005T194000Z
-DTEND:20261005T234000Z
-SUMMARY:🪂 NZONE 跳傘報到 · 35 Shotover St
-LOCATION:35 Shotover Street\, Queenstown
-DESCRIPTION:【NZ 10/6（二）08:40 抵達】\n\n⚠️ 報到 08:50 截
- 止（預約時間前 10 分鐘關閉 check-in），遲到視同 no-show
-  → 08:40 抵達、08:30 從 Hampshire Holiday Parks 出發（步行 12
- –15 分鐘）。報到處是市區店面不是跳傘場，報到後有
- 接駁車。全程 3–4 小時，預計 12:00–13:00 結束，下午 L
- uge 時間別訂死。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-penguin@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261007T070000Z
-DTEND:20261007T083000Z
-SUMMARY:🐧 Oamaru 藍企鵝歸巢（Premium 看台）
-LOCATION:Oamaru Blue Penguin Colony
-DESCRIPTION:【NZ 10/7（三）20:00】\n\nPremium 看台僅 60 席、距
- 企鵝數公尺。雨天照常舉行，帶雨衣即可。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:meet-blackcat@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20261008T213000Z
-DTEND:20261009T000000Z
-SUMMARY:🐬 Black Cat 海豚船報到（時間待確認）
-LOCATION:61 Beach Road\, Akaroa
-DESCRIPTION:【NZ 10/9（五）約 10:00 報到】\n\n⚠️ 這筆還沒
- 訂，時間是暫定的上午班（約 10:30 開船）——訂好之
- 後記得回來改這個事件的時間。提前 30 分鐘報到，全
- 程約 2 小時。
-BEGIN:VALARM
-TRIGGER:-PT60M
-ACTION:DISPLAY
-DESCRIPTION:Black Cat 海豚船報到（時間待確認）
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:Black Cat 海豚船報到（時間待確認）
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:fly-out@nz2026.trip
-DTSTAMP:20260725T143709Z
-DTSTART:20260926T103500Z
-DTEND:20260926T213500Z
-SUMMARY:✈️ NZ78 桃園 T2 → 奧克蘭
-LOCATION:桃園機場 T2
-DESCRIPTION:【台灣 9/26（六）18:35 起飛】\n\n隔天 10:15 抵達
- 奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。
-BEGIN:VALARM
-TRIGGER:-PT180M
-ACTION:DISPLAY
-DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
-END:VALARM
-BEGIN:VALARM
-TRIGGER:PT0M
-ACTION:DISPLAY
-DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:fly-home@nz2026.trip
-DTSTAMP:20260725T143709Z
+DTSTAMP:20260728T164444Z
 DTSTART:20261009T182000Z
 DTEND:20261009T194500Z
 SUMMARY:✈️ NZ586 基督城 → 奧克蘭（回程）
-LOCATION:基督城機場
+LOCATION:Christchurch Airport
 DESCRIPTION:【NZ 10/10（六）07:20 起飛】\n\n08:45 抵達奧克蘭 
  → 轉 NZ77（10:40）→ 17:05 抵達桃園 T2。早班機，前一晚
- 就要打包好、確認租車還車時間。
+ 就要打包好、確認租車還車時間。\n\n📍 地圖導航：htt
+ ps://www.google.com/maps/search/?api=1&query=Christchurch%20Airport
+URL:https://www.google.com/maps/search/?api=1&query=Christchurch%20Airpor
+ t
 BEGIN:VALARM
 TRIGGER:-PT180M
 ACTION:DISPLAY

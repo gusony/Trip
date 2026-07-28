@@ -43,6 +43,43 @@ a{text-decoration:none;color:inherit}
 .cat-title{font-size:16px;font-weight:700}
 .cat-sub{font-size:12px;color:#94A3B8;margin-left:auto;text-align:right}
 
+/* 階段標題 */
+.phase{margin:34px 0 4px;padding:16px 18px;border-radius:16px;color:#fff}
+.phase-pre{background:linear-gradient(135deg,#5b21b6 0%,#7C3AED 100%)}
+.phase-post{background:linear-gradient(135deg,#075985 0%,#0369a1 100%)}
+.phase h2{font-size:19px;font-weight:700;line-height:1.25}
+.phase p{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:3px;line-height:1.5}
+
+/* 出發前：區間群組 */
+.grp{margin:18px 0 10px;display:flex;align-items:baseline;gap:10px;padding-left:2px}
+.grp-tag{flex-shrink:0;background:#EDE9FE;color:#5b21b6;border:1px solid #DDD6FE;border-radius:8px;font-size:12px;font-weight:700;padding:3px 10px}
+.grp-date{font-size:12.5px;color:#94A3B8;font-weight:600}
+
+/* 出發後：日區塊 */
+.dayblk{background:#fff;border:1px solid #E2E8F0;border-radius:16px;margin-bottom:12px;overflow:hidden}
+.dayblk.has-hard{border-color:#FCA5A5}
+.day-hd{display:flex;align-items:center;gap:10px;padding:12px 15px;background:#F8FAFC;border-bottom:1px solid #E2E8F0}
+.dayblk.has-hard .day-hd{background:#FEF2F2;border-bottom-color:#FECACA}
+.day-n{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:#0369a1;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1.05}
+.dayblk.has-hard .day-n{background:#DC2626}
+.day-n small{font-size:8.5px;font-weight:600;opacity:.85}
+.day-meta{flex:1;min-width:0}
+.day-date{font-size:14px;font-weight:700}
+.day-place{font-size:12px;color:#64748B;margin-top:-1px}
+.day-cnt{flex-shrink:0;font-size:11px;font-weight:700;color:#94A3B8;background:#fff;border:1px solid #E2E8F0;border-radius:99px;padding:2px 9px}
+.day-body{padding:11px 13px}
+.day-empty{padding:11px 15px;font-size:12.5px;color:#CBD5E1}
+.day-tl{display:flex;gap:11px;padding:9px 0;border-bottom:1px dashed #F1F5F9}
+.day-tl:last-child{border-bottom:none}
+.day-tl-time{flex-shrink:0;width:46px;font-size:13px;font-weight:700;color:#0F172A;padding-top:1px;font-variant-numeric:tabular-nums}
+.day-tl-body{flex:1;min-width:0}
+.chip-moved{background:#F5F3FF;color:#6D28D9;border:1px solid #DDD6FE}
+.chip-sleep{background:#1E293B;color:#E2E8F0;border:1px solid #334155}
+.chip-map{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE;transition:background 120ms}
+.chip-map:hover{background:#DBEAFE}
+.chip-link{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;transition:background 120ms}
+.chip-link:hover{background:#DCFCE7}
+
 /* 提醒卡 */
 .rm{background:#fff;border-radius:14px;border:1px solid #E2E8F0;margin-bottom:10px;overflow:hidden;display:flex;align-items:stretch}
 .rm-accent{width:5px;flex-shrink:0}
@@ -114,9 +151,9 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 35 個時間點</div>
+    <div class="day-badge">提醒總表 · 40 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
-    <div class="hero-sub">所有訂票死線、退訂期限、現場報到時間都在這裡 · 時間以<b>紐西蘭當地時間</b>為準</div>
+    <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
     <div class="import-box">
       <button class="btn-import" id="btn-all">
@@ -124,14 +161,14 @@ a{text-decoration:none;color:inherit}
         <span>一鍵匯入全部到行事曆</span>
       </button>
       <div class="import-sub">
-        <button class="btn-sub" data-cat="prep">🎫 只匯入「出發前要辦」</button>
-        <button class="btn-sub" data-cat="dl">🔴 只匯入「退訂死線」</button>
-        <button class="btn-sub" data-cat="ops">🚗 只匯入「行程硬時間」</button>
-        <button class="btn-sub" data-cat="meet">📍 只匯入「報到時間」</button>
+        <button class="btn-sub" data-scope="pre">🎫 只匯入「出發前」</button>
+        <button class="btn-sub" data-scope="post">🇳🇿 只匯入「出發後」</button>
+        <button class="btn-sub" data-scope="dl">🔴 只匯入「退訂死線」</button>
       </div>
       <div class="import-hint">
         📱 <b>手機用法</b>：點上面按鈕會下載一個 <code>.ics</code> 檔 → iPhone 選「加入全部」／Android 用 Google 日曆開啟即可。<br>
-        🕐 每個項目都已內建<b>提前提醒</b>（死線類提前 2 小時、報到類提前 1 小時）。時間用 UTC 寫入，<b>手機在紐西蘭會自動顯示當地時間</b>。
+        🌙 <b>睡眠時段（22:00–09:00）到期的死線，提醒都已前移到前一晚 22:00。</b>其餘死線類提前 2 小時、報到類提前 1 小時。<br>
+        🕐 時間用 UTC 寫入，<b>手機在紐西蘭會自動顯示當地時間</b>。
       </div>
     </div>
   </div>
@@ -142,50 +179,32 @@ a{text-decoration:none;color:inherit}
   <div class="alert alert-w">
     <span style="font-size:20px">🔴</span>
     <div class="alert-body">
-      <strong>三個最容易漏掉、漏掉就要花錢的</strong>
-      <p>① <b>9/26 鹿園開賣</b>——只開放 7 天內預約，10/3 的票 9/26 才買得到，當天沒訂就沒了<br>② <b>10/4 18:00 企鵝退訂截止</b>——過了就完全不退<br>③ <b>10/5 08:00 跳傘②決策</b>——10/1 跳成了卻忘了退 10/6，等於白付 NZD $449</p>
+      <strong>四個最容易漏掉、漏掉就要花錢的</strong>
+      <p>① <b>9/25 晚 22:00 訂鹿園</b>——官方只開放到訪日前 7 天內、每日限 80 台車，10/3 的票這時才買得到，隔天 18:35 就要飛<br>② <b>9/30 晚 22:00 決定 Rippon 退不退</b>——死線 10/1 04:30 在睡夢中，過了收 no-show $10/人<br>③ <b>10/4 晚 22:00 跳傘②決策</b>——10/1 跳成了卻忘了退 10/6，等於白付 NZD $449<br>④ <b>10/4 18:00 企鵝退訂截止</b>——過了完全不退（提醒設 16:00，因為 16:45 你就上 TSS 船了）</p>
+    </div>
+  </div>
+
+  <div class="alert alert-i">
+    <span style="font-size:20px">🌙</span>
+    <div class="alert-body">
+      <strong>睡眠時段自動前移（22:00–09:00）</strong>
+      <p>凡是在你睡覺時段到期的死線，提醒都已經<b>移到前一晚 22:00</b>，卡片上會標 <span class="chip chip-moved" style="display:inline-block">🌙 睡前處理</span>。<br>例如 Rippon 品酒的退訂期限是 10/1 04:30，提醒設在 <b>9/30 22:00</b>。<br>⚠️ 早上的報到、出發、起床時間<b>沒有</b>前移（那些本來就是要在當下做的事），但前一晚都補了「睡前準備」提醒。</p>
     </div>
   </div>
 
   <!-- ───────── 出發前 ───────── -->
-  <div class="cat-header">
-    <div class="cat-dot" style="background:#7C3AED"></div>
-    <div class="cat-title">🎫 出發前要辦</div>
-    <div class="cat-sub">台灣時間</div>
+  <div class="phase phase-pre">
+    <h2>🎫 出發前 · 台灣</h2>
+    <p>以「距離出發還有多久」分組 · 全部是台灣時間 · 出發日 2026/9/26（六）18:35</p>
   </div>
-  <div id="list-prep"></div>
+  <div id="pre-groups"></div>
 
-  <!-- ───────── 死線 ───────── -->
-  <div class="cat-header">
-    <div class="cat-dot" style="background:#DC2626"></div>
-    <div class="cat-title">🔴 退訂／訂票死線</div>
-    <div class="cat-sub">紐西蘭時間 · 過期不退</div>
+  <!-- ───────── 出發後 ───────── -->
+  <div class="phase phase-post">
+    <h2>🇳🇿 出發後 · 紐西蘭</h2>
+    <p>以「天」為單位 · 全部是紐西蘭當地時間（NZDT, UTC+13）· 9/27 抵達 → 10/10 返台</p>
   </div>
-  <div id="list-dl"></div>
-
-  <!-- ───────── 行程硬時間 ───────── -->
-  <div class="cat-header">
-    <div class="cat-dot" style="background:#c2410c"></div>
-    <div class="cat-title">🚗 行程硬時間（過了就來不及）</div>
-    <div class="cat-sub">紐西蘭時間</div>
-  </div>
-  <div id="list-ops"></div>
-
-  <!-- ───────── 報到 ───────── -->
-  <div class="cat-header">
-    <div class="cat-dot" style="background:#0369a1"></div>
-    <div class="cat-title">📍 現場報到／集合時間</div>
-    <div class="cat-sub">紐西蘭時間</div>
-  </div>
-  <div id="list-meet"></div>
-
-  <!-- ───────── 航班 ───────── -->
-  <div class="cat-header">
-    <div class="cat-dot" style="background:#059669"></div>
-    <div class="cat-title">✈️ 航班</div>
-    <div class="cat-sub">起飛時間</div>
-  </div>
-  <div id="list-fly"></div>
+  <div id="post-days"></div>
 
   <div class="alert alert-i" style="margin-top:24px">
     <span style="font-size:20px">💡</span>
@@ -223,7 +242,7 @@ var EVENTS = [
   {id:'prep-restaurant', cat:'prep', icon:'🍽️', name:'訂三家人氣餐廳（免費，但會被訂滿）',
    utc:'20260912T020000Z', dur:30, alarm:0, when:'台灣 9/12（六）10:00', hard:false,
    loc:'',
-   desc:'Wanaka Francesca\'s Italian（9/30–10/2 擇一晚）· Te Anau The Fat Duck / Redcliff（10/5 17:30，吃完就要開 2.5 小時夜路回皇后鎮）· 皇后鎮 Rata / Botswana Butchery（10/3 晚）。都是免費訂位，但行程撞上 NZ 學校假期，人氣店會被訂滿。'},
+   desc:'① Te Anau（10/5 17:45，最要緊——吃完要開 2h30m 夜路回皇后鎮）：首選 The Redcliff（老字號、在地食材創意菜，4.5★）／The Fat Duck（2025 紐西蘭 Top 50 Gastropubs 全國冠軍，份量大）／The Moose（湖景最隨性）。\n② Wanaka（9/30–10/2 擇一晚）：Francesca\'s Italian Kitchen。\n③ 皇后鎮（10/3 晚）：Rata／Botswana Butchery。\n都是免費訂位，但行程撞上 NZ 學校假期，人氣店會被訂滿。'},
 
   {id:'prep-pack', cat:'prep', icon:'📦', name:'行前打包 ＋ 文件備份 ＋ 離線地圖',
    utc:'20260924T120000Z', dur:60, alarm:0, when:'台灣 9/24（四）20:00', hard:false,
@@ -235,14 +254,21 @@ var EVENTS = [
    loc:'',
    desc:'起飛前 24 小時開放。順手確認行李額度、把登機證存進手機錢包。⚠️ 這也是最後一次檢查 NZeTA 是否已核准的時間點——明天 18:35 就要飛了。'},
 
+  {id:'prep-deerpark-pre', cat:'prep', icon:'🚗', name:'鹿園前置：確認訂票視窗＋跟 Apex 要車牌',
+   utc:'20260903T010000Z', dur:30, alarm:0, when:'台灣 9/3（四）09:00', hard:false,
+   loc:'deerparkheights.co.nz/info/faqs',
+   desc:'① 上官網確認「7 天內才開放預約」這個規則還在——這是 2026 上半年入口道路施工期間的臨時措施（原本是 30 天），施工已於 7/27 結束，有可能改回 30 天。若改回 30 天，10/3 的票 9/3 就能訂，別錯過。\n② ⚠️ 訂票系統「必須填車牌號碼」，但你 9/26 訂票時人在台灣、9/27 才在基督城取車 → 現在就寫信問 Apex 能不能先給車牌，或問鹿園能否事後補填／改車牌。這件事沒解決，9/26 當天會卡住。'},
+
   {id:'prep-deerpark', cat:'prep', icon:'🦌', name:'🔴 鹿園高地開賣！立刻訂 10/3 下午',
-   utc:'20260926T000000Z', dur:30, alarm:0, when:'台灣 9/26（六）08:00', hard:true,
-   loc:'deerparkheights.co.nz/book-now',
-   desc:'⚠️ 官網只開放「7 天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒了。NZD $75/車（最多 8 人），閘門認線上訂單，現場買不到，也不接受 Klook 等第三方。今晚 18:35 就要出發，記得出門前訂完。'},
+   utc:'20260925T140000Z', dur:45, alarm:0, when:'台灣 9/25（五）22:00', hard:true,
+   moved:'原訂 9/26 08:00 開賣 · 已提前到睡前',
+   loc:'booking.deerparkheights.co.nz',
+   desc:'⚠️ 官網只開放「到訪日前 7 天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒了。每日限 80 台車，賣完就沒有。\nNZD $75/車（8 座以下）。⚠️ 訂票要填車牌號碼（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerparkheights.co.nz 訂——官方明文「第三方票無效，會被拒絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 PIN（進出各一次）。\n今晚 18:35 就要出發，記得出門前訂完。'},
 
   // ── 死線（NZ 時間）──
   {id:'dl-glacier', cat:'dl', icon:'🚁', name:'冰川飛行決策：明天 09:30 的班要不要退',
-   utc:'20260927T190000Z', dur:30, alarm:120, when:'NZ 9/28（一）08:00', hard:true,
+   utc:'20260927T090000Z', dur:30, alarm:0, when:'NZ 9/27（日）22:00', hard:true,
+   moved:'死線 9/28 09:30 · 已提前到睡前',
    loc:'',
    desc:'9/29 09:30 Mt Cook 冰川飛行（GetYourGuide 已訂）可 24h 前免費退 → 期限是今天 09:30。看 Mt Cook 明早預報，不妙就退掉，改訂 10/2 Wanaka 冰川健行或 10/3 皇后鎮的備援窗口。'},
 
@@ -250,6 +276,27 @@ var EVENTS = [
    utc:'20260929T223000Z', dur:60, alarm:120, when:'NZ 9/30（三）11:30', hard:true,
    loc:'',
    desc:'① 10/1 12:30 Skydive Wanaka（Klook）可 24h 前免費退 → 期限今天 12:30，只剩 1 小時。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免費退。'},
+
+  {id:'dl-rippon', cat:'dl', icon:'🍷', name:'🔴 Rippon 品酒最後退訂點（睡前處理）',
+   utc:'20260930T090000Z', dur:30, alarm:0, when:'NZ 9/30（三）22:00', hard:true,
+   moved:'死線 10/1 04:30 · 已提前到睡前',
+   loc:'rippon.co.nz/tasting-bookings',
+   desc:'明天 16:30 的 Rippon 免費導覽（2 人），退訂期限是開始前 12 小時 ＝ 10/1 04:30，那個時間你在睡覺 → 今晚睡前就要決定。\n判斷：明天 12:30 跳傘照跳的話，全程 3–3.5 小時、15:30–16:00 才結束，Wanaka Airport → Rippon 還要 15–20 分鐘車程 → 幾乎一定遲到。跳傘照跳就退掉。\nno-show 會收 $10/人。'},
+
+  {id:'night-glacier', cat:'ops', icon:'🌙', name:'睡前：明天 08:00 就要出發',
+   utc:'20260928T074500Z', dur:20, alarm:0, when:'NZ 9/28（一）20:45', hard:false,
+   loc:'',
+   desc:'明天冰川飛行 09:00 報到（Mount Cook Airport），要 08:00 從 Tekapo 出發，比平常早起。\n今晚 21:15 還有 Dark Sky 觀星（約 23:15 回來）→ 現在先把明早的東西準備好：登山鞋、2L 飲水、防曬、相機充電。設好 07:00 鬧鐘。'},
+
+  {id:'night-skydive2', cat:'ops', icon:'🌙', name:'睡前：明天 08:30 出門跳傘',
+   utc:'20261005T090000Z', dur:20, alarm:0, when:'NZ 10/5（一）22:00', hard:true,
+   loc:'',
+   desc:'明天 09:00 NZONE 跳傘（Klook 已訂）→ ⏰ 報到 08:50 截止，遲到視同 no-show。08:40 要到 35 Shotover St，08:30 從 Hampshire Holiday Parks 出發（步行 12–15 分鐘）。\n今晚設好 07:30 鬧鐘；備妥證件＋Klook QR Code；穿深色運動服＋包腳鞋、不戴飾品。\n今天剛從 Te Anau 開了 5 小時車回來，早點睡。'},
+
+  {id:'night-oamaru', cat:'ops', icon:'🌙', name:'睡前：收行李＋明天 07:15 退房',
+   utc:'20261006T090000Z', dur:30, alarm:0, when:'NZ 10/6（二）22:00', hard:false,
+   loc:'',
+   desc:'明天要退房皇后鎮、開 250km 到 Oamaru（翻 Lindis Pass），07:15 就要出發。\n① 今晚把行李收好——皇后鎮住了 4 晚，東西攤最開，早上邊收邊出發最容易漏。\n② 明早超市還沒開 → 長途路段的零食飲水今晚先買（Cromwell 之後補給點少）。\n③ 設好 06:30 鬧鐘。加油可以明早在皇后鎮出發前或 Cromwell 前處理。'},
 
   {id:'dl-horse', cat:'dl', icon:'🐴', name:'騎馬退款分界：過了只能退 50%',
    utc:'20261001T210000Z', dur:30, alarm:120, when:'NZ 10/2（五）10:00', hard:true,
@@ -259,7 +306,7 @@ var EVENTS = [
   {id:'dl-luge', cat:'dl', icon:'🛷', name:'Skyline Luge 訂票死線（48h 退改規則）',
    utc:'20261003T200000Z', dur:30, alarm:120, when:'NZ 10/4（日）09:00', hard:true,
    loc:'queenstown.skyline.co.nz',
-   desc:'10/6 下午要玩 Gondola + Luge。Skyline 是全行程最嚴的 48 小時退改 → 現在看 10/6 預報再決定訂不訂，剛好卡在 48h 邊界。天氣好就線上買組合票（比現場分開買省，也免排隊）。'},
+   desc:'10/6 下午 14:00 上山玩 Gondola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現在還有 5 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣好就線上買組合票（比現場分開買省，也免排售票隊伍）。⚠️ 別拖過今天 14:00，過了就變成不能退。'},
 
   {id:'dl-penguin', cat:'dl', icon:'🐧', name:'🔴 企鵝 Premium 最後免費退訂點',
    utc:'20261004T030000Z', dur:30, alarm:120, when:'NZ 10/4（日）16:00', hard:true,
@@ -267,19 +314,20 @@ var EVENTS = [
    desc:'10/7 20:00 Oamaru 藍企鵝 Premium 看台（$63/人 × 2）→ 今天 18:00 是最後可免費退的時間，過了完全不退。除非行程有變，否則保留即可——雨天企鵝照樣回巢，幾乎不會取消。'},
 
   {id:'dl-skydive2', cat:'dl', icon:'🪂', name:'🔴 跳傘②決策：10/1 跳成了就退掉明天',
-   utc:'20261004T190000Z', dur:60, alarm:120, when:'NZ 10/5（一）08:00', hard:true,
+   utc:'20261004T090000Z', dur:45, alarm:0, when:'NZ 10/4（日）22:00', hard:true,
+   moved:'死線 10/5 09:00 · 已提前到睡前',
    loc:'',
-   desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 期限今天 09:00，只剩 1 小時。10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449，退掉後明早還能提早上山玩 Luge。沒跳成 → 保留，明天照跳。'},
+   desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6 照跳。\n⚠️ 順帶提醒：明天（10/5）08:30 就要出發 Te Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前確認油箱夠來回。'},
 
   {id:'dl-avon', cat:'dl', icon:'🚣', name:'訂明天下午的 Avon 撐篙',
    utc:'20261007T083000Z', dur:20, alarm:0, when:'NZ 10/7（三）21:30', hard:false,
    loc:'christchurchattractions.nz',
    desc:'10/8 傍晚 17:00 場 · 成人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買得到，但官方建議先預約減少排隊；10 月營業到 18:00，weather permitting。看基督城明天的天氣預報再決定訂不訂——剛看完企鵝回住處，順手訂一下。'},
 
-  {id:'dl-blackcat-time', cat:'dl', icon:'🐬', name:'🔴 確認 Black Cat 明早確切開船時間',
-   utc:'20261008T060000Z', dur:20, alarm:0, when:'NZ 10/8（四）19:00', hard:true,
+  {id:'dl-blackcat-time', cat:'dl', icon:'🐬', name:'🔴 明早 Black Cat 出發前最後確認',
+   utc:'20261008T060000Z', dur:20, alarm:120, when:'NZ 10/8（四）19:00', hard:true,
    loc:'',
-   desc:'一天只有 1–2 班，行事曆裡「Black Cat 報到」是暫定的 10:00——確認訂單上的實際開船時間後，回去把那個事件改掉。明天 07:30 就要從基督城出發（SH75 山路 1h30m / 80km），開船前 30 分鐘要完成報到。⚠️ 已進入 24 小時內，此時取消不退款。'},
+   desc:'① 對一次訂單場次：應為 10/9 10:45 早班（10 月只有 10:45／13:30 兩班），報到 10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-show 也不退。'},
 
   // ── 行程硬時間（NZ 時間）──
   {id:'op-roys', cat:'ops', icon:'🥾', name:'🔴 Roy\'s Peak 最晚上步道時間',
@@ -328,10 +376,10 @@ var EVENTS = [
    loc:'Tekapo · 含飯店接送',
    desc:'含飯店接送，全程約 2 小時。⚠️ 山頂近 0°C，多層保暖＋毛帽手套。出發前 15 分鐘到報到處聽天氣最終判定；雲太厚可改室內天文導覽退差額、改期或全退。'},
 
-  {id:'meet-glacier', cat:'meet', icon:'🚁', name:'冰川飛行 · Mount Cook Airport 集合',
-   utc:'20260928T203000Z', dur:45, alarm:60, when:'NZ 9/29（二）09:30', hard:true,
+  {id:'meet-glacier', cat:'meet', icon:'🚁', name:'冰川飛行報到 · Mount Cook Airport',
+   utc:'20260928T200000Z', dur:75, alarm:60, when:'NZ 9/29（二）09:00 報到', hard:true,
    loc:'Mount Cook Airport',
-   desc:'45 分鐘 · 2 人 · GetYourGuide 已訂。下午照走 Hooker Valley 步道。'},
+   desc:'⚠️ 09:30 是飛行時間，09:00 要到機場報到 → 08:00 就要從 Tekapo 出發（55km，Pukaki 觀景台只能快拍即走）。飛行 45 分鐘 · 2 人 · GetYourGuide 已訂。\n10:45 南下 High Country Salmon 吃午餐，13:00 回 Mt Cook 走 Hooker Valley 步道（⏰ 最晚 13:30 前要上步道，10.6km 往返 3.5–4 小時，天黑前才走得完）。'},
 
   {id:'meet-skydive1', cat:'meet', icon:'🪂', name:'Skydive Wanaka 報到（12:30 場）',
    utc:'20260930T230000Z', dur:210, alarm:60, when:'NZ 10/1（四）12:00 抵達', hard:true,
@@ -354,12 +402,12 @@ var EVENTS = [
    desc:'12:00 前一定要抵達集合（騎馬 12:00–13:30）。Moke Lake Rd 末段是碎石路，慢慢開、預留時間。⚠️ 48 小時內不退，遲到＝全額損失。穿長褲＋包腳鞋，山谷比市區冷。'},
 
   {id:'meet-tss', cat:'meet', icon:'🚢', name:'TSS Earnslaw 蒸汽船報到 · Steamer Wharf',
-   utc:'20261004T034500Z', dur:225, alarm:60, when:'NZ 10/4（日）16:45 報到', hard:true,
+   utc:'20261004T034500Z', dur:240, alarm:60, when:'NZ 10/4（日）16:45 報到', hard:true,
    loc:'Steamer Wharf, Queenstown',
    desc:'17:00 開船，全程約 3 小時 45 分（Walter Peak Gourmet BBQ 晚餐）。船有遮蔽，風雨照開，是全行程最穩的晚間活動。'},
 
   {id:'meet-glowworm', cat:'meet', icon:'✨', name:'螢火蟲洞報到 · RealNZ 遊客中心',
-   utc:'20261005T003000Z', dur:135, alarm:60, when:'NZ 10/5（一）13:30 報到', hard:true,
+   utc:'20261005T003000Z', dur:165, alarm:60, when:'NZ 10/5（一）13:30 報到', hard:true,
    loc:'85 Lakefront Dr, Te Anau',
    desc:'14:00 場出發，全程約 2 小時 15 分。出發前 30 分鐘報到。洞內完全黑暗、不能拍照，手機收好；洞內溫度低要帶保暖衣物。'},
 
@@ -373,14 +421,14 @@ var EVENTS = [
    loc:'Oamaru Blue Penguin Colony',
    desc:'Premium 看台僅 60 席、距企鵝數公尺。雨天照常舉行，帶雨衣即可。'},
 
-  {id:'meet-blackcat', cat:'meet', icon:'🐬', name:'Black Cat 海豚船報到（時間待確認）',
-   utc:'20261008T213000Z', dur:150, alarm:60, when:'NZ 10/9（五）約 10:00 報到', hard:false,
+  {id:'meet-blackcat', cat:'meet', icon:'🐬', name:'Black Cat 海豚船報到 · 10:45 早班',
+   utc:'20261008T211500Z', dur:150, alarm:60, when:'NZ 10/9（五）10:15 報到', hard:true,
    loc:'61 Beach Road, Akaroa',
-   desc:'⚠️ 這筆還沒訂，時間是暫定的上午班（約 10:30 開船）——訂好之後記得回來改這個事件的時間。提前 30 分鐘報到，全程約 2 小時。'},
+   desc:'10:45 開船、全程 2 小時 → 12:45 回港，接著在 Akaroa 吃午餐。開船前 30 分鐘完成報到。\n🕐 10 月只有 10:45 與 13:30 兩班，已選早班（下午海風較強；且明天 04:15 就要起床搭機）。\n⚠️ 今天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），別睡晚。'},
 
   // ── 航班 ──
   {id:'fly-out', cat:'fly', icon:'✈️', name:'NZ78 桃園 T2 → 奧克蘭',
-   utc:'20260926T103500Z', dur:660, alarm:180, when:'台灣 9/26（六）18:35 起飛', hard:true,
+   utc:'20260926T103500Z', dur:640, alarm:180, when:'台灣 9/26（六）18:35 起飛', hard:true,
    loc:'桃園機場 T2',
    desc:'隔天 10:15 抵達奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。'},
 
@@ -390,29 +438,170 @@ var EVENTS = [
    desc:'08:45 抵達奧克蘭 → 轉 NZ77（10:40）→ 17:05 抵達桃園 T2。早班機，前一晚就要打包好、確認租車還車時間。'}
 ];
 
+/* ---------- 地點與連結 ----------
+   map  = 實體地點，會寫進 ICS 的 LOCATION 並附 Google Maps 連結
+   link = 官網／訂票頁，附在說明末尾                                */
+var PLACES = {
+  // 實體地點
+  'op-roys':        {map:"Roy's Peak Track car park, Mount Aspiring Road, Wanaka"},
+  'op-wakeup':      {map:'Sudima Christchurch Airport, 550 Memorial Avenue, Christchurch'},
+  'op-car':         {map:'Apex Car Rentals, 28 Ron Guthrey Road, Christchurch'},
+  'op-cutoff':      {map:'Christchurch Airport International Terminal'},
+  'meet-darksky':   {map:'Dark Sky Project, Lake Tekapo'},
+  'meet-glacier':   {map:'Mount Cook Airport'},
+  'meet-skydive1':  {map:'Skydive Wanaka, 14 Mustang Lane, Wanaka Airport'},
+  'meet-rippon':    {map:'Rippon Vineyard, Wanaka', link:'https://rippon.co.nz/tasting-bookings/'},
+  'meet-deerpark':  {map:'Deer Park Heights, Peninsula Road, Kelvin Heights, Queenstown', link:'https://booking.deerparkheights.co.nz/'},
+  'meet-horse':     {map:'Moke Lake, Queenstown'},
+  'meet-tss':       {map:'Steamer Wharf, Queenstown'},
+  'meet-glowworm':  {map:'RealNZ Visitor Centre, 85 Lakefront Drive, Te Anau'},
+  'meet-skydive2':  {map:'NZONE Skydive, 35 Shotover Street, Queenstown'},
+  'meet-penguin':   {map:'Oamaru Blue Penguin Colony', link:'https://www.penguins.co.nz/visit/evening-viewing/'},
+  'meet-blackcat':  {map:'Black Cat Cruises, 61 Beach Road, Akaroa', link:'https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC'},
+  'fly-out':        {map:'Taoyuan International Airport Terminal 2'},
+  'fly-home':       {map:'Christchurch Airport'},
+  // 純線上作業
+  'prep-blackcat':      {link:'https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC'},
+  'prep-deerpark-pre':  {link:'https://deerparkheights.co.nz/info/faqs/'},
+  'prep-deerpark':      {link:'https://booking.deerparkheights.co.nz/'},
+  'dl-rippon':          {link:'https://rippon.co.nz/tasting-bookings/'},
+  'dl-luge':            {link:'https://queenstown.skyline.co.nz'},
+  'dl-avon':            {link:'https://www.christchurchattractions.nz/punting/'},
+  'op-crown':           {link:'https://www.journeys.nzta.govt.nz'}
+};
+EVENTS.forEach(function(e){
+  var p = PLACES[e.id];
+  if (!p) return;
+  if (p.map)  e.map  = p.map;
+  if (p.link) e.link = p.link;
+});
+function mapUrl(e){
+  return e.map ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(e.map) : '';
+}
+
 var CAT_COLOR = {prep:'#7C3AED', dl:'#DC2626', ops:'#c2410c', meet:'#0369a1', fly:'#059669'};
 var CAT_NAME  = {prep:'出發前要辦', dl:'退訂死線', ops:'行程硬時間', meet:'報到時間', fly:'航班'};
+var CAT_ICON  = {prep:'🎫', dl:'🔴', ops:'🚗', meet:'📍', fly:'✈️'};
+
+// 台灣時間的事件（UTC+8）；其餘皆為紐西蘭 NZDT（UTC+13）
+function isTW(e){ return e.cat === 'prep' || e.id === 'fly-out'; }
+function tzOf(e){ return isTW(e) ? 8 : 13; }
+
+// 回傳「當地時間」的 Date（用 UTC getter 讀取）
+function localOf(e){
+  var u = e.utc;
+  return new Date(Date.UTC(+u.slice(0,4), +u.slice(4,6)-1, +u.slice(6,8), +u.slice(9,11), +u.slice(11,13)) + tzOf(e)*3600000);
+}
+function ymdOf(d){ return d.getUTCFullYear()*10000 + (d.getUTCMonth()+1)*100 + d.getUTCDate(); }
+function hmOf(d){ return pad2(d.getUTCHours()) + ':' + pad2(d.getUTCMinutes()); }
+function pad2(n){ return n < 10 ? '0' + n : '' + n; }
+
+// 依當地時間排序
+var SORTED = EVENTS.slice().sort(function(a, b){
+  var la = localOf(a), lb = localOf(b);
+  return la.getTime() - lb.getTime();
+});
+
+var DEPART_YMD = 20260926;
+
+// 出發前：以「距離出發還有多久」分組
+var PRE_GROUPS = [
+  {tag:'出發前 8 週', date:'8/1（六）',  from:20260101, to:20260801},
+  {tag:'出發前 1 個月', date:'9/1 – 9/3', from:20260802, to:20260903},
+  {tag:'出發前 2 週', date:'9/12（六）', from:20260904, to:20260912},
+  {tag:'出發前 2 天', date:'9/24（四）', from:20260913, to:20260924},
+  {tag:'出發前 1 天', date:'9/25（五）', from:20260925, to:20260925},
+  {tag:'🛫 出發當天', date:'9/26（六）', from:20260926, to:20260926}
+];
+
+// 出發後：以「天」為單位
+var DAYS = [
+  {n:1,  ymd:20260927, label:'9/27（日）', place:'✈️ 抵達基督城 · 取車 · 超市採買'},
+  {n:2,  ymd:20260928, label:'9/28（一）', place:'🌸 基督城 → Lake Tekapo · 觀星'},
+  {n:3,  ymd:20260929, label:'9/29（二）', place:'🏔️ Tekapo → Mt. Cook · 冰川飛行'},
+  {n:4,  ymd:20260930, label:'9/30（三）', place:'🥾 Mt. Cook → Wanaka · Roy\'s Peak'},
+  {n:5,  ymd:20261001, label:'10/1（四）', place:'🪂 Wanaka · 跳傘日'},
+  {n:6,  ymd:20261002, label:'10/2（五）', place:'🌊 Wanaka · 自由留白日'},
+  {n:7,  ymd:20261003, label:'10/3（六）', place:'👑 Wanaka → 皇后鎮 · 鹿園'},
+  {n:8,  ymd:20261004, label:'10/4（日）', place:'🐴 皇后鎮 · 騎馬 + 晚餐船'},
+  {n:9,  ymd:20261005, label:'10/5（一）', place:'✨ Te Anau 一日遊（當天往返）'},
+  {n:10, ymd:20261006, label:'10/6（二）', place:'🪂 皇后鎮 · 跳傘 + Luge'},
+  {n:11, ymd:20261007, label:'10/7（三）', place:'🐧 皇后鎮 → Oamaru · 企鵝'},
+  {n:12, ymd:20261008, label:'10/8（四）', place:'🏙️ Oamaru → 基督城'},
+  {n:13, ymd:20261009, label:'10/9（五）', place:'🐬 Akaroa 海豚船 · 最後一晚'},
+  {n:14, ymd:20261010, label:'10/10（六）', place:'✈️ 還車 · NZ586 返台'}
+];
+
+/* ---------- 卡片 ---------- */
+// 有實體地點 → 可點的 Google Maps chip；純線上 → 官網 chip
+function locChip(e){
+  var out = '';
+  if (e.map)  out += '<a class="chip chip-map" href="' + mapUrl(e) + '" target="_blank" rel="noopener">📍 ' + (e.loc || e.map) + ' ↗</a>';
+  else if (e.loc) out += '<span class="chip chip-tw">📍 ' + e.loc + '</span>';
+  if (e.link) out += '<a class="chip chip-link" href="' + e.link + '" target="_blank" rel="noopener">🔗 官網 ↗</a>';
+  return out;
+}
+
+function card(e){
+  return '<div class="rm">' +
+    '<div class="rm-accent" style="background:' + CAT_COLOR[e.cat] + '"></div>' +
+    '<div class="rm-main">' +
+      '<div class="rm-top"><span class="rm-icon">' + e.icon + '</span><span class="rm-name">' + e.name + '</span></div>' +
+      '<div class="rm-when">' +
+        '<span class="chip ' + (isTW(e) ? 'chip-tw' : 'chip-nz') + '">' + e.when + '</span>' +
+        (e.moved ? '<span class="chip chip-moved">🌙 ' + e.moved + '</span>' : '') +
+        (e.hard ? '<span class="chip chip-hard">⚠️ 硬期限</span>' : '') +
+        locChip(e) +
+      '</div>' +
+      '<div class="rm-desc">' + e.desc.replace(/\n/g, '<br>') + '</div>' +
+    '</div>' +
+    '<div class="rm-act"><button class="btn-add" data-id="' + e.id + '">＋ 加入</button></div>' +
+  '</div>';
+}
 
 /* ---------- 畫面 ---------- */
 function render(){
-  ['prep','dl','ops','meet','fly'].forEach(function(cat){
-    var box = document.getElementById('list-' + cat);
-    box.innerHTML = EVENTS.filter(function(e){ return e.cat === cat; }).map(function(e){
-      return '<div class="rm">' +
-        '<div class="rm-accent" style="background:' + CAT_COLOR[cat] + '"></div>' +
-        '<div class="rm-main">' +
-          '<div class="rm-top"><span class="rm-icon">' + e.icon + '</span><span class="rm-name">' + e.name + '</span></div>' +
-          '<div class="rm-when">' +
-            '<span class="chip ' + (e.cat === 'prep' ? 'chip-tw' : 'chip-nz') + '">' + e.when + '</span>' +
-            (e.hard ? '<span class="chip chip-hard">⚠️ 硬期限</span>' : '') +
-            (e.loc ? '<span class="chip chip-tw">📍 ' + e.loc + '</span>' : '') +
-          '</div>' +
-          '<div class="rm-desc">' + e.desc + '</div>' +
-        '</div>' +
-        '<div class="rm-act"><button class="btn-add" data-id="' + e.id + '">＋ 加入</button></div>' +
+  // 出發前
+  document.getElementById('pre-groups').innerHTML = PRE_GROUPS.map(function(g){
+    var list = SORTED.filter(function(e){
+      var y = ymdOf(localOf(e));
+      return y >= g.from && y <= g.to;
+    });
+    if (!list.length) return '';
+    return '<div class="grp"><span class="grp-tag">' + g.tag + '</span><span class="grp-date">' + g.date + '</span></div>' +
+           list.map(card).join('');
+  }).join('');
+
+  // 出發後
+  document.getElementById('post-days').innerHTML = DAYS.map(function(d){
+    var list = SORTED.filter(function(e){ return ymdOf(localOf(e)) === d.ymd; });
+    var hard = list.some(function(e){ return e.hard; });
+    var head = '<div class="day-hd">' +
+        '<div class="day-n"><small>DAY</small>' + d.n + '</div>' +
+        '<div class="day-meta"><div class="day-date">' + d.label + '</div><div class="day-place">' + d.place + '</div></div>' +
+        '<div class="day-cnt">' + (list.length ? list.length + ' 項' : '無提醒') + '</div>' +
       '</div>';
-    }).join('');
-  });
+    if (!list.length){
+      return '<div class="dayblk">' + head + '<div class="day-empty">這天沒有需要提醒的死線或報到時間 — 照行程走就好。</div></div>';
+    }
+    var body = '<div class="day-body">' + list.map(function(e){
+      var t = hmOf(localOf(e));
+      var sleepish = (+t.slice(0,2) >= 22 || +t.slice(0,2) < 9);
+      return '<div class="day-tl">' +
+          '<div class="day-tl-time">' + t + '</div>' +
+          '<div class="day-tl-body">' +
+            '<div style="font-size:13.5px;font-weight:700;margin-bottom:3px">' + e.icon + ' ' + e.name +
+              (sleepish && e.moved ? ' <span class="chip chip-sleep">睡前</span>' : '') +
+            '</div>' +
+            '<div style="font-size:11.5px;font-weight:600;color:' + CAT_COLOR[e.cat] + ';margin-bottom:5px">' + CAT_ICON[e.cat] + ' ' + CAT_NAME[e.cat] + '</div>' +
+            (locChip(e) ? '<div class="rm-when">' + locChip(e) + '</div>' : '') +
+            '<div class="rm-desc">' + e.desc.replace(/\n/g, '<br>') + '</div>' +
+            '<div style="margin-top:7px"><button class="btn-add" data-id="' + e.id + '">＋ 加入行事曆</button></div>' +
+          '</div>' +
+        '</div>';
+    }).join('') + '</div>';
+    return '<div class="dayblk' + (hard ? ' has-hard' : '') + '">' + head + body + '</div>';
+  }).join('');
 }
 
 /* ---------- ICS ---------- */
@@ -467,8 +656,15 @@ function buildICS(list){
     L.push('DTSTART:' + e.utc);
     L.push('DTEND:' + addMin(e.utc, e.dur));
     L.push('SUMMARY:' + esc(e.icon + ' ' + e.name));
-    if (e.loc) L.push('LOCATION:' + esc(e.loc));
-    L.push('DESCRIPTION:' + esc('【' + e.when + '】\n\n' + e.desc));
+    // LOCATION 只放實體地址（行事曆 App 會變成可點的導航連結）
+    // 純線上作業的 loc 是網址，填進去會變成假的地圖圖釘 → 不填，連結放說明裡
+    if (e.map) L.push('LOCATION:' + esc(e.map));
+    var tail = '';
+    if (e.map)  tail += '\n\n📍 地圖導航：' + mapUrl(e);
+    if (e.link) tail += '\n🔗 官網／訂票：' + e.link;
+    L.push('DESCRIPTION:' + esc('【' + e.when + '】' + (e.moved ? '\n🌙 ' + e.moved : '') + '\n\n' + e.desc + tail));
+    if (e.map)  L.push('URL:' + esc(mapUrl(e)));
+    else if (e.link) L.push('URL:' + esc(e.link));
     if (e.alarm > 0){
       L.push('BEGIN:VALARM');
       L.push('TRIGGER:-PT' + e.alarm + 'M');
@@ -512,13 +708,19 @@ function toast(msg){
 render();
 
 document.getElementById('btn-all').addEventListener('click', function(){
-  download(EVENTS, 'NZ2026-全部提醒.ics');
+  download(SORTED, 'NZ2026-全部提醒.ics');
 });
+
+var SCOPES = {
+  pre:  {name:'出發前', fn:function(e){ return ymdOf(localOf(e)) <= DEPART_YMD; }},
+  post: {name:'出發後', fn:function(e){ return ymdOf(localOf(e)) >  DEPART_YMD; }},
+  dl:   {name:'退訂死線', fn:function(e){ return e.cat === 'dl'; }}
+};
 
 Array.prototype.forEach.call(document.querySelectorAll('.btn-sub'), function(btn){
   btn.addEventListener('click', function(){
-    var cat = btn.getAttribute('data-cat');
-    download(EVENTS.filter(function(e){ return e.cat === cat; }), 'NZ2026-' + CAT_NAME[cat] + '.ics');
+    var s = SCOPES[btn.getAttribute('data-scope')];
+    download(SORTED.filter(s.fn), 'NZ2026-' + s.name + '.ics');
   });
 });
 
@@ -530,8 +732,9 @@ document.addEventListener('click', function(ev){
   if (!e) return;
   download([e], 'NZ2026-' + e.id + '.ics');
   btn.classList.add('done');
+  var orig = btn.textContent;
   btn.textContent = '✓ 已產生';
-  setTimeout(function(){ btn.classList.remove('done'); btn.textContent = '＋ 加入'; }, 3000);
+  setTimeout(function(){ btn.classList.remove('done'); btn.textContent = orig; }, 3000);
 });
 </script>
 
