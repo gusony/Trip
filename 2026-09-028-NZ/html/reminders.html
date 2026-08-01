@@ -151,7 +151,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 40 個時間點 · 依時間排序</div>
+    <div class="day-badge">提醒總表 · 39 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
@@ -229,11 +229,6 @@ a{text-decoration:none;color:inherit}
 // NZ 於 2026/9/27 進入夏令時間 NZDT (UTC+13)；9/26 以前為 NZST (UTC+12)
 var EVENTS = [
   // ── 出發前（台灣時間）──
-  {id:'prep-blackcat', cat:'prep', icon:'🐬', name:'訂 Black Cat 海豚船（10/9）',
-   utc:'20260801T010000Z', dur:30, alarm:0, when:'台灣 8/1（六）09:00', hard:false,
-   loc:'blackcat.co.nz',
-   desc:'10/9 上午班 · 成人 NZD $130 · 一天只開 1–2 班，隔天就要搭早班機回台，沒有備用日。訂完把手機號碼留給船家。'},
-
   {id:'prep-docs', cat:'prep', icon:'📄', name:'辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險',
    utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:false,
    loc:'',
@@ -327,7 +322,7 @@ var EVENTS = [
   {id:'dl-blackcat-time', cat:'dl', icon:'🐬', name:'🔴 明早 Black Cat 出發前最後確認',
    utc:'20261008T060000Z', dur:20, alarm:120, when:'NZ 10/8（四）19:00', hard:true,
    loc:'',
-   desc:'① 對一次訂單場次：應為 10/9 10:45 早班（10 月只有 10:45／13:30 兩班），報到 10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-show 也不退。'},
+   desc:'① 對一次訂單：10/9 10:45 早班 ✅ 已訂（2026/8/1 訂），報到 10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-show 也不退。'},
 
   // ── 行程硬時間（NZ 時間）──
   {id:'op-roys', cat:'ops', icon:'🥾', name:'🔴 Roy\'s Peak 最晚上步道時間',
@@ -424,7 +419,7 @@ var EVENTS = [
   {id:'meet-blackcat', cat:'meet', icon:'🐬', name:'Black Cat 海豚船報到 · 10:45 早班',
    utc:'20261008T211500Z', dur:150, alarm:60, when:'NZ 10/9（五）10:15 報到', hard:true,
    loc:'61 Beach Road, Akaroa',
-   desc:'10:45 開船、全程 2 小時 → 12:45 回港，接著在 Akaroa 吃午餐。開船前 30 分鐘完成報到。\n🕐 10 月只有 10:45 與 13:30 兩班，已選早班（下午海風較強；且明天 04:15 就要起床搭機）。\n⚠️ 今天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），別睡晚。'},
+   desc:'✅ 已預訂（成人 $130 × 2）。10:45 開船、全程 2 小時 → 12:45 回港，接著在 Akaroa 吃午餐。開船前 30 分鐘完成報到。\n⏰ 報到前 24 小時外可免費改／退 → 死線 10/8 10:15，之後不退、no-show 也不退。\n⚠️ 今天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），別睡晚。'},
 
   // ── 航班 ──
   {id:'fly-out', cat:'fly', icon:'✈️', name:'NZ78 桃園 T2 → 奧克蘭',
@@ -461,7 +456,6 @@ var PLACES = {
   'fly-out':        {map:'Taoyuan International Airport Terminal 2'},
   'fly-home':       {map:'Christchurch Airport'},
   // 純線上作業
-  'prep-blackcat':      {link:'https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC'},
   'prep-deerpark-pre':  {link:'https://deerparkheights.co.nz/info/faqs/'},
   'prep-deerpark':      {link:'https://booking.deerparkheights.co.nz/'},
   'dl-rippon':          {link:'https://rippon.co.nz/tasting-bookings/'},
