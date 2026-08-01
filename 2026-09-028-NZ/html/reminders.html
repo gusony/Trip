@@ -151,7 +151,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 39 個時間點 · 依時間排序</div>
+    <div class="day-badge">提醒總表 · 40 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
@@ -271,6 +271,11 @@ var EVENTS = [
    utc:'20260929T223000Z', dur:60, alarm:120, when:'NZ 9/30（三）11:30', hard:true,
    loc:'',
    desc:'① 10/1 12:30 Skydive Wanaka（Klook）可 24h 前免費退 → 期限今天 12:30，只剩 1 小時。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免費退。'},
+
+  {id:'dl-rippon-early', cat:'dl', icon:'🍷', name:'預告：Rippon 品酒可能要退訂',
+   utc:'20260929T070000Z', dur:20, alarm:0, when:'NZ 9/29（二）20:00', hard:false,
+   loc:'rippon.co.nz/tasting-bookings',
+   desc:'10/1（四）16:30 的 Rippon 免費導覽（2 人，✅ 已訂）大概率要退——同一天 12:30 跳傘，全程 3–3.5 小時、15:30–16:00 才結束，開到 Rippon 還要 15–20 分鐘，最快 16:20 到，跳傘只要延誤就 no-show（$10/人）。\n先放進腦袋、現在不用動作：明天（9/30）確認跳傘照跳之後再退。\n⏰ 真正的死線是 10/1 04:30（開始前 12 小時），提醒已設在 9/30 22:00。',},
 
   {id:'dl-rippon', cat:'dl', icon:'🍷', name:'🔴 Rippon 品酒最後退訂點（睡前處理）',
    utc:'20260930T090000Z', dur:30, alarm:0, when:'NZ 9/30（三）22:00', hard:true,
