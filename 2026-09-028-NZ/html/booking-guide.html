@@ -36,30 +36,13 @@ a{text-decoration:none;color:inherit}
 .cat-title{font-size:16px;font-weight:700}
 .cat-sub{font-size:12px;color:#94A3B8;margin-left:auto;text-align:right}
 
-/* 活動卡片 */
-.bk-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;margin-bottom:12px}
-.bk-card.urgent{border-left:4px solid #DC2626}
-.bk-card.soon{border-left:4px solid #d97706}
-.bk-card.relax{border-left:4px solid #10B981}
-.bk-head{display:flex;align-items:flex-start;gap:11px;padding:14px 16px 10px}
-.bk-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:#FEF3C7}
-.bk-meta{flex:1;min-width:0}
-.bk-name{font-size:14px;font-weight:700;color:#0F172A}
-.bk-date{font-size:12px;color:#94A3B8;margin-top:1px}
+/* 狀態標籤／連結 */
 .bk-status{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap}
 .st-booked{background:#DCFCE7;color:#166534;border:1px solid #BBF7D0}
 .st-todo{background:#FEF3C7;color:#92400E;border:1px solid #FCD34D}
 .st-optional{background:#F1F5F9;color:#64748B;border:1px solid #E2E8F0}
-.bk-body{padding:0 16px 13px}
-.bk-facts{display:grid;grid-template-columns:88px 1fr;gap:3px 10px;font-size:12.5px}
-.bk-facts dt{color:#94A3B8;font-weight:600;white-space:nowrap}
-.bk-facts dd{color:#475569}
-.bk-facts dd b{color:#0F172A}
-.bk-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;padding-top:9px;border-top:1px solid #F1F5F9;align-items:center}
+.bk-links{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .tkt{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
-.tkt-price{background:#F0F9FF;color:#0369a1}
-.tkt-book{background:#FFF7ED;color:#c2410c}
-.tkt-free{background:#DCFCE7;color:#166534}
 .tkt-link{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0}
 .tkt-link:hover{background:#DCFCE7}
 
@@ -68,12 +51,21 @@ a{text-decoration:none;color:inherit}
 .rule-card h3{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
 .rule-card p{font-size:13px;color:#475569;line-height:1.65}
 
-/* 時程表 */
-.when-list{background:#fff;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden}
-.when-row{display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;align-items:flex-start}
-.when-row:last-child{border-bottom:none}
-.when-label{flex-shrink:0;width:110px;font-size:12px;font-weight:700;padding-top:1px}
-.when-items{flex:1;font-size:13px;color:#475569;line-height:1.6}
+/* 條列 checkbox：收合一行 + 點擊展開細節 */
+.cklist{background:#fff;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;margin-bottom:10px}
+.ck-item{border-bottom:1px solid #F1F5F9}
+.ck-item:last-child{border-bottom:none}
+.ck-row{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;transition:background 120ms}
+.ck-row:hover{background:#FAFBFC}
+.ck{flex-shrink:0;width:19px;height:19px;border-radius:6px;border:2px solid #94A3B8;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.ck.done{background:#10B981;border-color:#10B981}
+.ck-txt{flex:1;min-width:0;font-size:13.5px;font-weight:600;color:#0F172A;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ck-chev{flex-shrink:0;font-size:11px;color:#CBD5E1;transition:transform 160ms}
+.ck-item.open .ck-chev{transform:rotate(90deg)}
+.ck-detail{display:none;padding:0 14px 13px 43px;font-size:12.5px;color:#475569;line-height:1.65}
+.ck-item.open .ck-detail{display:block}
+.ck-detail b{color:#0F172A}
+.ck-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
 
 .alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
 .alert-w{background:#FFF7ED;border:1px solid #FED7AA}
@@ -86,10 +78,6 @@ a{text-decoration:none;color:inherit}
 .bnav-next{background:#d97706;color:#fff}
 .bnav-btn:hover{opacity:.85}
 .pb{height:80px}
-
-@media(min-width:720px){
-  .bk-facts{grid-template-columns:88px 1fr 88px 1fr}
-}
 </style>
 </head>
 <body>
@@ -123,11 +111,11 @@ a{text-decoration:none;color:inherit}
   <div class="hero-inner">
     <div class="day-badge">預訂攻略 · 2026-07 查核</div>
     <div class="hero-title">🎫 活動預訂攻略</div>
-    <div class="hero-sub">哪些一定要先訂 · 哪些可改期 · 哪些現場買就好 · 官網價格 2026-07 查核，出發前請再確認</div>
+    <div class="hero-sub">哪些現在就訂 · 哪些出發前幾天再訂 · 哪些現場買就好 · 官網價格 2026-07 查核，出發前請再確認</div>
     <div class="hero-tags">
-      <span class="htag">🔴 一定要先訂</span>
-      <span class="htag">🟡 建議先訂（省時／需預約）</span>
-      <span class="htag">🟢 免訂，現場買</span>
+      <span class="htag">🔴 現在就訂</span>
+      <span class="htag">🟡 出發前幾天訂</span>
+      <span class="htag">🟢 現場買票即可</span>
     </div>
   </div>
 </div>
@@ -145,405 +133,182 @@ a{text-decoration:none;color:inherit}
   <div class="sec-label">排程原則</div>
 
   <div class="rule-card">
-    <h3>🌤️ 原則一：早上留給看天活動，固定預訂排下午／晚上</h3>
-    <p>跳傘、Luge 這種看天氣的活動排<b>早上第一批</b>——如果早上被天氣取消，當天下午還有機會補跳；排下午被取消就只能整組改天。固定時間的預訂（觀星 21:15、TSS 晚餐船 17:00、螢火蟲洞 14:00）都在下午晚上，跟看天活動不打架。目前行程已符合這個原則：10/1、10/6 跳傘窗口早上全空（10/6 沒跳傘的話 Luge 提早上山）。</p>
+    <p>🌤️ 看天活動（跳傘、Luge）排<b>早上第一批</b>，早上被取消下午還能補；固定時段的預訂（觀星、晚餐船、螢火蟲洞）排下午晚上，兩者不打架。</p>
   </div>
-
   <div class="rule-card">
-    <h3>🔁 原則二：「24 小時前免費改」的活動，大膽先訂</h3>
-    <p>跳傘（NZONE / Skydive Wanaka）、RealNZ（TSS 晚餐船、螢火蟲洞）、Ziptrek、Black Cat、Dark Sky 全都是<b>出發前 24 小時通知即可免費改期或全額退款</b>；天氣因素被業者取消更是直接全退或免費改期。先訂只有好處（鎖位子）沒有壞處。<b>唯一例外是 Skyline（Luge）：要 48 小時前通知才能退改</b>，所以 Luge 反而建議到皇后鎮看準天氣再線上訂。</p>
+    <p>🔁 幾乎所有活動<b>24 小時前免費改退</b>，先訂只有好處。<b>唯一例外是 Skyline Luge 要 48 小時前</b>，所以留到當地看準天氣再訂。</p>
   </div>
-
   <div class="rule-card">
-    <h3>🪂 原則三：跳傘訂早上第一批 ✅ 已落實</h3>
-    <p>兩家跳傘同集團、同價（$359／$449／$549）。<b>兩張都已訂</b>：① 10/1（四）12:30 Skydive Wanaka ② 10/6（二）09:00 NZONE 皇后鎮——都符合「看天活動排早上／中午」原則，被取消當天還有補跳機會。⚠️ 跳傘給的是<b>「報到時間」不是跳傘時間</b>，全程 3–4 小時，當天別排緊接的行程（10/6 下午 Luge 時間需保持彈性）。<br>🔴 <b>兩張都可 24 小時前免費取消 → 跳成一次就要去退另一張</b>，否則重複付費。提醒已設在 9/30 11:30 與 10/5 08:00（NZ 時間）。</p>
+    <p>🪂 兩趟跳傘（10/1・10/6）都可 24h 前免費取消 → <b>跳成一次記得去退另一張</b>，否則重複付費 $449。</p>
   </div>
 
-  <div class="sec-label">什麼時候訂什麼</div>
-
-  <div class="when-list">
-    <div class="when-row">
-      <div class="when-label" style="color:#DC2626">🔴 現在就訂</div>
-      <div class="when-items" style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed #E2E8F0">🦌 <b>鹿園高地是唯一例外</b>——官方只開放「到訪日前 7 天內」預約，<b>9/26 才訂得到 10/3 的票</b>，早訂系統會擋。每日限 80 台車、只能官網訂，那天沒訂就沒了。</div>
-      <div class="when-items">🪂 跳傘① Skydive Wanaka（10/1 12:30 ✅ 已訂 · 12:00 抵達）· 🪂 跳傘② NZONE（10/6 09:00 ✅ 已訂 · 35 Shotover St 報到 08:50 截止）· 🚁 冰川飛行窗口① 9/29 09:30 ✅ 已訂（GetYourGuide · 備援 10/2 Wanaka 健行／10/3 皇后鎮看預報再訂）· 🐴 Moke Valley 騎馬（10/4 12:00 ✅ 已訂）· TSS Earnslaw + Walter Peak BBQ 晚餐（10/4 17:00 ✅ 已訂）· 🐬 Black Cat 海豚船（10/9 10:45 早班 ✅ 已訂）· 🐧 Oamaru 企鵝 Premium 看台（10/7 20:00 ✅ 已訂 · ⏰ 10/4 18:00 前確認是否退訂）</div>
-    </div>
-    <div class="when-row">
-      <div class="when-label" style="color:#d97706">🟡 出發前 1–2 週</div>
-      <div class="when-items">Te Anau 螢火蟲洞（10/5 14:00 ✅ 已訂）· Rippon 品酒（10/1 16:30 ✅ 已約 · ⏰ <b>12h 前可免費退＝10/1 04:30</b>，計畫 9/30 收到跳傘提醒時一併決定）· Te Anau 晚餐訂位（<b>10/5 17:45</b> · The Fat Duck / Redcliff）</div>
-    </div>
-    <div class="when-row">
-      <div class="when-label" style="color:#0369a1">🔵 到當地看天氣再訂</div>
-      <div class="when-items">Skyline Gondola + Luge（48h 退改規則，抵達皇后鎮後看好天氣線上訂）· Ziptrek 溜索（若要玩，跟 Luge 同天）· Avon 撐篙（前一天官網訂即可）</div>
-    </div>
-    <div class="when-row">
-      <div class="when-label" style="color:#10B981">🟢 免訂／現場買</div>
-      <div class="when-items">Tekapo Springs 溫泉 · Steampunk HQ · 企鵝 General 看台（350 席）· Te Anau 野生動物中心（免費）· Kinross 散客 walk-in</div>
-    </div>
-  </div>
-
-  <!-- ───────── 🔴 一定要先訂 ───────── -->
+  <!-- ───────── 🔴 現在就訂 ───────── -->
   <div class="cat-header">
     <div class="cat-dot" style="background:#DC2626"></div>
-    <div class="cat-title">🔴 一定要先訂（會賣完，先訂不加價）</div>
+    <div class="cat-title">🔴 現在就訂（會賣完，先訂不加價）</div>
     <div class="cat-sub">全部可 24h 前免費改期</div>
   </div>
 
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🪂</div>
-      <div class="bk-meta">
-        <div class="bk-name">跳傘 · 兩張都已訂 ⚠️ 需擇一退訂</div>
-        <div class="bk-date">① 10/1（四）12:30 Skydive Wanaka ✅ · ② 10/6（二）09:00 NZONE ✅</div>
+  <div class="cklist">
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🪂 跳傘兩張都已訂（10/1 Wanaka・10/6 皇后鎮）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
       </div>
-      <span class="bk-status st-booked">✅ 兩張已訂</span>
+      <div class="ck-detail">兩家同價 12,000ft 約 <b>$449</b>／人。兩張都可 <b>24h 前免費取消</b>——跳成一次記得去退另一張，否則重複付費。跳傘給的是<b>報到時間</b>不是跳傘時間，全程 3–4 小時。
+        <div class="ck-links">
+          <a href="https://www.skydivewanaka.com" target="_blank" class="tkt tkt-link">skydivewanaka.com ↗</a>
+          <a href="https://www.nzoneskydive.co.nz" target="_blank" class="tkt tkt-link">nzoneskydive.co.nz ↗</a>
+        </div>
+      </div>
     </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>① 10/1 Wanaka</dt><dd><b>12:30 場 ✅ 已訂（Klook）</b><br>📍 <b>Skydive Wanaka · 14 Mustang Lane, Wanaka Airport</b>（SH6 上，距鎮中心約 10 分鐘車程）<br>⏰ <b>提早 30 分鐘 → 12:00 抵達、11:45 出發</b><br>⏱ 全程 3–3.5 小時 → 預計 <b>15:30–16:00</b> 結束 · 🔴 <b>會壓到 16:30 Rippon 品酒</b></dd>
-        <dt>② 10/6 皇后鎮</dt><dd><b>09:00 場 ✅ 已訂（Klook）</b><br>📍 報到櫃檯 <b>35 Shotover Street</b>（市區店面，不是跳傘場，報到後接駁）<br>⏰ <b>報到 08:50 截止</b>（官方：預約時間前 10 分鐘關閉）→ <b>08:40 抵達、08:30 從住宿出發</b>（步行 12–15 分鐘）<br>⏱ 全程 3–4 小時 → 預計 <b>12:00–13:00</b> 結束</dd>
-        <dt>🔴 退訂決策</dt><dd>兩張都可 <b>24 小時前免費取消</b> → <b>跳成一次就要去退另一張</b>，否則重複付費。已設定兩個提醒（各自跳傘時間的 25 小時前）：<br>• <b>9/30 11:30（NZ）</b> → 決定 10/1 那張；<b>若確定照跳，當天順手把 Rippon 品酒退掉</b>（12h 前可免費退，不留到當天硬趕）<br>• <b>10/5 08:00（NZ）</b> → 決定 10/6 那張</dd>
-        <dt>價格</dt><dd>兩家同價：9,000ft <b>$359</b> / 12,000ft <b>$449</b> / 15,000ft <b>$549</b>（NZD/人，照片影片另計約 $200）</dd>
-        <dt>💰 通路比價</dt><dd>12,000ft 實測（2026-07）：<b>Bookme 最便宜</b> — Skydive Wanaka <b>$379</b>、NZONE <b>$415</b>；官網／Everything NZ／GetYourGuide 皆 <b>$449</b>。⚠️ 代價：Bookme 自行取消<b>扣 10%</b>、改期需業者個別同意、無法跨場地轉；官網則 24h 前免費改期不限次數</dd>
-        <dt>改期政策</dt><dd>官網政策為 <b>24h 前免費改期/取消、次數不限</b>（12 個月內有效）。<b>本次走 Klook → 以 Klook 訂單條款為準</b>，出發前先確認自己那張的取消期限</dd>
-        <dt>天氣取消</dt><dd>跳前 30 分鐘才最終確認；業者取消 → <b>免費改期或全額退款</b></dd>
-        <dt>建議走法</dt><dd><b>10/1 先跳</b>（時間較早、天氣不好還有 10/6 墊底）→ 跳成了就在 <b>10/5 08:00 前退掉 10/6</b>。若 10/1 被天氣取消 → 10/6 照跳，等於 10/1 那張自動變成保險</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.skydivewanaka.com" target="_blank" class="tkt tkt-link">skydivewanaka.com ↗</a>
-        <a href="https://www.nzoneskydive.co.nz" target="_blank" class="tkt tkt-link">nzoneskydive.co.nz ↗</a>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🚁 冰川飛行 9/29 09:30（備援 10/2、10/3 待看天氣）</div>
+        <span class="bk-status st-booked">①已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">GetYourGuide 已訂，Mount Cook Airport 集合，<b>24h 前可免費退</b>。9/28 看預報不妙就退，改訂備援窗口（10/2 Wanaka 冰川健行 $720／人，或 10/3 皇后鎮冰川降落 $760–895／人）。</div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🚢 TSS Earnslaw + Walter Peak BBQ 晚餐（10/4 17:00）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">$199／人，<b>24h 前可免費改退</b>。船有遮蔽風雨照開，全行程最穩的晚間活動。
+        <div class="ck-links"><a href="https://www.realnz.com/en/experiences/tss-earnslaw-walter-peak-experiences/walter-peak-gourmet-bbq-dining/" target="_blank" class="tkt tkt-link">realnz.com ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🐴 Moke Valley 騎馬（10/4 12:00）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">退款：<b>7 天前全退／48h–7 天退 50%／48h 內不退</b>（全行程第二嚴）。長褲＋包腳鞋，山谷比市區冷。</div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">✨ Te Anau 螢火蟲洞（10/5 14:00）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">$145／人，<b>24h 前可退改</b>，出發前 30 分報到（85 Lakefront Dr）。
+        <div class="ck-links"><a href="https://www.realnz.com/en/experiences/glowworm-caves/te-anau-glowworm-caves/" target="_blank" class="tkt tkt-link">realnz.com ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🐧 Oamaru 企鵝 Premium 看台（10/7 20:00）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">$63／人（僅 60 席）。<b>10/4 18:00 前可免費退</b>，過期不退——雨天企鵝照樣回巢，幾乎不會取消。
+        <div class="ck-links"><a href="https://www.penguins.co.nz/visit/evening-viewing/" target="_blank" class="tkt tkt-link">penguins.co.nz ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🐬 Black Cat 海豚船 10/9 10:45 早班</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">$130／人。報到前 <b>24h 外可免費改／退</b>，死線 10/8 10:15，之後不退、no-show 也不退。留手機號碼給船家，浪大取消會電話通知。
+        <div class="ck-links"><a href="https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC" target="_blank" class="tkt tkt-link">book.blackcat.co.nz ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">🦌 鹿園高地（只開放到訪日前 7 天內預約）</div>
+        <span class="bk-status st-todo">9/26 才能訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">每日限 80 台車，$75／車，<b>只能官網訂，第三方票一律無效</b>。訂票要填車牌號碼——先跟 Apex 確認能否先取得車牌。9/26 18:35 起飛前一定要訂完。
+        <div class="ck-links"><a href="https://booking.deerparkheights.co.nz/" target="_blank" class="tkt tkt-link">booking.deerparkheights.co.nz ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🔭 Dark Sky 銀河觀星（9/28 21:15 中文導覽）</div>
+        <span class="bk-status st-booked">已訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail"><b>24h 前可免費取消</b>。山頂近 0°C，多層保暖＋毛帽手套。雲太厚可改室內導覽退差額、改期或全退。
+        <div class="ck-links"><a href="https://www.darkskyproject.co.nz" target="_blank" class="tkt tkt-link">darkskyproject.co.nz ↗</a></div>
       </div>
     </div>
   </div>
 
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🚁</div>
-      <div class="bk-meta">
-        <div class="bk-name">冰川飛行／冰川健行（三窗口，成行即退其餘）</div>
-        <div class="bk-date">窗口① 9/29 Mt Cook ✅ 已訂 · 備援 ② 10/2 Wanaka · ③ 10/3 皇后鎮</div>
-      </div>
-      <span class="bk-status st-booked">✅ ①已訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>窗口 ①</dt><dd><b>✅ 已預訂（GetYourGuide）</b>：9/29 <b>09:30</b> · 45 分鐘 · 2 人 · 集合 <b>Mount Cook Airport</b> · <b>24h 前可免費退訂</b>；下午 Hooker Valley 照走，原行程當備案</dd>
-        <dt>窗口 ②</dt><dd>10/2 Wanaka 留白日 → <b>冰川健行 Heli-Hike $720</b>/人（Wānaka Mountain Guides · Isobel/Tyndall 冰川）</dd>
-        <dt>窗口 ③</dt><dd>10/3 早出發衝皇后鎮 → <b>50min 冰川降落 $760–895</b>/人（Glacier Southern Lakes / Heliworks）；原行程順延下午</dd>
-        <dt>策略</dt><dd>窗口① 已訂：9/28 看預報，不妙 → <b>24h 前免費退</b> → 改訂 ②或③ 備援；worst case 全被天氣取消 → 照原行程走（無冰川）</dd>
-        <dt>⚠️ 訂前必查</dt><dd>備援 ②③ 若要先訂：天氣取消通常全額退，但<b>「自行取消」的免費期限各家不同</b>（24h／48h／訂金不退都有）→ 逐家確認條款再下訂</dd>
-        <dt>撞期提醒</dt><dd>✅ 已解除：10/1 若被天氣取消，<b>直接用 10/6 那張墊底</b>，不必再把 10/2 留白當順延日 → <b>冰川健行窗口② 可完整使用 10/2</b></dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.mtcookskiplanes.com" target="_blank" class="tkt tkt-link">mtcookskiplanes.com ↗</a>
-        <a href="https://www.helicopter.co.nz/aoraki-mount-cook" target="_blank" class="tkt tkt-link">helicopter.co.nz ↗</a>
-        <a href="https://wanakamountainguides.co.nz/trekking/glacier-heli-hike/" target="_blank" class="tkt tkt-link">wanakamountainguides.co.nz ↗</a>
-        <a href="https://www.glaciersouthernlakes.co.nz" target="_blank" class="tkt tkt-link">glaciersouthernlakes.co.nz ↗</a>
-        <a href="https://www.queenstownhelicopters.nz/glacier-landing-queenstown/" target="_blank" class="tkt tkt-link">queenstownhelicopters.nz ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🚢</div>
-      <div class="bk-meta">
-        <div class="bk-name">TSS Earnslaw 蒸汽船 + Walter Peak Gourmet BBQ 晚餐</div>
-        <div class="bk-date">10/4（日）17:00 班 · 全程約 3h45m · Steamer Wharf 報到</div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>成人 <b>$199</b> / 兒童 $99（NZD，2026 新價，非舊資料 $169）</dd>
-        <dt>先訂省錢？</dt><dd>官網不省；bookme.co.nz 偶有臨時折扣但日期受限、不建議賭</dd>
-        <dt>改期政策</dt><dd><b>24h 前通知可免費取消/改期全退</b>（RealNZ 統一政策）</dd>
-        <dt>天氣取消</dt><dd>船有遮蔽<b>風雨照開</b>，幾乎不取消 → 是全行程最穩的晚間活動</dd>
-        <dt>預訂狀態</dt><dd><b>✅ 已預訂 10/4 17:00 班</b>；如需變動，<b>24h 前（NZ 時間）通知可全額退訂/改期</b></dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.realnz.com/en/experiences/tss-earnslaw-walter-peak-experiences/walter-peak-gourmet-bbq-dining/" target="_blank" class="tkt tkt-link">realnz.com ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🐴</div>
-      <div class="bk-meta">
-        <div class="bk-name">Moke Valley 騎馬 Trek</div>
-        <div class="bk-date">10/4（日）12:00–13:30 · 12:00 前抵達集合 · 車程約 25–30 分鐘</div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>行程</dt><dd>Moke Valley（Moke Lake 一帶）山谷湖畔騎馬 90 分鐘；同日傍晚接 TSS 晚餐船（17:00），時間不衝突</dd>
-        <dt>退款政策</dt><dd><b>7 天前（9/27 前）全額退</b> · 48 小時～7 天前（<b>~10/2</b>）退 <b>50%</b> · <b>48 小時內不退</b>——全行程退款條款第二嚴（僅次於 Skyline 48h）</dd>
-        <dt>穿著</dt><dd>長褲＋包腳鞋（運動鞋／靴），防風外套；山谷比市區冷</dd>
-        <dt>交通</dt><dd>Moke Lake Rd 末段碎石路，11:15 前出發、慢慢開</dd>
-      </dl>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">✨</div>
-      <div class="bk-meta">
-        <div class="bk-name">Te Anau Glowworm Caves 螢火蟲洞（RealNZ）</div>
-        <div class="bk-date">10/5（一）14:00 場 · 全程約 2.25h · 出發前 30 分報到（85 Lakefront Dr）</div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>成人約 <b>$145</b>（NZD，2026 官網價）</dd>
-        <dt>先訂省錢？</dt><dd>不省，純為搶 14:00 這個場次（配合當天往返車程）</dd>
-        <dt>改期政策</dt><dd><b>24h 前通知可退/改</b>（RealNZ 統一政策）</dd>
-        <dt>天氣取消</dt><dd>洞在地底不怕雨；但<b>跨湖接駁船遇強風可能取消</b> → 全退或改期</dd>
-        <dt>預訂狀態</dt><dd><b>✅ 已預訂 10/5 14:00 場</b>；如需變動，<b>24h 前（NZ 時間）通知可全額退訂/改期</b></dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.realnz.com/en/experiences/glowworm-caves/te-anau-glowworm-caves/" target="_blank" class="tkt tkt-link">realnz.com ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🐧</div>
-      <div class="bk-meta">
-        <div class="bk-name">Oamaru Blue Penguin Colony 企鵝歸巢（Premium 看台）</div>
-        <div class="bk-date">10/7（三）20:00 場 · 約 1–1.5h</div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>General <b>$47</b>（350 席）/ Premium <b>$63</b>（僅 60 席、距企鵝數公尺）（NZD，2026 官網價，非舊資料 $30）</dd>
-        <dt>先訂省錢？</dt><dd>不省；<b>Premium 官網明言 bookings essential</b>，General 通常現場可買</dd>
-        <dt>改期政策</dt><dd>依官網 refund policy；透過 GetYourGuide 訂可 24h 前免費取消</dd>
-        <dt>天氣取消</dt><dd>雨天企鵝照樣回巢、照常舉行，帶雨衣即可</dd>
-        <dt>預訂狀態</dt><dd><b>✅ 已預訂 20:00 場</b>；<b>10/4 18:00 前可免費退訂</b>，過期不退</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.penguins.co.nz/visit/evening-viewing/" target="_blank" class="tkt tkt-link">penguins.co.nz ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🐬</div>
-      <div class="bk-meta">
-        <div class="bk-name">Black Cat Cruises · Akaroa Hector's 海豚船</div>
-        <div class="bk-date">10/9（五）<b>10:45 早班</b> · 2h（10:45–12:45）· 61 Beach Road <b>10:15 報到</b></div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>成人 <b>$130</b>（NZD，2026/9/1 起新價；舊資料 $79／$125 已過時）；與海豚同游另價（需另查）</dd>
-        <dt>🕐 班次</dt><dd><b>10 月只有兩班：10:45 與 13:30</b>（15:45 那班 12–3 月才加開）。全程 2 小時</dd>
-        <dt>✅ 已選班次</dt><dd><b>10:45 早班</b>（10:15 報到 → 12:45 回港）。理由：① 下午 Akaroa 港海風較強，早上海況與目擊率較佳 ② 隔天 04:15 起床搭機，搭 13:30 會 17:15 才回到基督城，壓縮最後一晚整備</dd>
-        <dt>先訂省錢？</dt><dd>不省；一天僅 2 班、船位有限，先訂為搶班次</dd>
-        <dt>改期政策</dt><dd><b>報到時間前 24h 外可改／退；24h 內取消不退，no-show 不退</b></dd>
-        <dt>天氣取消</dt><dd>浪大船長取消 → <b>全退或免費改期</b>，會提前電話通知</dd>
-        <dt>預訂狀態</dt><dd><b>✅ 已預訂 10/9 10:45 早班</b>（2026/8/1 訂）。⏰ 報到前 24 小時外可免費改／退 → 死線 <b>10/8 10:15</b>；之後自行取消不退、no-show 不退。<br>⚠️ 訂票系統可提早 12 個月開放，但一天只有 2 班、隔天就是早班機，<b>沒有備用日</b> → 記得把手機號碼留給船家，浪大取消會電話通知</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://book.blackcat.co.nz/activity/selection?filter=ProdGroup-ANC" target="_blank" class="tkt tkt-link">book.blackcat.co.nz（線上訂票）↗</a>
-        <a href="https://www.blackcat.co.nz/akaroa-harbour-nature-cruise/" target="_blank" class="tkt tkt-link">blackcat.co.nz 班次說明 ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🦌</div>
-      <div class="bk-meta">
-        <div class="bk-name">Deer Park Heights 鹿園高地 · 只開放 7 天內預約</div>
-        <div class="bk-date">10/3（六）14:00 · 自駕環園 1.5–2h · 🔴 訂票視窗只有 9/26 一天</div>
-      </div>
-      <span class="bk-status st-todo">⚠️ 9/26 才能訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>🔴 訂票視窗</dt><dd>官方規則：<b>只開放到訪日前 7 天內的預約</b>（"Bookings can only be made up to 7 days in advance"）→ 10/3 的票<b>要到 9/26 才買得到</b>，早訂系統會直接擋。⚠️ 9/26 正好是出發日，<b>18:35 起飛前一定要訂完</b></dd>
-        <dt>庫存</dt><dd>每日限 <b>80 台車</b>，官網即時庫存，賣完就沒有</dd>
-        <dt>價格</dt><dd><b>NZD $75／車</b>（8 座以下，含小孩；9 座以上一律拒絕）。⚠️ 網路上還在流傳的 $55 是過期價格</dd>
-        <dt>🚫 第三方</dt><dd>官方明文：「<b>第三方票無效，會被拒絕入園</b>」，並保留法律追訴。Klook／KKday／Viator／旅行社代訂<b>全部不行</b>，現場也沒有售票窗口</dd>
-        <dt>⚠️ 要車牌</dt><dd>訂票<b>必須填車牌號碼</b>（閘門是車牌辨識自動開啟）。但 9/26 訂票時人還在台灣、9/27 才取車 → <b>需先向 Apex 取得車牌，或確認能否事後補填</b>。提醒已設在 9/3</dd>
-        <dt>入園</dt><dd>車牌辨識自動開閘，另寄<b>簡訊＋Email 備援 PIN</b>（進、出各一次）。<b>禁止步行、單車、寵物、計程車、Uber、旅行團</b>——必須自駕</dd>
-        <dt>營業時間</dt><dd>春季（10–11 月）<b>8:00–20:00</b>。⚠️ 關園時間一到閘門上鎖，<b>逾時每小時罰 NZD $50</b>。14:00 進場停留 2–4 小時很充裕</dd>
-        <dt>退改政策</dt><dd>可自行取消<b>全額退款</b>（booking.deerparkheights.co.nz/my-bookings），期限為<b>到訪日當天 17:00 前</b>。無改期功能＝先退再重訂（受庫存限制）。官方因下雪／惡劣天氣取消 → 全額退款</dd>
-        <dt>園內</dt><dd>5km 單線<b>碎石</b>景觀車道，部分陡峭，2WD 可行（⚠️ 先確認租車合約的碎石路條款）。餵動物要 <b>NZ$2 硬幣</b>投販賣機買飼料，<b>不找零、不收卡</b>；飼料丟地上不可手餵，有角的動物絕不可靠近</dd>
-        <dt>看點</dt><dd>LOTR《雙塔奇兵》Rohan 拍攝地；自由放養鹿、麋鹿、羊駝、山羊、驢子、豬、迷你馬</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://booking.deerparkheights.co.nz/" target="_blank" class="tkt tkt-link">booking.deerparkheights.co.nz（唯一官方訂票）↗</a>
-        <a href="https://deerparkheights.co.nz/info/faqs/" target="_blank" class="tkt tkt-link">官方 FAQ ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card urgent">
-    <div class="bk-head">
-      <div class="bk-icon">🔭</div>
-      <div class="bk-meta">
-        <div class="bk-name">Dark Sky Project 銀河觀星（Summit Experience）</div>
-        <div class="bk-date">9/28（一）21:15 中文導覽 · 含飯店接送 · 約 2h</div>
-      </div>
-      <span class="bk-status st-booked">✅ 已預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>改期政策</dt><dd>24h 前可免費取消全退</dd>
-        <dt>天氣取消</dt><dd>雲太厚無法觀星 → 三選一：<b>改室內天文導覽＋退差額</b>／改期（依空位）／全額退款。出發前 15 分鐘到報到處聽最終判定</dd>
-        <dt>提醒</dt><dd>山頂近 0°C，多層保暖＋毛帽手套；當晚若被取消，10 月初 Tekapo 湖邊自己抬頭也看得到銀河（免費 Plan B）</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.darkskyproject.co.nz" target="_blank" class="tkt tkt-link">darkskyproject.co.nz ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ───────── 🟡 建議先訂 ───────── -->
+  <!-- ───────── 🟡 出發前幾天訂 ───────── -->
   <div class="cat-header">
     <div class="cat-dot" style="background:#d97706"></div>
-    <div class="cat-title">🟡 建議先訂（不省錢，但省時間或採預約制）</div>
+    <div class="cat-title">🟡 出發前幾天訂 / 到當地看準再訂</div>
   </div>
 
-  <div class="bk-card soon">
-    <div class="bk-head">
-      <div class="bk-icon">🛷</div>
-      <div class="bk-meta">
-        <div class="bk-name">Skyline Gondola + Luge 溜溜車</div>
-        <div class="bk-date">10/6（二）<b>下午 14:00 上山</b>（早上跳傘，12:00–13:00 才結束）</div>
+  <div class="cklist">
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">🛷 Skyline Gondola + Luge（10/6 下午 14:00 上山）</div>
+        <span class="bk-status st-todo">未訂</span><span class="ck-chev">▸</span>
       </div>
-      <span class="bk-status st-todo">⚠️ 未預訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>Gondola 來回 <b>$66</b>；Gondola＋Luge 組合（最熱門 6 趟）<b>線上訂比分開買省</b>（NZD，2026 官網價）</dd>
-        <dt>先訂省錢？</dt><dd><b>線上組合價小省＋免排售票隊伍</b>；現場也買得到</dd>
-        <dt>改期政策</dt><dd>⚠️ <b>全行程最嚴：48h 前通知才能退/改</b>，臨時不去不退</dd>
-        <dt>天氣取消</dt><dd>纜車強風停駛、Luge 軌道濕滑／結冰關閉；<b>全面關閉</b>才可改期或退款，部分關閉不退</dd>
-        <dt>建議時機</dt><dd><b>抵達皇后鎮（10/3）後看 10/6 天氣預報再線上訂</b>——避開 48h 規則的風險；要玩 Ziptrek 排同天省一次纜車費。<br>⏰ Luge 排 10/6 <b>14:00</b> → <b>48h 邊界＝10/4 14:00</b>。提醒設在 10/4 09:00，還留 5 小時緩衝，不用急著現在訂</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://queenstown.skyline.co.nz" target="_blank" class="tkt tkt-link">queenstown.skyline.co.nz ↗</a>
-        <a href="https://www.ziptrek.com" target="_blank" class="tkt tkt-link">ziptrek.com（溜索 24h 前可免費改）↗</a>
+      <div class="ck-detail">Gondola+Luge 組合線上訂比分開買省。⚠️ <b>全行程最嚴：48h 前才能退改</b>——抵達皇后鎮（10/3）後看準 10/6 天氣再線上訂，死線 10/4 14:00。
+        <div class="ck-links"><a href="https://queenstown.skyline.co.nz" target="_blank" class="tkt tkt-link">queenstown.skyline.co.nz ↗</a></div>
       </div>
     </div>
-  </div>
 
-  <div class="bk-card soon">
-    <div class="bk-head">
-      <div class="bk-icon">🍷</div>
-      <div class="bk-meta">
-        <div class="bk-name">Rippon 酒莊品酒（Wanaka）</div>
-        <div class="bk-date">10/1（四）16:30 免費導覽 · 2 人 · 每場最多 6 人</div>
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck done">✓</div><div class="ck-txt">🍷 Rippon 品酒（10/1 16:30，2 人）</div>
+        <span class="bk-status st-booked">已約</span><span class="ck-chev">▸</span>
       </div>
-      <span class="bk-status st-booked">✅ 已預約</span>
+      <div class="ck-detail">免費但需預約，<b>12 小時前可免費退</b>（= 10/1 04:30）。跳傘 15:30–16:00 才結束，9/30 確認照跳就當天退掉，no-show 收 $10/人。
+        <div class="ck-links"><a href="https://rippon.co.nz/tasting-bookings/" target="_blank" class="tkt tkt-link">rippon.co.nz ↗</a></div>
+      </div>
     </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>Cellar Door 品酒<b>免費</b>（no-show 收 $10/人）；私人深度品酒 $45/人</dd>
-        <dt>先訂省錢？</dt><dd>本來就免費，但<b>採預約制（appointment only）</b>，不預約可能進不去</dd>
-        <dt>改期政策</dt><dd>免費預約，時間彈性；有登記卡片，記得取消避免 no-show 費</dd>
-        <dt>預約狀態</dt><dd><b>✅ 已預約 10/1 16:30 免費導覽（2 人）</b></dd>
-        <dt>⏰ 提醒</dt><dd>退訂期限 <b>12 小時前</b>（= 10/1 04:30）。⚠️ 跳傘 12:30 報到、15:30–16:00 才結束 → <b>已定策略：9/30 確認跳傘照跳就當天退掉品酒</b>；不去不退會收 no-show 費</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://rippon.co.nz/tasting-bookings/" target="_blank" class="tkt tkt-link">rippon.co.nz ↗</a>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">🚣 Avon River 撐篙（10/8 下午）</div>
+        <span class="bk-status st-optional">可選</span><span class="ck-chev">▸</span>
       </div>
+      <div class="ck-detail">$45／人，現場可買，官方建議先預約減少排隊。前一天（10/7 晚）看天氣官網訂隔天下午場即可。
+        <div class="ck-links"><a href="https://www.christchurchattractions.nz/punting/" target="_blank" class="tkt tkt-link">christchurchattractions.nz ↗</a></div>
+      </div>
+    </div>
+
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">🍽️ 人氣餐廳訂位（分散各日，免費但會滿）</div>
+        <span class="bk-status st-optional">陸續訂</span><span class="ck-chev">▸</span>
+      </div>
+      <div class="ck-detail">Te Anau <b>10/5 17:45</b>（The Fat Duck／The Redcliff，最要緊，吃完要開 2.5h 夜路回皇后鎮）· Wanaka：Francesca's Italian（9/30–10/2 擇日）· 皇后鎮：Rata／Botswana Butchery（10/3 晚）。</div>
     </div>
   </div>
 
-  <div class="bk-card soon">
-    <div class="bk-head">
-      <div class="bk-icon">🚣</div>
-      <div class="bk-meta">
-        <div class="bk-name">Avon River Punting 撐篙（基督城）</div>
-        <div class="bk-date">10/8（四）下午 · 約 30 分鐘 · Antigua Boat Sheds 出發</div>
-      </div>
-      <span class="bk-status st-optional">可選</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>成人 <b>$45</b> / 兒童 $30（NZD，2026 官網價，非舊資料 $35–40）</dd>
-        <dt>先訂省錢？</dt><dd>不省；現場可買但<b>官方建議預約減少排隊等候</b></dd>
-        <dt>天氣取消</dt><dd>weather permitting，10 月起營業 9:00–18:00</dd>
-        <dt>建議時機</dt><dd>前一天（10/7 晚）看天氣官網訂隔天下午場即可</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://www.christchurchattractions.nz/punting/" target="_blank" class="tkt tkt-link">christchurchattractions.nz ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="bk-card soon">
-    <div class="bk-head">
-      <div class="bk-icon">🍽️</div>
-      <div class="bk-meta">
-        <div class="bk-name">人氣餐廳訂位</div>
-        <div class="bk-date">分散各日 · 免費但熱門店會滿</div>
-      </div>
-      <span class="bk-status st-optional">陸續訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>建議訂位</dt><dd>Wanaka：<b>Francesca's Italian</b>（9/30–10/2 擇日）· Te Anau：<b>The Redcliff / The Fat Duck</b>（<b>10/5 晚 17:45</b>——吃完要開 2h30m 夜路回皇后鎮，訂早一點）· 皇后鎮：Rata / Botswana Butchery（10/3 晚）</dd>
-        <dt>免訂</dt><dd>Fergburger（現場排隊文化）、Riverside Market（美食廣場）</dd>
-      </dl>
-    </div>
-  </div>
-
-  <!-- ───────── 🟢 免訂 ───────── -->
+  <!-- ───────── 🟢 現場買票即可 ───────── -->
   <div class="cat-header">
     <div class="cat-dot" style="background:#10B981"></div>
-    <div class="cat-title">🟢 免訂：現場買就好（先訂沒比較便宜）</div>
+    <div class="cat-title">🟢 現場買票即可（先訂沒有比較便宜）</div>
   </div>
 
-  <div class="bk-card relax">
-    <div class="bk-head">
-      <div class="bk-icon">♨️</div>
-      <div class="bk-meta">
-        <div class="bk-name">Tekapo Springs 溫泉</div>
-        <div class="bk-date">9/28（一）下午 · 全日多次入場 pass</div>
+  <div class="cklist">
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">♨️ Tekapo Springs 溫泉</div>
+        <span class="bk-status st-optional">現場可</span><span class="ck-chev">▸</span>
       </div>
-      <span class="bk-status st-optional">現場可</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>價格</dt><dd>成人 <b>$42</b> / 兒童 $25（NZD，全日票）；毛巾泳衣租借各 $10</dd>
-        <dt>省錢技巧</dt><dd>官網先訂同價；<b>bookme.co.nz 偶有約 3 折–7 折的限時折扣</b>，出發前可看一眼，沒有就現場買</dd>
-        <dt>天氣</dt><dd>雨雪天泡湯更舒服，個別池可能因天候維護關閉</dd>
-      </dl>
-      <div class="bk-links">
-        <a href="https://tekaposprings.co.nz" target="_blank" class="tkt tkt-link">tekaposprings.co.nz ↗</a>
-        <a href="https://www.bookme.co.nz" target="_blank" class="tkt tkt-link">bookme.co.nz（撿折扣）↗</a>
+      <div class="ck-detail">成人 $42／人，官網先訂同價，bookme.co.nz 偶有 3–7 折限時折扣可撿。
+        <div class="ck-links"><a href="https://tekaposprings.co.nz" target="_blank" class="tkt tkt-link">tekaposprings.co.nz ↗</a></div>
       </div>
     </div>
-  </div>
 
-  <div class="bk-card relax">
-    <div class="bk-head">
-      <div class="bk-icon">🎟️</div>
-      <div class="bk-meta">
-        <div class="bk-name">其他免訂項目一覽</div>
-        <div class="bk-date">到場直接買 / 免費</div>
+    <div class="ck-item">
+      <div class="ck-row" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ck">&nbsp;</div><div class="ck-txt">🎟️ 其他免訂／免費景點</div>
+        <span class="bk-status st-optional">免訂</span><span class="ck-chev">▸</span>
       </div>
-      <span class="bk-status st-optional">免訂</span>
-    </div>
-    <div class="bk-body">
-      <dl class="bk-facts">
-        <dt>Oamaru</dt><dd>Steampunk HQ $10（現場）· Harbour St 免費逛 · 企鵝 General 看台 $47 現場可（見上）</dd>
-        <dt>Te Anau</dt><dd>野生動物中心<b>免費</b>（看奇異鳥）</dd>
-        <dt>皇后鎮</dt><dd>Queenstown Gardens 免費 · Fergburger 排隊（🦌 鹿園高地<b>不在此類</b>，需官網線上訂票 → 見上方 🔴 必訂區）</dd>
-        <dt>基督城</dt><dd>Canterbury Museum 免費 · Botanic Gardens 免費 · Cardboard Cathedral 免費</dd>
-        <dt>Kinross</dt><dd>散客 walk-in 可（野餐區隨到隨坐）；品酒場次想確保有位再先訂</dd>
-      </dl>
+      <div class="ck-detail">Oamaru：Steampunk HQ $10、Harbour St 免費逛。Te Anau：野生動物中心免費。皇后鎮：Queenstown Gardens 免費。基督城：Canterbury Museum／Botanic Gardens／Cardboard Cathedral 全免費。</div>
     </div>
   </div>
 

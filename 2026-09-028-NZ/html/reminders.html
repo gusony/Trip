@@ -56,7 +56,7 @@ a{text-decoration:none;color:inherit}
 .grp-date{font-size:12.5px;color:#94A3B8;font-weight:600}
 
 /* 出發後：日區塊 */
-.dayblk{background:#fff;border:1px solid #E2E8F0;border-radius:16px;margin-bottom:12px;overflow:hidden}
+.dayblk{background:#fff;border:1px solid #E2E8F0;border-radius:16px;margin-bottom:10px;overflow:hidden}
 .dayblk.has-hard{border-color:#FCA5A5}
 .day-hd{display:flex;align-items:center;gap:10px;padding:12px 15px;background:#F8FAFC;border-bottom:1px solid #E2E8F0}
 .dayblk.has-hard .day-hd{background:#FEF2F2;border-bottom-color:#FECACA}
@@ -67,34 +67,36 @@ a{text-decoration:none;color:inherit}
 .day-date{font-size:14px;font-weight:700}
 .day-place{font-size:12px;color:#64748B;margin-top:-1px}
 .day-cnt{flex-shrink:0;font-size:11px;font-weight:700;color:#94A3B8;background:#fff;border:1px solid #E2E8F0;border-radius:99px;padding:2px 9px}
-.day-body{padding:11px 13px}
+.day-body{padding:5px 3px}
 .day-empty{padding:11px 15px;font-size:12.5px;color:#CBD5E1}
-.day-tl{display:flex;gap:11px;padding:9px 0;border-bottom:1px dashed #F1F5F9}
-.day-tl:last-child{border-bottom:none}
-.day-tl-time{flex-shrink:0;width:46px;font-size:13px;font-weight:700;color:#0F172A;padding-top:1px;font-variant-numeric:tabular-nums}
-.day-tl-body{flex:1;min-width:0}
 .chip-moved{background:#F5F3FF;color:#6D28D9;border:1px solid #DDD6FE}
-.chip-sleep{background:#1E293B;color:#E2E8F0;border:1px solid #334155}
 .chip-map{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE;transition:background 120ms}
 .chip-map:hover{background:#DBEAFE}
 .chip-link{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;transition:background 120ms}
 .chip-link:hover{background:#DCFCE7}
 
-/* 提醒卡 */
-.rm{background:#fff;border-radius:14px;border:1px solid #E2E8F0;margin-bottom:10px;overflow:hidden;display:flex;align-items:stretch}
-.rm-accent{width:5px;flex-shrink:0}
-.rm-main{flex:1;padding:13px 15px;min-width:0}
-.rm-top{display:flex;align-items:flex-start;gap:9px;margin-bottom:5px}
-.rm-icon{font-size:19px;line-height:1.2;flex-shrink:0}
-.rm-name{font-size:14.5px;font-weight:700;flex:1;min-width:0}
-.rm-when{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
-.chip{font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px;white-space:nowrap}
+/* 條列項目：收合一行 + 點擊展開細節（出發前／出發後共用） */
+.item{border-bottom:1px solid #F1F5F9}
+.item:last-child{border-bottom:none}
+.row{display:flex;align-items:center;gap:9px;padding:10px 11px;cursor:pointer;transition:background 120ms;border-radius:9px}
+.row:hover{background:#F8FAFC}
+.t{flex-shrink:0;width:44px;font-size:12.5px;font-weight:800;color:#64748B;font-variant-numeric:tabular-nums}
+.item.hard .t{color:#DC2626}
+.ic{flex-shrink:0;font-size:16px}
+.txt{flex:1;min-width:0;font-size:13.5px;font-weight:600;color:#0F172A;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.moon{flex-shrink:0;font-size:10.5px;font-weight:700;background:#1E293B;color:#E2E8F0;border-radius:6px;padding:2px 7px}
+.chev{flex-shrink:0;font-size:11px;color:#CBD5E1;transition:transform 160ms}
+.item.open .chev{transform:rotate(90deg)}
+.detail{display:none;padding:0 13px 13px 53px;font-size:12.5px;color:#64748B;line-height:1.6}
+.item.open .detail{display:block}
+.detail b{color:#334155}
+.detail-cat{font-size:11px;font-weight:700;margin-bottom:5px}
+.detail-when{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.detail-act{margin-top:9px}
+.chip{font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:6px;white-space:nowrap;display:inline-block}
 .chip-nz{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE}
 .chip-tw{background:#F8FAFC;color:#64748B;border:1px solid #E2E8F0}
 .chip-hard{background:#FEE2E2;color:#B91C1C;border:1px solid #FCA5A5}
-.rm-desc{font-size:12.5px;color:#64748B;line-height:1.55}
-.rm-desc b{color:#334155}
-.rm-act{flex-shrink:0;display:flex;align-items:center;padding:0 12px 0 4px}
 .btn-add{background:#F0FDF4;color:#15803d;border:1px solid #BBF7D0;border-radius:9px;padding:7px 11px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 120ms}
 .btn-add:hover{background:#DCFCE7}
 .btn-add.done{background:#DCFCE7;border-color:#86EFAC}
@@ -114,10 +116,8 @@ a{text-decoration:none;color:inherit}
 .bnav-next{background:#DC2626;color:#fff}
 .pb{height:80px}
 
-@media(max-width:520px){
-  .rm{flex-direction:column}
-  .rm-accent{width:100%;height:4px}
-  .rm-act{padding:0 15px 13px;align-items:stretch}
+@media(max-width:420px){
+  .t{width:38px;font-size:11.5px}
   .btn-add{width:100%;padding:10px}
 }
 </style>
@@ -180,15 +180,20 @@ a{text-decoration:none;color:inherit}
     <span style="font-size:20px">🔴</span>
     <div class="alert-body">
       <strong>四個最容易漏掉、漏掉就要花錢的</strong>
-      <p>① <b>9/25 晚 22:00 訂鹿園</b>——官方只開放到訪日前 7 天內、每日限 80 台車，10/3 的票這時才買得到，隔天 18:35 就要飛<br>② <b>9/30 晚 22:00 決定 Rippon 退不退</b>——死線 10/1 04:30 在睡夢中，過了收 no-show $10/人<br>③ <b>10/4 晚 22:00 跳傘②決策</b>——10/1 跳成了卻忘了退 10/6，等於白付 NZD $449<br>④ <b>10/4 18:00 企鵝退訂截止</b>——過了完全不退（提醒設 16:00，因為 16:45 你就上 TSS 船了）</p>
+      <ul style="font-size:12.5px;color:#475569;line-height:1.75;padding-left:18px;margin-top:3px">
+        <li><b>9/25 晚 22:00</b> 訂鹿園——只有這天能買 10/3 的票</li>
+        <li><b>9/30 晚 22:00</b> 決定 Rippon 品酒退不退</li>
+        <li><b>10/4 晚 22:00</b> 跳傘②決策——跳成了記得退，否則白付 $449</li>
+        <li><b>10/4 18:00</b> 企鵝退訂截止，過了不退</li>
+      </ul>
     </div>
   </div>
 
   <div class="alert alert-i">
     <span style="font-size:20px">🌙</span>
     <div class="alert-body">
-      <strong>睡眠時段自動前移（22:00–09:00）</strong>
-      <p>凡是在你睡覺時段到期的死線，提醒都已經<b>移到前一晚 22:00</b>，卡片上會標 <span class="chip chip-moved" style="display:inline-block">🌙 睡前處理</span>。<br>例如 Rippon 品酒的退訂期限是 10/1 04:30，提醒設在 <b>9/30 22:00</b>。<br>⚠️ 早上的報到、出發、起床時間<b>沒有</b>前移（那些本來就是要在當下做的事），但前一晚都補了「睡前準備」提醒。</p>
+      <strong>睡眠時段（22:00–09:00）到期的死線，已自動提前到前一晚 22:00</strong>
+      <p>項目上會標 <span class="moon" style="display:inline-block">🌙</span>，例如 Rippon 品酒實際死線 10/1 04:30，提醒已改設 9/30 22:00。報到／出發／起床時間不受影響。</p>
     </div>
   </div>
 
@@ -268,9 +273,9 @@ var EVENTS = [
    desc:'9/29 09:30 Mt Cook 冰川飛行（GetYourGuide 已訂）可 24h 前免費退 → 期限是今天 09:30。看 Mt Cook 明早預報，不妙就退掉，改訂 10/2 Wanaka 冰川健行或 10/3 皇后鎮的備援窗口。'},
 
   {id:'dl-skydive1', cat:'dl', icon:'🪂', name:'跳傘①決策 ＋ 順手退 Rippon 品酒',
-   utc:'20260929T223000Z', dur:60, alarm:120, when:'NZ 9/30（三）11:30', hard:true,
+   utc:'20260929T213000Z', dur:60, alarm:0, when:'NZ 9/30（三）10:30', hard:true,
    loc:'',
-   desc:'① 10/1 12:30 Skydive Wanaka（Klook）可 24h 前免費退 → 期限今天 12:30，只剩 1 小時。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免費退。'},
+   desc:'① 10/1 12:30 Skydive Wanaka（Klook）可 24h 前免費退 → 期限今天 12:30，還有 2 小時緩衝。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免費退。'},
 
   {id:'dl-rippon-early', cat:'dl', icon:'🍷', name:'預告：Rippon 品酒可能要退訂',
    utc:'20260929T070000Z', dur:20, alarm:0, when:'NZ 9/29（二）20:00', hard:false,
@@ -299,17 +304,17 @@ var EVENTS = [
    desc:'明天要退房皇后鎮、開 250km 到 Oamaru（翻 Lindis Pass），07:15 就要出發。\n① 今晚把行李收好——皇后鎮住了 4 晚，東西攤最開，早上邊收邊出發最容易漏。\n② 明早超市還沒開 → 長途路段的零食飲水今晚先買（Cromwell 之後補給點少）。\n③ 設好 06:30 鬧鐘。加油可以明早在皇后鎮出發前或 Cromwell 前處理。'},
 
   {id:'dl-horse', cat:'dl', icon:'🐴', name:'騎馬退款分界：過了只能退 50%',
-   utc:'20261001T210000Z', dur:30, alarm:120, when:'NZ 10/2（五）10:00', hard:true,
+   utc:'20261001T210000Z', dur:30, alarm:0, when:'NZ 10/2（五）10:00', hard:true,
    loc:'',
    desc:'Moke Valley 騎馬（10/4 12:00）退款規則：7 天前全額退 → 48h~7天退 50% → 48h 內完全不退。今天 12:00 就是 48h 分界。除非確定不去，否則不用動作，這是提醒你「最後能拿回一半錢的時間點」。'},
 
   {id:'dl-luge', cat:'dl', icon:'🛷', name:'Skyline Luge 訂票死線（48h 退改規則）',
-   utc:'20261003T200000Z', dur:30, alarm:120, when:'NZ 10/4（日）09:00', hard:true,
+   utc:'20261003T230000Z', dur:30, alarm:0, when:'NZ 10/4（日）12:00', hard:true,
    loc:'queenstown.skyline.co.nz',
-   desc:'10/6 下午 14:00 上山玩 Gondola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現在還有 5 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣好就線上買組合票（比現場分開買省，也免排售票隊伍）。⚠️ 別拖過今天 14:00，過了就變成不能退。'},
+   desc:'10/6 下午 14:00 上山玩 Gondola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現在還有 2 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣好就線上買組合票（比現場分開買省，也免排售票隊伍）。⚠️ 別拖過今天 14:00，過了就變成不能退。'},
 
   {id:'dl-penguin', cat:'dl', icon:'🐧', name:'🔴 企鵝 Premium 最後免費退訂點',
-   utc:'20261004T030000Z', dur:30, alarm:120, when:'NZ 10/4（日）16:00', hard:true,
+   utc:'20261004T030000Z', dur:30, alarm:0, when:'NZ 10/4（日）16:00', hard:true,
    loc:'',
    desc:'10/7 20:00 Oamaru 藍企鵝 Premium 看台（$63/人 × 2）→ 今天 18:00 是最後可免費退的時間，過了完全不退。除非行程有變，否則保留即可——雨天企鵝照樣回巢，幾乎不會取消。'},
 
@@ -325,7 +330,7 @@ var EVENTS = [
    desc:'10/8 傍晚 17:00 場 · 成人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買得到，但官方建議先預約減少排隊；10 月營業到 18:00，weather permitting。看基督城明天的天氣預報再決定訂不訂——剛看完企鵝回住處，順手訂一下。'},
 
   {id:'dl-blackcat-time', cat:'dl', icon:'🐬', name:'🔴 明早 Black Cat 出發前最後確認',
-   utc:'20261008T060000Z', dur:20, alarm:120, when:'NZ 10/8（四）19:00', hard:true,
+   utc:'20261008T060000Z', dur:20, alarm:0, when:'NZ 10/8（四）19:00', hard:true,
    loc:'',
    desc:'① 對一次訂單：10/9 10:45 早班 ✅ 已訂（2026/8/1 訂），報到 10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-show 也不退。'},
 
@@ -341,12 +346,12 @@ var EVENTS = [
    desc:'Crown Range Road（SH89）是全紐最高公路（1,121m），10 月初仍可能結冰或積雪封路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要不要訂（48h 退改，別拖過明天 09:00）。'},
 
   {id:'op-teanau', cat:'ops', icon:'🚗', name:'出發 Te Anau（來回 350km、12 小時）',
-   utc:'20261004T193000Z', dur:30, alarm:60, when:'NZ 10/5（一）08:30', hard:true,
+   utc:'20261004T194500Z', dur:30, alarm:60, when:'NZ 10/5（一）08:45', hard:true,
    loc:'',
    desc:'08:45 出發，單趟 175km / 2h30m → 13:30 前一定要到 RealNZ 遊客中心報到（85 Lakefront Dr）。行李留皇后鎮，今晚開夜路回來住。⚠️ 出發前確認油箱夠來回。今天 08:00 也是跳傘②的決策點，出門前先處理完。'},
 
   {id:'op-oamaru', cat:'ops', icon:'⛽', name:'退房皇后鎮 ＋ 加滿油，出發 Oamaru',
-   utc:'20261006T181500Z', dur:30, alarm:60, when:'NZ 10/7（三）07:15', hard:false,
+   utc:'20261006T183000Z', dur:30, alarm:60, when:'NZ 10/7（三）07:30', hard:false,
    loc:'',
    desc:'250km / 3.5–4 小時，翻越 Lindis Pass（971m，清晨可能結冰，出發前查 NZTA）。⚠️ Cromwell 之前務必加滿油，這段補給點少。行李全部帶走，今晚換住 Oamaru，傍晚 20:00 看企鵝。'},
 
@@ -396,10 +401,10 @@ var EVENTS = [
    loc:'Peninsula Rd, Kelvin Heights（沿路 4km）',
    desc:'皇后鎮 4 天唯一的寬鬆時段。市區開過去約 20 分鐘，園內 5km 景觀車道自駕環繞，停留 1.5–2 小時很充裕。餵鹿、山羊、驢子、迷你馬要帶 NZ$2 硬幣。LOTR《雙塔奇兵》Rohan 拍攝地。⚠️ 關園 18:00、禁止步行進入、要先線上訂票。'},
 
-  {id:'meet-horse', cat:'meet', icon:'🐴', name:'出發往 Moke Valley 騎馬',
-   utc:'20261003T221500Z', dur:45, alarm:60, when:'NZ 10/4（日）11:15 出發', hard:true,
+  {id:'meet-horse', cat:'meet', icon:'🐴', name:'抵達 Moke Valley 騎馬集合點',
+   utc:'20261003T224500Z', dur:45, alarm:60, when:'NZ 10/4（日）11:45 抵達', hard:true,
    loc:'Moke Lake, Queenstown',
-   desc:'12:00 前一定要抵達集合（騎馬 12:00–13:30）。Moke Lake Rd 末段是碎石路，慢慢開、預留時間。⚠️ 48 小時內不退，遲到＝全額損失。穿長褲＋包腳鞋，山谷比市區冷。'},
+   desc:'建議 11:45 前抵達（官方要求 12:00 前一定要到，Moke Lake Rd 末段是碎石路較慢，留 15 分鐘餘裕）。騎馬 12:00–13:30。⚠️ 48 小時內不退，遲到＝全額損失。穿長褲＋包腳鞋，山谷比市區冷。'},
 
   {id:'meet-tss', cat:'meet', icon:'🚢', name:'TSS Earnslaw 蒸汽船報到 · Steamer Wharf',
    utc:'20261004T034500Z', dur:240, alarm:60, when:'NZ 10/4（日）16:45 報到', hard:true,
@@ -541,20 +546,26 @@ function locChip(e){
   return out;
 }
 
-function card(e){
-  return '<div class="rm">' +
-    '<div class="rm-accent" style="background:' + CAT_COLOR[e.cat] + '"></div>' +
-    '<div class="rm-main">' +
-      '<div class="rm-top"><span class="rm-icon">' + e.icon + '</span><span class="rm-name">' + e.name + '</span></div>' +
-      '<div class="rm-when">' +
+function item(e){
+  return '<div class="item' + (e.hard ? ' hard' : '') + '">' +
+    '<div class="row" onclick="this.parentElement.classList.toggle(\'open\')">' +
+      '<span class="t">' + hmOf(localOf(e)) + '</span>' +
+      '<span class="ic">' + e.icon + '</span>' +
+      '<span class="txt">' + e.name + '</span>' +
+      (e.moved ? '<span class="moon">🌙</span>' : '') +
+      '<span class="chev">▸</span>' +
+    '</div>' +
+    '<div class="detail">' +
+      '<div class="detail-cat" style="color:' + CAT_COLOR[e.cat] + '">' + CAT_ICON[e.cat] + ' ' + CAT_NAME[e.cat] + '</div>' +
+      '<div class="detail-when">' +
         '<span class="chip ' + (isTW(e) ? 'chip-tw' : 'chip-nz') + '">' + e.when + '</span>' +
         (e.moved ? '<span class="chip chip-moved">🌙 ' + e.moved + '</span>' : '') +
         (e.hard ? '<span class="chip chip-hard">⚠️ 硬期限</span>' : '') +
         locChip(e) +
       '</div>' +
-      '<div class="rm-desc">' + e.desc.replace(/\n/g, '<br>') + '</div>' +
+      e.desc.replace(/\n/g, '<br>') +
+      '<div class="detail-act"><button class="btn-add" data-id="' + e.id + '">＋ 加入行事曆</button></div>' +
     '</div>' +
-    '<div class="rm-act"><button class="btn-add" data-id="' + e.id + '">＋ 加入</button></div>' +
   '</div>';
 }
 
@@ -568,7 +579,7 @@ function render(){
     });
     if (!list.length) return '';
     return '<div class="grp"><span class="grp-tag">' + g.tag + '</span><span class="grp-date">' + g.date + '</span></div>' +
-           list.map(card).join('');
+           '<div class="dayblk"><div class="day-body">' + list.map(item).join('') + '</div></div>';
   }).join('');
 
   // 出發後
@@ -583,23 +594,7 @@ function render(){
     if (!list.length){
       return '<div class="dayblk">' + head + '<div class="day-empty">這天沒有需要提醒的死線或報到時間 — 照行程走就好。</div></div>';
     }
-    var body = '<div class="day-body">' + list.map(function(e){
-      var t = hmOf(localOf(e));
-      var sleepish = (+t.slice(0,2) >= 22 || +t.slice(0,2) < 9);
-      return '<div class="day-tl">' +
-          '<div class="day-tl-time">' + t + '</div>' +
-          '<div class="day-tl-body">' +
-            '<div style="font-size:13.5px;font-weight:700;margin-bottom:3px">' + e.icon + ' ' + e.name +
-              (sleepish && e.moved ? ' <span class="chip chip-sleep">睡前</span>' : '') +
-            '</div>' +
-            '<div style="font-size:11.5px;font-weight:600;color:' + CAT_COLOR[e.cat] + ';margin-bottom:5px">' + CAT_ICON[e.cat] + ' ' + CAT_NAME[e.cat] + '</div>' +
-            (locChip(e) ? '<div class="rm-when">' + locChip(e) + '</div>' : '') +
-            '<div class="rm-desc">' + e.desc.replace(/\n/g, '<br>') + '</div>' +
-            '<div style="margin-top:7px"><button class="btn-add" data-id="' + e.id + '">＋ 加入行事曆</button></div>' +
-          '</div>' +
-        '</div>';
-    }).join('') + '</div>';
-    return '<div class="dayblk' + (hard ? ' has-hard' : '') + '">' + head + body + '</div>';
+    return '<div class="dayblk' + (hard ? ' has-hard' : '') + '">' + head + '<div class="day-body">' + list.map(item).join('') + '</div></div>';
   }).join('');
 }
 
