@@ -151,7 +151,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 40 個時間點 · 依時間排序</div>
+    <div class="day-badge">提醒總表 · 41 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
@@ -264,6 +264,11 @@ var EVENTS = [
    moved:'原訂 9/26 08:00 開賣 · 已提前到睡前',
    loc:'booking.deerparkheights.co.nz',
    desc:'⚠️ 官網只開放「到訪日前 7 天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒了。每日限 80 台車，賣完就沒有。\nNZD $75/車（8 座以下）。⚠️ 訂票要填車牌號碼（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerparkheights.co.nz 訂——官方明文「第三方票無效，會被拒絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 PIN（進出各一次）。\n今晚 18:35 就要出發，記得出門前訂完。'},
+
+   {id:'prep-deerpark-bak', cat:'prep', icon:'🦌', name:'🔴 鹿園高地備援提醒：再檢查一次！',
+    utc:'20260926T140000Z', dur:30, alarm:0, when:'台灣 9/26（六）22:00', hard:true,
+    loc:'booking.deerparkheights.co.nz',
+    desc:'⚠️ 若昨晚沒訂到或因車牌問題卡住，今晚是最後一個睡前機會——明天 9/27 15:25 落地 NZ 後就是 NZ 時間，只剩 7 天內最後一個完整台灣睡前時段能安心操作。\n🔁 10/3 鹿園高地：每日限 80 台車、$75/車、只能官網訂。\n今晚睡醒就要去機場了（NZ78 18:35 起飛），務必確認訂票已完成。'},
 
   // ── 死線（NZ 時間）──
   {id:'dl-glacier', cat:'dl', icon:'🚁', name:'冰川飛行決策：明天 09:30 的班要不要退',
@@ -617,7 +622,7 @@ function addMin(utcStr, min){
 }
 
 function esc(s){
-  return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\n');
 }
 
 // RFC5545：每行 75 bytes 上限，超過要折行（續行以空白開頭）
