@@ -1,3 +1,6 @@
 .DS_Store
 .claude/
 .playwright-mcp/
+
+# 收據、信用卡帳單等個人財務檔案，不上雲端
+*/receipt/
