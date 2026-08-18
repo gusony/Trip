@@ -151,7 +151,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 42 個時間點 · 依時間排序</div>
+    <div class="day-badge">提醒總表 · 43 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
@@ -234,10 +234,15 @@ a{text-decoration:none;color:inherit}
 // NZ 於 2026/9/27 進入夏令時間 NZDT (UTC+13)；9/26 以前為 NZST (UTC+12)
 var EVENTS = [
   // ── 出發前（台灣時間）──
-  {id:'prep-docs', cat:'prep', icon:'📄', name:'辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險',
-   utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:false,
+  {id:'prep-docs', cat:'prep', icon:'📄', name:'📄 辦 NZeTA ×2（最後底線）＋ 翻出 IDP 看期限',
+   utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:true,
    loc:'',
    desc:'① NZeTA 電子旅行授權：用手機 App 辦（NZ$17，網頁要 NZ$23）＋ IVL 觀光稅 NZ$100，兩人約 NZ$234。搜「NZeTA」，發行者要是 Immigration New Zealand。多數 10 分鐘核發，官方要求預留 72 小時。\n② IDP 國際駕照：監理站當天領，NT$250/人。帶身分證正本＋台灣駕照正本＋護照影本＋2 吋照片 2 張。⚠️ IDP 不能單獨用，出國要跟台灣駕照正本一起帶，兩本缺一 Europcar 不交車。兩人都要開車就兩本都辦。\n（保險移到 9/19 那筆提醒）'},
+
+  {id:'prep-luge', cat:'prep', icon:'🛷', name:'🛷 比價 Skyline Luge：官網 vs 第三方',
+   utc:'20260829T020000Z', dur:20, alarm:0, when:'台灣 8/29（六）10:00', hard:false,
+   loc:'',
+   desc:'Gondola + Luge 組合票（3 趟）約 NZ$89/人，排在 10/6 14:00。\n\n差別只在退改條款：\n· 官網 queenstown.skyline.co.nz —— 48 小時前才能退改（全行程最嚴）→ 死線 10/4 14:00，等於要在皇后鎮第二天就賭 10/6 的天氣\n· Klook / Viator —— 24 小時前免費取消 → 死線 10/5 14:00，多一天觀察天氣\n\n👉 若價差不大就走第三方，現在直接訂掉，省掉當地操作也多一天彈性。價差明顯才留給官網、10/3 晚上看預報再決定。\n\n⚠️ 走官網的話記得：死線是 10/4 14:00，不是 09:00。'},
 
   {id:'prep-insurance', cat:'prep', icon:'🛡️', name:'🛡️ 保保險（出發前一週）',
    utc:'20260919T020000Z', dur:45, alarm:0, when:'台灣 9/19（六）10:00', hard:true,
