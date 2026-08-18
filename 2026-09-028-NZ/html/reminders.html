@@ -151,7 +151,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="day-badge">提醒總表 · 41 個時間點 · 依時間排序</div>
+    <div class="day-badge">提醒總表 · 42 個時間點 · 依時間排序</div>
     <div class="hero-title">⏰ 提醒總表</div>
     <div class="hero-sub">出發前依「還有多久」分組、出發後一天一格 · 睡覺時段（22:00–09:00）到期的死線已自動前移到<b>前一晚 22:00</b></div>
 
@@ -181,7 +181,7 @@ a{text-decoration:none;color:inherit}
     <div class="alert-body">
       <strong>四個最容易漏掉、漏掉就要花錢的</strong>
       <ul style="font-size:12.5px;color:#475569;line-height:1.75;padding-left:18px;margin-top:3px">
-        <li><b>9/25 晚 22:00</b> 訂鹿園——只有這天能買 10/3 的票</li>
+        <li><b>9/25 晚 20:30</b> 訂鹿園（＝NZ 9/26 開賣）——只有出發前那兩天買得到 10/3 的票，備援 9/26 上午 10:00</li>
         <li><b>9/30 晚 22:00</b> 決定 Rippon 品酒退不退</li>
         <li><b>10/4 晚 22:00</b> 跳傘②決策——跳成了記得退，否則白付 $449</li>
         <li><b>10/4 18:00</b> 企鵝退訂截止，過了不退</li>
@@ -237,7 +237,7 @@ var EVENTS = [
   {id:'prep-docs', cat:'prep', icon:'📄', name:'辦 NZeTA ＋ 國際駕照 IDP ＋ 旅遊不便險',
    utc:'20260901T010000Z', dur:60, alarm:0, when:'台灣 9/1（二）09:00', hard:false,
    loc:'',
-   desc:'NZeTA 電子旅行授權（線上申請，需審核時間）· IDP 國際駕照（監理站當天可辦，台灣駕照也要一起帶）· 旅遊不便險要含自駕保障。順便向 Apex 確認租車保險等級（建議加購 Full Cover）。'},
+   desc:'NZeTA 電子旅行授權（線上申請，需審核時間）· IDP 國際駕照（監理站當天可辦，台灣駕照也要一起帶）· 旅遊不便險要含自駕保障。順便確認 Europcar 租車方案的自負額與保險等級。'},
 
   {id:'prep-restaurant', cat:'prep', icon:'🍽️', name:'訂三家人氣餐廳（免費，但會被訂滿）',
    utc:'20260912T020000Z', dur:30, alarm:0, when:'台灣 9/12（六）10:00', hard:false,
@@ -254,21 +254,21 @@ var EVENTS = [
    loc:'',
    desc:'起飛前 24 小時開放。順手確認行李額度、把登機證存進手機錢包。⚠️ 這也是最後一次檢查 NZeTA 是否已核准的時間點——明天 18:35 就要飛了。'},
 
-  {id:'prep-deerpark-pre', cat:'prep', icon:'🚗', name:'鹿園前置：確認訂票視窗＋跟 Apex 要車牌',
+  {id:'prep-deerpark-pre', cat:'prep', icon:'🚗', name:'鹿園前置：確認訂票視窗與車牌填法',
    utc:'20260903T010000Z', dur:30, alarm:0, when:'台灣 9/3（四）09:00', hard:false,
    loc:'deerparkheights.co.nz/info/faqs',
-   desc:'① 上官網確認「7 天內才開放預約」這個規則還在——這是 2026 上半年入口道路施工期間的臨時措施（原本是 30 天），施工已於 7/27 結束，有可能改回 30 天。若改回 30 天，10/3 的票 9/3 就能訂，別錯過。\n② ⚠️ 訂票系統「必須填車牌號碼」，但你 9/26 訂票時人在台灣、9/27 才在基督城取車 → 現在就寫信問 Apex 能不能先給車牌，或問鹿園能否事後補填／改車牌。這件事沒解決，9/26 當天會卡住。'},
+   desc:'① 再確認一次「7 天內才開放預約」規則沒變。⚠️ 2026/8/18 已實測驗證：當天可訂 8/25（+7 天），8/26（+8 天）與 9/18 都不能訂 → 確定是 7 天視窗，不是 30 天。10/3 的票要等 NZ 時間 9/26 才開賣。\n② 車牌問題已有解：官網 FAQ 明載訂完可自行修改車牌——登入 booking.deerparkheights.co.nz → 右側三個點 → Upcoming bookings → 改 license plate → Save booking，並強調「You must do this yourself, please do not email or call」。→ 訂票時先填 placeholder（例如自家車牌或 TBC123），9/27 取車後站在車旁拍實車車牌、當場用手機改掉即可（CHC 機場有免費 Wi-Fi）。'},
 
   {id:'prep-deerpark', cat:'prep', icon:'🦌', name:'🔴 鹿園高地開賣！立刻訂 10/3 下午',
-   utc:'20260925T140000Z', dur:45, alarm:0, when:'台灣 9/25（五）22:00', hard:true,
+   utc:'20260925T123000Z', dur:45, alarm:0, when:'台灣 9/25（五）20:30 ＝ NZ 9/26 00:30', hard:true,
    moved:'原訂 9/26 08:00 開賣 · 已提前到睡前',
    loc:'booking.deerparkheights.co.nz',
-   desc:'⚠️ 官網只開放「到訪日前 7 天內」的預約 → 今天才買得到 10/3 的票，當天沒訂就沒了。每日限 80 台車，賣完就沒有。\nNZD $75/車（8 座以下）。⚠️ 訂票要填車牌號碼（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerparkheights.co.nz 訂——官方明文「第三方票無效，會被拒絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 PIN（進出各一次）。\n今晚 18:35 就要出發，記得出門前訂完。'},
+   desc:'⚠️ 官網只開放「到訪日前 7 天內」的預約（2026/8/18 實測確認）→ 10/3 的票要 NZ 時間 9/26 才開賣。\n🕐 為什麼是台灣 20:30：紐西蘭此時為 NZST（UTC+12），比台灣快 4 小時 → NZ 9/26 00:00 ＝ 台灣 9/25 20:00。留 30 分鐘緩衝。\n👉 若這時還訂不到，不要慌，明早 10:00 有備援提醒再試一次（訂票系統的換日時間點不一定正好在午夜）。\nNZD $75/車（8 座以下）、每日限 80 台車，10/3 是週六又在 NZ 學校春假期間（9/26–10/11），賣完就沒有。\n⚠️ 車牌欄先填 placeholder（自家車牌或 TBC123），取車後可自行登入後台改（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerparkheights.co.nz 訂——官方明文「第三方票無效，會被拒絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 PIN（進出各一次）。'},
 
-   {id:'prep-deerpark-bak', cat:'prep', icon:'🦌', name:'🔴 鹿園高地備援提醒：再檢查一次！',
-    utc:'20260926T140000Z', dur:30, alarm:0, when:'台灣 9/26（六）22:00', hard:true,
+   {id:'prep-deerpark-bak', cat:'prep', icon:'🦌', name:'🔴 鹿園高地備援：出門去機場前最後一次',
+    utc:'20260926T020000Z', dur:30, alarm:0, when:'台灣 9/26（六）10:00 ＝ 出發日上午', hard:true,
     loc:'booking.deerparkheights.co.nz',
-    desc:'⚠️ 若昨晚沒訂到或因車牌問題卡住，今晚是最後一個睡前機會——明天 9/27 15:25 落地 NZ 後就是 NZ 時間，只剩 7 天內最後一個完整台灣睡前時段能安心操作。\n🔁 10/3 鹿園高地：每日限 80 台車、$75/車、只能官網訂。\n今晚睡醒就要去機場了（NZ78 18:35 起飛），務必確認訂票已完成。'},
+    desc:'⚠️ 這是在台灣、有網路、有電腦、還能慢慢處理的最後一個時段——今天 18:35 NZ78 就起飛，15:30 前要到桃園 T2，下午開始就沒空了。\n🔁 若昨晚 20:30 沒訂到（可能是訂票系統換日時間不在午夜），現在再試一次，10/3 應該已經進入 7 天視窗內。\n🔁 若已訂到：確認訂單信＋備援 PIN（簡訊與 Email 各一）都收到了，截圖存離線。\n🆘 真的還是沒訂到 → 最後機會是 9/27 在奧克蘭轉機時（10:15 落地、14:00 飛基督城，有 3h45m，機場有 Wi-Fi）。10/3 仍在 7 天視窗內，但拖越久越可能賣完。\n10/3 鹿園高地：每日限 80 台車、$75/車、只能官網 booking.deerparkheights.co.nz 訂。'},
 
   // ── 死線（NZ 時間）──
   {id:'dl-glacier', cat:'dl', icon:'🚁', name:'冰川飛行決策：明天 09:30 的班要不要退',
@@ -327,7 +327,7 @@ var EVENTS = [
    utc:'20261004T090000Z', dur:45, alarm:0, when:'NZ 10/4（日）22:00', hard:true,
    moved:'死線 10/5 09:00 · 已提前到睡前',
    loc:'',
-   desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6 照跳。\n⚠️ 順帶提醒：明天（10/5）08:30 就要出發 Te Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前確認油箱夠來回。'},
+   desc:'10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6 照跳。\n⚠️ 順帶提醒：明天（10/5）08:45 就要出發 Te Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前確認油箱夠來回。'},
 
   {id:'dl-avon', cat:'dl', icon:'🚣', name:'訂明天下午的 Avon 撐篙',
    utc:'20261007T083000Z', dur:20, alarm:0, when:'NZ 10/7（三）21:30', hard:false,
@@ -340,40 +340,45 @@ var EVENTS = [
    desc:'① 對一次訂單：10/9 10:45 早班 ✅ 已訂（2026/8/1 訂），報到 10:15、61 Beach Road。\n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24 小時內，此時自行取消不退款、no-show 也不退。'},
 
   // ── 行程硬時間（NZ 時間）──
-  {id:'op-roys', cat:'ops', icon:'🥾', name:'🔴 Roy\'s Peak 最晚上步道時間',
+  {id:'op-roys', cat:'ops', icon:'🥾', name:'🔴 Roy\'s Peak 出發（最晚 11:30 上步道）',
    utc:'20260929T220000Z', dur:30, alarm:60, when:'NZ 9/30（三）11:00', hard:true,
    loc:'Roy\'s Peak 登山口, Mt Aspiring Rd',
-   desc:'往返 16km、爬升 1,236m，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿 2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠️ 今天 11:30 同時是跳傘①的決策點，兩件事一起處理。'},
+   desc:'往返 16km、爬升 1,236m，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿 2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠️ 跳傘①的決策點是今天 10:30（死線 12:30），出發爬山前先處理完。'},
 
   {id:'op-crown', cat:'ops', icon:'⛰️', name:'出發前查 Crown Range 路況',
    utc:'20261002T203000Z', dur:15, alarm:60, when:'NZ 10/3（六）09:30', hard:false,
    loc:'journeys.nzta.govt.nz',
-   desc:'Crown Range Road（SH89）是全紐最高公路（1,121m），10 月初仍可能結冰或積雪封路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要不要訂（48h 退改，別拖過明天 09:00）。'},
+   desc:'Crown Range Road（SH89）是全紐最高公路（1,121m），10 月初仍可能結冰或積雪封路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要不要訂（48h 退改 → 死線是明天 10/4 14:00）。'},
 
   {id:'op-teanau', cat:'ops', icon:'🚗', name:'出發 Te Anau（來回 350km、12 小時）',
    utc:'20261004T194500Z', dur:30, alarm:60, when:'NZ 10/5（一）08:45', hard:true,
    loc:'',
-   desc:'08:45 出發，單趟 175km / 2h30m → 13:30 前一定要到 RealNZ 遊客中心報到（85 Lakefront Dr）。行李留皇后鎮，今晚開夜路回來住。⚠️ 出發前確認油箱夠來回。今天 08:00 也是跳傘②的決策點，出門前先處理完。'},
+   desc:'08:45 出發，單趟 175km / 2h30m → 13:30 前一定要到 RealNZ 遊客中心報到（85 Lakefront Dr）。行李留皇后鎮，今晚開夜路回來住。⚠️ 出發前確認油箱夠來回。跳傘②的決策昨晚（10/4 22:00）就該處理完了，死線是今天 09:00 —— 出門前再確認一次該退的已經退掉。'},
 
   {id:'op-oamaru', cat:'ops', icon:'⛽', name:'退房皇后鎮 ＋ 加滿油，出發 Oamaru',
    utc:'20261006T183000Z', dur:30, alarm:60, when:'NZ 10/7（三）07:30', hard:false,
    loc:'',
    desc:'250km / 3.5–4 小時，翻越 Lindis Pass（971m，清晨可能結冰，出發前查 NZTA）。⚠️ Cromwell 之前務必加滿油，這段補給點少。行李全部帶走，今晚換住 Oamaru，傍晚 20:00 看企鵝。'},
 
-  {id:'op-lastnight', cat:'ops', icon:'🧳', name:'🔴 最後一晚整備（明天 04:15 起床！）',
+  {id:'op-carreturn', cat:'ops', icon:'⛽', name:'🔴 出發往機場加油 → 17:00 前還車',
+   utc:'20261009T031500Z', dur:60, alarm:60, when:'NZ 10/9（五）16:15', hard:true,
+   loc:'Christchurch Airport（Europcar 航廈內櫃檯）',
+   desc:'⚠️ 租約還車時間是今天 17:00，逾時超過 30 分鐘直接多收一整天租金。\n市區 → 機場約 20 分鐘，途中在機場附近的 Z 或 BP 把油加滿（full-to-full），保留加油收據。\n📍 Europcar 櫃檯在 CHC 主航廈內、地面層——不是場外，不用接駁車。\n還車前檢查：① 置物箱、椅背袋、後車廂有沒有東西（充電線、太陽眼鏡最常留下）② 把車機裡的藍牙／CarPlay 紀錄刪掉 ③ 拍一輪車況照＋油表＋里程表（開時間戳）。\n保留租約與收據直到押金預授權解除（4–30 天後，不會通知，自己去查額度）。\n還完車走路 5–10 分鐘到 Sudima。'},
+
+  {id:'op-lastnight', cat:'ops', icon:'🧳', name:'🧳 最後一晚整備（明天 05:00 起床）',
    utc:'20261009T073000Z', dur:60, alarm:60, when:'NZ 10/9（五）20:30', hard:true,
    loc:'',
-   desc:'① 回程順路把油加滿（明早沒時間）② 確認 Apex 清晨還車與 shuttle 流程——06:00 前有沒有人？要不要用 key drop？③ 設 04:00 ＋ 04:15 兩個鬧鐘 ④ 行李今晚全部收好，早上直接出門 ⑤ 清空所有食物、蜂蜜、新鮮植物（台灣海關嚴格）⑥ 21:00 就寢。'},
+   desc:'✅ 車子傍晚已經還掉了，明早不用處理任何交通——Sudima 就在機場對面，走路 5–10 分鐘到航廈。\n① 設 04:45 ＋ 05:00 兩個鬧鐘 ② 行李今晚全部收好，早上起來直接走 ③ 清空所有食物、蜂蜜、新鮮植物（台灣海關嚴格）④ 21:00 就寢。'},
 
-  {id:'op-wakeup', cat:'ops', icon:'⏰', name:'🔴 起床！（05:00 就要出門）',
-   utc:'20261009T151500Z', dur:45, alarm:0, when:'NZ 10/10（六）04:15', hard:true,
+  {id:'op-wakeup', cat:'ops', icon:'⏰', name:'⏰ 起床（05:35 走路出門）',
+   utc:'20261009T160000Z', dur:35, alarm:0, when:'NZ 10/10（六）05:00', hard:true,
    loc:'蘇迪馬酒店 Sudima Hotel',
-   desc:'快速梳洗、退房。行李昨晚已經收好，直接出門。'},
+   desc:'快速梳洗、退房。行李昨晚已經收好，直接出門。\n✅ 不用還車、不用等接駁——比原本的規劃多睡 45 分鐘。'},
 
-  {id:'op-car', cat:'ops', icon:'🚗', name:'🔴 出發還車 · Apex 場外 28 Ron Guthrey Rd',
-   utc:'20261009T160000Z', dur:45, alarm:0, when:'NZ 10/10（六）05:00', hard:true,
-   loc:'28 Ron Guthrey Road, Christchurch',
-   desc:'⚠️ 還車處在場外，不是航廈旁——這是整趟最容易被低估的 30 分鐘。Sudima → Apex 約 5–10 分鐘車程；還車驗車 ＋ 搭免費 shuttle 到國際航廈，含接駁抓 30 分鐘 → 05:45 才會到航廈。'},
+  {id:'op-car', cat:'ops', icon:'🚶', name:'🚶 步行到航廈（5–10 分鐘）',
+   utc:'20261009T163500Z', dur:15, alarm:0, when:'NZ 10/10（六）05:35', hard:true,
+   loc:'Sudima → Christchurch Airport Terminal',
+   desc:'Sudima（550 Memorial Ave）就在機場對面，拖行李走這段完全沒問題（人行道平整、有遮蔽）。\n下雨的話請飯店櫃檯叫車，車程 3 分鐘。\n05:45 到航廈，距離 Check-in 截止 06:05 還有 20 分鐘緩衝。'},
 
   {id:'op-cutoff', cat:'ops', icon:'🛄', name:'🔴 NZ586 Check-in 截止 06:05',
    utc:'20261009T164500Z', dur:20, alarm:0, when:'NZ 10/10（六）05:45 抵達航廈', hard:true,
@@ -455,7 +460,8 @@ var PLACES = {
   // 實體地點
   'op-roys':        {map:"Roy's Peak Track car park, Mount Aspiring Road, Wanaka"},
   'op-wakeup':      {map:'Sudima Christchurch Airport, 550 Memorial Avenue, Christchurch'},
-  'op-car':         {map:'Apex Car Rentals, 28 Ron Guthrey Road, Christchurch'},
+  'op-carreturn':   {map:'Christchurch Airport, Christchurch'},
+  'op-car':         {map:'Christchurch International Airport Terminal'},
   'op-cutoff':      {map:'Christchurch Airport International Terminal'},
   'meet-darksky':   {map:'Dark Sky Project, Lake Tekapo'},
   'meet-glacier':   {map:'Mount Cook Airport'},
