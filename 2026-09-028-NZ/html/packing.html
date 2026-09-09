@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎒 行李清單 · 南島十四日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+:root{--a:#0d9488;--al:#F0FDFA;--am:#99F6E4}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+.hero{background:linear-gradient(135deg,#0d9488,#059669);color:#fff;padding:32px 20px 28px}
+.hero-inner{max-width:960px;margin:0 auto}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.hero-title{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+
+.progress-bar{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:16px 18px;margin-bottom:8px;position:sticky;top:52px;z-index:50}
+.pg-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.pg-label{font-size:13px;font-weight:600;color:#475569}
+.pg-count{font-size:13px;font-weight:700;color:var(--a)}
+.pg-track{height:8px;background:#F1F5F9;border-radius:99px;overflow:hidden}
+.pg-fill{height:100%;background:linear-gradient(90deg,#0d9488,#10B981);border-radius:99px;width:0;transition:width 250ms}
+.pg-reset{display:block;margin:10px auto 0;background:none;border:none;font-size:12px;color:#94A3B8;cursor:pointer;font-family:inherit}
+.pg-reset:hover{color:#DC2626}
+
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin:26px 0 10px 2px;gap:12px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:0}
+.sec-count{font-size:12px;font-weight:600;color:#CBD5E1;flex-shrink:0}
+.sec-count.done{color:#10B981}
+
+.check-list{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.check-list input[type=checkbox]{display:none}
+.check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F1F5F9;cursor:pointer;font-size:14px;color:#334155;transition:background 100ms}
+.check-list label:last-child{border-bottom:none}
+.check-list label:hover{background:#F8FAFC}
+.check-list label::before{content:'';width:20px;min-width:20px;height:20px;border:2px solid #E2E8F0;border-radius:6px;margin-top:2px;transition:all 150ms;flex-shrink:0}
+.check-list input:checked+label{color:#94A3B8}
+.check-list input:checked+label .nm{text-decoration:line-through}
+.check-list input:checked+label::before{background:#10B981;border-color:#10B981;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.nm{font-weight:500}
+.why{display:block;font-size:12px;color:#94A3B8;line-height:1.5;margin-top:2px}
+.tag{display:inline-block;font-size:11px;font-weight:600;border-radius:5px;padding:1px 6px;margin-right:5px;vertical-align:1px}
+.t-day{background:#EFF6FF;color:#2563EB}
+.t-must{background:#FEF2F2;color:#DC2626}
+.t-done{background:#F0FDF4;color:#16A34A}
+.t-new{background:#FFF7ED;color:#EA580C}
+
+.alert{border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert-i{background:var(--al);border:1px solid var(--am)}
+.alert-ic{font-size:18px;line-height:1.2;flex-shrink:0}
+.alert-body strong{display:block;font-size:14px;font-weight:600;margin-bottom:3px}
+.alert-body p{font-size:13px;color:#475569;line-height:1.6}
+
+.tbl{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden}
+.tbl-row{display:flex;gap:12px;padding:11px 16px;border-bottom:1px solid #F1F5F9;font-size:13px}
+.tbl-row:last-child{border-bottom:none}
+.tbl-d{flex-shrink:0;width:88px;font-weight:600;color:var(--a)}
+.tbl-c{color:#475569;line-height:1.55}
+
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="flex-shrink:0;padding:4px 10px;font-size:14px">🏠</a><span style="color:#CBD5E1;flex-shrink:0;padding:0 2px">·</span><a href="index.html" class="nav-logo">🥝 NZ</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="backup-plan.html" class="nav-pill" style="color:#10B981;font-weight:600">🌧️ 備案</a>
+    <a href="booking-guide.html" class="nav-pill" style="color:#d97706;font-weight:600">🎫 預訂</a>
+    <a href="reminders.html" class="nav-pill" style="color:#DC2626;font-weight:600">⏰ 提醒</a>
+    <a href="packing.html" class="nav-pill active">🎒 行李</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="day-badge">🎒 PACKING LIST</div>
+    <div class="hero-title">行李清單</div>
+    <div class="hero-sub">南島十四日 · 9/27–10/10 · 兩人 · 春季（山區近 0°C）</div>
+    <div class="hero-tags">
+      <span class="htag">✅ 勾選會自動記住</span>
+      <span class="htag">🟠 標「新增」= 依 14 天行程逐日盤點後補上的</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="progress-bar">
+  <div class="pg-top">
+    <span class="pg-label">整體進度</span>
+    <span class="pg-count" id="pgCount">0 / 0</span>
+  </div>
+  <div class="pg-track"><div class="pg-fill" id="pgFill"></div></div>
+  <button class="pg-reset" id="pgReset">清空所有勾選</button>
+</div>
+
+<div class="alert alert-i" style="margin-top:16px">
+  <span class="alert-ic">💡</span>
+  <div class="alert-body">
+    <strong>怎麼用這頁</strong>
+    <p>勾選狀態存在這台裝置的瀏覽器裡，關掉重開還在，可以慢慢分幾天檢查。手機和電腦是分開記錄的。灰色小字寫的是「為什麼要帶／哪天會用到」，不確定要不要帶的時候看那行就好。</p>
+  </div>
+</div>
+
+<!-- ══════════ A 證件與金錢 ══════════ -->
+<div class="sec-head"><div class="sec-label">🛂 A · 證件與金錢</div><span class="sec-count" data-for="A"></span></div>
+<div class="check-list" data-sec="A">
+  <input type="checkbox" id="a1"><label for="a1"><span><span class="nm">護照 ×2</span><span class="why">效期需涵蓋離紐日 +3 個月（≥2027/1/10），建議用 6 個月門檻</span></span></label>
+  <input type="checkbox" id="a2"><label for="a2"><span><span class="nm"><span class="tag t-must">缺一不可</span>國際駕照 IDP ＋ 台灣駕照正本（各 ×2）</span><span class="why"><b>兩本缺一 Europcar 不交車、保險也失效</b>。隨身帶不要放託運。出發前翻開 IDP 確認內頁效期涵蓋到 2026/10/10 之後 · <span class="tag t-done">✅ 已辦</span></span></span></label>
+  <input type="checkbox" id="a3"><label for="a3"><span><span class="nm">NZeTA 核准信（手機離線 ＋ 紙本各一份）</span><span class="why"><span class="tag t-done">✅ 已辦 8/30</span>入境與航空公司報到都可能查</span></span></label>
+  <input type="checkbox" id="a4"><label for="a4"><span><span class="nm">旅遊險保單 ＋ 24h 急難救助電話</span><span class="why"><span class="tag t-done">✅ 已投保 8/30</span>電話要記<b>國際撥號格式（+886-…）</b>，紐西蘭撥不通 0800 開頭</span></span></label>
+  <input type="checkbox" id="a5"><label for="a5"><span><span class="nm"><span class="tag t-must">出發前一天</span>NZTD 入境申報 QR code ×2</span><span class="why">9/25 18:35 之後才送得出去（行程開始前 24h 才開放）· 官方 App 或 travellerdeclaration.govt.nz，免費 · <b>沒送不能走 eGate</b> · 填完截圖存離線</span></span></label>
+  <input type="checkbox" id="a6"><label for="a6"><span><span class="nm">信用卡 Visa / Mastercard（主駕那張）</span><span class="why">租車押金是預授權會實佔額度，建議留 <b>NZD 7,000（≈ TWD 14 萬）</b>空間</span></span></label>
+  <input type="checkbox" id="a7"><label for="a7"><span><span class="nm"><span class="tag t-new">新增</span>信用卡「預借現金 PIN 碼」</span><span class="why">紐西蘭加油站晚上常只剩 pay-at-pump 自助，<b>沒 PIN 刷不了</b>。10/7 皇后鎮出發前、10/9 還車前加油都可能踩到</span></span></label>
+  <input type="checkbox" id="a8"><label for="a8"><span><span class="nm"><span class="tag t-new">新增</span>金融卡（已開通國外提款 ＋ 設好國外提款密碼）</span><span class="why">4 位磁條密碼，跟平常那組不同，要回台灣的 ATM 設定</span></span></label>
+  <input type="checkbox" id="a9"><label for="a9"><span><span class="nm">現金 NZD 300–500</span><span class="why">99% 店家可刷卡，現金只用在小鎮小店、投幣停車、公廁。台灣線上結匯匯率最好，紐西蘭機場最差（差 5–8%）</span></span></label>
+  <input type="checkbox" id="a10"><label for="a10"><span><span class="nm"><span class="tag t-day">10/3</span>NZ$2 硬幣（換匯時特別要）</span><span class="why">鹿園高地餵鹿、山羊、驢子、迷你馬用</span></span></label>
+  <input type="checkbox" id="a11"><label for="a11"><span><span class="nm">所有訂單 QR code / 確認信離線存好</span><span class="why">跳傘×2、冰川飛行、觀星、螢火蟲、TSS、騎馬、企鵝、海豚船、Rippon、鹿園、住宿×7</span></span></label>
+  <input type="checkbox" id="a12"><label for="a12"><span><span class="nm">證件電子備份</span><span class="why">護照資料頁、IDP、台灣駕照、NZeTA、保單、租車確認信 → 存手機相簿＋雲端，家人也留一份</span></span></label>
+  <input type="checkbox" id="a13"><label for="a13"><span><span class="nm"><span class="tag t-new">新增</span>離線緊急包（紙本一份）</span><span class="why">保單號 · 各卡國際掛失電話 · 租約號與道路救援 · 保險自負額 · NZ 緊急 <b>111</b> · 非緊急交通事故 <b>*555</b> · 外交部旅外急難 <b>+886-800-085-095</b></span></span></label>
+</div>
+
+<!-- ══════════ B 3C 與車上 ══════════ -->
+<div class="sec-head"><div class="sec-label">🔌 B · 3C 與車上</div><span class="sec-count" data-for="B"></span></div>
+<div class="check-list" data-sec="B">
+  <input type="checkbox" id="b1"><label for="b1"><span><span class="nm"><span class="tag t-must">最容易漏</span><span class="tag t-new">新增</span>萬用轉接頭 ×2</span><span class="why">紐西蘭 <b>220–240V、八字形插頭（Type I）</b>，跟台灣完全不同。多數 3C 充電器本身可吃寬電壓，缺的是插頭形狀</span></span></label>
+  <input type="checkbox" id="b2"><label for="b2"><span><span class="nm">手機 ×2（eSIM 已裝好、設 9/27 生效）</span><span class="why"><span class="tag t-done">✅ 已買 8/30</span>務必在台灣就裝好，落地才裝會卡在「沒網路→裝不了網路」。台灣門號保留收銀行／保險簡訊</span></span></label>
+  <input type="checkbox" id="b3"><label for="b3"><span><span class="nm">行動電源</span><span class="why"><b>一律隨身、禁止託運</b>。步道上無處充電</span></span></label>
+  <input type="checkbox" id="b4"><label for="b4"><span><span class="nm">充電線 Lightning／USB-C／USB-A 各 ×2</span><span class="why">含一條長的，後座也能充</span></span></label>
+  <input type="checkbox" id="b5"><label for="b5"><span><span class="nm">車用充電器（雙孔 QC/PD）</span><span class="why">別假設車上有 USB 孔</span></span></label>
+  <input type="checkbox" id="b6"><label for="b6"><span><span class="nm">手機支架 ×2 種（吸盤式 ＋ 出風口夾）</span><span class="why">擋風玻璃弧度各車不同，兩種帶著保險。⚠️ 紐西蘭禁止開車手持手機，導航一定要固定</span></span></label>
+  <input type="checkbox" id="b7"><label for="b7"><span><span class="nm">相機 ＋ 廣角鏡頭 ＋ 備用電池 ＋ 記憶卡</span><span class="why">相機備用電池<b>隨身禁託運</b>。9/28 銀河、9/29 冰川、10/7 企鵝都很吃電</span></span></label>
+  <input type="checkbox" id="b8"><label for="b8"><span><span class="nm"><span class="tag t-day">9/28</span><span class="tag t-new">新增</span>三腳架 ＋ 快門線／遙控</span><span class="why">Mt John 銀河攝影必備長曝。三腳架要<b>託運</b>不能隨身</span></span></label>
+  <input type="checkbox" id="b9"><label for="b9"><span><span class="nm"><span class="tag t-new">新增</span>頭燈（有紅光模式）</span><span class="why">9/28 Dark Sky 場地<b>禁白光</b>（破壞夜視），紅光才放行。10/7 企鵝散場、夜路狀況也用得到</span></span></label>
+  <input type="checkbox" id="b10"><label for="b10"><span><span class="nm">Google Maps 南島整塊離線包</span><span class="why">Mt Cook、Te Anau、Lindis Pass 都有無訊號路段</span></span></label>
+  <input type="checkbox" id="b11"><label for="b11"><span><span class="nm"><span class="tag t-new">新增</span>裝好 App：MetService、Gaspy、NZTA Journey Planner</span><span class="why">天氣／比油價／路況。Crown Range（10/3）與 Lindis Pass（10/7）出發前都要查路況</span></span></label>
+</div>
+
+<!-- ══════════ C 衣物 ══════════ -->
+<div class="sec-head"><div class="sec-label">🧥 C · 衣物</div><span class="sec-count" data-for="C"></span></div>
+<div class="check-list" data-sec="C">
+  <input type="checkbox" id="c1"><label for="c1"><span><span class="nm">硬殼防水外套（10,000mm 以上、帽緣可調）</span><span class="why">紐西蘭天氣一天四季，全程都可能用到</span></span></label>
+  <input type="checkbox" id="c2"><label for="c2"><span><span class="nm"><span class="tag t-day">9/28 · 10/7</span>羽絨外套（700FP＋）</span><span class="why"><b>兩場「久站不動＋風」共用同一套</b>：9/28 Mt John 觀星站 90 分鐘體感近 0°C、10/7 Oamaru 企鵝露天看台坐 1–2 小時（<b>業者不借大衣，這場最被低估</b>）</span></span></label>
+  <input type="checkbox" id="c3"><label for="c3"><span><span class="nm">美麗諾底層衣 ×2–3</span><span class="why">連穿三天不臭，14 天差很多</span></span></label>
+  <input type="checkbox" id="c4"><label for="c4"><span><span class="nm">中層刷毛／薄羽絨</span><span class="why">洋蔥式三層的中間那層</span></span></label>
+  <input type="checkbox" id="c5"><label for="c5"><span><span class="nm">保暖毛帽 ＋ 遮陽帽（有帽繩）</span><span class="why">毛帽：觀星、企鵝、海豚船。遮陽帽：Roy's Peak、Hooker Valley，山頂風大要帽繩</span></span></label>
+  <input type="checkbox" id="c6"><label for="c6"><span><span class="nm"><span class="tag t-new">新增</span>手套 ＋ 圍脖／Buff</span><span class="why">9/28 觀星、10/6 Luge 握把、10/7 企鵝、10/9 海豚船甲板</span></span></label>
+  <input type="checkbox" id="c7"><label for="c7"><span><span class="nm">羊毛厚襪 ×3</span><span class="why">腳冷會毀掉整晚觀星；健行也靠襪子防水泡</span></span></label>
+  <input type="checkbox" id="c8"><label for="c8"><span><span class="nm"><span class="tag t-day">10/4</span><span class="tag t-new">新增</span>厚一點的長褲</span><span class="why">Moke Valley 騎馬 90 分鐘，薄褲會磨大腿</span></span></label>
+  <input type="checkbox" id="c9"><label for="c9"><span><span class="nm"><span class="tag t-day">10/1 · 10/6</span>深色運動服（跳傘用）</span><span class="why">不能穿寬鬆衣物、不戴飾品手錶，內穿輕便即可，現場換跳傘服</span></span></label>
+  <input type="checkbox" id="c10"><label for="c10"><span><span class="nm"><span class="tag t-must">硬需求</span><span class="tag t-new">新增</span>泳衣 ×2 ＋ 快乾毛巾</span><span class="why"><b>9/28 Tekapo Springs 是泳池型溫泉，沒泳衣進不去</b>。皇后鎮 Onsen Hot Pools 雨天備案也要。快乾毛巾另一個用途：10/7 奧馬魯<b>背包客旅館</b>，backpackers 毛巾通常要另租</span></span></label>
+  <input type="checkbox" id="c11"><label for="c11"><span><span class="nm"><span class="tag t-new">新增</span>拖鞋／涼鞋</span><span class="why">9/28 溫泉、10/8 Moeraki Boulders 退潮要踩濕沙（別穿登山鞋下去）、Holiday Park 共用浴室</span></span></label>
+  <input type="checkbox" id="c12"><label for="c12"><span><span class="nm">墨鏡（偏光佳）</span><span class="why">早晚低角度陽光正對前擋很危險；9/29 冰川雪地反光也需要</span></span></label>
+</div>
+
+<!-- ══════════ D 鞋與步道 ══════════ -->
+<div class="sec-head"><div class="sec-label">🥾 D · 鞋與步道</div><span class="sec-count" data-for="D"></span></div>
+<div class="check-list" data-sec="D">
+  <input type="checkbox" id="d1"><label for="d1"><span><span class="nm"><span class="tag t-must">要磨合</span>登山鞋（中筒 Gore-Tex）</span><span class="why">出發前<b>至少走滿 50 公里</b>磨合。9/30 Roy's Peak 16km／爬升 1,236m，鞋沒磨合那天就報銷。⚠️ 出發前<b>刷洗鞋底泥土</b>，帶泥入境最高 NZD 400 即時罰款</span></span></label>
+  <input type="checkbox" id="d2"><label for="d2"><span><span class="nm">包腳運動鞋</span><span class="why">10/1、10/6 跳傘與 10/4 騎馬都要求包腳鞋</span></span></label>
+  <input type="checkbox" id="d3"><label for="d3"><span><span class="nm"><span class="tag t-day">9/30</span><span class="tag t-new">新增</span>登山杖 ×2</span><span class="why"><b>這天最該帶的東西</b>。Roy's Peak 連續下坡 1,236m，對膝蓋是硬傷。⚠️ 要託運</span></span></label>
+  <input type="checkbox" id="d4"><label for="d4"><span><span class="nm"><span class="tag t-new">新增</span>水壺／水袋 2L ＋ 保溫瓶</span><span class="why">清單原本只寫「帶足飲水」卻沒有容器。Hooker Valley（10.6km）與 Roy's Peak（16km）<b>全程無補給點</b>。紐西蘭自來水可直接生飲，沿路裝就好</span></span></label>
+  <input type="checkbox" id="d5"><label for="d5"><span><span class="nm">日用背包 20–30L</span><span class="why">裝水、行動糧、外套、相機</span></span></label>
+  <input type="checkbox" id="d6"><label for="d6"><span><span class="nm"><span class="tag t-new">新增</span>能量棒／行動糧</span><span class="why">Roy's Peak 5–6 小時、Hooker Valley 3.5–4 小時，中途完全沒得買</span></span></label>
+  <input type="checkbox" id="d7"><label for="d7"><span><span class="nm"><span class="tag t-new">新增</span>水泡貼／肌貼</span><span class="why">16km 磨腳幾乎必然，步道上沒有藥局</span></span></label>
+  <input type="checkbox" id="d8"><label for="d8"><span><span class="nm"><span class="tag t-new">新增</span>衛生紙 ＋ 夾鏈袋</span><span class="why">Roy's Peak 全程無廁所；紐西蘭步道規矩是垃圾要自己帶下山</span></span></label>
+  <input type="checkbox" id="d9"><label for="d9"><span><span class="nm">防曬 SPF 50+</span><span class="why">紐西蘭紫外線極強，陰天也要擦</span></span></label>
+  <input type="checkbox" id="d10"><label for="d10"><span><span class="nm"><span class="tag t-new">新增</span>SPF 護唇膏</span><span class="why">高山＋雪地，嘴唇最先裂</span></span></label>
+  <input type="checkbox" id="d11"><label for="d11"><span><span class="nm"><span class="tag t-day">10/7</span><span class="tag t-new">新增</span>可折疊坐墊 ＋ 輕便雨衣</span><span class="why">企鵝 Premium 看台坐 1–2 小時、石階很冷；<b>下雨企鵝照樣回巢，但看台不能撐傘</b>擋到後排，要雨衣不是傘</span></span></label>
+  <input type="checkbox" id="d12"><label for="d12"><span><span class="nm"><span class="tag t-new">新增</span>暖暖包</span><span class="why">9/28 觀星、10/7 企鵝，兩場久站久坐的救命小物</span></span></label>
+</div>
+
+<!-- ══════════ E 藥品與盥洗 ══════════ -->
+<div class="sec-head"><div class="sec-label">💊 E · 藥品與盥洗</div><span class="sec-count" data-for="E"></span></div>
+<div class="check-list" data-sec="E">
+  <input type="checkbox" id="e1"><label for="e1"><span><span class="nm">個人處方藥 ＋ 英文藥單</span><span class="why">原包裝攜帶，NZTD 要申報藥品</span></span></label>
+  <input type="checkbox" id="e2"><label for="e2"><span><span class="nm"><span class="tag t-day">10/1 · 10/6 · 10/9</span><span class="tag t-new">新增</span>暈車／暈機／暈船藥</span><span class="why">跳傘小飛機爬升 12,000ft 晃得兇，不少人在機上吐；10/9 Akaroa 海豚船 2 小時，Banks Peninsula 灣口 10 月風浪不小。<b>提前 30–60 分鐘吃</b></span></span></label>
+  <input type="checkbox" id="e3"><label for="e3"><span><span class="nm"><span class="tag t-day">10/5</span><span class="tag t-must">重災區</span><span class="tag t-new">新增</span>防蚊液（含 DEET 或 Picaridin）</span><span class="why"><b>Fiordland／Te Anau 是紐西蘭沙蠅（sandfly）重災區</b>——你的午餐候選店直接就叫 Sandfly Cafe。被叮會腫痛好幾週，一般花露水級的沒用</span></span></label>
+  <input type="checkbox" id="e4"><label for="e4"><span><span class="nm"><span class="tag t-new">新增</span>基本急救包</span><span class="why">OK 繃、消毒棉片、止痛藥、腸胃藥、感冒藥、過敏藥。小鎮藥局下午 5 點就關門</span></span></label>
+  <input type="checkbox" id="e5"><label for="e5"><span><span class="nm">個人盥洗用品</span><span class="why">Holiday Park／背包客旅館多半不提供；⚠️ 液體隨身 ≤100ml 裝 1L 透明夾鏈袋</span></span></label>
+  <input type="checkbox" id="e6"><label for="e6"><span><span class="nm"><span class="tag t-new">新增</span>眼罩 ＋ 耳塞</span><span class="why">10/7 背包客旅館、以及回程 10.5 小時長途飛行</span></span></label>
+</div>
+
+<!-- ══════════ F 住宿與自炊 ══════════ -->
+<div class="sec-head"><div class="sec-label">🏕️ F · 住宿與自炊</div><span class="sec-count" data-for="F"></span></div>
+<div class="check-list" data-sec="F">
+  <input type="checkbox" id="f1"><label for="f1"><span><span class="nm"><span class="tag t-day">9/27 起</span><span class="tag t-new">新增</span>環保購物袋 ×2–3</span><span class="why">紐西蘭 2019 起<b>全面禁用一次性塑膠袋</b>，超市袋要另外花錢買。9/27 一落地就要去 Countdown 採買 14 天食材</span></span></label>
+  <input type="checkbox" id="f2"><label for="f2"><span><span class="nm"><span class="tag t-new">新增</span>保冷袋／軟式冰桶</span><span class="why">14 天一路採買，牛奶優格熟食都放車上。Holiday Park 有製冰</span></span></label>
+  <input type="checkbox" id="f3"><label for="f3"><span><span class="nm"><span class="tag t-new">新增</span>輕便餐具 ＋ 保鮮盒</span><span class="why">Lakes Edge、Akitu、Hampshire 都有廚房，自炊省很多；小鎮 20:30 就沒得吃了</span></span></label>
+  <input type="checkbox" id="f4"><label for="f4"><span><span class="nm"><span class="tag t-new">新增</span>洗衣精分裝 ＋ 洗衣袋</span><span class="why">14 天一定要洗一輪，Holiday Park 都有投幣洗衣機</span></span></label>
+  <input type="checkbox" id="f5"><label for="f5"><span><span class="nm">零食備糧</span><span class="why">10/7 SH8 Lindis Pass → Oamaru 長途段補給點少，Cromwell 之後就沒了</span></span></label>
+  <input type="checkbox" id="f6"><label for="f6"><span><span class="nm"><span class="tag t-new">新增</span>行李秤</span><span class="why">200 元省超重費。每箱<b>秤到 21kg 就停</b>（家用秤與機場秤差 0.5–1kg，超 23kg 收費、超 32kg 拒收）</span></span></label>
+  <input type="checkbox" id="f7"><label for="f7"><span><span class="nm">壓縮收納袋</span><span class="why">14 天份的保暖衣物很佔空間</span></span></label>
+</div>
+
+<!-- ══════════ 出發前最後檢查 ══════════ -->
+<div class="sec-head"><div class="sec-label">✈️ G · 出發前最後檢查（9/24–9/25）</div><span class="sec-count" data-for="G"></span></div>
+<div class="check-list" data-sec="G">
+  <input type="checkbox" id="g1"><label for="g1"><span><span class="nm">隨身／託運分好</span><span class="why"><b>隨身</b>：護照、IDP＋台灣駕照、信用卡、行動電源、相機備用電池、處方藥、一天份換洗<br><b>託運</b>：三腳架、登山杖、瑞士刀、液體超過 100ml 的全部</span></span></label>
+  <input type="checkbox" id="g2"><label for="g2"><span><span class="nm">每箱秤到 21kg 就停</span><span class="why">⚠️ 順便確認 NZ547 是否與國際段同一張票——台北線經濟艙 2 件×23kg 的額度只在同張票才延伸到國內段</span></span></label>
+  <input type="checkbox" id="g3"><label for="g3"><span><span class="nm">登山鞋鞋底刷乾淨（無泥土、無種子）</span><span class="why">紐西蘭 MAF 會逐一檢查，帶泥入境最高 NZD 400 即時罰款</span></span></label>
+  <input type="checkbox" id="g4"><label for="g4"><span><span class="nm"><span class="tag t-must">生物安全</span>清查行李裡的食物</span><span class="why"><b>不要帶</b>：肉類肉乾、含肉泡麵調理包、蜂蜜、新鮮蔬果蛋奶、種子堅果中藥材、木製竹製草編、沾土的鞋帳篷腳架。<br>準則：<b>不確定就在 NZTD 勾申報。申報零風險，未申報 NZ$400 起跳</b></span></span></label>
+  <input type="checkbox" id="g5"><label for="g5"><span><span class="nm">手機錢包存好登機證、把所有訂單截圖離線</span><span class="why">9/25 18:35 起可線上 check-in NZ78</span></span></label>
+</div>
+
+<!-- ══════════ 逐日速查 ══════════ -->
+<div class="sec-head"><div class="sec-label">📅 逐日「這天特別要帶」速查</div></div>
+<div class="tbl">
+  <div class="tbl-row"><div class="tbl-d">9/27 基督城</div><div class="tbl-c">環保購物袋（超市禁塑膠袋）· 保冷袋</div></div>
+  <div class="tbl-row"><div class="tbl-d">9/28 Tekapo</div><div class="tbl-c"><b>泳衣＋快乾毛巾＋拖鞋</b>（16:00 溫泉）· 三腳架 · <b>紅光頭燈</b> · 羽絨＋毛帽＋手套＋暖暖包（21:15 觀星，山頂近 0°C）</div></div>
+  <div class="tbl-row"><div class="tbl-d">9/29 Mt Cook</div><div class="tbl-c">墨鏡（雪地反光）· 水袋 2L ＋ 行動糧（Hooker Valley 10.6km 無補給）· SPF 護唇膏</div></div>
+  <div class="tbl-row"><div class="tbl-d">9/30 Roy's Peak</div><div class="tbl-c"><b>登山杖</b>（下坡 1,236m）· 水泡貼 · 2L 水 · 衛生紙＋夾鏈袋 · 防風外套 — 全趟最硬的一天</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/1 跳傘</div><div class="tbl-c">深色運動服＋包腳鞋、不戴飾品 · <b>暈機藥</b> · 證件＋Klook QR</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/3 鹿園</div><div class="tbl-c"><b>NZ$2 硬幣</b>（餵動物）· 外套（山頂開闊風大）</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/4 騎馬 + TSS</div><div class="tbl-c">厚長褲＋包腳鞋＋薄手套（騎 90 分鐘）· 防風外套（山谷比市區冷、船上甲板風大）</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/5 Te Anau</div><div class="tbl-c"><b>防蚊液 DEET/Picaridin</b>（沙蠅重災區）· 保暖層（洞內低溫）· 夜路 175km 回程</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/6 跳傘 + Luge</div><div class="tbl-c">同 10/1 跳傘裝 · 手套（Luge 握把冷）</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/7 企鵝</div><div class="tbl-c"><b>羽絨＋毛帽＋手套＋暖暖包＋折疊坐墊＋雨衣</b> — 露天看台坐 1–2 小時、業者不借大衣、不能撐傘、禁閃光燈</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/8 Moeraki</div><div class="tbl-c">拖鞋（退潮踩濕沙，別穿登山鞋）· 外套（17:00 Avon 撐篙河上冷）</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/9 海豚船</div><div class="tbl-c"><b>暈船藥</b>（提前 30–60 分吃）· 防風防水外套＋毛帽（甲板比岸上冷很多）</div></div>
+  <div class="tbl-row"><div class="tbl-d">10/10 回程</div><div class="tbl-c">清空所有生鮮食物 · 蜂蜜巧克力果醬等商業完整包裝可帶回台灣但要申報 · NZD 10,000 以上現金要申報</div></div>
+</div>
+
+<div class="alert alert-w" style="margin-top:20px">
+  <span class="alert-ic">⚠️</span>
+  <div class="alert-body">
+    <strong>兩個最容易到現場才發現的</strong>
+    <p>① <b>9/28 Tekapo Springs 的泳衣</b>——泳池型溫泉，沒帶就只能在旁邊看。<br>② <b>萬用轉接頭</b>——紐西蘭是八字形插頭，沒有就整車 3C 都充不了電。</p>
+  </div>
+</div>
+
+<div class="pb"></div>
+</div>
+
+<div class="bottom-nav">
+  <a href="reminders.html" class="bnav-btn bnav-prev">← ⏰ 提醒</a>
+  <a href="index.html" class="bnav-btn bnav-next">總覽 →</a>
+</div>
+
+<script>
+(function(){
+  var KEY = 'nz2026-packing';
+  var boxes = document.querySelectorAll('.check-list input[type=checkbox]');
+
+  function load(){
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; }
+  }
+  function save(state){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  function render(){
+    var done = 0;
+    boxes.forEach(function(b){ if(b.checked) done++; });
+    document.getElementById('pgCount').textContent = done + ' / ' + boxes.length;
+    document.getElementById('pgFill').style.width = (boxes.length ? done/boxes.length*100 : 0) + '%';
+
+    document.querySelectorAll('.check-list[data-sec]').forEach(function(list){
+      var ins = list.querySelectorAll('input[type=checkbox]');
+      var n = 0;
+      ins.forEach(function(b){ if(b.checked) n++; });
+      var el = document.querySelector('.sec-count[data-for="' + list.dataset.sec + '"]');
+      if(el){
+        el.textContent = n + ' / ' + ins.length;
+        el.classList.toggle('done', n === ins.length);
+      }
+    });
+  }
+
+  var state = load();
+  boxes.forEach(function(b){ b.checked = !!state[b.id]; });
+  render();
+
+  document.addEventListener('change', function(e){
+    if(e.target.matches('.check-list input[type=checkbox]')){
+      var s = load();
+      s[e.target.id] = e.target.checked;
+      save(s);
+      render();
+    }
+  });
+
+  document.getElementById('pgReset').addEventListener('click', function(){
+    if(!confirm('確定清空所有勾選？')) return;
+    save({});
+    boxes.forEach(function(b){ b.checked = false; });
+    render();
+  });
+})();
+</script>
+
+</body>
+</html>
