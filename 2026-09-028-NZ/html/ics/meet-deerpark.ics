@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-deerpark@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261003T010000Z
+DTEND:20261003T030000Z
+SUMMARY:🦌 鹿園高地 Deer Park Heights
+LOCATION:Deer Park Heights\, Peninsula Road\, Kelvin Heights\, Queenstown
+DESCRIPTION:【NZ 10/3（六）14:00】\n\n皇后鎮 4 天唯一的寬鬆
+ 時段。市區開過去約 20 分鐘，園內 5km 景觀車道自駕環
+ 繞，停留 1.5–2 小時很充裕。餵鹿、山羊、驢子、迷你
+ 馬要帶 NZ$2 硬幣。LOTR《雙塔奇兵》Rohan 拍攝地。⚠️ 
+ 關園 18:00、禁止步行進入、要先線上訂票。\n\n📍 地圖
+ 導航：https://www.google.com/maps/search/?api=1&query=Deer%20Park%20H
+ eights%2C%20Peninsula%20Road%2C%20Kelvin%20Heights%2C%20Queenstown\n🔗
+  官網／訂票：https://booking.deerparkheights.co.nz/
+URL:https://www.google.com/maps/search/?api=1&query=Deer%20Park%20Heights
+ %2C%20Peninsula%20Road%2C%20Kelvin%20Heights%2C%20Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:鹿園高地 Deer Park Heights
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:鹿園高地 Deer Park Heights
+END:VALARM
+END:VEVENT
+END:VCALENDAR

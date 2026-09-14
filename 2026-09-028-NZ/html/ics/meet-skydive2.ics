@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-skydive2@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261005T194000Z
+DTEND:20261005T234000Z
+SUMMARY:🪂 NZONE 跳傘報到 · 35 Shotover St
+LOCATION:NZONE Skydive\, 35 Shotover Street\, Queenstown
+DESCRIPTION:【NZ 10/6（二）08:40 抵達】\n\n⚠️ 報到 08:50 截
+ 止（預約時間前 10 分鐘關閉 check-in），遲到視同 no-show
+  → 08:40 抵達、08:30 從 Hampshire Holiday Parks 出發（步行 12
+ –15 分鐘）。報到處是市區店面不是跳傘場，報到後有
+ 接駁車。全程 3–4 小時，預計 12:00–13:00 結束，下午 L
+ uge 時間別訂死。\n\n📍 地圖導航：https://www.google.com/map
+ s/search/?api=1&query=NZONE%20Skydive%2C%2035%20Shotover%20Street%2C%20Q
+ ueenstown
+URL:https://www.google.com/maps/search/?api=1&query=NZONE%20Skydive%2C%20
+ 35%20Shotover%20Street%2C%20Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZONE 跳傘報到 · 35 Shotover St
+END:VALARM
+END:VEVENT
+END:VCALENDAR

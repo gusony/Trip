@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-deerpark@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260925T123000Z
+DTEND:20260925T131500Z
+SUMMARY:🦌 🔴 鹿園高地開賣！立刻訂 10/3 下午
+DESCRIPTION:【台灣 9/25（五）20:30 ＝ NZ 9/26 00:30】\n🌙 原
+ 訂 9/26 08:00 開賣 · 已提前到睡前\n\n⚠️ 官網只開放「
+ 到訪日前 7 天內」的預約（2026/8/18 實測確認）→ 10/3 
+ 的票要 NZ 時間 9/26 才開賣。\n🕐 為什麼是台灣 20:30：
+ 紐西蘭此時為 NZST（UTC+12），比台灣快 4 小時 → NZ 9/26 
+ 00:00 ＝ 台灣 9/25 20:00。留 30 分鐘緩衝。\n👉 若這時還
+ 訂不到，不要慌，明早 10:00 有備援提醒再試一次（訂
+ 票系統的換日時間點不一定正好在午夜）。\nNZD $75/車
+ （8 座以下）、每日限 80 台車，10/3 是週六又在 NZ 學校
+ 春假期間（9/26–10/11），賣完就沒有。\n⚠️ 車牌欄先
+ 填 placeholder（自家車牌或 TBC123），取車後可自行登入
+ 後台改（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerpa
+ rkheights.co.nz 訂——官方明文「第三方票無效，會被拒
+ 絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票
+ 。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 
+ PIN（進出各一次）。\n🔗 官網／訂票：https://booking.deer
+ parkheights.co.nz/
+URL:https://booking.deerparkheights.co.nz/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 鹿園高地開賣！立刻訂 10/3 下午
+END:VALARM
+END:VEVENT
+END:VCALENDAR

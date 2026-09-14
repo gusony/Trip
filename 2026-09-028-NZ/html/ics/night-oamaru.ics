@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:night-oamaru@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261006T090000Z
+DTEND:20261006T093000Z
+SUMMARY:🌙 睡前：收行李＋明天 07:15 退房
+DESCRIPTION:【NZ 10/6（二）22:00】\n\n明天要退房皇后鎮、開
+  250km 到 Oamaru（翻 Lindis Pass），07:15 就要出發。\n① 今
+ 晚把行李收好——皇后鎮住了 4 晚，東西攤最開，早上
+ 邊收邊出發最容易漏。\n② 明早超市還沒開 → 長途路
+ 段的零食飲水今晚先買（Cromwell 之後補給點少）。\n③ 
+ 設好 06:30 鬧鐘。加油可以明早在皇后鎮出發前或 Cromwel
+ l 前處理。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:睡前：收行李＋明天 07:15 退房
+END:VALARM
+END:VEVENT
+END:VCALENDAR

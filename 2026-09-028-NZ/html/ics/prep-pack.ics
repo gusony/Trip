@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-pack@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260924T120000Z
+DTEND:20260924T130000Z
+SUMMARY:📦 行前打包 ＋ 文件備份 ＋ 離線地圖
+DESCRIPTION:【台灣 9/24（四）20:00】\n\n證件：護照（效期 6
+  個月以上）· IDP ＋ 台灣駕照「兩張都要帶」· Visa/Mast
+ ercard（租車押金用）· NZeTA 核准信 · 保單 → 全部拍照
+ 存雲端。\n裝備：防水外套、登山鞋、保暖層（觀星山
+ 頂近 0°C）、SPF50+、行動電源、相機＋廣角鏡。\n手機
+ ：下載 Google Maps 紐西蘭離線包、eSIM ✅ 已買（2026/8/30
+ ）——在台灣就裝好、設 9/27 生效，別等落地。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:行前打包 ＋ 文件備份 ＋ 離線地圖
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,176 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-rippon-early@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260929T070000Z
+DTEND:20260929T072000Z
+SUMMARY:🍷 預告：Rippon 品酒可能要退訂
+DESCRIPTION:【NZ 9/29（二）20:00】\n\n10/1（四）16:30 的 Rippon 
+ 免費導覽（2 人，✅ 已訂）大概率要退——同一天 12:30
+  跳傘，全程 3–3.5 小時、15:30–16:00 才結束，開到 Rippo
+ n 還要 15–20 分鐘，最快 16:20 到，跳傘只要延誤就 no-sh
+ ow（$10/人）。\n先放進腦袋、現在不用動作：明天（9/30
+ ）確認跳傘照跳之後再退。\n⏰ 真正的死線是 10/1 04:30
+ （開始前 12 小時），提醒已設在 9/30 22:00。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:預告：Rippon 品酒可能要退訂
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-skydive1@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260929T213000Z
+DTEND:20260929T223000Z
+SUMMARY:🪂 跳傘①決策 ＋ 順手退 Rippon 品酒
+DESCRIPTION:【NZ 9/30（三）10:30】\n\n① 10/1 12:30 Skydive Wanaka
+ （Klook）可 24h 前免費退 → 期限今天 12:30，還有 2 小時
+ 緩衝。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，
+ 今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:
+ 00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免
+ 費退。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:跳傘①決策 ＋ 順手退 Rippon 品酒
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-rippon@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260930T090000Z
+DTEND:20260930T093000Z
+SUMMARY:🍷 🔴 Rippon 品酒最後退訂點（睡前處理）
+DESCRIPTION:【NZ 9/30（三）22:00】\n🌙 死線 10/1 04:30 · 已提
+ 前到睡前\n\n明天 16:30 的 Rippon 免費導覽（2 人），退訂
+ 期限是開始前 12 小時 ＝ 10/1 04:30，那個時間你在睡覺 
+ → 今晚睡前就要決定。\n判斷：明天 12:30 跳傘照跳的
+ 話，全程 3–3.5 小時、15:30–16:00 才結束，Wanaka Airport 
+ → Rippon 還要 15–20 分鐘車程 → 幾乎一定遲到。跳傘
+ 照跳就退掉。\nno-show 會收 $10/人。\n🔗 官網／訂票：ht
+ tps://rippon.co.nz/tasting-bookings/
+URL:https://rippon.co.nz/tasting-bookings/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Rippon 品酒最後退訂點（睡前處理）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-horse@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261001T210000Z
+DTEND:20261001T213000Z
+SUMMARY:🐴 騎馬退款分界：過了只能退 50%
+DESCRIPTION:【NZ 10/2（五）10:00】\n\nMoke Valley 騎馬（10/4 12:0
+ 0）退款規則：7 天前全額退 → 48h~7天退 50% → 48h 內完
+ 全不退。今天 12:00 就是 48h 分界。除非確定不去，否則
+ 不用動作，這是提醒你「最後能拿回一半錢的時間點」
+ 。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:騎馬退款分界：過了只能退 50%
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-luge@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261003T230000Z
+DTEND:20261003T233000Z
+SUMMARY:🛷 Skyline Luge 訂票死線（48h 退改規則）
+DESCRIPTION:【NZ 10/4（日）12:00】\n\n10/6 下午 14:00 上山玩 Go
+ ndola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是
+ 全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現
+ 在還有 2 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣
+ 好就線上買組合票（比現場分開買省，也免排售票隊伍
+ ）。⚠️ 別拖過今天 14:00，過了就變成不能退。\n🔗 
+ 官網／訂票：https://queenstown.skyline.co.nz
+URL:https://queenstown.skyline.co.nz
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Skyline Luge 訂票死線（48h 退改規則）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-penguin@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261004T030000Z
+DTEND:20261004T033000Z
+SUMMARY:🐧 🔴 企鵝 Premium 最後免費退訂點
+DESCRIPTION:【NZ 10/4（日）16:00】\n\n10/7 20:00 Oamaru 藍企鵝 Pr
+ emium 看台（$63/人 × 2）→ 今天 18:00 是最後可免費退的
+ 時間，過了完全不退。除非行程有變，否則保留即可—
+ —雨天企鵝照樣回巢，幾乎不會取消。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 企鵝 Premium 最後免費退訂點
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-skydive2@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261004T090000Z
+DTEND:20261004T094500Z
+SUMMARY:🪂 🔴 跳傘②決策：10/1 跳成了就退掉明天
+DESCRIPTION:【NZ 10/4（日）22:00】\n🌙 死線 10/5 09:00 · 已提
+ 前到睡前\n\n10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費
+ 退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門
+ 去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 
+ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6
+  照跳。\n⚠️ 順帶提醒：明天（10/5）08:45 就要出發 Te 
+ Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前
+ 確認油箱夠來回。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 跳傘②決策：10/1 跳成了就退掉明天
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-avon@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261007T083000Z
+DTEND:20261007T085000Z
+SUMMARY:🚣 訂明天下午的 Avon 撐篙
+DESCRIPTION:【NZ 10/7（三）21:30】\n\n10/8 傍晚 17:00 場 · 成
+ 人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買
+ 得到，但官方建議先預約減少排隊；10 月營業到 18:00，
+ weather permitting。看基督城明天的天氣預報再決定訂不訂
+ ——剛看完企鵝回住處，順手訂一下。\n🔗 官網／訂
+ 票：https://www.christchurchattractions.nz/punting/
+URL:https://www.christchurchattractions.nz/punting/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:訂明天下午的 Avon 撐篙
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:dl-blackcat-time@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261008T060000Z
+DTEND:20261008T062000Z
+SUMMARY:🐬 🔴 明早 Black Cat 出發前最後確認
+DESCRIPTION:【NZ 10/8（四）19:00】\n\n① 對一次訂單：10/9 10:
+ 45 早班 ✅ 已訂（2026/8/1 訂），報到 10:15、61 Beach Road。
+ \n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m
+ ），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手
+ 機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24
+  小時內，此時自行取消不退款、no-show 也不退。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 明早 Black Cat 出發前最後確認
+END:VALARM
+END:VEVENT
+END:VCALENDAR

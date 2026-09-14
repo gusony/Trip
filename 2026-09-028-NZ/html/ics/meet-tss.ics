@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-tss@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261004T034500Z
+DTEND:20261004T074500Z
+SUMMARY:🚢 TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+LOCATION:Steamer Wharf\, Queenstown
+DESCRIPTION:【NZ 10/4（日）16:45 報到】\n\n17:00 開船，全程
+ 約 3 小時 45 分（Walter Peak Gourmet BBQ 晚餐）。船有遮蔽
+ ，風雨照開，是全行程最穩的晚間活動。\n\n📍 地圖導
+ 航：https://www.google.com/maps/search/?api=1&query=Steamer%20Wharf%2C
+ %20Queenstown
+URL:https://www.google.com/maps/search/?api=1&query=Steamer%20Wharf%2C%20
+ Queenstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:TSS Earnslaw 蒸汽船報到 · Steamer Wharf
+END:VALARM
+END:VEVENT
+END:VCALENDAR

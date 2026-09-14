@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:op-carreturn@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261009T031500Z
+DTEND:20261009T041500Z
+SUMMARY:⛽ 🔴 出發往機場加油 → 17:00 前還車
+LOCATION:Christchurch Airport\, Christchurch
+DESCRIPTION:【NZ 10/9（五）16:15】\n\n⚠️ 租約還車時間是
+ 今天 17:00，逾時超過 30 分鐘直接多收一整天租金。\n市
+ 區 → 機場約 20 分鐘，途中在機場附近的 Z 或 BP 把油
+ 加滿（full-to-full），保留加油收據。\n📍 Europcar 櫃檯
+ 在 CHC 主航廈內、地面層——不是場外，不用接駁車。\
+ n還車前檢查：① 置物箱、椅背袋、後車廂有沒有東西
+ （充電線、太陽眼鏡最常留下）② 把車機裡的藍牙／Ca
+ rPlay 紀錄刪掉 ③ 拍一輪車況照＋油表＋里程表（開時
+ 間戳）。\n保留租約與收據直到押金預授權解除（4–30 
+ 天後，不會通知，自己去查額度）。\n還完車走路 5–10
+  分鐘到 Sudima。\n\n📍 地圖導航：https://www.google.com/maps/
+ search/?api=1&query=Christchurch%20Airport%2C%20Christchurch
+URL:https://www.google.com/maps/search/?api=1&query=Christchurch%20Airpor
+ t%2C%20Christchurch
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:🔴 出發往機場加油 → 17:00 前還車
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 出發往機場加油 → 17:00 前還車
+END:VALARM
+END:VEVENT
+END:VCALENDAR

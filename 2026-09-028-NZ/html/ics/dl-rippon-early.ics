@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-rippon-early@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260929T070000Z
+DTEND:20260929T072000Z
+SUMMARY:🍷 預告：Rippon 品酒可能要退訂
+DESCRIPTION:【NZ 9/29（二）20:00】\n\n10/1（四）16:30 的 Rippon 
+ 免費導覽（2 人，✅ 已訂）大概率要退——同一天 12:30
+  跳傘，全程 3–3.5 小時、15:30–16:00 才結束，開到 Rippo
+ n 還要 15–20 分鐘，最快 16:20 到，跳傘只要延誤就 no-sh
+ ow（$10/人）。\n先放進腦袋、現在不用動作：明天（9/30
+ ）確認跳傘照跳之後再退。\n⏰ 真正的死線是 10/1 04:30
+ （開始前 12 小時），提醒已設在 9/30 22:00。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:預告：Rippon 品酒可能要退訂
+END:VALARM
+END:VEVENT
+END:VCALENDAR

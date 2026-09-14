@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-glowworm@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261005T003000Z
+DTEND:20261005T031500Z
+SUMMARY:✨ 螢火蟲洞報到 · RealNZ 遊客中心
+LOCATION:RealNZ Visitor Centre\, 85 Lakefront Drive\, Te Anau
+DESCRIPTION:【NZ 10/5（一）13:30 報到】\n\n14:00 場出發，全
+ 程約 2 小時 15 分。出發前 30 分鐘報到。洞內完全黑暗
+ 、不能拍照，手機收好；洞內溫度低要帶保暖衣物。\n\
+ n📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Rea
+ lNZ%20Visitor%20Centre%2C%2085%20Lakefront%20Drive%2C%20Te%20Anau
+URL:https://www.google.com/maps/search/?api=1&query=RealNZ%20Visitor%20Ce
+ ntre%2C%2085%20Lakefront%20Drive%2C%20Te%20Anau
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:螢火蟲洞報到 · RealNZ 遊客中心
+END:VALARM
+END:VEVENT
+END:VCALENDAR

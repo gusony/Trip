@@ -42,6 +42,16 @@
 - [ ] 每日三餐推薦
 - [ ] 活動預訂連結比較
 
+## 行事曆 .ics
+
+`html/ics/` 裡的 `.ics` 是**產生出來的**，不要手改。改完 `html/reminders.html` 的 `EVENTS` 後重跑：
+
+```
+cd html && node build-ics.js
+```
+
+（為什麼是靜態檔：iOS Safari 拒絕下載 JS 產生的 blob `.ics`，只認伺服器回的 Content-Type）
+
 ## 檔案結構
 - `accommodations/` - 每晚住宿選項
 - `activities/` - 活動方案比較

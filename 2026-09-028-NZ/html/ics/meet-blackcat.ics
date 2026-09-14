@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-blackcat@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261008T211500Z
+DTEND:20261008T234500Z
+SUMMARY:🐬 Black Cat 海豚船報到 · 10:45 早班
+LOCATION:Black Cat Cruises\, 61 Beach Road\, Akaroa
+DESCRIPTION:【NZ 10/9（五）10:15 報到】\n\n✅ 已預訂（成人 
+ $130 × 2）。10:45 開船、全程 2 小時 → 12:45 回港，接著
+ 在 Akaroa 吃午餐。開船前 30 分鐘完成報到。\n⏰ 報到前
+  24 小時外可免費改／退 → 死線 10/8 10:15，之後不退、n
+ o-show 也不退。\n⚠️ 今天 07:30 就要從基督城出發（SH75
+  山路 80km / 1h30m），別睡晚。\n\n📍 地圖導航：https://ww
+ w.google.com/maps/search/?api=1&query=Black%20Cat%20Cruises%2C%2061%20Be
+ ach%20Road%2C%20Akaroa\n🔗 官網／訂票：https://book.blackcat.co.
+ nz/activity/selection?filter=ProdGroup-ANC
+URL:https://www.google.com/maps/search/?api=1&query=Black%20Cat%20Cruises
+ %2C%2061%20Beach%20Road%2C%20Akaroa
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Black Cat 海豚船報到 · 10:45 早班
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Black Cat 海豚船報到 · 10:45 早班
+END:VALARM
+END:VEVENT
+END:VCALENDAR

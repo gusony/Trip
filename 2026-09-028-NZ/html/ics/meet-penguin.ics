@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-penguin@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261007T070000Z
+DTEND:20261007T083000Z
+SUMMARY:🐧 Oamaru 藍企鵝歸巢（Premium 看台）
+LOCATION:Oamaru Blue Penguin Colony
+DESCRIPTION:【NZ 10/7（三）20:00】\n\nPremium 看台僅 60 席、距
+ 企鵝數公尺。雨天照常舉行，帶雨衣即可。\n\n📍 地圖
+ 導航：https://www.google.com/maps/search/?api=1&query=Oamaru%20Blue%2
+ 0Penguin%20Colony\n🔗 官網／訂票：https://www.penguins.co.nz/vis
+ it/evening-viewing/
+URL:https://www.google.com/maps/search/?api=1&query=Oamaru%20Blue%20Pengu
+ in%20Colony
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Oamaru 藍企鵝歸巢（Premium 看台）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

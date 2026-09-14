@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-skydive2@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261004T090000Z
+DTEND:20261004T094500Z
+SUMMARY:🪂 🔴 跳傘②決策：10/1 跳成了就退掉明天
+DESCRIPTION:【NZ 10/4（日）22:00】\n🌙 死線 10/5 09:00 · 已提
+ 前到睡前\n\n10/6 09:00 NZONE 皇后鎮（Klook）可 24h 前免費
+ 退 → 死線是 10/5 09:00，那個時間你在睡覺／正要出門
+ 去 Te Anau，所以今晚就要決定。\n10/1 已經跳成了？→ 
+ 現在就退，不退等於白付 NZD $449。沒跳成 → 保留，10/6
+  照跳。\n⚠️ 順帶提醒：明天（10/5）08:45 就要出發 Te 
+ Anau，來回 350km、將近 12 小時，設好 07:30 鬧鐘、出發前
+ 確認油箱夠來回。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 跳傘②決策：10/1 跳成了就退掉明天
+END:VALARM
+END:VEVENT
+END:VCALENDAR

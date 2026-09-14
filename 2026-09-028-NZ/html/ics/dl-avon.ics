@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-avon@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261007T083000Z
+DTEND:20261007T085000Z
+SUMMARY:🚣 訂明天下午的 Avon 撐篙
+DESCRIPTION:【NZ 10/7（三）21:30】\n\n10/8 傍晚 17:00 場 · 成
+ 人 NZD $45 · 30–45 分鐘 · Antigua Boat Sheds 出發。現場買
+ 得到，但官方建議先預約減少排隊；10 月營業到 18:00，
+ weather permitting。看基督城明天的天氣預報再決定訂不訂
+ ——剛看完企鵝回住處，順手訂一下。\n🔗 官網／訂
+ 票：https://www.christchurchattractions.nz/punting/
+URL:https://www.christchurchattractions.nz/punting/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:訂明天下午的 Avon 撐篙
+END:VALARM
+END:VEVENT
+END:VCALENDAR

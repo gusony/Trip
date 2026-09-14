@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-rippon@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260930T090000Z
+DTEND:20260930T093000Z
+SUMMARY:🍷 🔴 Rippon 品酒最後退訂點（睡前處理）
+DESCRIPTION:【NZ 9/30（三）22:00】\n🌙 死線 10/1 04:30 · 已提
+ 前到睡前\n\n明天 16:30 的 Rippon 免費導覽（2 人），退訂
+ 期限是開始前 12 小時 ＝ 10/1 04:30，那個時間你在睡覺 
+ → 今晚睡前就要決定。\n判斷：明天 12:30 跳傘照跳的
+ 話，全程 3–3.5 小時、15:30–16:00 才結束，Wanaka Airport 
+ → Rippon 還要 15–20 分鐘車程 → 幾乎一定遲到。跳傘
+ 照跳就退掉。\nno-show 會收 $10/人。\n🔗 官網／訂票：ht
+ tps://rippon.co.nz/tasting-bookings/
+URL:https://rippon.co.nz/tasting-bookings/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Rippon 品酒最後退訂點（睡前處理）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

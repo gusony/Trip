@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-glacier@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260928T200000Z
+DTEND:20260928T211500Z
+SUMMARY:🚁 冰川飛行報到 · Mount Cook Airport
+LOCATION:Mount Cook Airport
+DESCRIPTION:【NZ 9/29（二）09:00 報到】\n\n⚠️ 09:30 是飛行
+ 時間，09:00 要到機場報到 → 08:00 就要從 Tekapo 出發（55
+ km，Pukaki 觀景台只能快拍即走）。飛行 45 分鐘 · 2 人 
+ · GetYourGuide 已訂。\n10:45 南下 High Country Salmon 吃午餐，
+ 13:00 回 Mt Cook 走 Hooker Valley 步道（⏰ 最晚 13:30 前要上
+ 步道，10.6km 往返 3.5–4 小時，天黑前才走得完）。\n\n
+ 📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Moun
+ t%20Cook%20Airport
+URL:https://www.google.com/maps/search/?api=1&query=Mount%20Cook%20Airpor
+ t
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:冰川飛行報到 · Mount Cook Airport
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:冰川飛行報到 · Mount Cook Airport
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:op-roys@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260929T220000Z
+DTEND:20260929T223000Z
+SUMMARY:🥾 🔴 Roy's Peak 出發（最晚 11:30 上步道）
+LOCATION:Roy's Peak Track car park\, Mount Aspiring Road\, Wanaka
+DESCRIPTION:【NZ 9/30（三）11:00】\n\n往返 16km、爬升 1\,236m
+ ，含拍照休息要 5–6 小時 → 最晚 11:30 前一定要踏上
+ 步道，否則天黑前下不來（10 月初日落約 18:40）。帶滿
+  2L 水（全程無補給）、SPF50+、登山鞋、防風外套。⚠
+ ️ 跳傘①的決策點是今天 10:30（死線 12:30），出發爬
+ 山前先處理完。\n\n📍 地圖導航：https://www.google.com/maps
+ /search/?api=1&query=Roy's%20Peak%20Track%20car%20park%2C%20Mount%20Aspi
+ ring%20Road%2C%20Wanaka
+URL:https://www.google.com/maps/search/?api=1&query=Roy's%20Peak%20Track%
+ 20car%20park%2C%20Mount%20Aspiring%20Road%2C%20Wanaka
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Roy's Peak 出發（最晚 11:30 上步道）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 Roy's Peak 出發（最晚 11:30 上步道）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

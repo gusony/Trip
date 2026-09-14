@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-blackcat-time@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261008T060000Z
+DTEND:20261008T062000Z
+SUMMARY:🐬 🔴 明早 Black Cat 出發前最後確認
+DESCRIPTION:【NZ 10/8（四）19:00】\n\n① 對一次訂單：10/9 10:
+ 45 早班 ✅ 已訂（2026/8/1 訂），報到 10:15、61 Beach Road。
+ \n② 明天 07:30 就要從基督城出發（SH75 山路 80km / 1h30m
+ ），今晚設好鬧鐘、車先加油。\n③ 確認船家有你的手
+ 機號碼——浪大取消會提前電話通知。\n⚠️ 已進入 24
+  小時內，此時自行取消不退款、no-show 也不退。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 明早 Black Cat 出發前最後確認
+END:VALARM
+END:VEVENT
+END:VCALENDAR

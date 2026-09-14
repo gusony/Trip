@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:fly-out@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260926T103500Z
+DTEND:20260926T211500Z
+SUMMARY:✈️ NZ78 桃園 T2 → 奧克蘭
+LOCATION:Taoyuan International Airport Terminal 2
+DESCRIPTION:【台灣 9/26（六）18:35 起飛】\n\n隔天 10:15 抵達
+ 奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。\n\n
+ 📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Taoy
+ uan%20International%20Airport%20Terminal%202
+URL:https://www.google.com/maps/search/?api=1&query=Taoyuan%20Internation
+ al%20Airport%20Terminal%202
+BEGIN:VALARM
+TRIGGER:-PT180M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
+END:VALARM
+END:VEVENT
+END:VCALENDAR

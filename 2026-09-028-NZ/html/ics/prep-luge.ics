@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-luge@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260829T020000Z
+DTEND:20260829T022000Z
+SUMMARY:🛷 🛷 比價 Skyline Luge：官網 vs 第三方
+DESCRIPTION:【台灣 8/29（六）10:00】\n\nGondola + Luge 組合票
+ （3 趟）約 NZ$89/人，排在 10/6 14:00。\n\n差別只在退改條
+ 款：\n· 官網 queenstown.skyline.co.nz —— 48 小時前才能退
+ 改（全行程最嚴）→ 死線 10/4 14:00，等於要在皇后鎮第
+ 二天就賭 10/6 的天氣\n· Klook / Viator —— 24 小時前免費
+ 取消 → 死線 10/5 14:00，多一天觀察天氣\n\n👉 若價差
+ 不大就走第三方，現在直接訂掉，省掉當地操作也多一
+ 天彈性。價差明顯才留給官網、10/3 晚上看預報再決定
+ 。\n\n⚠️ 走官網的話記得：死線是 10/4 14:00，不是 09:0
+ 0。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🛷 比價 Skyline Luge：官網 vs 第三方
+END:VALARM
+END:VEVENT
+END:VCALENDAR

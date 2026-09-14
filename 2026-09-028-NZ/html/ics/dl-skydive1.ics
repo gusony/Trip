@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-skydive1@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260929T213000Z
+DTEND:20260929T223000Z
+SUMMARY:🪂 跳傘①決策 ＋ 順手退 Rippon 品酒
+DESCRIPTION:【NZ 9/30（三）10:30】\n\n① 10/1 12:30 Skydive Wanaka
+ （Klook）可 24h 前免費退 → 期限今天 12:30，還有 2 小時
+ 緩衝。查 Wanaka 明天中午預報。② 跳傘確定照跳的話，
+ 今天就把明天 16:30 的 Rippon 品酒退掉——跳傘 15:30–16:
+ 00 才結束，硬趕會 no-show（$10/人）。Rippon 是 12h 前可免
+ 費退。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:跳傘①決策 ＋ 順手退 Rippon 品酒
+END:VALARM
+END:VEVENT
+END:VCALENDAR

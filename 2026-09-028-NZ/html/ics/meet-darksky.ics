@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-darksky@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260928T081500Z
+DTEND:20260928T101500Z
+SUMMARY:🔭 Dark Sky 銀河觀星（中文導覽）
+LOCATION:Dark Sky Project\, Lake Tekapo
+DESCRIPTION:【NZ 9/28（一）21:15】\n\n含飯店接送，全程約 2 
+ 小時。⚠️ 山頂近 0°C，多層保暖＋毛帽手套。出發前
+  15 分鐘到報到處聽天氣最終判定；雲太厚可改室內天
+ 文導覽退差額、改期或全退。\n\n📍 地圖導航：https://w
+ ww.google.com/maps/search/?api=1&query=Dark%20Sky%20Project%2C%20Lake%20
+ Tekapo
+URL:https://www.google.com/maps/search/?api=1&query=Dark%20Sky%20Project%
+ 2C%20Lake%20Tekapo
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Dark Sky 銀河觀星（中文導覽）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

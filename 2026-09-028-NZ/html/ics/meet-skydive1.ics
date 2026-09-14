@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-skydive1@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260930T230000Z
+DTEND:20261001T023000Z
+SUMMARY:🪂 Skydive Wanaka 報到（12:30 場）
+LOCATION:Skydive Wanaka\, 14 Mustang Lane\, Wanaka Airport
+DESCRIPTION:【NZ 10/1（四）12:00 抵達】\n\n⚠️ 提早 30 分鐘
+ 抵達 → 12:00 到、11:45 從住處出發（機場在 SH6 上，距
+ 鎮中心約 10 分鐘）。12:30 是報到時間不是跳傘時間，
+ 全程 3–3.5 小時，預計 15:30–16:00 結束。帶證件＋Klook 
+ QR；穿深色運動服＋包腳鞋，不戴飾品。11:00 先吃輕食
+ ，別空腹也別吃太飽。\n\n📍 地圖導航：https://www.google
+ .com/maps/search/?api=1&query=Skydive%20Wanaka%2C%2014%20Mustang%20Lane%
+ 2C%20Wanaka%20Airport
+URL:https://www.google.com/maps/search/?api=1&query=Skydive%20Wanaka%2C%2
+ 014%20Mustang%20Lane%2C%20Wanaka%20Airport
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Skydive Wanaka 報到（12:30 場）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Skydive Wanaka 報到（12:30 場）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

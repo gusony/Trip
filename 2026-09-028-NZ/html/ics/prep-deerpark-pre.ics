@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-deerpark-pre@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260903T010000Z
+DTEND:20260903T013000Z
+SUMMARY:🚗 鹿園前置：確認訂票視窗與車牌填法
+DESCRIPTION:【台灣 9/3（四）09:00】\n\n① 再確認一次「7 天
+ 內才開放預約」規則沒變。⚠️ 2026/8/18 已實測驗證：
+ 當天可訂 8/25（+7 天），8/26（+8 天）與 9/18 都不能訂 
+ → 確定是 7 天視窗，不是 30 天。10/3 的票要等 NZ 時間 
+ 9/26 才開賣。\n② 車牌問題已有解：官網 FAQ 明載訂完
+ 可自行修改車牌——登入 booking.deerparkheights.co.nz → 右
+ 側三個點 → Upcoming bookings → 改 license plate → Save bookin
+ g，並強調「You must do this yourself\, please do not email or call
+ 」。→ 訂票時先填 placeholder（例如自家車牌或 TBC123）
+ ，9/27 取車後站在車旁拍實車車牌、當場用手機改掉即
+ 可（CHC 機場有免費 Wi-Fi）。\n🔗 官網／訂票：https://de
+ erparkheights.co.nz/info/faqs/
+URL:https://deerparkheights.co.nz/info/faqs/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:鹿園前置：確認訂票視窗與車牌填法
+END:VALARM
+END:VEVENT
+END:VCALENDAR

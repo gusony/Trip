@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:op-wakeup@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261009T160000Z
+DTEND:20261009T163500Z
+SUMMARY:⏰ ⏰ 起床（05:35 走路出門）
+LOCATION:Sudima Christchurch Airport\, 550 Memorial Avenue\, Christchurch
+DESCRIPTION:【NZ 10/10（六）05:00】\n\n快速梳洗、退房。行
+ 李昨晚已經收好，直接出門。\n✅ 不用還車、不用等接
+ 駁——比原本的規劃多睡 45 分鐘。\n\n📍 地圖導航：ht
+ tps://www.google.com/maps/search/?api=1&query=Sudima%20Christchurch%20Ai
+ rport%2C%20550%20Memorial%20Avenue%2C%20Christchurch
+URL:https://www.google.com/maps/search/?api=1&query=Sudima%20Christchurch
+ %20Airport%2C%20550%20Memorial%20Avenue%2C%20Christchurch
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:⏰ 起床（05:35 走路出門）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

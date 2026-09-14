@@ -1,0 +1,35 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-nztd@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260925T110000Z
+DTEND:20260925T113000Z
+SUMMARY:📝 📝 填 NZTD 紐西蘭入境申報 ×2（登機前一天）
+DESCRIPTION:【台灣 9/25（五）19:00】\n\nNZTD（New Zealand Travell
+ er Declaration）紐西蘭入境申報，兩人各填一份，9/26 18:35
+  起飛前一天先做掉。\n\n【怎麼填】官方 App「NZ Traveller
+  Declaration」或網頁版 travellerdeclaration.govt.nz，兩者擇一
+ 即可，免費。⚠️ 只認官方管道，收費代辦站一律不
+ 要。\n【要準備】護照 · NZeTA 核准資訊 · NZ78／NZ547 班
+ 機號碼 · 9/27 第一晚住宿地址（The Airport Homestay House\, 5
+ 2 Whitby Street\, Burnside\, 基督城 8053）。\n【申報什麼】要
+ 誠實勾：食品（泡麵、肉乾、零食、茶包都算）、動植
+ 物製品、登山鞋／帳篷等接觸過土壤的裝備、現金 NZ$10
+ \,000 以上。⚠️ 紐西蘭生物安全罰則很重，不確定就
+ 勾「有」，落地讓官員判斷。\n【填完】把 NZTD 收到的 
+ pass／QR code 截圖存離線，兩人手機各一份。\n\n⚠️ 送
+ 出時間窗口（多久前才能送出）與網址請以官網為準，
+ 自己開一次確認。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:📝 填 NZTD 紐西蘭入境申報 ×2（登機前一天）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

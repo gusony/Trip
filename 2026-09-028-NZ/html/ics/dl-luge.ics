@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:dl-luge@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261003T230000Z
+DTEND:20261003T233000Z
+SUMMARY:🛷 Skyline Luge 訂票死線（48h 退改規則）
+DESCRIPTION:【NZ 10/4（日）12:00】\n\n10/6 下午 14:00 上山玩 Go
+ ndola + Luge（早上跳傘，12:00–13:00 才結束）。Skyline 是
+ 全行程最嚴的 48 小時退改 → 48h 邊界是今天 14:00，現
+ 在還有 2 小時緩衝。\n看 10/6 預報再決定訂不訂，天氣
+ 好就線上買組合票（比現場分開買省，也免排售票隊伍
+ ）。⚠️ 別拖過今天 14:00，過了就變成不能退。\n🔗 
+ 官網／訂票：https://queenstown.skyline.co.nz
+URL:https://queenstown.skyline.co.nz
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Skyline Luge 訂票死線（48h 退改規則）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

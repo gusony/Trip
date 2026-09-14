@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-horse@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261003T224500Z
+DTEND:20261003T233000Z
+SUMMARY:🐴 抵達 Moke Valley 騎馬集合點
+LOCATION:Moke Lake\, Queenstown
+DESCRIPTION:【NZ 10/4（日）11:45 抵達】\n\n建議 11:45 前抵達
+ （官方要求 12:00 前一定要到，Moke Lake Rd 末段是碎石路
+ 較慢，留 15 分鐘餘裕）。騎馬 12:00–13:30。⚠️ 48 小
+ 時內不退，遲到＝全額損失。穿長褲＋包腳鞋，山谷比
+ 市區冷。\n\n📍 地圖導航：https://www.google.com/maps/search/?
+ api=1&query=Moke%20Lake%2C%20Queenstown
+URL:https://www.google.com/maps/search/?api=1&query=Moke%20Lake%2C%20Quee
+ nstown
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:抵達 Moke Valley 騎馬集合點
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:抵達 Moke Valley 騎馬集合點
+END:VALARM
+END:VEVENT
+END:VCALENDAR

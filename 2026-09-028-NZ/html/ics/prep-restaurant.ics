@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-restaurant@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260912T020000Z
+DTEND:20260912T023000Z
+SUMMARY:🍽️ 🍽️ 餐廳：只有這幾家不訂就吃不到
+DESCRIPTION:【台灣 9/12（六）10:00】\n\n👉 大部分的餐都可
+ 以到當天再看心情決定，各日頁面都列了選項。以下是
+ 「不先訂就真的吃不到」的少數幾家，看要不要訂：\n\
+ n🔴 Te Anau 10/5 —— 這頓最要緊，小鎮選擇少，而且吃
+ 完要開 2h30m 夜路回皇后鎮，不能在那邊耗。The Redcliff
+ （03 249 7431，⚠️ 先確認週一有開）／The Moose（湖景最
+ 隨性）／Ristorante Paradiso。⚠️ The Fat Duck 週一公休。\n\
+ n🟡 Amisfield（Lake Hayes）—— 只有 10/3 能去（週一週二
+ 公休、10/4 被 TSS 佔）。$425/人 Trust the Chef 四道約 4 小
+ 時，要開車 20 分鐘、喝酒得叫車。\n🟡 Rātā（皇后鎮
+ 市區，米其林一星）—— 10/3 或 10/6，市區可步行，12h 
+ 前可免費取消。\n🟡 Inati（基督城，米其林一星）——
+  建議排 10/8 而非 10/9（10/9 傍晚還完車就沒交通工具了
+ ）。週五訂位須留卡、72h 內取消收 NZ$50/人。\n\n✅ 其
+ 餘全部可現場：Fergburger（可先線上點餐跳過排隊 03 441 
+ 1232）、Riverside Market、Bully Hayes、各家 bakery 與咖啡廳。
+ \n⚠️ 通則：離開皇后鎮和基督城以後，晚餐 18:30 進
+ 場、19:45 前點完最後一道，小鎮 20:30 就收。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🍽️ 餐廳：只有這幾家不訂就吃不到
+END:VALARM
+END:VEVENT
+END:VCALENDAR

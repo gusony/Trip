@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:op-crown@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261002T203000Z
+DTEND:20261002T204500Z
+SUMMARY:⛰️ 出發前查 Crown Range 路況
+DESCRIPTION:【NZ 10/3（六）09:30】\n\nCrown Range Road（SH89）是
+ 全紐最高公路（1\,121m），10 月初仍可能結冰或積雪封
+ 路。有雪就改走 SH6 經 Cromwell／Kawarau Gorge——較長但安
+ 全。⚠️ 今晚務必記得看 10/6 的天氣預報決定 Luge 要
+ 不要訂（48h 退改 → 死線是明天 10/4 14:00）。\n🔗 官網
+ ／訂票：https://www.journeys.nzta.govt.nz
+URL:https://www.journeys.nzta.govt.nz
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:出發前查 Crown Range 路況
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:出發前查 Crown Range 路況
+END:VALARM
+END:VEVENT
+END:VCALENDAR

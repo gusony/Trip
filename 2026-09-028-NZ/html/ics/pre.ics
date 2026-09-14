@@ -1,0 +1,225 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-luge@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260829T020000Z
+DTEND:20260829T022000Z
+SUMMARY:🛷 🛷 比價 Skyline Luge：官網 vs 第三方
+DESCRIPTION:【台灣 8/29（六）10:00】\n\nGondola + Luge 組合票
+ （3 趟）約 NZ$89/人，排在 10/6 14:00。\n\n差別只在退改條
+ 款：\n· 官網 queenstown.skyline.co.nz —— 48 小時前才能退
+ 改（全行程最嚴）→ 死線 10/4 14:00，等於要在皇后鎮第
+ 二天就賭 10/6 的天氣\n· Klook / Viator —— 24 小時前免費
+ 取消 → 死線 10/5 14:00，多一天觀察天氣\n\n👉 若價差
+ 不大就走第三方，現在直接訂掉，省掉當地操作也多一
+ 天彈性。價差明顯才留給官網、10/3 晚上看預報再決定
+ 。\n\n⚠️ 走官網的話記得：死線是 10/4 14:00，不是 09:0
+ 0。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🛷 比價 Skyline Luge：官網 vs 第三方
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-deerpark-pre@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260903T010000Z
+DTEND:20260903T013000Z
+SUMMARY:🚗 鹿園前置：確認訂票視窗與車牌填法
+DESCRIPTION:【台灣 9/3（四）09:00】\n\n① 再確認一次「7 天
+ 內才開放預約」規則沒變。⚠️ 2026/8/18 已實測驗證：
+ 當天可訂 8/25（+7 天），8/26（+8 天）與 9/18 都不能訂 
+ → 確定是 7 天視窗，不是 30 天。10/3 的票要等 NZ 時間 
+ 9/26 才開賣。\n② 車牌問題已有解：官網 FAQ 明載訂完
+ 可自行修改車牌——登入 booking.deerparkheights.co.nz → 右
+ 側三個點 → Upcoming bookings → 改 license plate → Save bookin
+ g，並強調「You must do this yourself\, please do not email or call
+ 」。→ 訂票時先填 placeholder（例如自家車牌或 TBC123）
+ ，9/27 取車後站在車旁拍實車車牌、當場用手機改掉即
+ 可（CHC 機場有免費 Wi-Fi）。\n🔗 官網／訂票：https://de
+ erparkheights.co.nz/info/faqs/
+URL:https://deerparkheights.co.nz/info/faqs/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:鹿園前置：確認訂票視窗與車牌填法
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-restaurant@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260912T020000Z
+DTEND:20260912T023000Z
+SUMMARY:🍽️ 🍽️ 餐廳：只有這幾家不訂就吃不到
+DESCRIPTION:【台灣 9/12（六）10:00】\n\n👉 大部分的餐都可
+ 以到當天再看心情決定，各日頁面都列了選項。以下是
+ 「不先訂就真的吃不到」的少數幾家，看要不要訂：\n\
+ n🔴 Te Anau 10/5 —— 這頓最要緊，小鎮選擇少，而且吃
+ 完要開 2h30m 夜路回皇后鎮，不能在那邊耗。The Redcliff
+ （03 249 7431，⚠️ 先確認週一有開）／The Moose（湖景最
+ 隨性）／Ristorante Paradiso。⚠️ The Fat Duck 週一公休。\n\
+ n🟡 Amisfield（Lake Hayes）—— 只有 10/3 能去（週一週二
+ 公休、10/4 被 TSS 佔）。$425/人 Trust the Chef 四道約 4 小
+ 時，要開車 20 分鐘、喝酒得叫車。\n🟡 Rātā（皇后鎮
+ 市區，米其林一星）—— 10/3 或 10/6，市區可步行，12h 
+ 前可免費取消。\n🟡 Inati（基督城，米其林一星）——
+  建議排 10/8 而非 10/9（10/9 傍晚還完車就沒交通工具了
+ ）。週五訂位須留卡、72h 內取消收 NZ$50/人。\n\n✅ 其
+ 餘全部可現場：Fergburger（可先線上點餐跳過排隊 03 441 
+ 1232）、Riverside Market、Bully Hayes、各家 bakery 與咖啡廳。
+ \n⚠️ 通則：離開皇后鎮和基督城以後，晚餐 18:30 進
+ 場、19:45 前點完最後一道，小鎮 20:30 就收。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🍽️ 餐廳：只有這幾家不訂就吃不到
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-pack@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260924T120000Z
+DTEND:20260924T130000Z
+SUMMARY:📦 行前打包 ＋ 文件備份 ＋ 離線地圖
+DESCRIPTION:【台灣 9/24（四）20:00】\n\n證件：護照（效期 6
+  個月以上）· IDP ＋ 台灣駕照「兩張都要帶」· Visa/Mast
+ ercard（租車押金用）· NZeTA 核准信 · 保單 → 全部拍照
+ 存雲端。\n裝備：防水外套、登山鞋、保暖層（觀星山
+ 頂近 0°C）、SPF50+、行動電源、相機＋廣角鏡。\n手機
+ ：下載 Google Maps 紐西蘭離線包、eSIM ✅ 已買（2026/8/30
+ ）——在台灣就裝好、設 9/27 生效，別等落地。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:行前打包 ＋ 文件備份 ＋ 離線地圖
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-checkin@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260925T103500Z
+DTEND:20260925T110500Z
+SUMMARY:🛫 NZ78 線上 check-in ＋ 選位
+DESCRIPTION:【台灣 9/25（五）18:35】\n\n起飛前 24 小時開放
+ 。順手確認行李額度、把登機證存進手機錢包。✅ NZeTA
+  已辦妥，順手確認核准信、保單、eSIM 都在手機離線可
+ 讀。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 線上 check-in ＋ 選位
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-nztd@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260925T110000Z
+DTEND:20260925T113000Z
+SUMMARY:📝 📝 填 NZTD 紐西蘭入境申報 ×2（登機前一天）
+DESCRIPTION:【台灣 9/25（五）19:00】\n\nNZTD（New Zealand Travell
+ er Declaration）紐西蘭入境申報，兩人各填一份，9/26 18:35
+  起飛前一天先做掉。\n\n【怎麼填】官方 App「NZ Traveller
+  Declaration」或網頁版 travellerdeclaration.govt.nz，兩者擇一
+ 即可，免費。⚠️ 只認官方管道，收費代辦站一律不
+ 要。\n【要準備】護照 · NZeTA 核准資訊 · NZ78／NZ547 班
+ 機號碼 · 9/27 第一晚住宿地址（The Airport Homestay House\, 5
+ 2 Whitby Street\, Burnside\, 基督城 8053）。\n【申報什麼】要
+ 誠實勾：食品（泡麵、肉乾、零食、茶包都算）、動植
+ 物製品、登山鞋／帳篷等接觸過土壤的裝備、現金 NZ$10
+ \,000 以上。⚠️ 紐西蘭生物安全罰則很重，不確定就
+ 勾「有」，落地讓官員判斷。\n【填完】把 NZTD 收到的 
+ pass／QR code 截圖存離線，兩人手機各一份。\n\n⚠️ 送
+ 出時間窗口（多久前才能送出）與網址請以官網為準，
+ 自己開一次確認。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:📝 填 NZTD 紐西蘭入境申報 ×2（登機前一天）
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-deerpark@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260925T123000Z
+DTEND:20260925T131500Z
+SUMMARY:🦌 🔴 鹿園高地開賣！立刻訂 10/3 下午
+DESCRIPTION:【台灣 9/25（五）20:30 ＝ NZ 9/26 00:30】\n🌙 原
+ 訂 9/26 08:00 開賣 · 已提前到睡前\n\n⚠️ 官網只開放「
+ 到訪日前 7 天內」的預約（2026/8/18 實測確認）→ 10/3 
+ 的票要 NZ 時間 9/26 才開賣。\n🕐 為什麼是台灣 20:30：
+ 紐西蘭此時為 NZST（UTC+12），比台灣快 4 小時 → NZ 9/26 
+ 00:00 ＝ 台灣 9/25 20:00。留 30 分鐘緩衝。\n👉 若這時還
+ 訂不到，不要慌，明早 10:00 有備援提醒再試一次（訂
+ 票系統的換日時間點不一定正好在午夜）。\nNZD $75/車
+ （8 座以下）、每日限 80 台車，10/3 是週六又在 NZ 學校
+ 春假期間（9/26–10/11），賣完就沒有。\n⚠️ 車牌欄先
+ 填 placeholder（自家車牌或 TBC123），取車後可自行登入
+ 後台改（見 9/3 那筆提醒）。\n🚫 只能官網 booking.deerpa
+ rkheights.co.nz 訂——官方明文「第三方票無效，會被拒
+ 絕入園」，Klook／KKday／Viator 都不行，現場也沒有售票
+ 。\n閘門是車牌辨識自動開啟，另會寄簡訊＋Email 備援 
+ PIN（進出各一次）。\n🔗 官網／訂票：https://booking.deer
+ parkheights.co.nz/
+URL:https://booking.deerparkheights.co.nz/
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 鹿園高地開賣！立刻訂 10/3 下午
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-deerpark-bak@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260926T020000Z
+DTEND:20260926T023000Z
+SUMMARY:🦌 🔴 鹿園高地備援：出門去機場前最後一次
+DESCRIPTION:【台灣 9/26（六）10:00 ＝ 出發日上午】\n\n⚠️
+  這是在台灣、有網路、有電腦、還能慢慢處理的最後
+ 一個時段——今天 18:35 NZ78 就起飛，15:30 前要到桃園 T2
+ ，下午開始就沒空了。\n🔁 若昨晚 20:30 沒訂到（可能
+ 是訂票系統換日時間不在午夜），現在再試一次，10/3 
+ 應該已經進入 7 天視窗內。\n🔁 若已訂到：確認訂單
+ 信＋備援 PIN（簡訊與 Email 各一）都收到了，截圖存離
+ 線。\n🆘 真的還是沒訂到 → 最後機會是 9/27 在奧克蘭
+ 轉機時（10:15 落地、14:00 飛基督城，有 3h45m，機場有 Wi
+ -Fi）。10/3 仍在 7 天視窗內，但拖越久越可能賣完。\n10
+ /3 鹿園高地：每日限 80 台車、$75/車、只能官網 booking.d
+ eerparkheights.co.nz 訂。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 鹿園高地備援：出門去機場前最後一次
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fly-out@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260926T103500Z
+DTEND:20260926T211500Z
+SUMMARY:✈️ NZ78 桃園 T2 → 奧克蘭
+LOCATION:Taoyuan International Airport Terminal 2
+DESCRIPTION:【台灣 9/26（六）18:35 起飛】\n\n隔天 10:15 抵達
+ 奧克蘭 → 轉 NZ547（9/27 14:00）→ 15:25 抵達基督城。\n\n
+ 📍 地圖導航：https://www.google.com/maps/search/?api=1&query=Taoy
+ uan%20International%20Airport%20Terminal%202
+URL:https://www.google.com/maps/search/?api=1&query=Taoyuan%20Internation
+ al%20Airport%20Terminal%202
+BEGIN:VALARM
+TRIGGER:-PT180M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:NZ78 桃園 T2 → 奧克蘭
+END:VALARM
+END:VEVENT
+END:VCALENDAR

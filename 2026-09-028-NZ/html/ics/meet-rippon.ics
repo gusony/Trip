@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:meet-rippon@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261001T033000Z
+DTEND:20261001T043000Z
+SUMMARY:🍷 Rippon 酒莊免費導覽（2 人）
+LOCATION:Rippon Vineyard\, Wanaka
+DESCRIPTION:【NZ 10/1（四）16:30】\n\n⚠️ 跟跳傘結束時間
+ （15:30–16:00）非常接近，Wanaka Airport → Rippon 還要 15–
+ 20 分鐘車程。已定策略：9/30 確認跳傘照跳就先退掉這
+ 個。no-show 收 $10/人。\n\n📍 地圖導航：https://www.google.c
+ om/maps/search/?api=1&query=Rippon%20Vineyard%2C%20Wanaka\n🔗 官網
+ ／訂票：https://rippon.co.nz/tasting-bookings/
+URL:https://www.google.com/maps/search/?api=1&query=Rippon%20Vineyard%2C%
+ 20Wanaka
+BEGIN:VALARM
+TRIGGER:-PT60M
+ACTION:DISPLAY
+DESCRIPTION:Rippon 酒莊免費導覽（2 人）
+END:VALARM
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:Rippon 酒莊免費導覽（2 人）
+END:VALARM
+END:VEVENT
+END:VCALENDAR

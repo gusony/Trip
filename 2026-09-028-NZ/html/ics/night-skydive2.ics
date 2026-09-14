@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:night-skydive2@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20261005T090000Z
+DTEND:20261005T092000Z
+SUMMARY:🌙 睡前：明天 08:30 出門跳傘
+DESCRIPTION:【NZ 10/5（一）22:00】\n\n明天 09:00 NZONE 跳傘（Kl
+ ook 已訂）→ ⏰ 報到 08:50 截止，遲到視同 no-show。08:40 
+ 要到 35 Shotover St，08:30 從 Hampshire Holiday Parks 出發（步
+ 行 12–15 分鐘）。\n今晚設好 07:30 鬧鐘；備妥證件＋Klo
+ ok QR Code；穿深色運動服＋包腳鞋、不戴飾品。\n今天剛
+ 從 Te Anau 開了 5 小時車回來，早點睡。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:睡前：明天 08:30 出門跳傘
+END:VALARM
+END:VEVENT
+END:VCALENDAR

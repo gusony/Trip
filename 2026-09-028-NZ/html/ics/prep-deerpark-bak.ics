@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NZ2026//Trip Reminders//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:紐西蘭 2026 行程提醒
+X-WR-TIMEZONE:Pacific/Auckland
+BEGIN:VEVENT
+UID:prep-deerpark-bak@nz2026.trip
+DTSTAMP:20260101T000000Z
+DTSTART:20260926T020000Z
+DTEND:20260926T023000Z
+SUMMARY:🦌 🔴 鹿園高地備援：出門去機場前最後一次
+DESCRIPTION:【台灣 9/26（六）10:00 ＝ 出發日上午】\n\n⚠️
+  這是在台灣、有網路、有電腦、還能慢慢處理的最後
+ 一個時段——今天 18:35 NZ78 就起飛，15:30 前要到桃園 T2
+ ，下午開始就沒空了。\n🔁 若昨晚 20:30 沒訂到（可能
+ 是訂票系統換日時間不在午夜），現在再試一次，10/3 
+ 應該已經進入 7 天視窗內。\n🔁 若已訂到：確認訂單
+ 信＋備援 PIN（簡訊與 Email 各一）都收到了，截圖存離
+ 線。\n🆘 真的還是沒訂到 → 最後機會是 9/27 在奧克蘭
+ 轉機時（10:15 落地、14:00 飛基督城，有 3h45m，機場有 Wi
+ -Fi）。10/3 仍在 7 天視窗內，但拖越久越可能賣完。\n10
+ /3 鹿園高地：每日限 80 台車、$75/車、只能官網 booking.d
+ eerparkheights.co.nz 訂。
+BEGIN:VALARM
+TRIGGER:PT0M
+ACTION:DISPLAY
+DESCRIPTION:🔴 鹿園高地備援：出門去機場前最後一次
+END:VALARM
+END:VEVENT
+END:VCALENDAR
