@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英國 2025 · 總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-dot{color:#CBD5E1;flex-shrink:0;padding:0 2px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+.hero{color:#fff;padding:36px 20px 30px}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-title{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+:root{--a:#B91C1C}
+.hero{padding:40px 20px 36px}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#FCA5A5;margin-bottom:10px}
+.hero-title{font-size:32px;font-weight:700;line-height:1.22;margin-bottom:8px}
+.hero-sub{font-size:15px;margin-bottom:24px}
+.stats{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:16px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.stat{text-align:center;min-width:64px}
+.stat-num{font-size:26px;font-weight:700;color:#fff;display:block;line-height:1}
+.stat-label{font-size:11px;color:#FCA5A5;margin-top:3px}
+.stat-div{color:rgba(255,255,255,.25);font-size:18px}
+.days-grid{display:flex;flex-direction:column;gap:10px}
+@media(min-width:768px){.days-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+.day-card{background:#fff;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;display:flex;align-items:stretch;transition:transform 150ms,box-shadow 150ms}
+.day-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.day-card-accent{width:5px;flex-shrink:0}
+.day-card-body{flex:1;padding:13px 15px}
+.day-card-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.day-num{font-size:11px;font-weight:600;color:#94A3B8;text-transform:uppercase;letter-spacing:.06em}
+.day-date-badge{font-size:11px;font-weight:500;color:#64748B;background:#F8FAFC;border:1px solid #E2E8F0;padding:2px 8px;border-radius:99px}
+.day-card-title{font-size:14px;font-weight:600;color:#0F172A;margin-bottom:5px}
+.day-card-tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500;background:#F1F5F9;color:#475569}
+.day-card-arrow{display:flex;align-items:center;padding:0 14px 0 0;color:#CBD5E1;font-size:18px}
+.note{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:14px 16px;font-size:13px;color:#64748B;line-height:1.6}
+.note b{color:#0F172A}
+.map-link{display:block;background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:18px 20px;transition:transform 150ms,box-shadow 150ms}
+.map-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.map-link-title{font-size:15px;font-weight:600;margin-bottom:3px}
+.map-link-sub{font-size:13px;color:#64748B}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="padding:4px 10px;font-size:14px">🏠</a>
+    <span class="nav-dot">·</span>
+    <a href="index.html" class="nav-logo">🇬🇧 UK</a>
+    <a href="index.html" class="nav-pill active">總覽</a>
+    <a href="map.html" class="nav-pill" style="color:#B91C1C;font-weight:600">🗺️ 路線</a>
+    <span class="nav-dot">·</span>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 45%,#1E3A8A 100%)">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">英國 · United Kingdom · 2025</div>
+    <div class="hero-title">14 天 13 夜<br>英格蘭 · 湖區 · 蘇格蘭高地</div>
+    <div class="hero-sub">2025/9/27（六）桃園出發 → 10/10（五）返台 · 2 人同行</div>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">14</span><div class="stat-label">天</div></div>
+      <span class="stat-div">·</span>
+      <div class="stat"><span class="stat-num">8</span><div class="stat-label">座城鎮</div></div>
+      <span class="stat-div">·</span>
+      <div class="stat"><span class="stat-num">4</span><div class="stat-label">段長途火車</div></div>
+      <span class="stat-div">·</span>
+      <div class="stat"><span class="stat-num">5</span><div class="stat-label">天高地自駕</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="sec-label">路線</div>
+  <a href="map.html" class="map-link">
+    <div class="map-link-title">🗺️ 看整段路線地圖</div>
+    <div class="map-link-sub">倫敦 → 劍橋 → 湖區 → 格拉斯哥 → 高地 → Skye 島 → 愛丁堡 → 約克 → 倫敦</div>
+  </a>
+
+  <div class="sec-label">每日行程</div>
+  <div class="days-grid">
+    <a href="day01-0927.html" class="day-card">
+      <div class="day-card-accent" style="background:#B91C1C"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 1</span><span class="day-date-badge">9/27（六）</span></div>
+        <div class="day-card-title">✈️ 飛往倫敦</div>
+        <div class="day-card-tags"><span class="tag">✈️ TPE→DXB→LGW</span><span class="tag">🚆 railcard 七折</span><span class="tag">🏨 Tottenham Hale</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day02-0928.html" class="day-card">
+      <div class="day-card-accent" style="background:#B91C1C"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 2</span><span class="day-date-badge">9/28（日）</span></div>
+        <div class="day-card-title">🌉 泰晤士河南岸 一路走到金融城</div>
+        <div class="day-card-tags"><span class="tag">🥐 波羅市場</span><span class="tag">🚶 南岸步行</span><span class="tag">🍽️ Sky Garden</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day03-0929.html" class="day-card">
+      <div class="day-card-accent" style="background:#B91C1C"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 3</span><span class="day-date-badge">9/29（一）</span></div>
+        <div class="day-card-title">💂 白金漢宮 · 西敏寺 晚上看音樂劇</div>
+        <div class="day-card-tags"><span class="tag">💂 衛兵交接</span><span class="tag">⛪ 西敏寺</span><span class="tag">🎭 Benjamin Button</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day04-0930.html" class="day-card">
+      <div class="day-card-accent" style="background:#0369A1"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 4</span><span class="day-date-badge">9/30（二）</span></div>
+        <div class="day-card-title">🛶 劍橋一日</div>
+        <div class="day-card-tags"><span class="tag">🚆 直達車</span><span class="tag">🛶 康河撐篙</span><span class="tag">🧴 Neal's Yard</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day05-1001.html" class="day-card">
+      <div class="day-card-accent" style="background:#B91C1C"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 5</span><span class="day-date-badge">10/1（三）</span></div>
+        <div class="day-card-title">🏛️ 大英博物館 ＋ 西區藝文帶</div>
+        <div class="day-card-tags"><span class="tag">🏛️ 大英博物館</span><span class="tag">🎭 柯芬園</span><span class="tag">🧸 Jelly Cat</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day06-1002.html" class="day-card">
+      <div class="day-card-accent" style="background:#15803D"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 6</span><span class="day-date-badge">10/2（四）</span></div>
+        <div class="day-card-title">🚆 離開倫敦 北上湖區門口 Kendal</div>
+        <div class="day-card-tags"><span class="tag">🕵️ 貝克街 221B</span><span class="tag">🌳 攝政公園</span><span class="tag">🚆 Euston→Oxenholme</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day07-1003.html" class="day-card">
+      <div class="day-card-accent" style="background:#047857"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 7</span><span class="day-date-badge">10/3（五）</span></div>
+        <div class="day-card-title">🚗 湖區自駕日 一路開到 Glasgow</div>
+        <div class="day-card-tags"><span class="tag">🚗 Enterprise 取車</span><span class="tag">⛵ 溫德米爾遊湖</span><span class="tag">🍪 薑餅店</span><span class="tag">🏙️ Glasgow</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day08-1004.html" class="day-card">
+      <div class="day-card-accent" style="background:#6D28D9"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 8</span><span class="day-date-badge">10/4（六）</span></div>
+        <div class="day-card-title">🐮 Glasgow 市區 傍晚北上高地</div>
+        <div class="day-card-tags"><span class="tag">🎓 格拉斯哥大學</span><span class="tag">🐮 高地牛</span><span class="tag">⚡ 風暴改宿</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day09-1005.html" class="day-card">
+      <div class="day-card-accent" style="background:#7C3AED"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 9</span><span class="day-date-badge">10/5（日）</span></div>
+        <div class="day-card-title">🚂 高地縱貫 霍格華茲高架橋 → Skye 島</div>
+        <div class="day-card-tags"><span class="tag">🏞️ 蘭諾赫沼澤</span><span class="tag">🚂 Glenfinnan</span><span class="tag">🥃 Talisker</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day10-1006.html" class="day-card">
+      <div class="day-card-accent" style="background:#0E7490"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 10</span><span class="day-date-badge">10/6（一）</span></div>
+        <div class="day-card-title">🧚 Skye 島環島</div>
+        <div class="day-card-tags"><span class="tag">🏰 Dunvegan</span><span class="tag">🥾 Quiraing</span><span class="tag">🦕 恐龍足跡</span><span class="tag">🏞️ Kilt Rock</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day11-1007.html" class="day-card">
+      <div class="day-card-accent" style="background:#1E3A8A"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 11</span><span class="day-date-badge">10/7（二）</span></div>
+        <div class="day-card-title">🏰 高地南下 愛丁堡還車</div>
+        <div class="day-card-tags"><span class="tag">🏰 Eilean Donan</span><span class="tag">🐉 尼斯湖</span><span class="tag">🚗 還車日</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day12-1008.html" class="day-card">
+      <div class="day-card-accent" style="background:#1E40AF"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 12</span><span class="day-date-badge">10/8（三）</span></div>
+        <div class="day-card-title">🏰 愛丁堡一日</div>
+        <div class="day-card-tags"><span class="tag">🏰 愛丁堡城堡</span><span class="tag">☕ The Elephant House</span><span class="tag">🥪 Oink</span><span class="tag">🥃 威士忌</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day13-1009.html" class="day-card">
+      <div class="day-card-accent" style="background:#9F1239"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 13</span><span class="day-date-badge">10/9（四）</span></div>
+        <div class="day-card-title">🫖 愛丁堡 → York 當天再回倫敦</div>
+        <div class="day-card-tags"><span class="tag">🚆 三段火車</span><span class="tag">🧳 寄行李</span><span class="tag">🫖 Bettys</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+    <a href="day14-1010.html" class="day-card">
+      <div class="day-card-accent" style="background:#B91C1C"></div>
+      <div class="day-card-body">
+        <div class="day-card-meta"><span class="day-num">Day 14</span><span class="day-date-badge">10/10（五）</span></div>
+        <div class="day-card-title">🛫 倫敦最後一天 傍晚飛回台灣</div>
+        <div class="day-card-tags"><span class="tag">⛪ 聖保羅大教堂</span><span class="tag">☕ Monmouth</span><span class="tag">✈️ Gatwick Express</span></div>
+      </div>
+      <div class="day-card-arrow">›</div>
+    </a>
+  </div>
+
+  <div class="sec-label">關於這份紀錄</div>
+  <div class="note">
+    這是 <b>2025 年 9/27 – 10/10</b> 英國行程的事後整理，資料來自當時的行程規劃表。<br>
+    內容以<b>出發前的計畫</b>為底，時間與停留長度都是當初排的；實際走的時候一定有出入
+    （例如 <b>10/4</b> 因風暴斷電臨時換了住宿）。想起什麼再補進來就好。
+  </div>
+
+</div>
+
+</body>
+</html>

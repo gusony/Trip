@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英國 2025 · 路線地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-dot{color:#CBD5E1;flex-shrink:0;padding:0 2px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+.hero{color:#fff;padding:36px 20px 30px}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-title{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+:root{--a:#B91C1C}
+#map{height:calc(100vh - 52px);min-height:420px;width:100%}
+.legend{position:absolute;bottom:20px;left:20px;z-index:500;background:rgba(255,255,255,.94);border:1px solid #E2E8F0;border-radius:12px;padding:12px 14px;font-size:12px;color:#475569;max-width:240px;backdrop-filter:blur(8px)}
+.legend b{display:block;color:#0F172A;font-size:13px;margin-bottom:4px}
+.leaflet-popup-content{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;font-size:13px}
+.leaflet-popup-content b{font-size:14px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="padding:4px 10px;font-size:14px">🏠</a>
+    <span class="nav-dot">·</span>
+    <a href="index.html" class="nav-logo">🇬🇧 UK</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="map.html" class="nav-pill active" style="color:#B91C1C;font-weight:600">🗺️ 路線</a>
+    <span class="nav-dot">·</span>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div style="position:relative">
+<div id="map"></div>
+<div class="legend"><b>🇬🇧 英國 2025 路線</b>倫敦出發，北上湖區與蘇格蘭高地，繞 Skye 島後南下愛丁堡、約克，再回倫敦搭機。<br>點按標記看是第幾天。</div>
+</div>
+
+<script>
+var PINS = [
+ ['倫敦 London',51.5074,-0.1278,'Day 1–5、13–14 的基地'],
+ ['劍橋 Cambridge',52.2053,0.1218,'Day 4 · 康河撐篙'],
+ ['Kendal',54.328,-2.746,'Day 6 住宿 · 湖區門口'],
+ ['溫德米爾 Windermere',54.365,-2.919,'Day 7 · 遊湖小船、彼得兔'],
+ ['安布賽德 Ambleside',54.429,-2.962,'Day 7 · 午餐'],
+ ['格拉斯米爾 Grasmere',54.459,-3.024,'Day 7 · 薑餅店'],
+ ['凱西克 Keswick',54.6013,-3.1347,'Day 7 · 湖區北端'],
+ ['格拉斯哥 Glasgow',55.8642,-4.2518,'Day 7 住宿、Day 8 市區'],
+ ['威廉堡 Fort William',56.8198,-5.1052,'Day 8 住宿（風暴改訂）'],
+ ['Glenfinnan 高架橋',56.8747,-5.4331,'Day 9 · 霍格華茲特快列車'],
+ ['Talisker 酒廠',57.302,-6.3563,'Day 9 · Skye 島威士忌'],
+ ['波特里 Portree',57.4125,-6.1953,'Day 9 住宿 · Skye 島首府'],
+ ['Dunvegan Castle',57.4494,-6.5906,'Day 10 · 麥克勞德家族城堡'],
+ ['The Fairy Glen',57.585,-6.33,'Day 10 · 精靈谷'],
+ ['Quiraing',57.644,-6.277,'Day 10 · 火山地景健行'],
+ ['Kilt Rock',57.6083,-6.1753,'Day 10 · 海崖與瀑布'],
+ ['Old Man of Storr',57.507,-6.181,'Day 10 · 只停停車場'],
+ ['Kyle of Lochalsh',57.281,-5.716,'Day 10 住宿'],
+ ['Eilean Donan Castle',57.274,-5.5162,'Day 11 · 三湖交匯的城堡'],
+ ['尼斯湖 Loch Ness',57.144,-4.68,'Day 11 · Fort Augustus 觀景點'],
+ ['Aviemore',57.19,-3.829,'Day 11 · 凱恩戈姆山午餐'],
+ ['Dunkeld Cathedral',56.565,-3.588,'Day 11 · 泰河畔大教堂'],
+ ['愛丁堡 Edinburgh',55.9533,-3.1883,'Day 11–12 · 還車、城堡'],
+ ['約克 York',53.96,-1.0873,'Day 13 · 大教堂、肉舖街']
+];
+var map = L.map('map', {scrollWheelZoom:true}).setView([56.0,-4.0], 6);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
+}).addTo(map);
+var latlngs = PINS.map(function(p){ return [p[1],p[2]]; });
+L.polyline(latlngs, {color:'#B91C1C', weight:3, opacity:.65, dashArray:'6,6'}).addTo(map);
+PINS.forEach(function(p, i){
+  L.circleMarker([p[1],p[2]], {radius:7, color:'#fff', weight:2, fillColor:'#B91C1C', fillOpacity:1})
+   .addTo(map)
+   .bindPopup('<b>'+p[0]+'</b><br>'+p[3]);
+});
+map.fitBounds(L.latLngBounds(latlngs).pad(0.08));
+</script>
+
+</body>
+</html>

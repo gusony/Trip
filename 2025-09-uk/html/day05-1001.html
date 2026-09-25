@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5 · 10/1 大英博物館 ＋ 西區藝文帶</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'PingFang TC',sans-serif;background:#F0F4F8;color:#0F172A;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.nav{background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:0;z-index:100;padding:0 20px}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;height:52px;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-logo{font-size:15px;font-weight:700;flex-shrink:0;margin-right:4px}
+.nav-dot{color:#CBD5E1;flex-shrink:0;padding:0 2px}
+.nav-pill{flex-shrink:0;padding:5px 12px;border-radius:99px;font-size:13px;font-weight:500;color:#64748B;transition:all 150ms}
+.nav-pill:hover{background:#F1F5F9}
+.nav-pill.active{background:var(--a);color:#fff}
+.hero{color:#fff;padding:36px 20px 30px}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero-title{font-size:28px;font-weight:700;line-height:1.25;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);border-radius:99px;font-size:13px;font-weight:500;padding:4px 12px}
+.content{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin:24px 0 12px 2px}
+:root{--a:#B91C1C;--al:#FEF2F2;--am:#FECACA}
+.day-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:99px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 12px;margin-bottom:12px}
+.day-grid{display:block}
+@media(min-width:768px){.day-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start}.day-side{position:sticky;top:72px}}
+.timeline{position:relative;padding-left:72px}
+.timeline::before{content:'';position:absolute;left:54px;top:20px;bottom:20px;width:2px;background:var(--am);border-radius:2px}
+.tl-item{position:relative;margin-bottom:10px}
+.tl-time{position:absolute;left:-72px;width:46px;text-align:right;font-size:12px;font-weight:600;color:var(--a);padding-top:14px;line-height:1.2}
+.tl-dot{position:absolute;left:-18px;top:15px;width:12px;height:12px;border-radius:50%;background:#fff;border:2.5px solid var(--a);transform:translateX(-50%)}
+.tl-dot.key{background:var(--a)}
+.tl-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:13px 15px}
+.tl-card h3{font-size:15px;font-weight:600;margin-bottom:3px}
+.tl-card p{font-size:13px;color:#64748B;line-height:1.55}
+.tl-card .sub{font-size:12px;color:#94A3B8;margin-top:4px}
+.alert{border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.alert-w{background:#FFF7ED;border:1px solid #FED7AA}
+.alert strong{display:block;font-size:14px;font-weight:600;margin-bottom:3px}
+.alert p{font-size:13px;color:#475569;line-height:1.55}
+.side-card{background:#fff;border-radius:14px;border:1px solid #E2E8F0;padding:14px 16px;margin-bottom:12px}
+.side-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#94A3B8;margin-bottom:6px}
+.side-value{font-size:14px;font-weight:600;color:#0F172A;line-height:1.45}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #E2E8F0;display:flex;gap:10px;padding:10px 20px;padding-bottom:calc(10px + env(safe-area-inset-bottom));justify-content:center;z-index:100}
+.bnav-btn{flex:1;max-width:160px;text-align:center;padding:11px 0;border-radius:12px;font-size:14px;font-weight:600;transition:opacity 150ms}
+.bnav-prev{background:#F1F5F9;color:#475569}
+.bnav-next{background:var(--a);color:#fff}
+.bnav-btn:hover{opacity:.85}
+.pb{height:80px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-pill" style="padding:4px 10px;font-size:14px">🏠</a>
+    <span class="nav-dot">·</span>
+    <a href="index.html" class="nav-logo">🇬🇧 UK</a>
+    <a href="index.html" class="nav-pill">總覽</a>
+    <a href="map.html" class="nav-pill" style="color:#B91C1C;font-weight:600">🗺️ 路線</a>
+    <span class="nav-dot">·</span>
+    <a href="day01-0927.html" class="nav-pill">9/27</a>
+    <a href="day02-0928.html" class="nav-pill">9/28</a>
+    <a href="day03-0929.html" class="nav-pill">9/29</a>
+    <a href="day04-0930.html" class="nav-pill">9/30</a>
+    <a href="day05-1001.html" class="nav-pill active">10/1</a>
+    <a href="day06-1002.html" class="nav-pill">10/2</a>
+    <a href="day07-1003.html" class="nav-pill">10/3</a>
+    <a href="day08-1004.html" class="nav-pill">10/4</a>
+    <a href="day09-1005.html" class="nav-pill">10/5</a>
+    <a href="day10-1006.html" class="nav-pill">10/6</a>
+    <a href="day11-1007.html" class="nav-pill">10/7</a>
+    <a href="day12-1008.html" class="nav-pill">10/8</a>
+    <a href="day13-1009.html" class="nav-pill">10/9</a>
+    <a href="day14-1010.html" class="nav-pill">10/10</a>
+  </div>
+</nav>
+
+<div class="hero" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c)">
+  <div class="hero-inner">
+    <div class="day-badge">Day 5 · 10/1（三）</div>
+    <div class="hero-title">🏛️ 大英博物館<br>＋ 西區藝文帶</div>
+    <div class="hero-sub">早餐報名字 Tim → 大英博物館 → 柯芬園一路走到特拉法加</div>
+    <div class="hero-tags">
+      <span class="htag">🏛️ 大英博物館</span>
+      <span class="htag">🎭 柯芬園</span>
+      <span class="htag">🧸 Jelly Cat</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="day-grid">
+    <div class="day-main">
+      <div class="sec-label">當日行程</div>
+      <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">09:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>☕ Victoria House Coffee & Food 早餐</h3>
+              <p>點餐報的名字是 <b>Tim</b>。</p>
+              <p class="sub">⏱ 09:00–10:30</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">10:40</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🏛️ 大英博物館 The British Museum</h3>
+              <p>有另外買一份導覽 app 邊走邊聽。羅塞塔石碑、帕德嫩神廟雕帶、埃及木乃伊廳。</p>
+              <p class="sub">⏱ 約 3 小時 20 分</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">14:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🎭 柯芬園 Covent Garden</h3>
+              <p>市集、街頭藝人，旁邊就是倫敦皇家歌劇院。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🚶 河岸街 → 特拉法加廣場 步行路線</h3>
+              <p>· <b>考陶爾德美術館</b> The Courtauld<br>· <b>薩默塞特府</b> Somerset House<br>· <b>國家美術館</b> National Gallery<br>· <b>國家肖像館</b> National Portrait Gallery（免費）<br>· <b>特拉法加廣場</b> Trafalgar Square</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">20:00</div>
+            <div class="tl-dot key"></div>
+            <div class="tl-card">
+              <h3>🧸 Selfridges · Jellycat</h3>
+              <p>百貨裡的 Jellycat 專櫃，這天買最兇。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">晚上</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>🛒 Lidl</h3>
+              <p>回程補給。</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="day-side">
+      <div class="sec-label">住宿</div>
+      <div class="side-card">
+        <div class="side-label">這晚住哪</div>
+        <div class="side-value">Tottenham Hale / Seven Sisters 一帶</div>
+      </div>
+    </div>
+  </div>
+  <div class="pb"></div>
+</div>
+
+<div class="bottom-nav">
+  <a href="day04-0930.html" class="bnav-btn bnav-prev">← 前一天</a>
+  <a href="day06-1002.html" class="bnav-btn bnav-next">後一天 →</a>
+</div>
+
+</body>
+</html>
